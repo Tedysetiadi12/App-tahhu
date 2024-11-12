@@ -8,8 +8,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -18,6 +20,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, menu_market, menu_finance, menu_ride;
+
+    private HorizontalScrollView horizontalScrollView;
+    private Handler handler = new Handler();
+    private int scrollPosition = 0;
+    private int scrollStep = 3; // Kecepatan scroll, semakin besar semakin cepat
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, finance.class);
+                Intent intent = new Intent(MainActivity.this, ShortVidio.class);
                 startActivity(intent);
             }
         });
@@ -124,5 +131,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        horizontalScrollView = findViewById(R.id.horizontalScrollView);
+//        startAutoScroll();
+    }
+    private void startAutoScroll() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                scrollPosition += scrollStep;
+                horizontalScrollView.scrollTo(scrollPosition, 0);
+
+                // Reset scroll position jika sudah mencapai akhir
+                if (scrollPosition >= horizontalScrollView.getChildAt(0).getWidth() - horizontalScrollView.getWidth()) {
+                    scrollPosition = 0;
+                }
+
+                // Ulangi setiap 20 milidetik untuk efek smooth scrolling
+                handler.postDelayed(this, 20);
+            }
+        }, 20);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null); // Hentikan auto scroll saat activity ditutup
     }
 }
