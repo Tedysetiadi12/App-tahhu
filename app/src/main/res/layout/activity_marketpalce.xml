@@ -36,13 +36,12 @@
             android:orientation="horizontal"
             android:layout_marginEnd="12dp"
             android:background="@drawable/rounded_search"
-            android:gravity="center_vertical"
-            app:boxBackgroundMode="none">
+            android:gravity="center_vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="Search">
 
@@ -52,7 +51,7 @@
                     android:fontFamily="@font/googlesans_medium"
                     android:textColorHint="@color/accent"
                     android:textColor="@android:color/black"
-                    android:padding="8dp"
+                    android:padding="9dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionSearch"
                     android:inputType="text" />

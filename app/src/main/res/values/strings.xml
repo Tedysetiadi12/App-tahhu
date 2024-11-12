@@ -1,13 +1,4 @@
 <resources>
     <string name="app_name">Tahhu</string>
     <string name="search_icon">Search icon</string>
-    <string name="kategori_prompt">Pilih Kategori Penukaran</string>
-    <!-- Array untuk Spinner kategori penukaran -->
-    <string-array name="kategori_penukaran">
-        <item>Hadiah A</item>
-        <item>Hadiah B</item>
-        <item>Hadiah C</item>
-        <item>Voucher</item>
-        <item>Lainnya</item>
-    </string-array>
 </resources>
