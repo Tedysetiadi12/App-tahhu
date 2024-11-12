@@ -6,12 +6,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
 
-public class OrderPenjemputanActivity extends AppCompatActivity {
+public class OrderPenjemputanActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private GoogleMap mMap;
     private EditText edtAlamatPenjemputan;
     private Button btnOrder;
+    private Marker currentMarker;  // Marker untuk lokasi yang dipilih
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,32 +29,65 @@ public class OrderPenjemputanActivity extends AppCompatActivity {
 
         // Tombol kembali
         ImageView btnBack = findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Kembali ke halaman sebelumnya
-            }
-        });
+        btnBack.setOnClickListener(v -> finish());
 
         // Initialize views
         edtAlamatPenjemputan = findViewById(R.id.edtAlamatPenjemputan);
         btnOrder = findViewById(R.id.btnOrder);
 
-        // Set button click listener
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String alamat = edtAlamatPenjemputan.getText().toString().trim();
+        // Mendapatkan peta
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapFragment);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
-                // Validate input
-                if (alamat.isEmpty()) {
-                    Toast.makeText(OrderPenjemputanActivity.this, "Harap masukkan alamat penjemputan", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Handle order action (e.g., save order to database or call API)
-                    Toast.makeText(OrderPenjemputanActivity.this, "Penjemputan berhasil dipesan", Toast.LENGTH_SHORT).show();
-                    finish(); // Go back to UCOActivity
-                }
+        // Set button click listener untuk tombol "Pesan Penjemputan"
+        btnOrder.setOnClickListener(v -> {
+            String alamat = edtAlamatPenjemputan.getText().toString().trim();
+
+            if (alamat.isEmpty()) {
+                Toast.makeText(OrderPenjemputanActivity.this, "Harap pilih alamat penjemputan", Toast.LENGTH_SHORT).show();
+            } else {
+                // Proses pemesanan penjemputan di sini
+                Toast.makeText(OrderPenjemputanActivity.this, "Penjemputan berhasil dipesan", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Menambahkan marker di lokasi default (misalnya Jakarta)
+        LatLng defaultLocation = new LatLng(-6.2088, 106.8456);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
+        currentMarker = mMap.addMarker(new MarkerOptions().position(defaultLocation).title("Lokasi Penjemputan"));
+
+        // Menambahkan listener untuk drag marker
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {}
+
+            @Override
+            public void onMarkerDrag(Marker marker) {}
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                // Mendapatkan alamat setelah marker dipindahkan
+                LatLng latLng = marker.getPosition();
+                getAddressFromLatLng(latLng);  // Menampilkan alamat berdasarkan koordinat
+            }
+        });
+
+        // Set default marker dapat di-drag
+        currentMarker.setDraggable(true);
+    }
+
+    private void getAddressFromLatLng(LatLng latLng) {
+        // Gunakan Geocoder atau API Geocoding untuk mendapatkan alamat dari latLng
+        String address = "Alamat ditemukan";  // Simulasi alamat
+        edtAlamatPenjemputan.setText(address);
     }
 }

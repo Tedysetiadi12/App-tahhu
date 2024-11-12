@@ -3,17 +3,14 @@ package com.tahhu.coba;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
+import android.widget.PopupMenu;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,7 @@ public class Marketpalce extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_marketpalce);
 
-      ImageView btnback = findViewById(R.id.back_beranda);
+        ImageView btnback = findViewById(R.id.back_beranda);
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
         productRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -40,6 +37,7 @@ public class Marketpalce extends AppCompatActivity {
         // Add more products as needed
         ProductAdapter adapter = new ProductAdapter(this, products);
         productRecyclerView.setAdapter(adapter);
+
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
