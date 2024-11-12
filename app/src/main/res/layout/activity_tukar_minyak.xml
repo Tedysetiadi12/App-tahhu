@@ -19,7 +19,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/left"
-            android:tint="#FFFFFF"/>
+            android:tint="#FFFF1F"/>
 
         <TextView
             android:layout_width="0dp"
