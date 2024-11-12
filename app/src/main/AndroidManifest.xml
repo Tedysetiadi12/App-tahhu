@@ -22,11 +22,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".booking_ride"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
 
         <meta-data
@@ -41,12 +39,22 @@
         <activity
             android:name=".rideSharing"
             android:exported="false" />
+
         <activity
             android:name=".Survey"
             android:exported="false" />
+
         <activity
             android:name=".finance"
             android:exported="false" />
+
+        <activity android:name=".UcoActivity"
+            android:exported="false"/>
+
+        <activity android:name=".TukarMinyakActivity" />
+        <activity android:name=".LokasiPenukaranActivity" />
+        <activity android:name=".OrderPenjemputanActivity" />
+
         <activity
             android:name=".Marketpalce"
             android:exported="false" />
@@ -59,6 +67,7 @@
         <activity
             android:name=".RadioStreamin"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">

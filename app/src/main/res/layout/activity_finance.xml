@@ -16,7 +16,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:background="#FF5722"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -49,49 +49,51 @@
     </LinearLayout>
 
     <!-- Header with Balance Info -->
+
+    <!-- Transactions List -->
+
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:orientation="vertical"
-        android:gravity="center"
         android:background="#FF5722"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/back_beranda"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_beranda"
         tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/tv_balance_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/googlesans_bold"
             android:text="Total Balance"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:fontFamily="@font/googlesans_bold" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_balance_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp 12,500,000"
-            android:textSize="32sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/googlesans_medium"
-            android:layout_marginTop="8dp" />
+            android:text="Rp 12,500,000"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/btn_add_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Money"
             android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
+            android:text="Add Money"
             android:textColor="#2196F3" />
     </LinearLayout>
 
-    <!-- Transactions List -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="0dp"

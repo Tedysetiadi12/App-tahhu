@@ -412,45 +412,90 @@
                     android:textColor="@color/black"/>
             </LinearLayout>
 
-            <!-- All Category -->
+            <!-- Uco Category -->
             <LinearLayout
-                android:id="@+id/allCategory"
+                android:id="@+id/ucoCategory"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:orientation="vertical"
                 android:gravity="center"
-                app:layout_constraintWidth_percent="0.2"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/surveyCategory"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.2">
 
                 <LinearLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:orientation="horizontal"
+                    android:background="@drawable/rouded"
                     android:gravity="center"
-                    android:background="@drawable/rouded">
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/allIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:tint="@color/white"
-                        android:src="@drawable/all" />
+                        android:id="@+id/ucoIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ucocategory"/>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="All"
                     android:layout_marginTop="5dp"
-                    android:textSize="9sp"
                     android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/black"/>
+                    android:text="Uco"
+                    android:textColor="@color/black"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Category Section two-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <!-- All Category -->
+            <LinearLayout
+                android:id="@+id/allCategory"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.2">
+
+                <LinearLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rouded"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/allIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/all"
+                        android:tint="@color/white" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="All"
+                    android:textColor="@color/black"
+                    android:textSize="9sp" />
             </LinearLayout>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!-- Featured Cars Section -->
         <androidx.constraintlayout.widget.ConstraintLayout
