@@ -31,9 +31,10 @@
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -81,9 +82,9 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/location" />
+            android:layout_width="40dp"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/arah" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -99,6 +100,8 @@
         android:drawableStart="@drawable/location"
         android:drawablePadding="8dp"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:background="@drawable/rounded_edittext"
         android:layout_marginBottom="8dp"/>
 
@@ -106,10 +109,12 @@
         android:id="@+id/destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter destination"
+        android:hint="Masukan Tujuan Anda "
         android:drawableStart="@drawable/placeholder"
         android:drawablePadding="8dp"
         android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:background="@drawable/rounded_edittext"/>
 </LinearLayout>
 
@@ -137,40 +142,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/carOption"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/taxi"
-                android:contentDescription="Car"
-                android:background="?attr/selectableItemBackground"
-                android:layout_marginEnd="16dp" />
-
-            <ImageView
-                android:id="@+id/motorbikeOption"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/scooter"
-                android:contentDescription="Motorbike"
-                android:background="?attr/selectableItemBackground" />
-        </LinearLayout>
-
         <!-- Selected Vehicle Info -->
-        <TextView
-            android:id="@+id/vehicleTypeInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selected: Car"
-            android:textColor="@color/gray"
-            android:textSize="14sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"/>
 
         <!-- Request Ride Button -->
         <Button
@@ -178,7 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Request Ride"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="@color/my_birutua"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
     </LinearLayout>

@@ -22,7 +22,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="68dp"
-            android:padding="10dp">
+            android:padding="1dp">
 
             <!-- Logo ImageView -->
             <ImageView
@@ -95,17 +95,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="1dp"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_margin="10dp"
                     android:layout_marginEnd="20dp"
@@ -120,15 +120,15 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="260dp"
+                            android:layout_width="330dp"
                             android:layout_height="200dp"
                             android:baselineAligned="false"
-                            android:src="@drawable/prof" />
+                            android:src="@drawable/poster1" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_margin="10dp"
                     android:layout_marginEnd="20dp"
@@ -149,7 +149,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_margin="10dp"
                     android:layout_marginEnd="20dp"
@@ -167,7 +167,6 @@
                             android:layout_height="290dp"
                             android:src="@drawable/bener1" />
 
-
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -179,7 +178,7 @@
             android:padding="8dp"
             android:background="@drawable/card_background_gradient"
             android:elevation="6dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="19dp"
             android:paddingTop="10dp"
             app:cardCornerRadius="15dp">
 
@@ -239,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/accentColor"
+                    android:backgroundTint="@color/my_birutua"
                     android:text="Klik Disini"
                     android:textColor="@color/white"
                     android:padding="10dp"
@@ -254,6 +253,7 @@
             android:layout_height="wrap_content"
             android:text="Categori"
             android:textSize="15sp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/googlesans_bold"
             android:textColor="@color/black"
             android:layout_marginTop="10dp" />
@@ -277,16 +277,16 @@
                 app:layout_constraintEnd_toStartOf="@+id/financeCategory">
 
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/rouded">
 
                     <ImageView
                         android:id="@+id/marketIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/store" />
                 </LinearLayout>
 
@@ -295,7 +295,7 @@
                     android:layout_height="wrap_content"
                     android:text="Market"
                     android:layout_marginTop="5dp"
-                    android:textSize="9sp"
+                    android:textSize="14sp"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -314,16 +314,16 @@
                 app:layout_constraintEnd_toStartOf="@+id/rideCategory">
 
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/rouded">
 
                     <ImageView
                         android:id="@+id/financeIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/dollar" />
                 </LinearLayout>
 
@@ -331,7 +331,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Finance"
-                    android:textSize="9sp"
+                    android:textSize="14sp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"/>
@@ -351,17 +351,17 @@
                 app:layout_constraintEnd_toStartOf="@+id/surveyCategory">
 
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/rouded">
 
                     <ImageView
                         android:id="@+id/rideIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:tint="@color/white"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"
                         android:src="@drawable/motorcycle" />
                 </LinearLayout>
 
@@ -370,7 +370,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ride"
                     android:layout_marginTop="5dp"
-                    android:textSize="9sp"
+                    android:textSize="14sp"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -389,16 +389,16 @@
                 app:layout_constraintEnd_toStartOf="@+id/allCategory">
 
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/rouded">
 
                     <ImageView
                         android:id="@+id/surveyIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/survey" />
                 </LinearLayout>
 
@@ -406,7 +406,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Survey"
-                    android:textSize="9sp"
+                    android:textSize="14sp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"/>
@@ -427,23 +427,41 @@
                 app:layout_constraintWidth_percent="0.2">
 
                 <LinearLayout
+<<<<<<< HEAD
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/rouded"
+=======
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+>>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
+<<<<<<< HEAD
                         android:id="@+id/ucoIcon"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ucocategory"/>
+=======
+                        android:id="@+id/allIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"
+                        android:src="@drawable/all" />
+>>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+<<<<<<< HEAD
+=======
+                    android:textSize="14sp"
+>>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                     android:fontFamily="@font/googlesans_bold"
                     android:text="Uco"
                     android:textColor="@color/black"
@@ -655,7 +673,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:nestedScrollingEnabled="false"/>
         </LinearLayout>
         <Space
             android:layout_width="match_parent"

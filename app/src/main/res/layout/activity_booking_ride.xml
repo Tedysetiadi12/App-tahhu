@@ -32,13 +32,13 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_back_ride"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
@@ -89,6 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:layout_marginStart="8dp"
             android:hint="Enter pickup location"
             android:padding="10dp"
@@ -101,7 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="10dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,17 +121,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center">
 
-            <!-- Car Option with Price -->
+            <!-- Row for Car Option -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginEnd="16dp">
+                android:orientation="horizontal"
+                android:background="@color/gray"
+                android:gravity="start"
+                android:layout_gravity="center">
 
+                <!-- Car Option Image -->
                 <ImageView
                     android:id="@+id/carOption"
                     android:layout_width="60dp"
@@ -139,41 +142,95 @@
                     android:contentDescription="Car"
                     android:background="?attr/selectableItemBackground" />
 
+                <!-- Car Option Text -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Car - $10"
-                    android:textColor="@color/gray"
+                    android:text="Car"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"/>
+
+                <!-- Estimated Arrival for Car -->
+                <TextView
+                    android:id="@+id/carEstimatedArrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 mins"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Fare for Car -->
+                <TextView
+                    android:id="@+id/carFare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp. 100.000"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginStart="20dp"/>
             </LinearLayout>
 
-            <!-- Motorbike Option with Price -->
+            <!-- Row for Motorbike Option -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:orientation="horizontal"
+                android:gravity="start">
 
+                <!-- Motorbike Option Image -->
                 <ImageView
                     android:id="@+id/motorbikeOption"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/scooter"
+                    android:layout_marginStart="5dp"
                     android:contentDescription="Motorbike"
                     android:background="?attr/selectableItemBackground" />
 
+                <!-- Motorbike Option Text -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motorbike - $5"
-                    android:textColor="@color/gray"
+                    android:text="Motorbike"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"/>
+
+                <!-- Estimated Arrival for Motorbike -->
+                <TextView
+                    android:id="@+id/motorbikeEstimatedArrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 mins"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Fare for Motorbike -->
+                <TextView
+                    android:id="@+id/motorbikeFare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp. 20.000"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"/>
             </LinearLayout>
+
         </LinearLayout>
+
+
 
         <!-- Selected Vehicle Info -->
         <TextView
@@ -192,7 +249,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Request Ride"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="@color/accentColor"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
     </LinearLayout>
