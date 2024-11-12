@@ -386,7 +386,7 @@
                 app:layout_constraintStart_toEndOf="@+id/rideCategory"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/allCategory">
+                app:layout_constraintEnd_toStartOf="@+id/ucoCategory">
 
                 <LinearLayout
                     android:layout_width="50dp"
@@ -427,45 +427,28 @@
                 app:layout_constraintWidth_percent="0.2">
 
                 <LinearLayout
-<<<<<<< HEAD
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
                     android:background="@drawable/rouded"
-=======
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:orientation="horizontal"
->>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-<<<<<<< HEAD
+
                         android:id="@+id/ucoIcon"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ucocategory"/>
-=======
-                        android:id="@+id/allIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:tint="@color/white"
-                        android:src="@drawable/all" />
->>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-<<<<<<< HEAD
-=======
                     android:textSize="14sp"
->>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
                     android:fontFamily="@font/googlesans_bold"
                     android:text="Uco"
-                    android:textColor="@color/black"
-                    android:textSize="9sp" />
+                    android:textColor="@color/black" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -484,7 +467,8 @@
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintWidth_percent="0.2">
+                app:layout_constraintWidth_percent="0.2"
+                tools:ignore="MissingConstraints">
 
                 <LinearLayout
                     android:layout_width="40dp"
@@ -498,7 +482,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/all"
-                        android:tint="@color/white" />
+                        app:tint="@color/white" />
                 </LinearLayout>
 
                 <TextView

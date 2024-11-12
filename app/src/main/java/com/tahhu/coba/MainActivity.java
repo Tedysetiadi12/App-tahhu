@@ -19,16 +19,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
-<<<<<<< HEAD
     public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, btn_uco ,menu_market, menu_finance, menu_ride;
-=======
-    public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, menu_market, menu_finance, menu_ride;
 
     private HorizontalScrollView horizontalScrollView;
     private Handler handler = new Handler();
     private int scrollPosition = 0;
     private int scrollStep = 3; // Kecepatan scroll, semakin besar semakin cepat
->>>>>>> d6ec771536ccd63c0194fbcb1c4ca069a15275ed
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
