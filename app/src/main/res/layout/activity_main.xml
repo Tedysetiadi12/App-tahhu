@@ -680,6 +680,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/iconTint"
         android:padding="@dimen/card_padding_menu">
 
         <!-- Home Button -->
