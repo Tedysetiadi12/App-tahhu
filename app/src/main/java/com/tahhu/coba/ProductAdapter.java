@@ -52,6 +52,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 intent.putExtra("productImage", product.getImageResource());
                 intent.putExtra("productRating", product.getRating());
                 intent.putExtra("productSold", product.getSoldCount());
+                intent.putExtra("productDescription", product.getDescription());  // Kirim deskripsi produk
                 context.startActivity(intent);
             }
         });
@@ -74,7 +75,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productPrice = itemView.findViewById(R.id.productPrice);
             productRating = itemView.findViewById(R.id.productRating);
             productSold = itemView.findViewById(R.id.productSold);
-            productCard = itemView.findViewById(R.id.productCard);
+            productCard = itemView.findViewById(R.id.productCard);  // Pastikan ada CardView dengan ID ini di item_product.xml
         }
     }
 }

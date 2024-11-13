@@ -21,7 +21,7 @@ public class DetailProductActivity extends AppCompatActivity {
         TextView productPrice = findViewById(R.id.productPrice);
         TextView productRating = findViewById(R.id.productRating);
         TextView productSold = findViewById(R.id.productSold);
-
+        TextView productDescription = findViewById(R.id.productDescription);  // Menambahkan TextView untuk deskripsi
 
         // Ambil data dari Intent
         Bundle extras = getIntent().getExtras();
@@ -31,12 +31,13 @@ public class DetailProductActivity extends AppCompatActivity {
             productRating.setText(extras.getString("productRating"));
             productSold.setText(extras.getString("productSold"));
             productImage.setImageResource(extras.getInt("productImage"));
+            productDescription.setText(extras.getString("productDescription"));  // Menampilkan deskripsi produk
         }
 
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle click event, for example, open another activity
+                // Kembali ke Marketplace
                 Intent intent = new Intent(DetailProductActivity.this, Marketplace.class);
                 startActivity(intent);
             }

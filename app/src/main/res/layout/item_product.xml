@@ -1,94 +1,93 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/productCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    android:backgroundTint="@color/white">
+    android:backgroundTint="@color/white"
+    android:id="@+id/productCard"> <!-- ID untuk CardView -->
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-android:padding="8dp">
-
-<!-- Product Image -->
-<ImageView
-    android:id="@+id/productImage"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:scaleType="centerCrop"
-    android:src="@drawable/product1" />
-
-<!-- Product Name -->
-<TextView
-    android:id="@+id/productName"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:text="Lampu Stan"
-    android:textColor="@color/black"
-    android:textSize="16sp"
-    android:fontFamily="@font/googlesans_medium" />
-
-<!-- Product Price -->
-<TextView
-    android:id="@+id/productPrice"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:text="Rp 50,000"
-    android:textColor="@color/orenge"
-    android:textSize="14sp"
-    android:fontFamily="@font/googlesans_bold" />
-
-<!-- Rating and Sales Section -->
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:orientation="horizontal">
-
-    <!-- Rating Star Icon -->
-    <ImageView
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/rating_star"
-        app:tint="@color/accent" />
-
-    <!-- Rating Value -->
-    <TextView
-        android:id="@+id/productRating"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="4.5"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:fontFamily="@font/googlesans_medium" />
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <!-- Divider dot -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:text="•"
-        android:textColor="@color/gray"
-        android:textSize="14sp" />
+        <!-- Product Image -->
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/product1" />
 
-    <!-- Sales Count -->
-    <TextView
-        android:id="@+id/productSold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="120 sold"
-        android:textColor="@color/gray"
-        android:textSize="14sp"
-        android:fontFamily="@font/googlesans_medium" />
-</LinearLayout>
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lampu Stan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_medium" />
 
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <!-- Product Price -->
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Rp 50,000"
+            android:textColor="@color/orenge"
+            android:textSize="14sp"
+            android:fontFamily="@font/googlesans_bold" />
+
+        <!-- Rating and Sales Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <!-- Rating Star Icon -->
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/rating_star"
+                app:tint="@color/accent" />
+
+            <!-- Rating Value -->
+            <TextView
+                android:id="@+id/productRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="4.5"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/googlesans_medium" />
+
+            <!-- Divider dot -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:text="•"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <!-- Sales Count -->
+            <TextView
+                android:id="@+id/productSold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120 sold"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:fontFamily="@font/googlesans_medium" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
