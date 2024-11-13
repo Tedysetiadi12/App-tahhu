@@ -3,10 +3,9 @@ package com.tahhu.coba;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -14,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Marketpalce extends AppCompatActivity {
+public class Marketplace extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_marketpalce);
+        setContentView(R.layout.activity_marketplace);
 
         ImageView btnback = findViewById(R.id.back_beranda);
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
@@ -42,7 +41,7 @@ public class Marketpalce extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(Marketpalce.this, MainActivity.class);
+                Intent intent = new Intent(Marketplace.this, MainActivity.class);
                 startActivity(intent);
             }
         });

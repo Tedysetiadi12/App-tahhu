@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, Marketpalce.class);
+                Intent intent = new Intent(MainActivity.this, Marketplace.class);
                 startActivity(intent);
             }
         });
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, Marketpalce.class);
+                Intent intent = new Intent(MainActivity.this, Marketplace.class);
                 startActivity(intent);
             }
         });
