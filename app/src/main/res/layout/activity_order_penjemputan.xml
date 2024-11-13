@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -36,6 +36,7 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
@@ -73,7 +74,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Pesan Penjemputan"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/my_birutua"
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/edtAlamatPenjemputan"
         app:layout_constraintLeft_toLeftOf="parent"

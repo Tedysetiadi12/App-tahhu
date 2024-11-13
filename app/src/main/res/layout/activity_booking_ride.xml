@@ -30,6 +30,7 @@
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="@color/accentColor"
@@ -57,6 +58,7 @@
             android:textColor="#FFFFFF"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
@@ -82,7 +84,7 @@
             android:layout_height="24dp"
             android:src="@drawable/location"
             android:layout_gravity="center"
-            app:tint="@color/primaryColor" />
+            app:tint="@color/accentColor" />
 
         <EditText
             android:id="@+id/pickupLocation"
@@ -231,7 +233,6 @@
         </LinearLayout>
 
 
-
         <!-- Selected Vehicle Info -->
         <TextView
             android:id="@+id/vehicleTypeInfo"
@@ -249,7 +250,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Request Ride"
-            android:backgroundTint="@color/accentColor"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/my_birutua"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
     </LinearLayout>

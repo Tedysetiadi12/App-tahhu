@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -59,6 +61,36 @@ public class LokasiPenukaranActivity extends AppCompatActivity implements OnMapR
                     "Lokasi: " + lokasi.getNamaLokasi() + "\nAlamat: " + lokasi.getAlamat(),
                     Toast.LENGTH_SHORT).show();
         });
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+
+    // Metode untuk menampilkan PopupMenu
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(LokasiPenukaranActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(LokasiPenukaranActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(LokasiPenukaranActivity.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 
     @Override

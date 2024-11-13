@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.PopupMenu;
+import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -22,7 +22,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -56,6 +55,36 @@ public class booking_ride extends AppCompatActivity implements OnMapReadyCallbac
         } else {
             getCurrentLocation();
         }
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+
+    // Metode untuk menampilkan PopupMenu
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(booking_ride.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(booking_ride.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(booking_ride.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 
     private void getCurrentLocation() {

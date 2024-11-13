@@ -16,7 +16,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -41,6 +41,7 @@
             android:textColor="#FFFFFF"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"

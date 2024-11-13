@@ -7,16 +7,13 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
+import android.widget.PopupMenu;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.exoplayer.ExoPlayer;
-
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.exoplayer2.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,6 +90,36 @@ public class ShortVidio extends AppCompatActivity {
                 }
             }
         });
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+
+    // Metode untuk menampilkan PopupMenu
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(ShortVidio.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(ShortVidio.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(ShortVidio.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 
     @Override

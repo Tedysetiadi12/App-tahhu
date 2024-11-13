@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,662 +13,664 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <!-- Header Section -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:padding="1dp">
-
-            <!-- Logo ImageView -->
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/logo_tahu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.1" />
-
-            <!-- Search Bar Container -->
-            <LinearLayout
-                android:id="@+id/search_bar"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:background="@drawable/rounded_search"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/clear_button"
-                app:layout_constraintStart_toEndOf="@id/logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.8">
-
-                <!-- TextInputLayout for Search Field -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_weight="1"
-                    android:hint="Search"
-                    app:boxBackgroundMode="none">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/googlesans_medium"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/accent" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Search Icon -->
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/search_icon"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_search" />
-            </LinearLayout>
-
-            <!-- Clear Button -->
-            <ImageView
-                android:id="@+id/clear_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_clear"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="330dp"
-                            android:layout_height="200dp"
-                            android:baselineAligned="false"
-                            android:src="@drawable/poster1" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="320dp"
-                            android:layout_height="230dp"
-                            android:src="@drawable/bener1" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="390dp"
-                            android:layout_height="290dp"
-                            android:src="@drawable/bener1" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </HorizontalScrollView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp"
-            android:background="@drawable/card_background_gradient"
-            android:elevation="6dp"
-            android:paddingBottom="19dp"
-            android:paddingTop="10dp"
-            app:cardCornerRadius="15dp">
+            android:padding="16dp">
+
+            <!-- Header Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:padding="1dp">
+
+                <!-- Logo ImageView -->
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/logo_tahu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.1" />
+
+                <!-- Search Bar Container -->
+                <LinearLayout
+                    android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/rounded_search"
+                    android:elevation="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/setting"
+                    app:layout_constraintStart_toEndOf="@id/logo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.8">
+
+                    <!-- TextInputLayout for Search Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:hint="Search"
+                        app:boxBackgroundMode="none">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/accent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Search Icon -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/search_icon"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_search" />
+
+                </LinearLayout>
+
+                <!-- Clear Button -->
+                <ImageView
+                    android:id="@+id/setting"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/setting"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="330dp"
+                                android:layout_height="200dp"
+                                android:baselineAligned="false"
+                                android:src="@drawable/poster1" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="320dp"
+                                android:layout_height="230dp"
+                                android:src="@drawable/bener1" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="390dp"
+                                android:layout_height="290dp"
+                                android:src="@drawable/bener1" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/rounded_edittext"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:elevation="2dp">
+                android:background="@drawable/card_background_gradient"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="19dp"
+                app:cardCornerRadius="15dp">
 
-                <!-- Image for the Internet icon -->
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/wifi"
-                    app:tint="#1E47f0"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="Wifi Icon" />
-
-                <!-- Text content with Internet Gratis and Tahhu -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:background="@drawable/rounded_edittext"
+                    android:elevation="2dp"
                     android:gravity="start"
-                    android:paddingStart="3dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Internet Gratis"
-                        android:fontFamily="@font/googlesans_medium"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tahhu"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:textColor="@color/accentColor"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-
-                <!-- Button on the side with "Klik Disini" -->
-                <Button
-                    android:id="@+id/btn_internet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/my_birutua"
-                    android:text="Klik Disini"
-                    android:textColor="@color/white"
-                    android:padding="10dp"
-                    android:minWidth="120dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- Categories Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categori"
-            android:textSize="15sp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
-
-            <!-- Market Category -->
-            <LinearLayout
-                android:id="@+id/marketCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/financeCategory">
-
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/rouded">
+                    android:paddingStart="10dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="14dp">
 
+                    <!-- Image for the Internet icon -->
                     <ImageView
-                        android:id="@+id/marketIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/store" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Market"
-                    android:layout_marginTop="5dp"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <!-- Finance Category -->
-            <LinearLayout
-                android:id="@+id/financeCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.2"
-                app:layout_constraintStart_toEndOf="@+id/marketCategory"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/rideCategory">
-
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/rouded">
-
-                    <ImageView
-                        android:id="@+id/financeIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/dollar" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Finance"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <!-- Ride Category -->
-            <LinearLayout
-                android:id="@+id/rideCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.2"
-                app:layout_constraintStart_toEndOf="@+id/financeCategory"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/surveyCategory">
-
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/rouded">
-
-                    <ImageView
-                        android:id="@+id/rideIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:tint="@color/white"
-                        android:src="@drawable/motorcycle" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ride"
-                    android:layout_marginTop="5dp"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <!-- Survey Category -->
-            <LinearLayout
-                android:id="@+id/surveyCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                app:layout_constraintWidth_percent="0.2"
-                app:layout_constraintStart_toEndOf="@+id/rideCategory"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ucoCategory">
-
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/rouded">
-
-                    <ImageView
-                        android:id="@+id/surveyIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/survey" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Survey"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <!-- Uco Category -->
-            <LinearLayout
-                android:id="@+id/ucoCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/surveyCategory"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintWidth_percent="0.2">
-
-                <LinearLayout
-                    android:background="@drawable/rouded"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-
-                        android:id="@+id/ucoIcon"
                         android:layout_width="50dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ucocategory"/>
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="Wifi Icon"
+                        android:src="@drawable/wifi"
+                        app:tint="#1E47f0" />
+
+                    <!-- Text content with Internet Gratis and Tahhu -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:paddingStart="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:text="Internet Gratis"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/googlesans_bold"
+                            android:text="Tahhu"
+                            android:textColor="@color/accentColor"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Button on the side with "Klik Disini" -->
+                    <Button
+                        android:id="@+id/btn_internet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/my_birutua"
+                        android:minWidth="120dp"
+                        android:padding="10dp"
+                        android:text="Klik Disini"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:text="Uco"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Category Section two-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
-
-            <!-- All Category -->
-            <LinearLayout
-                android:id="@+id/allCategory"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintWidth_percent="0.2"
-                tools:ignore="MissingConstraints">
-
-                <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/rouded"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/allIcon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/all"
-                        app:tint="@color/white" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:text="All"
-                    android:textColor="@color/black"
-                    android:textSize="9sp" />
             </LinearLayout>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <!-- Featured Cars Section -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp">
-
-            <!-- Product Text -->
+            <!-- Categories Section -->
             <TextView
-                android:id="@+id/productTexts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chanel Radio"
-                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/googlesans_bold"
+                android:text="Categori"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-            <!-- Filter Text -->
+                android:textSize="15sp" />
 
-            <!-- Filter Icon -->
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/card_margin"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="4dp"
-            android:backgroundTint="@color/white">
+                <!-- Market Category -->
+                <LinearLayout
+                    android:id="@+id/marketCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/financeCategory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
 
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/my_birumuda"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/marketIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/store" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Market"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Finance Category -->
+                <LinearLayout
+                    android:id="@+id/financeCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rideCategory"
+                    app:layout_constraintStart_toEndOf="@+id/marketCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/my_birumuda"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/financeIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/dollar" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Finance"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Ride Category -->
+                <LinearLayout
+                    android:id="@+id/rideCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/surveyCategory"
+                    app:layout_constraintStart_toEndOf="@+id/financeCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/my_birumuda"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/rideIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/motorcycle"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Ride"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Survey Category -->
+                <LinearLayout
+                    android:id="@+id/surveyCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ucoCategory"
+                    app:layout_constraintStart_toEndOf="@+id/rideCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/my_birumuda"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/surveyIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/survey" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Survey"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Uco Category -->
+                <LinearLayout
+                    android:id="@+id/ucoCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/surveyCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/my_birumuda"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:id="@+id/ucoIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ucocategory" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Uco"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Category Section two-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <!-- All Category -->
+                <LinearLayout
+                    android:id="@+id/allCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.2"
+                    tools:ignore="MissingConstraints">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/allIcon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/all"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="All"
+                        android:textColor="@color/black"
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Featured Cars Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp">
+
+                <!-- Product Text -->
+                <TextView
+                    android:id="@+id/productTexts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Chanel Radio"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!-- Filter Text -->
+
+                <!-- Filter Icon -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/card_margin"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp"
-                android:backgroundTint="@color/white">
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="4dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/card_margin"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/card_padding">
+
+                        <!-- Background gradient overlay for added effect -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:alpha="0.15"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/radio_background_gradient" />
+
+                        <!-- Vertical layout for title and subtitle text -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/start_margin"
+                            android:layout_marginEnd="@dimen/end_margin"
+                            android:layout_marginBottom="7dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/radio"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/title_margin_top"
+                                android:fontFamily="@font/googlesans_medium"
+                                android:text="SWADESI STREAMING"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/title_text_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/subtitle_margin_top"
+                                android:fontFamily="@font/googlesans_bold"
+                                android:text="RADIO SWADESI"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/subtitle_text_size" />
+                        </LinearLayout>
+
+                        <!-- Play button with circular background and shadow -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/radio"
+                            android:layout_width="@dimen/play_button_size_large"
+                            android:layout_height="@dimen/play_button_size_large"
+                            android:layout_marginEnd="@dimen/end_margin"
+                            android:backgroundTint="#0096ff"
+                            app:cardCornerRadius="50dp"
+                            app:cardElevation="6dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/streaming"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/play" />
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/card_padding">
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp">
 
-            <!-- Background gradient overlay for added effect -->
-            <ImageView
+                <!-- Product Text -->
+                <TextView
+                    android:id="@+id/productText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Product"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!-- Filter Text -->
+                <TextView
+                    android:id="@+id/filterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Filter"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Filter Icon -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/radio_background_gradient"
-                android:alpha="0.15" />
-
-            <!-- Vertical layout for title and subtitle text -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/start_margin"
-                android:layout_marginEnd="@dimen/end_margin"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="7dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/radio"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:padding="5dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productRecyclerView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/title_margin_top"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:text="SWADESI STREAMING"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/subtitle_margin_top"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:text="RADIO SWADESI"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/subtitle_text_size" />
+                    android:nestedScrollingEnabled="false"
+                    android:scrollbars="none" />
             </LinearLayout>
 
-            <!-- Play button with circular background and shadow -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/radio"
-                android:layout_width="@dimen/play_button_size_large"
-                android:layout_height="@dimen/play_button_size_large"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="6dp"
-                android:backgroundTint="#0096ff"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="@dimen/end_margin">
-
-            <ImageView
-                android:id="@+id/streaming"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/play"
-                android:scaleType="centerInside"/>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="100dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.cardview.widget.CardView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp">
-
-            <!-- Product Text -->
-            <TextView
-                android:id="@+id/productText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Product"
-                android:textSize="15sp"
-                android:fontFamily="@font/googlesans_bold"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-            <!-- Filter Text -->
-            <TextView
-                android:id="@+id/filterText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/googlesans_bold"
-                android:text="Filter"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Filter Icon -->
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/productRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:nestedScrollingEnabled="false"/>
         </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
-
-    </LinearLayout>
 </ScrollView>
 
     <androidx.cardview.widget.CardView
@@ -683,7 +686,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/iconTint"
+        android:background="@color/my_birutua"
         android:padding="@dimen/card_padding_menu">
 
         <!-- Home Button -->

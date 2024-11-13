@@ -11,7 +11,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -35,6 +35,7 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
@@ -67,7 +68,7 @@
         android:id="@+id/btnTutup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/my_birutua"
         android:text="Tutup"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

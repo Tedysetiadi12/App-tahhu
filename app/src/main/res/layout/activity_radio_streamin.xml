@@ -14,7 +14,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/accentColor">
 
         <ImageView
             android:id="@+id/back_beranda"
@@ -37,6 +38,7 @@
             android:textColor="#FFFFFF"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"

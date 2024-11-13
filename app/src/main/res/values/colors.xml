@@ -8,7 +8,8 @@
     <color name="text_primary">#FFFFFF</color>  <!-- Putih -->
     <color name="text_secondary">#B0BEC5</color> <!-- Abu terang -->
     <color name="card_background">#252525</color>  <!-- Warna CardView -->
-    <color name="my_birutua">#1E47F0</color><!-- Adjust this code as needed -->
+    <color name="my_birutua">#0336FF</color><!-- Adjust this code as needed -->
+    <color name="my_birumuda">#008DFF</color><!-- Adjust this code as needed -->
     <color name="orenge">#471D00</color> <!-- Adjust this code as needed -->
     <color name="starColor">#FFD700</color> <!-- Gold color for star icons -->
     <color name="primaryColor">#EBFBE2</color> <!-- Example primary color -->
@@ -19,6 +20,8 @@
     <color name="orange_light">#FFF4E1</color>  <!-- Light orange for background -->
     <color name="orange_dark">#EBFBE2</color>   <!-- Darker orange for icons -->
     <color name="primaryDarkColor">#F57C00</color> <!-- Darker orange for primary color variations -->
+    <color name="secondaryDarkColor">#FF7043</color> <!-- Darker orange for primary color variations -->
+    <color name="thirdDarkColor">#FF8A65</color> <!-- Darker orange for primary color variations -->
     <color name="accentColor">#CC1500</color>      <!-- Accent color (deeper orange) -->
     <color name="button_background">#FFCC80</color>
     <color name="bg_home">#471D00</color>

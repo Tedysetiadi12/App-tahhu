@@ -22,6 +22,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import android.widget.PopupMenu;
 
 import java.io.IOException;
 import java.util.List;
@@ -71,7 +72,38 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         } else {
             getCurrentLocation();
         }
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
     }
+
+    // Metode untuk menampilkan PopupMenu
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(rideSharing.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(rideSharing.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(rideSharing.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
+    }
+
 
     private void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {

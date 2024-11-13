@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.PopupMenu;
 import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,6 +55,36 @@ public class OrderPenjemputanActivity extends FragmentActivity implements OnMapR
                 finish();
             }
         });
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+
+    // Metode untuk menampilkan PopupMenu
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(OrderPenjemputanActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(OrderPenjemputanActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(OrderPenjemputanActivity.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 
     @Override

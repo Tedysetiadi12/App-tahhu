@@ -15,7 +15,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FF5722"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -39,6 +39,7 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
@@ -63,14 +64,15 @@
             android:layout_width="20mm"
             android:layout_height="20mm"
             android:src="@drawable/tukarminyak"
-            android:layout_marginTop="5mm" />
+            android:layout_marginTop="5mm"
+            app:tint="@color/accentColor"/>
 
         <Button
             android:id="@+id/btn_tukar_minyak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tukar Minyak Jelantah"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/my_birutua"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
@@ -91,14 +93,14 @@
             android:id="@+id/lokasi_penukaran"
             android:layout_width="20mm"
             android:layout_height="20mm"
-            android:src="@drawable/lokasi" />
+            android:src="@drawable/lokasi"/>
 
         <Button
             android:id="@+id/btn_lokasi_penukaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lokasi Penukaran"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/my_birutua"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
@@ -119,14 +121,14 @@
             android:id="@+id/order_penjemputan"
             android:layout_width="20mm"
             android:layout_height="20mm"
-            android:src="@drawable/order" />
+            android:src="@drawable/order"/>
 
         <Button
             android:id="@+id/btn_order_penjemputan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order Penjemputan"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/my_birutua"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
