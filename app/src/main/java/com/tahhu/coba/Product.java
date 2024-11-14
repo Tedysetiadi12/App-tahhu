@@ -6,7 +6,7 @@ public class Product {
     private int imageResource;
     private String rating;
     private String soldCount;
-    private String description;  // Tambahkan variabel untuk deskripsi produk
+    private String description;
 
     // Constructor yang menerima deskripsi
     public Product(String name, String price, int imageResource, String rating, String soldCount, String description) {
@@ -15,7 +15,7 @@ public class Product {
         this.imageResource = imageResource;
         this.rating = rating;
         this.soldCount = soldCount;
-        this.description = description;  // Setel deskripsi
+        this.description = description;
     }
 
     // Getters
