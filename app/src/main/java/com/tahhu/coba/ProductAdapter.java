@@ -2,12 +2,13 @@ package com.tahhu.coba;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,7 +76,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productPrice = itemView.findViewById(R.id.productPrice);
             productRating = itemView.findViewById(R.id.productRating);
             productSold = itemView.findViewById(R.id.productSold);
-            productCard = itemView.findViewById(R.id.productCard);  // Pastikan ada CardView dengan ID ini di item_product.xml
+            productCard = itemView.findViewById(R.id.productCard);
         }
     }
 }

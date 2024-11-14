@@ -55,6 +55,7 @@
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
         <activity android:name=".OrderPenjemputanActivity" />
+        <activity android:name=".CartActivity"/>
 
         <activity
             android:name=".Marketplace"

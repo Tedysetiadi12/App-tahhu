@@ -58,6 +58,15 @@ public class Marketplace extends AppCompatActivity {
                 showPopupMenu(v);
             }
         });
+
+        // Menangani event checkout
+        ImageView btn_cart = findViewById(R.id.btn_cart);
+        btn_cart.setOnClickListener(v -> {
+            // Handle checkout logic here, misalnya pindah ke halaman pembayaran
+            Intent intent = new Intent(Marketplace.this, CartActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     // Metode untuk menampilkan PopupMenu

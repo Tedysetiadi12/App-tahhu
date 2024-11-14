@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.PopupMenu;
@@ -20,6 +21,9 @@ public class DetailProductActivity extends AppCompatActivity {
 
         ImageView btnback = findViewById(R.id.back_beranda);
         ImageView productImage = findViewById(R.id.productImage);
+        ImageView btn_cart = findViewById(R.id.btn_cart);
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        Button btn_add_to_cart = findViewById(R.id.btn_add_to_cart);
         TextView productName = findViewById(R.id.productName);
         TextView productPrice = findViewById(R.id.productPrice);
         TextView productRating = findViewById(R.id.productRating);
@@ -46,13 +50,26 @@ public class DetailProductActivity extends AppCompatActivity {
             }
         });
 
-        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
         kebabIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopupMenu(v);
             }
         });
+
+        // Menangani event checkout
+        btn_cart.setOnClickListener(v -> {
+
+            // Handle checkout logic here, misalnya pindah ke halaman pembayaran
+            Intent intent = new Intent(DetailProductActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+
+        btn_add_to_cart.setOnClickListener(v -> {
+            Intent intent = new Intent(DetailProductActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     // Metode untuk menampilkan PopupMenu
