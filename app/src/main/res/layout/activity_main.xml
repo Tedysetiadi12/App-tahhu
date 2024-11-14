@@ -177,6 +177,212 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
+            <!-- Categories Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:text="Categori"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <!-- Market Category -->
+                <LinearLayout
+                    android:id="@+id/marketCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/financeCategory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/marketIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/store" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Market"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Finance Category -->
+                <LinearLayout
+                    android:id="@+id/financeCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rideCategory"
+                    app:layout_constraintStart_toEndOf="@+id/marketCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/financeIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/dollar" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Finance"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Ride Category -->
+                <LinearLayout
+                    android:id="@+id/rideCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/surveyCategory"
+                    app:layout_constraintStart_toEndOf="@+id/financeCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/rideIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/motorcycle"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Ride"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Survey Category -->
+                <LinearLayout
+                    android:id="@+id/surveyCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ucoCategory"
+                    app:layout_constraintStart_toEndOf="@+id/rideCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/surveyIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/survey" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Survey"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Uco Category -->
+                <LinearLayout
+                    android:id="@+id/ucoCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/surveyCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:id="@+id/ucoIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ucocategory" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="Uco"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Featured Cars Section -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -197,13 +403,13 @@
                     android:orientation="horizontal"
                     android:paddingStart="10dp"
                     android:paddingTop="14dp"
-                    android:paddingEnd="6dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="14dp">
 
                     <!-- Image for the Internet icon -->
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="10dp"
                         android:contentDescription="Wifi Icon"
@@ -217,7 +423,7 @@
                         android:layout_weight="1"
                         android:gravity="start"
                         android:orientation="vertical"
-                        android:paddingStart="3dp">
+                        android:paddingStart="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -252,262 +458,11 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <!-- Categories Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/googlesans_bold"
-                android:text="Categori"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <!-- Market Category -->
-                <LinearLayout
-                    android:id="@+id/marketCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/financeCategory"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@color/my_birumuda"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/marketIcon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/store" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="Market"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Finance Category -->
-                <LinearLayout
-                    android:id="@+id/financeCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/rideCategory"
-                    app:layout_constraintStart_toEndOf="@+id/marketCategory"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@color/my_birumuda"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/financeIcon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/dollar" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="Finance"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Ride Category -->
-                <LinearLayout
-                    android:id="@+id/rideCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/surveyCategory"
-                    app:layout_constraintStart_toEndOf="@+id/financeCategory"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@color/my_birumuda"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/rideIcon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/motorcycle"
-                            app:tint="@color/white" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="Ride"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Survey Category -->
-                <LinearLayout
-                    android:id="@+id/surveyCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ucoCategory"
-                    app:layout_constraintStart_toEndOf="@+id/rideCategory"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@color/my_birumuda"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/surveyIcon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/survey" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="Survey"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Uco Category -->
-                <LinearLayout
-                    android:id="@+id/ucoCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/surveyCategory"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@color/my_birumuda"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-
-                            android:id="@+id/ucoIcon"
-                            android:layout_width="50dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ucocategory" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="Uco"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Category Section two-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <!-- All Category -->
-                <LinearLayout
-                    android:id="@+id/allCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintWidth_percent="0.2"
-                    tools:ignore="MissingConstraints">
-
-                    <LinearLayout
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/rouded"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/allIcon"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/all"
-                            app:tint="@color/white" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="All"
-                        android:textColor="@color/black"
-                        android:textSize="9sp" />
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Featured Cars Section -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="4dp">
 
                 <!-- Product Text -->
@@ -642,7 +597,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_bold"
-                    android:text="Filter"
+                    android:text="All"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -654,7 +609,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp">
 
@@ -671,7 +626,7 @@
                 android:layout_height="100dp" />
 
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -683,66 +638,66 @@
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/my_birutua"
-        android:padding="@dimen/card_padding_menu">
-
-        <!-- Home Button -->
-        <ImageView
-            android:id="@+id/homeButton"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:src="@drawable/home"
-            app:tint="@color/orange_dark"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <!-- Market Button -->
-        <ImageView
-            android:id="@+id/menumarket"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:src="@drawable/shoppingcart"
-            app:tint="@color/lightGray"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/homeButton"
-            app:layout_constraintEnd_toStartOf="@id/menuride"/>
-
-        <!-- Ride Button -->
-        <ImageView
-            android:id="@+id/menuride"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:src="@drawable/profile"
-            app:tint="@color/lightGray"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/menumarket"
-            app:layout_constraintEnd_toStartOf="@id/menufavorite"/>
-
-        <!-- Favorite Button -->
-        <ImageView
-            android:id="@+id/menufavorite"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:src="@drawable/favorite"
-            app:tint="@color/lightGray"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <!-- Enable horizontal chain style for evenly spacing the icons -->
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_begin="160dp" />
+            android:background="@color/my_birutua"
+            android:padding="@dimen/card_padding_menu">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <!-- Home Button -->
+            <ImageView
+                android:id="@+id/homeButton"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/home"
+                app:tint="@color/orange_dark"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-    </RelativeLayout>
+            <!-- Market Button -->
+            <ImageView
+                android:id="@+id/menumarket"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/shoppingcart"
+                app:tint="@color/lightGray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/homeButton"
+                app:layout_constraintEnd_toStartOf="@id/menuride"/>
+
+            <!-- Ride Button -->
+            <ImageView
+                android:id="@+id/menuride"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/profile"
+                app:tint="@color/lightGray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/menumarket"
+                app:layout_constraintEnd_toStartOf="@id/menufavorite"/>
+
+            <!-- Favorite Button -->
+            <ImageView
+                android:id="@+id/menufavorite"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/favorite"
+                app:tint="@color/lightGray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Enable horizontal chain style for evenly spacing the icons -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_begin="160dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

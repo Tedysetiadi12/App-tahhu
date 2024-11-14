@@ -23,13 +23,12 @@ public class DetailProductActivity extends AppCompatActivity {
         ImageView productImage = findViewById(R.id.productImage);
         ImageView btn_cart = findViewById(R.id.btn_cart);
         ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
-        Button btn_add_to_cart = findViewById(R.id.btn_add_to_cart);
         TextView productName = findViewById(R.id.productName);
         TextView productPrice = findViewById(R.id.productPrice);
         TextView productRating = findViewById(R.id.productRating);
         TextView productSold = findViewById(R.id.productSold);
         TextView productDescription = findViewById(R.id.productDescription);  // Menambahkan TextView untuk deskripsi
-
+        Button addToCartButton = findViewById(R.id.addToCartButton);
         // Ambil data dari Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -40,6 +39,21 @@ public class DetailProductActivity extends AppCompatActivity {
             productImage.setImageResource(extras.getInt("productImage"));
             productDescription.setText(extras.getString("productDescription"));  // Menampilkan deskripsi produk
         }
+
+
+        addToCartButton.setOnClickListener(v -> {
+            // Add product to cart
+            Product product = new Product(
+                    extras.getString("productName"),
+                    extras.getString("productPrice"),
+                    extras.getInt("productImage"),
+                    extras.getString("productRating"),
+                    extras.getString("productSold"),
+                    extras.getString("productDescription")
+            );
+            startActivity(new Intent(getApplicationContext(),CartProductActivity.class));
+            CartManager.getInstance().addProductToCart(product);
+        });
 
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +79,6 @@ public class DetailProductActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        btn_add_to_cart.setOnClickListener(v -> {
-            Intent intent = new Intent(DetailProductActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
 
     }
 

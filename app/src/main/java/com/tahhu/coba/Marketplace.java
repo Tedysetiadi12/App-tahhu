@@ -63,7 +63,7 @@ public class Marketplace extends AppCompatActivity {
         ImageView btn_cart = findViewById(R.id.btn_cart);
         btn_cart.setOnClickListener(v -> {
             // Handle checkout logic here, misalnya pindah ke halaman pembayaran
-            Intent intent = new Intent(Marketplace.this, CartActivity.class);
+            Intent intent = new Intent(Marketplace.this, CartProductActivity.class);
             startActivity(intent);
         });
 

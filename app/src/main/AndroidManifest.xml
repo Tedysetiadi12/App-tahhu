@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,12 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Appsewamobil"
         android:usesCleartextTraffic="false"
-        tools:targetApi="31" >
-
+        tools:targetApi="31">
+        <activity
+            android:name=".CartProductActivity"
+            android:exported="false" />
         <activity
             android:name=".ShortVidio"
             android:exported="false" />
-
         <activity
             android:name=".booking_ride"
             android:exported="false" />
@@ -40,27 +41,22 @@
         <activity
             android:name=".rideSharing"
             android:exported="false" />
-
         <activity
             android:name=".Survey"
             android:exported="false" />
-
         <activity
             android:name=".finance"
             android:exported="false" />
-
-        <activity android:name=".UcoActivity"
-            android:exported="false"/>
-
+        <activity
+            android:name=".UcoActivity"
+            android:exported="false" />
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
         <activity android:name=".OrderPenjemputanActivity" />
-        <activity android:name=".CartActivity"/>
-
+        <activity android:name=".CartActivity" />
         <activity
             android:name=".Marketplace"
             android:exported="false" />
-
         <activity android:name=".DetailProductActivity" />
 
         <service
@@ -71,13 +67,12 @@
         <activity
             android:name=".RadioStreamin"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
