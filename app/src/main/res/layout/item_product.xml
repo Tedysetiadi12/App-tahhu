@@ -89,5 +89,21 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/googlesans_medium" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_buy_with_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:backgroundTint="#8DDBDBDB"
+                android:text="Add to Cart"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

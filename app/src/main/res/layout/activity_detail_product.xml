@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Marketplace">
+    tools:context=".DetailProductActivity">
 
     <!-- Top Bar -->
     <LinearLayout
@@ -88,6 +87,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="100dp"
         android:fillViewport="true">
 
         <!-- Layout Konten Produk -->
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="14dp"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -168,6 +168,73 @@
                         android:layout_marginEnd="4dp"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <!-- Avatar User -->
+                <ImageView
+                    android:id="@+id/userAvatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/home"
+                    android:layout_marginEnd="12dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_gravity="center_vertical">
+
+                <!-- Nama User -->
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pengguna"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/googlesans_medium"/>
+
+                <!-- Status Online (di bawah Nama User) -->
+                <TextView
+                    android:id="@+id/online"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online"
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                android:layout_gravity="start"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/googlesans_medium"/>
+            </LinearLayout>
+
+                <!-- Tombol Follow -->
+                <Button
+                    android:id="@+id/followButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Follow"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="#8DDBDBDB"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="20dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:strokeColor="#FF5722"/>
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -188,7 +255,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:justificationMode="inter_word"
                 android:textAlignment="inherit"
                 android:text="Deskripsi produk akan tampil di sini"
                 android:textColor="@color/black"
@@ -201,6 +270,41 @@
                 android:layout_marginTop="15dp"/>
 
         </LinearLayout>
-
     </ScrollView>
+
+    <!-- Bottom Fixed Buttons -->
+    <LinearLayout
+        android:id="@+id/bottom_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/my_birutua"
+            android:padding="12dp"
+            android:text="Add to Cart"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_buy_with_promo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#8DDBDBDB"
+            android:padding="12dp"
+            android:text="Buy Now"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
