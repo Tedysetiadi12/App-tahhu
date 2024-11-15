@@ -75,7 +75,7 @@ public class DetailProductActivity extends AppCompatActivity {
         btn_cart.setOnClickListener(v -> {
 
             // Handle checkout logic here, misalnya pindah ke halaman pembayaran
-            Intent intent = new Intent(DetailProductActivity.this, CartActivity.class);
+            Intent intent = new Intent(DetailProductActivity.this, CartProductActivity.class);
             startActivity(intent);
         });
 

@@ -102,6 +102,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#8DDBDBDB"
                 android:text="Add to Cart"
+                android:visibility="gone"
                 android:textColor="@color/black" />
 
         </LinearLayout>

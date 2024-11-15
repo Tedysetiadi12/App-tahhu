@@ -68,6 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ImageView productImage;
         TextView productName, productPrice, productRating, productSold;
         CardView productCard;
+        Button btn_cart;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +78,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productRating = itemView.findViewById(R.id.productRating);
             productSold = itemView.findViewById(R.id.productSold);
             productCard = itemView.findViewById(R.id.productCard);
+            btn_cart = itemView.findViewById(R.id.btn_add_to_cart);
         }
+
     }
 }
