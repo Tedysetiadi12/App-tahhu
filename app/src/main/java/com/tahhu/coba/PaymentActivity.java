@@ -1,12 +1,30 @@
 package com.tahhu.coba;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+
 
 public class PaymentActivity extends AppCompatActivity {
     private TextView totalPricePayment;
@@ -33,35 +51,113 @@ public class PaymentActivity extends AppCompatActivity {
         totalPricePayment.setText("Rp " + String.format("%,.2f", totalPrice));
 
         btnProceedPayment.setOnClickListener(v -> {
-            // Proses pembayaran sesuai pilihan pengguna
             int selectedPaymentMethodId = radioGroupPayment.getCheckedRadioButtonId();
-            String paymentMethod = "";
-
-            if (selectedPaymentMethodId == R.id.rb_credit_card) {
-                paymentMethod = "Credit Card";
-                // Verifikasi data kartu kredit
-                String cardNumber = editCardNumber.getText().toString();
-                String expiryDate = editExpiryDate.getText().toString();
-                String securityCode = editSecurityNumber.getText().toString();
-                String cardHolderName = editCardHolder.getText().toString();
-
-                // Validasi input kartu kredit
-                if (cardNumber.isEmpty() || expiryDate.isEmpty() || securityCode.isEmpty() || cardHolderName.isEmpty()) {
-                    Toast.makeText(PaymentActivity.this, "Please fill all card details.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // (misalnya mengirim data kartu ke server untuk proses pembayaran)
-            } else if (selectedPaymentMethodId == R.id.rb_bank_transfer) {
-                paymentMethod = "Bank Transfer";
-                // Implementasikan logika pembayaran dengan transfer bank
-            } else if (selectedPaymentMethodId == R.id.rb_paypal) {
-                paymentMethod = "PayPal";
-                // Implementasikan logika pembayaran dengan PayPal
+            if (selectedPaymentMethodId == -1) {
+                Toast.makeText(this, "Please select a payment method.", Toast.LENGTH_SHORT).show();
+                return;
             }
 
-            // Tampilkan pesan konfirmasi pembayaran
-            Toast.makeText(PaymentActivity.this, "Payment via: " + paymentMethod, Toast.LENGTH_LONG).show();
+            showPaymentConfirmationDialog();
         });
+
+        requestStoragePermission();
+    }
+
+    private void showPaymentConfirmationDialog() {
+        // Inflate custom dialog layout
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_payment_confirmation, null);
+        ImageView imageView = dialogView.findViewById(R.id.imageConfirmation);
+        Button btnDownloadInvoice = dialogView.findViewById(R.id.btnDownloadInvoice);
+        TextView textMessage = dialogView.findViewById(R.id.textConfirmation);
+        Button btnback = dialogView.findViewById(R.id.back_beranda);
+
+        // Set image and message
+        imageView.setImageResource(R.drawable.congrats_image); // Replace with your image resource
+        textMessage.setText("Congrats! Your order has been placed successfully.");
+
+        // Create dialog
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(true)
+                .create();
+
+        // Handle download invoice button
+        btnDownloadInvoice.setOnClickListener(v -> {
+            createInvoicePdf();
+        });
+
+        alertDialog.show();
+
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    private void createInvoicePdf() {
+        // Create a new PDF document
+        PdfDocument pdfDocument = new PdfDocument();
+        Paint paint = new Paint();
+
+        // Create a page
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+        Canvas canvas = page.getCanvas();
+
+        // Add content to PDF
+        paint.setTextSize(12);
+        paint.setColor(Color.BLACK);
+        canvas.drawText("Invoice", 20, 20, paint);
+        canvas.drawText("Total Price: Rp " + String.format("%,.2f", totalPrice), 20, 50, paint);
+        canvas.drawText("Thank you for your order!", 20, 80, paint);
+
+        pdfDocument.finishPage(page);
+
+        // Save PDF to internal storage
+        File directory = new File(getExternalFilesDir(null), "Invoices");
+        if (!directory.exists()) {
+            boolean dirCreated = directory.mkdirs();
+            if (!dirCreated) {
+                Toast.makeText(this, "Failed to create directory for invoices", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+
+        File file = new File(directory, "invoice.pdf");
+        try {
+            pdfDocument.writeTo(new FileOutputStream(file));
+            Toast.makeText(this, "Invoice saved to: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to save invoice: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            pdfDocument.close();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults); // Tambahkan ini untuk memanggil metode super
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Storage permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Storage permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) { // Hanya diperlukan untuk Android 10 ke bawah
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
+        }
     }
 }

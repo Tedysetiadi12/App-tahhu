@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageConfirmation"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@drawable/congrats_image" />
+
+    <TextView
+        android:id="@+id/textConfirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Congrats! Your order has been placed successfully."
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btnDownloadInvoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/my_birutua"
+        android:text="Download Invoice" />
+
+    <Button
+        android:id="@+id/back_beranda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/my_birumuda"
+        android:text="Back to home" />
+</LinearLayout>
