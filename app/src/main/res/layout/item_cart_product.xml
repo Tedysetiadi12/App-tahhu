@@ -4,15 +4,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:padding="10dp"
-    android:elevation="4dp"
+    android:elevation="2dp"
     android:layout_margin="10dp"
     android:background="#FFF">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/cartProductImage"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
         android:scaleType="centerCrop"
         android:src="@drawable/home" />
 
@@ -35,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp 0"
+            android:textColor="@color/accentColor"
             android:layout_marginTop="4dp" />
 
         <LinearLayout
@@ -42,7 +42,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="end"
-            android:gravity="center"
+            android:padding="2dp"
+            android:background="@drawable/btn_round"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="20dp"
             >
 
@@ -51,7 +53,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/delete"
-                app:tint="@color/accentColor"
+                app:tint="@color/white"
                 android:contentDescription="Decrease quantity" />
 
             <TextView
