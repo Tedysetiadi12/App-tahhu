@@ -6,6 +6,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.RadioGroup;
+import android.widget.RadioButton;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ public class CartProductActivity extends AppCompatActivity {
     private List<CartProduct> cartProductList;  // Daftar CartProduct, bukan Product
     private double totalPrice;
     private int totalQuantity;
+    private RadioGroup radioGroupShipping;
+    private int shippingCost = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,36 +30,52 @@ public class CartProductActivity extends AppCompatActivity {
         totalQuantityView = findViewById(R.id.totalQuantityView);
         totalPriceView = findViewById(R.id.totalPriceView);
         ImageView btnBack = findViewById(R.id.back_to_marketplace);
+        radioGroupShipping = findViewById(R.id.radioGroupShipping);
+        TextView ongkirPriceView = findViewById(R.id.ongkirPriceView);
 
-        cartProductList = CartManager.getInstance().getCartProducts();  // Mengambil CartProduct, bukan Product
+        cartProductList = CartManager.getInstance().getCartProducts();
         cartProductAdapter = new CartProductAdapter(cartProductList, this::updateTotals);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartRecyclerView.setAdapter(cartProductAdapter);
 
         btnBack.setOnClickListener(v -> finish());
 
+        radioGroupShipping.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rb_standard_shipping) {
+                shippingCost = 10000;
+            } else if (checkedId == R.id.rb_express_shipping) {
+                shippingCost = 20000;
+            } else if (checkedId == R.id.rb_nextday_shipping) {
+                shippingCost = 30000;
+            }
+
+            ongkirPriceView.setText("Rp " + shippingCost);
+
+            updateTotals();
+        });
+
         updateTotals();
     }
-
     private void updateTotals() {
         totalQuantity = 0;
         totalPrice = 0.0;
 
         // Iterasi melalui cartProductList yang berisi CartProduct
         for (CartProduct cartProduct : cartProductList) {
-            Product product = cartProduct.getProduct();  // Ambil Product dari CartProduct
-            totalQuantity += cartProduct.getQuantity();  // Gunakan quantity dari CartProduct
+            Product product = cartProduct.getProduct();
+            totalQuantity += cartProduct.getQuantity();
 
-            // Menghapus "Rp" dan koma (",") sebelum konversi harga
+            // Menghapus "Rp" dan koma sebelum konversi harga
             String priceString = product.getPrice().replace("Rp", "").replace(",", "").trim();
-
-            // Mengonversi harga menjadi double
             double price = Double.parseDouble(priceString);
 
-            totalPrice += cartProduct.getQuantity() * price;  // Harga dari Product
+            totalPrice += cartProduct.getQuantity() * price;
         }
+
+        totalPrice += shippingCost;  // Tambahkan biaya ongkir ke total harga
 
         totalQuantityView.setText(String.valueOf(totalQuantity));
         totalPriceView.setText("Rp " + totalPrice);
     }
+
 }
