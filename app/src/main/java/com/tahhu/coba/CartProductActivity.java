@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.RadioGroup;
-import android.widget.RadioButton;
+import android.widget.Button;
+import android.content.Intent;
 
 import java.util.List;
 
@@ -40,6 +41,14 @@ public class CartProductActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
+        Button btnPayment = findViewById(R.id.btnPayment);
+        btnPayment.setOnClickListener(v -> {
+            Intent intent = new Intent(CartProductActivity.this, PaymentActivity.class);
+            // Kirim data totalPrice ke PaymentActivity
+            intent.putExtra("totalPrice", totalPrice);
+            startActivity(intent);
+        });
+
         radioGroupShipping.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.rb_standard_shipping) {
                 shippingCost = 10000;
@@ -53,6 +62,7 @@ public class CartProductActivity extends AppCompatActivity {
 
             updateTotals();
         });
+
 
         updateTotals();
     }
@@ -72,10 +82,9 @@ public class CartProductActivity extends AppCompatActivity {
             totalPrice += cartProduct.getQuantity() * price;
         }
 
-        totalPrice += shippingCost;  // Tambahkan biaya ongkir ke total harga
+        totalPrice += shippingCost;
 
         totalQuantityView.setText(String.valueOf(totalQuantity));
-        totalPriceView.setText("Rp " + totalPrice);
+        totalPriceView.setText("Rp " + String.format("%,.2f", totalPrice)); // Format harga agar lebih rapi
     }
-
 }

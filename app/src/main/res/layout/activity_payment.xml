@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/margin_standard"
+        android:paddingEnd="@dimen/margin_standard">
+
+        <ImageView
+            android:id="@+id/back_to_marketplace"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:src="@drawable/left"
+            app:tint="#000000"/>
+
+        <!-- Teks "Your Cart" -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/googlesans_bold"
+            android:gravity="center"
+            android:text="Payment method"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Bagian Select Payment Method dan Form Pembayaran -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Select payment method:"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Pilihan Metode Pembayaran -->
+        <RadioGroup
+            android:id="@+id/radioGroupPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textview1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/rb_credit_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credit Card" />
+            <RadioButton
+                android:id="@+id/rb_bank_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bank Transfer" />
+            <RadioButton
+                android:id="@+id/rb_paypal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PayPal" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or input new card"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupPayment"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Label dan Input Nomor Kartu Kredit -->
+        <TextView
+            android:id="@+id/labelCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card Number"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/editCardNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/labelCardNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Enter card number"
+            android:background="@drawable/border_rating"
+            android:layout_marginTop="8dp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/labelExpiryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exp. Date"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/editCardNumber"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/labelCVV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Security code"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/editCardNumber"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/editCardCvv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/labelExpiryDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Expiry Date -->
+            <EditText
+                android:id="@+id/editExpiryDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_rating"
+                android:layout_weight="1"
+                android:hint="MM/YY"
+                android:padding="12dp" />
+
+
+            <!-- Security Code (CVV) -->
+            <EditText
+                android:id="@+id/editSecurityNumber"
+                android:layout_width="0dp"
+                android:background="@drawable/border_rating"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="CVV"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Label dan Input Cardholder Name -->
+        <TextView
+            android:id="@+id/labelCardHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardholder Name"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/editCardCvv"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/editCardHolder"
+            android:layout_width="0dp"
+            android:background="@drawable/border_rating"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/labelCardHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Enter cardholder name"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Order Summary -->
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Summary"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/editCardHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Total Price -->
+        <TextView
+            android:id="@+id/totalPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Totals"
+            app:layout_constraintTop_toBottomOf="@id/textview3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/totalPricePayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 0.00"
+            app:layout_constraintTop_toBottomOf="@id/textview3"
+            app:layout_constraintEnd_toEndOf="parent"
+           android:layout_marginTop="16dp"/>
+
+        <!-- Proceed Payment Button -->
+        <Button
+            android:id="@+id/btnProceedPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed Payment"
+            android:backgroundTint="@color/my_birutua"
+            app:layout_constraintTop_toBottomOf="@id/totalPricePayment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

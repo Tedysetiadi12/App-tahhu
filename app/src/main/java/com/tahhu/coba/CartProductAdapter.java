@@ -34,7 +34,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         Product product = cartProduct.getProduct();  // Ambil Product dari CartProduct
 
         holder.productName.setText(product.getName());
-        holder.productPrice.setText("Rp " + product.getPrice());
+        holder.productPrice.setText(product.getPrice());
         holder.productQuantity.setText(String.valueOf(cartProduct.getQuantity()));
         holder.productImage.setImageResource(product.getImageResource());
 
