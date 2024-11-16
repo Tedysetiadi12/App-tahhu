@@ -5,17 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#383838"
+    android:background="@color/black"
     tools:context=".RadioStreamin">
 
     <!-- Header untuk Streaming Radio -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/accentColor">
+        android:background="@color/card_background">
 
         <ImageView
             android:id="@+id/back_beranda"

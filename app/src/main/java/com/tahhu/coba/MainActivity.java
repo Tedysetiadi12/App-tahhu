@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         menu_finance = findViewById(R.id.menufavorite);
         menu_ride = findViewById(R.id.menuride);
         btn_radio = findViewById(R.id.streaming);
+        TextView btn_all = findViewById(R.id.all);
 
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
         productRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -67,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 String url = "http://11.15.0.1";
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+        btn_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, Marketplace.class);
                 startActivity(intent);
             }
         });

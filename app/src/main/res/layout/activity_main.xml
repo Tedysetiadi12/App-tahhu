@@ -593,7 +593,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
                 <!-- Filter Text -->
                 <TextView
-                    android:id="@+id/filterText"
+                    android:id="@+id/all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_bold"

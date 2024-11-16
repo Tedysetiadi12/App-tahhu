@@ -40,7 +40,6 @@ public class DetailProductActivity extends AppCompatActivity {
             productDescription.setText(extras.getString("productDescription"));  // Menampilkan deskripsi produk
         }
 
-
         addToCartButton.setOnClickListener(v -> {
             // Add product to cart
             Product product = new Product(
@@ -78,7 +77,6 @@ public class DetailProductActivity extends AppCompatActivity {
             Intent intent = new Intent(DetailProductActivity.this, CartProductActivity.class);
             startActivity(intent);
         });
-
 
     }
 
