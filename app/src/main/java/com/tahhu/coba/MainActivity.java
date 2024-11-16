@@ -3,6 +3,7 @@ package com.tahhu.coba;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,7 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +26,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, btn_uco ,menu_market, menu_finance, menu_ride;
+    private ProgressBar progressBar2;
 
-    private HorizontalScrollView horizontalScrollView;
-    private Handler handler = new Handler();
-    private int scrollPosition = 0;
-    private int scrollStep = 3; // Kecepatan scroll, semakin besar semakin cepat
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,38 @@ public class MainActivity extends AppCompatActivity {
         menu_ride = findViewById(R.id.menuride);
         btn_radio = findViewById(R.id.streaming);
         TextView btn_all = findViewById(R.id.all);
+
+
+        ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        progressBar2 = findViewById(R.id.progressBar2);
+
+        // Membuat data untuk slide
+        List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner2, "Slide 2"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.bener1, "Slide 3"));
+        // Set adapter ke ViewPager2
+        SlideAdapter adapterslid = new SlideAdapter(slideItems);
+        viewPager2.setAdapter(adapterslid);
+
+        // Menghubungkan ViewPager2 dengan TabLayout
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            // Anda dapat menambahkan teks atau icon jika diperlukan
+            // tab.setText("Tab " + (position + 1)); // Contoh jika Anda ingin menambahkan teks
+        }).attach();
+
+        // Menampilkan ProgressBar saat data sedang diproses (misalnya, selama pengambilan data)
+        showProgressBar(true); // Menampilkan ProgressBar
+
+        // Simulasi pengambilan data atau proses lain
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showProgressBar(false); // Menyembunyikan ProgressBar setelah proses selesai
+            }
+        }, 1000); // Simulasi selesai setelah 2 detik
+
 
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
         productRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -153,30 +187,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        horizontalScrollView = findViewById(R.id.horizontalScrollView);
-//        startAutoScroll();
+
     }
-    private void startAutoScroll() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                scrollPosition += scrollStep;
-                horizontalScrollView.scrollTo(scrollPosition, 0);
-
-                // Reset scroll position jika sudah mencapai akhir
-                if (scrollPosition >= horizontalScrollView.getChildAt(0).getWidth() - horizontalScrollView.getWidth()) {
-                    scrollPosition = 0;
-                }
-
-                // Ulangi setiap 20 milidetik untuk efek smooth scrolling
-                handler.postDelayed(this, 20);
-            }
-        }, 20);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        handler.removeCallbacksAndMessages(null); // Hentikan auto scroll saat activity ditutup
+    private void showProgressBar(boolean show) {
+        if (show) {
+            progressBar2.setVisibility(View.VISIBLE);
+        } else {
+            progressBar2.setVisibility(View.GONE);
+        }
     }
 }
