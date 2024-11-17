@@ -142,7 +142,6 @@ public class Survey extends AppCompatActivity {
         public class ReviewViewHolder extends RecyclerView.ViewHolder {
             TextView userName, comment, ratingBar;
 
-
             @SuppressLint("WrongViewCast")
             public ReviewViewHolder(@NonNull View itemView) {
                 super(itemView);

@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tukar Minyak Jelantah"
-            android:backgroundTint="@color/my_birutua"
+            android:backgroundTint="#d1722e"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
@@ -93,16 +93,17 @@
             android:id="@+id/lokasi_penukaran"
             android:layout_width="20mm"
             android:layout_height="20mm"
+            app:tint="@color/accentColor"
             android:src="@drawable/lokasi"/>
 
         <Button
             android:id="@+id/btn_lokasi_penukaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#d1722e"
             android:text="Lokasi Penukaran"
-            android:backgroundTint="@color/my_birutua"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <!-- Section for Order Penjemputan -->
@@ -121,6 +122,7 @@
             android:id="@+id/order_penjemputan"
             android:layout_width="20mm"
             android:layout_height="20mm"
+            app:tint="@color/accentColor"
             android:src="@drawable/order"/>
 
         <Button
@@ -128,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order Penjemputan"
-            android:backgroundTint="@color/my_birutua"
+            android:backgroundTint="#d1722e"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"/>
     </LinearLayout>

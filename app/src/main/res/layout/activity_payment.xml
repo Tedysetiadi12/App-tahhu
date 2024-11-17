@@ -234,7 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Proceed Payment"
-            android:backgroundTint="@color/my_birutua"
+            android:backgroundTint="#d1722e"
             app:layout_constraintTop_toBottomOf="@id/totalPricePayment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

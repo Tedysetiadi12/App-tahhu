@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Request Ride"
-            android:backgroundTint="@color/my_birutua"
+            android:backgroundTint="#d1722e"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
     </LinearLayout>

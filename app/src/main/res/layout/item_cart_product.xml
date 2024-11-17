@@ -68,7 +68,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/plus"
-                app:tint="@color/my_birumuda"
+                app:tint="#000000"
                 android:contentDescription="Increase quantity" />
         </LinearLayout>
     </LinearLayout>

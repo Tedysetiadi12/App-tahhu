@@ -14,7 +14,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/card_background">
+        android:background="@color/accentColor">
 
         <ImageView
             android:id="@+id/back_beranda"

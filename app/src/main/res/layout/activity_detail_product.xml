@@ -282,7 +282,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/my_birutua"
+            android:backgroundTint="#d1722e"
             android:padding="12dp"
             android:text="Add to Cart"
             android:textColor="#FFFFFF" />
