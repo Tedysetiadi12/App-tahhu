@@ -473,7 +473,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
                             android:text="Cek Free Internet"
                             android:textColor="@color/white"
@@ -575,7 +575,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/subtitle_margin_top"
-                                android:fontFamily="@font/googlesans_bold"
+                                android:fontFamily="@font/poppins_bolditalic"
                                 android:text="RADIO SWADESI"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/subtitle_text_size" />
@@ -587,7 +587,7 @@
                             android:layout_width="@dimen/play_button_size_large"
                             android:layout_height="@dimen/play_button_size_large"
                             android:layout_marginEnd="@dimen/end_margin"
-                            android:backgroundTint="#0096ff"
+                            android:backgroundTint="@color/starColor"
                             app:cardCornerRadius="50dp"
                             app:cardElevation="6dp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -695,8 +695,8 @@
 
                     <ImageView
                         android:id="@+id/homeButton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         app:tint="@color/white"
                         app:srcCompat="@drawable/home" />
@@ -713,8 +713,8 @@
 
                     <ImageView
                         android:id="@+id/menumarket"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         app:tint="@color/white"
                         app:srcCompat="@drawable/favorite" />
@@ -749,8 +749,8 @@
 
                     <ImageView
                         android:id="@+id/shortvidio"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         app:tint="@color/white"
                         app:srcCompat="@drawable/clapper" />
@@ -767,8 +767,8 @@
 
                     <ImageView
                         android:id="@+id/menufinace"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         app:tint="@color/white"
                         app:srcCompat="@drawable/user"
@@ -786,6 +786,9 @@
             app:tint="@color/white"
             android:backgroundTint="@color/accentColor"
             app:layout_anchor="@id/bottomAppBar"
-            app:maxImageSize="40dp"/>
+            android:elevation="3dp"
+            app:maxImageSize="40dp"
+            android:layout_centerInParent="true" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
