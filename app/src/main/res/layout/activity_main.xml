@@ -54,6 +54,7 @@
                     android:drawablePadding="8dp"
                     android:textColor="@color/black"
                     android:padding="10dp"
+                    android:textColorHint="@color/card_background"
                     android:layout_marginBottom="24dp"
                     android:hint="Search anynithing . . . ." />
 
