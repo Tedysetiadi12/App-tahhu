@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
+    FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, btn_uco ,menu_market, menu_finance, menu_ride;
     private ProgressBar progressBar2;
 
@@ -39,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         btn_finence = findViewById(R.id.financeIcon);
         btn_market = findViewById(R.id.marketIcon);
         btn_ride = findViewById(R.id.rideIcon);
-        btn_survey = findViewById(R.id.surveyIcon);
         btn_uco = findViewById(R.id.ucoIcon);
         menu_market = findViewById(R.id.menumarket);
-        menu_finance = findViewById(R.id.menufavorite);
-        menu_ride = findViewById(R.id.menuride);
+        menu_finance = findViewById(R.id.menufinace);
+        menu_ride = findViewById(R.id.shortvidio);
         btn_radio = findViewById(R.id.streaming);
+        btnmarket = findViewById(R.id.Maketicon);
         TextView btn_all = findViewById(R.id.all);
 
 
@@ -130,6 +132,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnmarket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, Marketplace.class);
+                startActivity(intent);
+            }
+        });
         btn_finence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,14 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn_survey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, Survey.class);
-                startActivity(intent);
-            }
-        });
+
         btn_uco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, ShortVidio.class);
+                Intent intent = new Intent(MainActivity.this, finance.class);
                 startActivity(intent);
             }
         });
@@ -182,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, rideSharing.class);
+                Intent intent = new Intent(MainActivity.this, ShortVidio.class);
                 startActivity(intent);
             }
         });

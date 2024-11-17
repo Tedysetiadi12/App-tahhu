@@ -45,14 +45,14 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins_regular"
                     android:background="@drawable/rounded_edittext"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="16dp"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="8dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/card_background"
                     android:padding="10dp"
                     android:textColorHint="@color/card_background"
                     android:layout_marginBottom="24dp"
@@ -85,21 +85,22 @@
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
                         android:gravity="center"
-                        android:elevation="4dp"
+                        android:elevation="6dp"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/marketIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/store" />
+                            android:src="@drawable/store"
+                            />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Market"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -123,21 +124,21 @@
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
                         android:gravity="center"
-                        android:elevation="4dp"
+                        android:elevation="6dp"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/financeIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/dollar" />
+                            android:src="@drawable/wallet" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Finance"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -151,7 +152,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/surveyCategory"
+                    app:layout_constraintEnd_toStartOf="@+id/ucoCategory"
                     app:layout_constraintStart_toEndOf="@+id/financeCategory"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.2">
@@ -176,46 +177,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Ride"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Survey Category -->
-                <LinearLayout
-                    android:id="@+id/surveyCategory"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ucoCategory"
-                    app:layout_constraintStart_toEndOf="@+id/rideCategory"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2">
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rouded"
-                        android:gravity="center"
-                        android:elevation="4dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/surveyIcon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/survey" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Survey"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -229,7 +192,7 @@
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/surveyCategory"
+                    app:layout_constraintStart_toEndOf="@+id/rideCategory"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintWidth_percent="0.2">
@@ -239,7 +202,7 @@
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
                         android:gravity="center"
-                        android:elevation="4dp"
+                        android:elevation="6dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -254,8 +217,173 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Uco"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <!-- Market Category -->
+                <LinearLayout
+                    android:id="@+id/cctvCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCategory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:elevation="6dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/cctvicon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/cctvicon" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Cctv"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Finance Category -->
+                <LinearLayout
+                    android:id="@+id/tvCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/foodCategory"
+                    app:layout_constraintStart_toEndOf="@+id/cctvCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:elevation="6dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/tvIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/tv" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Tv"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Ride Category -->
+                <LinearLayout
+                    android:id="@+id/foodCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/scurityCategory"
+                    app:layout_constraintStart_toEndOf="@+id/tvCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:elevation="6dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/foodIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/cutlery"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Food"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+                <!-- Uco Category -->
+                <LinearLayout
+                    android:id="@+id/scurityCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foodCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/rouded"
+                        android:gravity="center"
+                        android:elevation="6dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:id="@+id/iconfood"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/padlock" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Scurity"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -305,7 +433,7 @@
                 android:id="@+id/vocher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/googlesans_bold"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Voucher"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
@@ -378,7 +506,7 @@
                 android:id="@+id/productTexts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/googlesans_bold"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Chanel Radio"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
@@ -437,7 +565,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/title_margin_top"
-                                android:fontFamily="@font/googlesans_medium"
+                                android:fontFamily="@font/poppins_medium"
                                 android:text="SWADESI STREAMING"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/title_text_size"
@@ -490,7 +618,7 @@
                     android:id="@+id/productText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="Product"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -502,7 +630,7 @@
                     android:id="@+id/all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="All"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -529,84 +657,135 @@
                     android:scrollbars="none" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
         </LinearLayout>
     </ScrollView>
 
-    <androidx.cardview.widget.CardView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/card_margin_menu"
-        android:backgroundTint="@color/accentColor"
-        app:cardCornerRadius="@dimen/card_corner_radius_large"
-        app:cardElevation="10dp"
+        android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="20dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- BottomAppBar -->
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/accentColor"
-            android:padding="@dimen/card_padding_menu">
+            android:layout_height="65dp"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="15dp"
+            app:fabCradleRoundedCornerRadius="20dp"
+            app:fabCradleVerticalOffset="0dp"
+            android:backgroundTint="@color/accentColor">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
 
-            <!-- Home Button -->
-            <ImageView
-                android:id="@+id/homeButton"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:src="@drawable/home"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/orange_dark" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <!-- Market Button -->
-            <ImageView
-                android:id="@+id/menumarket"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:src="@drawable/shoppingcart"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/menuride"
-                app:layout_constraintStart_toEndOf="@id/homeButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lightGray" />
+                    <ImageView
+                        android:id="@+id/homeButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/home" />
 
-            <!-- Ride Button -->
-            <ImageView
-                android:id="@+id/menuride"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:src="@drawable/profile"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/menufavorite"
-                app:layout_constraintStart_toEndOf="@id/menumarket"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lightGray" />
+                </LinearLayout>
 
-            <!-- Favorite Button -->
-            <ImageView
-                android:id="@+id/menufavorite"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:src="@drawable/favorite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lightGray" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <!-- Enable horizontal chain style for evenly spacing the icons -->
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintGuide_begin="160dp" />
+                    <ImageView
+                        android:id="@+id/menumarket"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/favorite" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/home" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/shortvidio"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/clapper" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menufinace"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/user"
+                       />
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Maketicon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_cart"
+            app:tint="@color/white"
+            android:backgroundTint="@color/accentColor"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="40dp"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

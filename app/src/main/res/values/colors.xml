@@ -22,7 +22,7 @@
     <color name="primaryDarkColor">#F57C00</color> <!-- Darker orange for primary color variations -->
     <color name="secondaryDarkColor">#FF7043</color> <!-- Darker orange for primary color variations -->
     <color name="thirdDarkColor">#FF8A65</color> <!-- Darker orange for primary color variations -->
-    <color name="accentColor">#471D00</color>      <!-- Accent color (deeper orange) -->
+    <color name="accentColor">#D1722E</color>      <!-- Accent color (deeper orange) -->
     <color name="button_background">#FFCC80</color>
     <color name="bg_home">#471D00</color>
 
