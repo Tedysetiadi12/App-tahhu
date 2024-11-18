@@ -26,7 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
     FloatingActionButton btnmarket ;
-    public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, btn_uco ,menu_market, menu_finance, menu_ride;
+    public ImageView btn_radio,btn_market, btn_finence, btn_ride, btn_survey, btn_uco ,menu_market, menu_finance, menu_ride, btn_tv;
     private ProgressBar progressBar2;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         menu_ride = findViewById(R.id.shortvidio);
         btn_radio = findViewById(R.id.streaming);
         btnmarket = findViewById(R.id.Maketicon);
+        btn_tv = findViewById(R.id.tvIcon);
         TextView btn_all = findViewById(R.id.all);
 
 
@@ -164,6 +165,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, TVStreamingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         menu_market.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

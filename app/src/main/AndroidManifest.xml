@@ -59,6 +59,9 @@
         <activity
             android:name=".Survey"
             android:exported="false" />
+
+        <activity android:name="TVStreamingActivity"/>
+
         <activity
             android:name=".finance"
             android:exported="false" />
