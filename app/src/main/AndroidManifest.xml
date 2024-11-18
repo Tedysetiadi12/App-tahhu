@@ -26,10 +26,24 @@
         <activity
             android:name=".ShortVidio"
             android:exported="false" />
+
         <activity
-            android:name=".booking_ride"
+            android:name=".rideSharing"
             android:exported="false" />
 
+        <activity
+            android:name=".CarSelectionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".BikeSelectionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PickupSelectionActivity"
+            android:exported="false" />
+
+        <activity android:name=".PaymentActivityRideSharing"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBLDcW-OLHkjLjJjBvT_YYdtKiYAQ9uXG4" />
@@ -40,7 +54,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".rideSharing"
+            android:name=".selectionTransport"
             android:exported="false" />
         <activity
             android:name=".Survey"

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,14 +33,15 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap gMap;
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private TextView destinationTextView;
+    private TextView destinationTextView, addressTextView;
     private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride_sharing);
-        destinationTextView = findViewById(R.id.pickupLocation);
+        addressTextView = findViewById(R.id.pickupLocation);
+        destinationTextView = findViewById(R.id.destination);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -52,7 +52,14 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         Btn_boking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), booking_ride.class));
+                startActivity(new Intent(getApplicationContext(), selectionTransport.class));
+
+                Intent intent = new Intent(rideSharing.this, selectionTransport.class);
+
+                intent.putExtra("address", addressTextView.getText().toString());
+                intent.putExtra("destination", destinationTextView.getText().toString());
+
+                startActivity(intent);
             }
         });
         // Initialize FusedLocationProviderClient
@@ -103,7 +110,6 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         });
         popupMenu.show();
     }
-
 
     private void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
