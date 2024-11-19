@@ -49,6 +49,12 @@
         <activity android:name=".FoodActivity"
             android:exported="false" />
 
+        <activity android:name=".CheckoutActivityFood"
+            android:exported="false" />
+
+        <activity android:name=".PaymentActivityFood"
+            android:exported="false"/>
+
         <activity
             android:name=".PickupSelectionActivity"
             android:exported="false" />

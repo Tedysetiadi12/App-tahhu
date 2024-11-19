@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/margin_standard"
+        android:paddingEnd="@dimen/margin_standard">
+
+        <ImageView
+            android:id="@+id/back_to_marketplace"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:src="@drawable/left"
+            app:tint="#000000"/>
+
+        <!-- Teks "Your Cart" -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/googlesans_bold"
+            android:gravity="center"
+            android:text="Checkout Food"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- RecyclerView untuk list item -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"/>
+
+    <!-- Total harga -->
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: Rp 0"
+        android:textSize="18sp"
+        android:gravity="end"
+        android:padding="8dp"/>
+
+    <!-- Tombol ke halaman payment -->
+    <Button
+        android:id="@+id/btn_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/accentColor"
+        android:text="Proceed to Payment"/>
+</LinearLayout>

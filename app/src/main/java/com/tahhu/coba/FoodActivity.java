@@ -73,7 +73,7 @@ public class FoodActivity extends AppCompatActivity {
 
         // Navigasi ke halaman checkout
         btnCheckout.setOnClickListener(v -> {
-            Intent intent = new Intent(FoodActivity.this, FoodActivity.class);
+            Intent intent = new Intent(FoodActivity.this, CheckoutActivityFood.class);
             intent.putParcelableArrayListExtra("cartItems", new ArrayList<>(cartItems));
             startActivity(intent);
         });

@@ -7,8 +7,8 @@ public class FoodItem implements Parcelable {
     private String name;
     private int price;
     private int quantity;
-    private int imageResId;  // Gambar makanan
-    private int cookingTime; // Estimasi waktu masak
+    private int imageResId;
+    private int cookingTime;
 
     public FoodItem(String name, int price, int imageResId, int cookingTime) {
         this.name = name;
