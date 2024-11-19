@@ -5,6 +5,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+import android.os.Handler;
+import android.app.Dialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
@@ -31,23 +33,37 @@ public class PaymentActivityFood extends AppCompatActivity {
 
         Button btnConfirm = findViewById(R.id.btn_confirm);
         btnConfirm.setOnClickListener(v -> {
-            // Validasi alamat tagihan
             if (!finalItems.isEmpty()) {
-                // Tampilkan notifikasi pesanan selesai
-                Toast.makeText(PaymentActivityFood.this, "Pesanan telah selesai!", Toast.LENGTH_SHORT).show();
-
-                // Redirect ke halaman Home
-                Intent intent = new Intent(PaymentActivityFood.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish(); // Menutup aktivitas ini
+                // Tampilkan dialog animasi centang
+                showSuccessDialog();
             } else {
-                // Jika belum ada item, beri notifikasi error
+                // Jika tidak ada item, beri notifikasi error
                 Toast.makeText(PaymentActivityFood.this, "Tidak ada item untuk diproses.", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+    private void showSuccessDialog() {
+        // Buat dialog
+        Dialog successDialog = new Dialog(this);
+        successDialog.setContentView(R.layout.dialog_payment_success);
+        successDialog.setCancelable(false); // Dialog tidak bisa ditutup dengan back button
+
+        // Tampilkan dialog
+        successDialog.show();
+
+        // Jalankan delay untuk redirect setelah beberapa detik
+        new Handler().postDelayed(() -> {
+            successDialog.dismiss(); // Tutup dialog
+            // Redirect ke halaman Home
+            Intent intent = new Intent(PaymentActivityFood.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish(); // Menutup aktivitas saat ini
+        }, 2000); // Delay selama 2 detik
+    }
+
 
     private void displayFinalData() {
         StringBuilder dataBuilder = new StringBuilder();
