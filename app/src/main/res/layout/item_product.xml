@@ -1,54 +1,67 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
     android:backgroundTint="@color/white"
     android:id="@+id/productCard">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+
+      >
 
         <!-- Product Image -->
-        <ImageView
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/productImage"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            app:shapeAppearanceOverlay="@style/radicardproduct"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/product1" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/googlesans_medium"
+                android:text="Lampu Stan"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:text="Rp 50,000"
+                android:textColor="@color/orenge"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <!-- Product Name -->
-        <TextView
-            android:id="@+id/productName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Lampu Stan"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:fontFamily="@font/googlesans_medium" />
 
         <!-- Product Price -->
-        <TextView
-            android:id="@+id/productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Rp 50,000"
-            android:textColor="@color/orenge"
-            android:textSize="14sp"
-            android:fontFamily="@font/googlesans_bold" />
 
         <!-- Rating and Sales Section -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <!-- Rating Star Icon -->
@@ -108,3 +121,4 @@
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
+

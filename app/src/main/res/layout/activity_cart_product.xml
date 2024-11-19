@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
+            android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:text="Checkouts"
             android:textSize="20sp"
@@ -79,7 +79,7 @@
                 android:text="Choose Shipping Option"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/googlesans_bold"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_marginBottom="8dp" />
 
             <RadioGroup
@@ -92,6 +92,7 @@
                     android:id="@+id/rb_standard_shipping"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Standard Shipping - Rp 10,000"
                     android:padding="8dp" />
 
@@ -99,6 +100,7 @@
                     android:id="@+id/rb_express_shipping"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Express Shipping - Rp 20,000"
                     android:padding="8dp" />
 
@@ -106,6 +108,7 @@
                     android:id="@+id/rb_nextday_shipping"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Next-Day Shipping - Rp 30,000"
                     android:padding="8dp" />
             </RadioGroup>
@@ -115,13 +118,14 @@
 
     <!-- Bagian Harga dan Tombol Checkout (Fixed at the bottom) -->
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/cartBottomLayout"
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:background="#d1722e"
-    app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/cartBottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_cart"
+        app:layout_constraintStart_toStartOf="parent">
 
     <!-- Informasi Total dan Ongkir -->
     <TextView
@@ -132,7 +136,7 @@
         android:layout_marginTop="16dp"
         android:text="Total Quantity"
         android:textColor="@color/white"
-        android:fontFamily="@font/googlesans_medium"
+        android:fontFamily="@font/poppins_semibold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -143,7 +147,7 @@
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
         android:visibility="gone"
-        android:fontFamily="@font/googlesans_medium"
+        android:fontFamily="@font/poppins_semibold"
         android:text="free Delivery"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -153,7 +157,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="handling"
+        android:text="Handling"
 
         android:fontFamily="@font/googlesans_medium"
         android:textColor="@color/white"
@@ -167,7 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Ongkir"
-        android:fontFamily="@font/googlesans_medium"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -230,7 +234,8 @@
         android:layout_height="wrap_content"
         android:text="Total"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -259,6 +264,7 @@
         android:backgroundTint="@color/white"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent" />

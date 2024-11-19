@@ -69,6 +69,7 @@
                     android:padding="8dp"
                     android:gravity="center"
                     android:text="Makanan"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/selector_text_color"
                     android:textSize="16sp"/>
 
@@ -79,6 +80,7 @@
                     android:layout_marginHorizontal="16dp"
                     android:padding="8dp"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Minuman"
                     android:textColor="@color/selector_text_color"
                     android:textSize="16sp"/>
@@ -90,6 +92,7 @@
                     android:layout_marginHorizontal="16dp"
                     android:padding="8dp"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Camilan"
                     android:textColor="@color/selector_text_color"
                     android:textSize="16sp"/>
@@ -101,6 +104,7 @@
                     android:layout_marginHorizontal="16dp"
                     android:padding="8dp"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Oleh-oleh Khas"
                     android:textColor="@color/selector_text_color"
                     android:textSize="16sp"/>
@@ -120,6 +124,7 @@
             android:id="@+id/btn_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Go to Checkout"
             android:visibility="gone"
             android:backgroundTint="@color/accentColor"

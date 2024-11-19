@@ -3,17 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:elevation="2dp"
-    android:layout_margin="10dp"
-    android:background="#FFF">
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/white">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/cartProductImage"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="80dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/home" />
+        app:shapeAppearanceOverlay="@style/radicardproduct"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -42,9 +43,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="end"
+            android:gravity="center"
             android:padding="2dp"
-            android:background="@drawable/btn_round"
-            android:layout_marginBottom="10dp"
             android:layout_marginEnd="20dp"
             >
 
@@ -53,7 +53,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/delete"
-                app:tint="@color/white"
+                app:tint="@color/primaryDarkColor"
                 android:contentDescription="Decrease quantity" />
 
             <TextView

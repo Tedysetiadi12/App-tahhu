@@ -31,12 +31,12 @@ public class Marketplace extends AppCompatActivity {
         String productDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
 
         List<Product> products = new ArrayList<>();
+        products.add(new Product("Tas UQIXO", "Rp 420,000", R.drawable.tas, "4.3", "134 sold", productDescription));
+        products.add(new Product("Baju Crop XL", "Rp 123,000", R.drawable.baju, "4.7", "12k sold", productDescription));
         products.add(new Product("Lampu Stan", "Rp 50,000", R.drawable.product1, "4.5", "120 sold", productDescription));
         products.add(new Product("Kipas Angin", "Rp 22,000", R.drawable.product2, "4.7", "12k sold", productDescription));
         products.add(new Product("Sepatu Slim", "Rp 120,000", R.drawable.product4, "4.5", "12k sold", productDescription));
         products.add(new Product("Sepatu RDS", "Rp 420,000", R.drawable.product3, "4.8", "6k sold", productDescription));
-        products.add(new Product("Lampu RS", "Rp 420,000", R.drawable.product1, "4.3", "134 sold", productDescription));
-        products.add(new Product("Kipas SSS", "Rp 420,000", R.drawable.product2, "4.7", "12k sold", productDescription));
 
         // Tambahkan lebih banyak produk jika diperlukan
         ProductAdapter adapter = new ProductAdapter(this, products);

@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
         Button btnback = dialogView.findViewById(R.id.back_beranda);
 
         // Set image and message
-        imageView.setImageResource(R.drawable.congrats_image); // Replace with your image resource
+        imageView.setImageResource(R.drawable.ic_success); // Replace with your image resource
         textMessage.setText("Congrats! Your order has been placed successfully.");
 
         // Create dialog

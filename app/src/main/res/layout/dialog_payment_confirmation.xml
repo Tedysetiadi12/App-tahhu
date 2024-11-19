@@ -1,41 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:elevation="4dp"
+    android:background="@drawable/rounded_background">
 
+    <!-- Icon Sukses -->
     <ImageView
         android:id="@+id/imageConfirmation"
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:src="@drawable/congrats_image" />
+        android:src="@drawable/ic_success"
+    />
 
+    <!-- Pesan Sukses -->
     <TextView
         android:id="@+id/textConfirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Congrats! Your order has been placed successfully."
-        android:textSize="16sp"
+        android:text="Order Successfully Placed!"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@android:color/black"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textAlignment="center" />
 
+    <!-- Deskripsi -->
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Thank you for your purchase. You can download your invoice below or return to the homepage."
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/gray"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <!-- Tombol Download Invoice -->
     <Button
         android:id="@+id/btnDownloadInvoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#000000"
-        android:text="Download Invoice" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/successGreen"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Download Invoice"
+        android:textColor="@android:color/white" />
 
+    <!-- Tombol Kembali ke Beranda -->
     <Button
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#d1722e"
-        android:text="Back to home" />
+        android:backgroundTint="@color/accentColor"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Back to Home"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
