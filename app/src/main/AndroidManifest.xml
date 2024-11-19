@@ -8,8 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,7 +19,14 @@
         android:roundIcon="@drawable/logo_tahu"
         android:supportsRtl="true"
         android:theme="@style/Theme.Appsewamobil"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".FullScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_full_screen"
+            android:theme="@style/Theme.Appsewamobil.Fullscreen" />
         <activity
             android:name=".CartProductActivity"
             android:exported="false" />
@@ -29,24 +36,20 @@
         <activity
             android:name=".cctv"
             android:exported="false" />
-
         <activity
             android:name=".rideSharing"
             android:exported="false" />
-
         <activity
             android:name=".CarSelectionActivity"
             android:exported="false" />
-
         <activity
             android:name=".BikeSelectionActivity"
             android:exported="false" />
-
         <activity
             android:name=".PickupSelectionActivity"
             android:exported="false" />
+        <activity android:name=".PaymentActivityRideSharing" />
 
-        <activity android:name=".PaymentActivityRideSharing"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBLDcW-OLHkjLjJjBvT_YYdtKiYAQ9uXG4" />
@@ -62,9 +65,7 @@
         <activity
             android:name=".Survey"
             android:exported="false" />
-
-        <activity android:name="TVStreamingActivity"/>
-
+        <activity android:name=".TVStreamingActivity" />
         <activity
             android:name=".finance"
             android:exported="false" />
@@ -73,8 +74,7 @@
             android:exported="false" />
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
-        <activity android:name=".OrderPenjemputanActivity" />
-<!--        <activity android:name=".CartActivity" />-->
+        <activity android:name=".OrderPenjemputanActivity" /> <!-- <activity android:name=".CartActivity" /> -->
         <activity android:name=".PaymentActivity" />
         <activity
             android:name=".Marketplace"

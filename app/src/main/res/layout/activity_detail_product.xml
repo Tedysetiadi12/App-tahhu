@@ -1,302 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".DetailProductActivity">
 
-    <!-- Top Bar -->
-    <LinearLayout
-        android:id="@+id/top_bar"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@color/accentColor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingStart="@dimen/margin_standard"
-        android:paddingEnd="@dimen/margin_standard">
-
-        <ImageView
-            android:id="@+id/back_beranda"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="@dimen/margin_standard"
-            android:src="@drawable/left"
-            app:tint="#FFFFFF"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/rounded_search"
-            android:gravity="center_vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@android:color/transparent"
-                android:hint="Search"
-                app:boxBackgroundMode="none">
-
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <!-- Icon Keranjang -->
-        <ImageView
-            android:id="@+id/btn_cart"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="0dp"
-            android:src="@drawable/ic_cart"
-            app:tint="#FFFFFF"/>
-
-        <!-- Icon Hamburger Titik Tiga -->
-        <ImageView
-            android:id="@+id/btn_titiktiga"
-            android:layout_width="24dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:visibility="gone"
-            android:src="@drawable/ic_hamburger"
-            app:tint="#FFFFFF"/>
-    </LinearLayout>
-
     <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/top_bar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="100dp"
-        android:fillViewport="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!-- Layout Konten Produk -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="0dp">
+            android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/productImage"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_gravity="center" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp">
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center"
+                android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/price"
-                    android:layout_marginTop="2dp"/>
+                    android:id="@+id/back_beranda"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:srcCompat="@drawable/left" />
 
-                <TextView
-                    android:id="@+id/productPrice"
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:tint="@color/black"
+                    android:backgroundTint="@color/accentColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/heart" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/rounded_free_internet"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/productImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#FF5722"
-                    android:layout_marginStart="4dp" />
-            </LinearLayout>
+                    android:layout_margin="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintEnd_toEndOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="@+id/view"
+                    app:layout_constraintTop_toTopOf="@+id/view"
+                    tools:src="@drawable/stan" />
 
-            <TextView
-                android:id="@+id/productName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_marginStart="14dp"
-                android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    android:id="@+id/productSold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_rating"
-                    android:padding="4dp"
-                    android:orientation="horizontal">
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                    tools:layout_editor_absoluteX="24dp">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deskripsi Product"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/productDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="descripsi"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                    tools:layout_editor_absoluteX="24dp">
+
+                    <TextView
+                        android:id="@+id/productSold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="4,6K Sold"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/rating_star"
-                        app:tint="@color/accent" />
+                        android:id="@+id/imageView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/rating_star" />
 
                     <TextView
                         android:id="@+id/productRating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"/>
+                        android:text="4.5"
+                        android:textColor="@color/accent"
+                        android:textSize="18dp" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center_vertical">
-
-                <!-- Avatar User -->
-                <ImageView
-                    android:id="@+id/userAvatar"
-                      android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/home"
-                    android:layout_marginEnd="12dp"
-                    android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="start"
-                    android:layout_gravity="center_vertical">
-
-                <!-- Nama User -->
-                <TextView
-                    android:id="@+id/userName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama Pengguna"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:layout_gravity="start"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/googlesans_medium"/>
-
-                <!-- Status Online (di bawah Nama User) -->
-                <TextView
-                    android:id="@+id/online"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Online"
-                    android:textSize="14sp"
-                    android:textColor="#757575"
-                android:layout_gravity="start"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/googlesans_medium"/>
-            </LinearLayout>
-
-                <!-- Tombol Follow -->
-                <Button
-                    android:id="@+id/followButton"
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Follow"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:backgroundTint="#8DDBDBDB"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="20dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:strokeColor="#FF5722"/>
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    >
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#f0f3f7"
-                android:layout_marginTop="10dp"/>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:shapeAppearanceOverlay="@style/radiusconel"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Deskripsi Produk"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingLeft="16dp"
-                android:layout_marginTop="15dp"/>
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="Seller"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/productDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:justificationMode="inter_word"
-                android:textAlignment="inherit"
-                android:text="Deskripsi produk akan tampil di sini"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="5dp"
+                        app:tint="@color/accentColor"
+                        app:srcCompat="@drawable/call" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#f0f3f7"
-                android:layout_marginTop="15dp"/>
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:tint="@color/accentColor"
+                        app:srcCompat="@drawable/chat" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/view"
+                    tools:layout_editor_absoluteX="24dp">
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nama Prduct"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/black"
+                        android:textSize="24dp" />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp."
+                        android:textColor="@color/black" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Bottom Fixed Buttons -->
     <LinearLayout
-        android:id="@+id/bottom_buttons"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:weightSum="2"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/addToCartButton"
-            android:layout_width="0dp"
+            android:backgroundTint="@color/accentColor"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#d1722e"
-            android:padding="12dp"
-            android:text="Add to Cart"
-            android:textColor="#FFFFFF" />
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginBottom="24dp"
+            android:text="Add To Cart" />
 
-        <Button
-            android:id="@+id/btn_buy_with_promo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#8DDBDBDB"
-            android:padding="12dp"
-            android:text="Buy Now"
-            android:textColor="@color/black" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

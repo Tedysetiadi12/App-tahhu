@@ -50,17 +50,10 @@
         android:id="@+id/gridview_channels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="4"
-        android:columnWidth="50dp"
+        android:numColumns="3"
+        android:columnWidth="150dp"
         android:horizontalSpacing="8dp"
         android:verticalSpacing="8dp"
-        android:padding="16dp" />
-
-    <!-- PlayerView untuk streaming -->
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/player_view"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="16dp" />
+        android:padding="9dp" />
 
 </LinearLayout>

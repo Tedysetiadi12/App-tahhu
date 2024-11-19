@@ -21,8 +21,9 @@ public class DetailProductActivity extends AppCompatActivity {
 
         ImageView btnback = findViewById(R.id.back_beranda);
         ImageView productImage = findViewById(R.id.productImage);
-        ImageView btn_cart = findViewById(R.id.btn_cart);
-        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        ImageView userImage = findViewById(R.id.userImage);
+//        ImageView btn_cart = findViewById(R.id.btn_cart);
+//        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
         TextView productName = findViewById(R.id.productName);
         TextView productPrice = findViewById(R.id.productPrice);
         TextView productRating = findViewById(R.id.productRating);
@@ -37,6 +38,7 @@ public class DetailProductActivity extends AppCompatActivity {
             productRating.setText(extras.getString("productRating"));
             productSold.setText(extras.getString("productSold"));
             productImage.setImageResource(extras.getInt("productImage"));
+            userImage.setImageResource(extras.getInt("productImage"));
             productDescription.setText(extras.getString("productDescription"));  // Menampilkan deskripsi produk
         }
 
@@ -63,20 +65,20 @@ public class DetailProductActivity extends AppCompatActivity {
             }
         });
 
-        kebabIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupMenu(v);
-            }
-        });
+//        kebabIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopupMenu(v);
+//            }
+//        });
 
         // Menangani event checkout
-        btn_cart.setOnClickListener(v -> {
-
-            // Handle checkout logic here, misalnya pindah ke halaman pembayaran
-            Intent intent = new Intent(DetailProductActivity.this, CartProductActivity.class);
-            startActivity(intent);
-        });
+//        btn_cart.setOnClickListener(v -> {
+//
+//            // Handle checkout logic here, misalnya pindah ke halaman pembayaran
+//            Intent intent = new Intent(DetailProductActivity.this, CartProductActivity.class);
+//            startActivity(intent);
+//        });
 
     }
 

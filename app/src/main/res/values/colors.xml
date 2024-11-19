@@ -19,13 +19,20 @@
     <color name="iconTint">#3F51B5</color> <!-- Other Colors -->
     <color name="orange_light">#FFF4E1</color>  <!-- Light orange for background -->
     <color name="orange_dark">#EBFBE2</color>   <!-- Darker orange for icons -->
-    <color name="primaryDarkColor">#F57C00</color> <!-- Darker orange for primary color variations -->
-    <color name="secondaryDarkColor">#FF7043</color> <!-- Darker orange for primary color variations -->
+    <color name="primaryDarkColor">#F57C00
+    </color> <!-- Darker orange for primary color variations -->
+    <color name="secondaryDarkColor">#FF7043
+    </color> <!-- Darker orange for primary color variations -->
     <color name="thirdDarkColor">#FF8A65</color> <!-- Darker orange for primary color variations -->
     <color name="accentColor">#D1722E</color>      <!-- Accent color (deeper orange) -->
     <color name="button_background">#FFCC80</color>
     <color name="bg_home">#471D00</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 
 
-            CC2527FF//
+    CC2527FF//
 </resources>

@@ -9,21 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ChannelAdapter extends BaseAdapter {
-    private Context context;
-    private String[] channelNames;
-    private int[] channelImages;
-    private String[] channelUrls;
+    private final Context context;
+    private final String[] names;
+    private final int[] images;
+    private final String[] urls;
 
-    public ChannelAdapter(Context context, String[] channelNames, int[] channelImages, String[] channelUrls) {
+    public ChannelAdapter(Context context, String[] names, int[] images, String[] urls) {
         this.context = context;
-        this.channelNames = channelNames;
-        this.channelImages = channelImages;
-        this.channelUrls = channelUrls;
+        this.names = names;
+        this.images = images;
+        this.urls = urls;
     }
 
     @Override
     public int getCount() {
-        return channelNames.length;
+        return names.length;
     }
 
     @Override
@@ -33,20 +33,21 @@ public class ChannelAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.channel_item, parent, false);
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.channel_item, parent, false);
         }
 
-        TextView channelName = convertView.findViewById(R.id.channel_name);
-        ImageView channelImage = convertView.findViewById(R.id.channel_image);
+        TextView name = convertView.findViewById(R.id.channel_name);
+        ImageView image = convertView.findViewById(R.id.channel_image);
 
-        channelName.setText(channelNames[position]);
-        channelImage.setImageResource(channelImages[position]);
+        name.setText(names[position]);
+        image.setImageResource(images[position]);
 
         return convertView;
     }
