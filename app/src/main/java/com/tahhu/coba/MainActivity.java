@@ -26,7 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public Button btninternet;
     FloatingActionButton btnmarket ;
-    public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_finance, menu_ride,
+    public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
             btn_tv, btn_food, btn_security;
     private ProgressBar progressBar2;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btn_ride = findViewById(R.id.rideIcon);
         btn_uco = findViewById(R.id.ucoIcon);
         menu_market = findViewById(R.id.menumarket);
-        menu_finance = findViewById(R.id.menufinace);
+        menu_user = findViewById(R.id.menufinace);
         menu_ride = findViewById(R.id.shortvidio);
         btn_radio = findViewById(R.id.streaming);
         btnmarket = findViewById(R.id.Maketicon);
@@ -213,11 +213,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        menu_finance.setOnClickListener(new View.OnClickListener() {
+        menu_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, finance.class);
+                Intent intent = new Intent(MainActivity.this, UserSettingActivity.class);
                 startActivity(intent);
             }
         });

@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.appcompat:appcompat:1.4.0")
     implementation ("com.google.android.exoplayer:exoplayer-hls:2.19.1")
     implementation ("com.google.android.exoplayer:exoplayer:2.19.1")
     implementation("androidx.media3:media3-exoplayer:1.0.0-alpha01")
@@ -49,7 +50,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     //firebase
-
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.android.gms:play-services-maps:19.0.0")
