@@ -27,9 +27,9 @@ public class PickupSelectionActivity extends AppCompatActivity {
 
         // Populate the list of pickups (you can replace this with your actual data)
         pickupList = new ArrayList<>();
-        pickupList.add(new Pickup("Pickup Truck", 499.99, R.drawable.ic_exchange));
-        pickupList.add(new Pickup("Van", 599.99, R.drawable.ic_exchange));
-        pickupList.add(new Pickup("Delivery Pickup", 399.99, R.drawable.ic_exchange));
+        pickupList.add(new Pickup("Pickup Truck", 499.99, R.drawable.ic_tukar));
+        pickupList.add(new Pickup("Van", 599.99, R.drawable.ic_tukar));
+        pickupList.add(new Pickup("Delivery Pickup", 399.99, R.drawable.ic_tukar));
 
         // Set the adapter
         pickupAdapter = new PickupAdapter(this, pickupList, address, destination);

@@ -27,9 +27,9 @@ public class BikeSelectionActivity extends AppCompatActivity {
 
         // Populate the list of bikes (you can replace this with your actual data)
         bikeList = new ArrayList<>();
-        bikeList.add(new Bike("Mountain Bike", 299.99, R.drawable.ic_motorcycle));
-        bikeList.add(new Bike("Road Bike", 499.99, R.drawable.ic_motorcycle));
-        bikeList.add(new Bike("Hybrid Bike", 349.99, R.drawable.ic_motorcycle));
+        bikeList.add(new Bike("Vario 150", 299.99, R.drawable.ic_motors));
+        bikeList.add(new Bike("Honda supra", 499.99, R.drawable.ic_motors));
+        bikeList.add(new Bike("PCX 150", 349.99, R.drawable.ic_motors));
 
         // Set the adapter
         bikeAdapter = new BikeAdapter(this, bikeList, address, destination);

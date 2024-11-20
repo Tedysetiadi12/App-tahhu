@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".selectionTransport">
+    tools:context=".SelectionTransport">
 
-    <!-- Top Bar for Pickup and Destination -->
+    <!-- Header Section -->
     <LinearLayout
-        android:id="@+id/back_beranda"
+        android:id="@+id/header_uco"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:gravity="center"
+        android:padding="10dp"
         android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,8 @@
 
         <ImageView
             android:id="@+id/btn_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/left"
             app:tint="#FFFFFF" />
 
@@ -32,143 +31,153 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
             android:gravity="center"
-            android:text="Ride Sharing"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"/>
+            android:text="Selected transport"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_bold" />
 
         <ImageView
             android:id="@+id/btn_titiktiga"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/kebab"
-            app:tint="#FFFFFF"/>
+            app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/chooseCar"
+    <!-- Tukar Minyak Jelantah -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_tukar_minyak"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/header_uco"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/back_beranda"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/titleRideSharing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:gravity="center"
-            android:text="Select your transport"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <GridLayout
-            android:id="@+id/gridRideOptions"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="310dp"
-            android:layout_gravity="center"
-            android:columnCount="2"
-            android:padding="8dp"
-            android:rowCount="2">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
 
-            <!-- Mobil -->
-            <LinearLayout
+            <ImageView
+                android:id="@+id/tukar_minyak"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_cars" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mobil"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black" />
+
+            <Button
                 android:id="@+id/optionMobil"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/background_with_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/accentColor"
+                android:text="Ayo Pesan"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="Mobil"
-                    android:src="@drawable/ic_car" />
+    <!-- Lokasi Penukaran -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_lokasi_penukaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/card_tukar_minyak"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Car"
-                    android:textSize="14sp" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
 
-            <!-- Motor -->
-            <LinearLayout
+            <ImageView
+                android:id="@+id/lokasi_penukaran"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_motors" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Motor"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black" />
+
+            <Button
                 android:id="@+id/optionMotor"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/background_with_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/accentColor"
+                android:text="Ayo Pesan"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="Motor"
-                    android:src="@drawable/ic_motorcycle" />
+    <!-- Order Penjemputan -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_order_penjemputan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/card_lokasi_penukaran"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Bike"
-                    android:textSize="14sp" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
 
-            <!-- Tukar Barang -->
-            <LinearLayout
+            <ImageView
+                android:id="@+id/order_penjemputan"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_tukar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tukar barang"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black" />
+
+            <Button
                 android:id="@+id/optionPickup"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/background_with_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="Tukar Barang"
-                    android:src="@drawable/ic_exchange" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Pickup"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </GridLayout>
-    </LinearLayout>
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/accentColor"
+                android:text="Ayo Pesan"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

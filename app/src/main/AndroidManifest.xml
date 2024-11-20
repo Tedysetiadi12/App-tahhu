@@ -85,7 +85,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".selectionTransport"
+            android:name=".SelectionTransport"
             android:exported="false" />
         <activity
             android:name=".Survey"

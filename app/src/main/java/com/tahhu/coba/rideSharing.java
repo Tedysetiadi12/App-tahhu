@@ -52,9 +52,9 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         Btn_boking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), selectionTransport.class));
+                startActivity(new Intent(getApplicationContext(), SelectionTransport.class));
 
-                Intent intent = new Intent(rideSharing.this, selectionTransport.class);
+                Intent intent = new Intent(rideSharing.this, SelectionTransport.class);
 
                 intent.putExtra("address", addressTextView.getText().toString());
                 intent.putExtra("destination", destinationTextView.getText().toString());

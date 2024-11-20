@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Background color -->
-    <solid android:color="#11D1722E" />
+    <solid android:color="#04D1722E" />
 
     <!-- Border -->
     <stroke
