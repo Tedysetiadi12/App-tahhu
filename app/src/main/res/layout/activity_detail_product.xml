@@ -45,14 +45,16 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp">
 
                 <View
                     android:id="@+id/view"
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="300dp"
                     android:layout_margin="30dp"
                     android:background="@drawable/rounded_free_internet"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
@@ -198,9 +200,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nama Prduct"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/black"
-                        android:textSize="24dp" />
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/productPrice"

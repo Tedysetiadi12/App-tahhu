@@ -13,7 +13,7 @@
     <color name="orenge">#471D00</color> <!-- Adjust this code as needed -->
     <color name="starColor">#FFD700</color> <!-- Gold color for star icons -->
     <color name="primaryColor">#EBFBE2</color> <!-- Example primary color -->
-    <color name="gray">#9E9E9E</color>
+    <color name="gray">#C5C5C5</color>
     <color name="lightGray">#F5F5F5</color> <!-- Background of map container -->
     <color name="mapPlaceholderColor">#BDBDBD</color> <!-- Gray tone to indicate map placeholder -->
     <color name="iconTint">#3F51B5</color> <!-- Other Colors -->
