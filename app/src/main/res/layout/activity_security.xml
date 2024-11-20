@@ -1,79 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    tools:context=".SecurityActivity">
 
-    <!-- Top Bar -->
-    <LinearLayout
-        android:id="@+id/top_bar"
+
+    <!-- Linear Layout for content and image -->
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:background="@drawable/bg_gradient_oval"
+        android:layout_height="300dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@color/accentColor"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="42dp">
 
-        <ImageView
-            android:id="@+id/back_to_marketplace"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="@dimen/margin_standard"
-            android:src="@drawable/left"
-            app:tint="#ffffff"/>
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
-            android:gravity="center"
-            android:text="Security"
-            android:textSize="20sp"
-            android:paddingEnd="30dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_office"
-        android:layout_gravity="center"
-        app:tint= "@color/accentColor"
-        android:layout_marginBottom="10dp">
-    </ImageView>
+            <ImageView
+                android:id="@+id/back_to_marketplace"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Back"
+                android:src="@drawable/left" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_office_security"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/accentColor"
-        android:text="Pengamanan Kantor" />
-
-        <ImageView
-            android:layout_width="match_parent"
+        <!-- Banner with dots indicator -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/bannerViewPager"
+            android:layout_width="0dp"
+            android:layout_marginTop="20dp"
             android:layout_height="200dp"
-            android:src="@drawable/ic_home"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            app:tint= "@color/accentColor">
-        </ImageView>
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <Button
-            android:id="@+id/btn_personal_security"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/dotsIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/accentColor"
-            android:text="Pengamanan Pribadi" />
+            app:tabIndicatorGravity="center"
+            app:tabTextColor="@color/gray"
+            app:tabSelectedTextColor="@color/accentColor"
+            app:tabIndicatorColor="@color/accentColor"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/bannerViewPager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rouded"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dotsIndicator">
+
+            <!-- Vertical Linear Layout for Title and Description -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!-- Title Text -->
+                <TextView
+                    android:id="@+id/os"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Office Security"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <!-- Description Text -->
+                <TextView
+                    android:id="@+id/descripOS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Jasa Keamaan Kantor Di Wilayah jogja"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_office_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/accentColor"
+                    android:text="Pesan Sekarang"
+                    android:textColor="#ffffff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
+
+            <!-- ImageView on the right side -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ImgOS"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                app:shapeAppearanceOverlay="@style/radicardproduct"
+                android:src="@drawable/os" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rouded"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <!-- Vertical Linear Layout for Title and Description -->
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!-- Title Text -->
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Security"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Description Text -->
+                <TextView
+                    android:id="@+id/descrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Jasa Keamaan Pribadi Di Wilayah jogja"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_personal_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/accentColor"
+                    android:text="Pesan Sekarang"
+                    android:textColor="#ffffff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView2" />
+            </LinearLayout>
+
+            <!-- ImageView on the right side -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                app:shapeAppearanceOverlay="@style/radicardproduct"
+                android:src="@drawable/ps"/>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Button for "Send Message" -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
