@@ -58,7 +58,19 @@
         <activity
             android:name=".PickupSelectionActivity"
             android:exported="false" />
+
         <activity android:name=".PaymentActivityRideSharing" />
+
+        <activity
+            android:name=".PaymentActivitySecurity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SecurityActivity"
+            android:exported="false"/>
+
+        <activity android:name=".DurationActivity"
+            android:exported="false"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/accentColor"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/back_to_marketplace"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:src="@drawable/left"
+            app:tint="#ffffff"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/googlesans_bold"
+            android:gravity="center"
+            android:text="Security"
+            android:textSize="20sp"
+            android:paddingEnd="30dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_office"
+        android:layout_gravity="center"
+        app:tint= "@color/accentColor"
+        android:layout_marginBottom="10dp">
+    </ImageView>
+
+    <Button
+        android:id="@+id/btn_office_security"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/accentColor"
+        android:text="Pengamanan Kantor" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_home"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            app:tint= "@color/accentColor">
+        </ImageView>
+
+        <Button
+            android:id="@+id/btn_personal_security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/accentColor"
+            android:text="Pengamanan Pribadi" />
+
+</LinearLayout>

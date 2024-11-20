@@ -372,7 +372,7 @@
 
                         <ImageView
 
-                            android:id="@+id/iconfood"
+                            android:id="@+id/securityIcon"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
                             android:src="@drawable/padlock" />

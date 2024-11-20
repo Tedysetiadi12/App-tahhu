@@ -6,8 +6,6 @@
     android:layout_height="match_parent">
 
     <!-- Top Bar -->
-
-
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="0dp"
