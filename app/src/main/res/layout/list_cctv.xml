@@ -8,11 +8,13 @@
     android:layout_marginStart="10dp"
     android:background="@drawable/bg_list_cctv"
     android:layout_marginEnd="10dp">
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/playButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="13dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +33,12 @@
         android:id="@+id/cctv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Position"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,9 +46,10 @@
         android:id="@+id/cctv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Region"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"

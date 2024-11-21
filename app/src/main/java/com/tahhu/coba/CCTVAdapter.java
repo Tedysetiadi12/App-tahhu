@@ -71,7 +71,8 @@ public class CCTVAdapter extends RecyclerView.Adapter<CCTVAdapter.ViewHolder> {
         playerView.setPlayer(player);
 
         // Menyiapkan video
-        MediaItem mediaItem = MediaItem.fromUri("https://atcs.tasikmalayakota.go.id/camera/leuwidahuarahbojongjengkol.m3u8");
+         String testUrl = "https://livepantau.semarangkota.go.id/hls/414/4501/2024/8795266c-ebc3-4a95-8827-b82360403f0a_4501.m3u8";
+        MediaItem mediaItem = MediaItem.fromUri(videoUrl);
         player.setMediaItem(mediaItem);
         player.prepare();
         player.play();
