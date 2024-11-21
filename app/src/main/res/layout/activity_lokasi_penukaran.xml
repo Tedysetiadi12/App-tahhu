@@ -22,7 +22,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/left"
-            android:tint="#FFFFFF"/>
+            app:tint="#FFFF"/>
 
         <TextView
             android:layout_width="0dp"
@@ -40,7 +40,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/kebab"
-            android:tint="#FFFFFF"/>
+            app:tint="#FFFF"/>
     </LinearLayout>
 
     <!-- Peta Google -->
@@ -68,7 +68,7 @@
         android:id="@+id/btnTutup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#d1722e"
+        android:backgroundTint="@color/buttonColor"
         android:text="Tutup"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

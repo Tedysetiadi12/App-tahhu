@@ -5,46 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="#f7f7f7">
 
-    <LinearLayout
-        android:id="@+id/top_bar"
+    <!-- Toolbar-like Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:background="@color/accentColor"
+        android:layout_height="56dp"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Back Button -->
         <ImageView
-            android:id="@+id/back_to_marketplace"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="@dimen/margin_standard"
-            android:src="@drawable/left"
-            app:tint="#000000"/>
+            android:id="@+id/imageViewBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/left"
+            app:tint="@color/white" />
 
+        <!-- Title -->
         <TextView
+            android:id="@+id/toolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Choose Duration"
             android:gravity="center"
-            android:text="Choose duration"
-            android:textSize="20sp"
-            android:paddingEnd="30dp"
             android:textStyle="bold"
-            android:textColor="#000000" />
-    </LinearLayout>
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/imageViewBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Menu Button (Three Dots) -->
+        <ImageView
+            android:id="@+id/imageViewMenu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/kebab"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="Pilih Lama Waktu Pengamanan"
         android:textSize="18sp"
         android:textColor="#000"
@@ -55,6 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
         app:cardElevation="4dp"
         app:cardCornerRadius="8dp">
 
@@ -62,8 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginEnd="@dimen/margin_standard"
             android:padding="16dp">
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,6 +117,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
         app:cardElevation="4dp"
         app:cardCornerRadius="8dp">
 
@@ -139,6 +160,8 @@
         android:id="@+id/card_yearly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
         app:cardElevation="4dp"
         app:cardCornerRadius="8dp">
 

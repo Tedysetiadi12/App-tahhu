@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class Marketplace extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
@@ -67,6 +68,16 @@ public class Marketplace extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
+
+        // Membuat data untuk slide
+        List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Slide 1"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Slide 2"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Slide 3"));
+        // Set adapter ke ViewPager2
+        SlideAdapter adapterslids = new SlideAdapter(slideItemss);
+        viewPager3.setAdapter(adapterslids);
     }
 
     // Metode untuk menampilkan PopupMenu

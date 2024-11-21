@@ -97,7 +97,7 @@
             android:id="@+id/btnLihatLokasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#63D1722E"
+            android:backgroundTint="#57654236"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:text="Lihat Lokasi Penukaran Terdekat" />
@@ -107,7 +107,7 @@
             android:id="@+id/btnTukar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#d1722e"
+            android:backgroundTint="@color/buttonColor"
             android:text="Tukar Minyak"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"

@@ -24,8 +24,6 @@
     <color name="secondaryDarkColor">#FF7043
     </color> <!-- Darker orange for primary color variations -->
     <color name="thirdDarkColor">#FF8A65</color> <!-- Darker orange for primary color variations -->
-    <color name="accentColor">#D1722E</color>      <!-- Accent color (deeper orange) -->
-    <color name="button_background">#FFCC80</color>
     <color name="bg_home">#471D00</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
@@ -33,6 +31,11 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="successGreen">#4CAF50</color>
+
+    <!-- UPDATE COLOR NEW -->
+    <color name="accentColor">#DB995A</color>      <!-- utama -->
+    <color name="buttonColor">#654236</color> <!-- button -->
+
 
     CC2527FF//
 </resources>

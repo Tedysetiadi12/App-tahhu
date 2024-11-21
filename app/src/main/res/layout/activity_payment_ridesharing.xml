@@ -177,7 +177,7 @@
                 android:id="@+id/confirmPaymentButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/accentColor"
+                android:backgroundTint="@color/buttonColor"
                 android:text="Confirm Payment"
                 android:layout_marginTop="16dp"
                 android:textColor="#FFFFFF" />

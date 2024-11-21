@@ -23,7 +23,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/left"
-            android:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"/>
 
         <TextView
             android:layout_width="0dp"
@@ -41,7 +41,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/kebab"
-            android:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"/>
     </LinearLayout>
 
     <!-- Map View for Picking Location -->
@@ -76,7 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Pesan Penjemputan"
-        android:backgroundTint="#d1722e"
+        android:backgroundTint="@color/buttonColor"
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/edtAlamatPenjemputan"
         app:layout_constraintLeft_toLeftOf="parent"

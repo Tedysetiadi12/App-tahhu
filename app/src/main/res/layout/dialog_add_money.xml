@@ -38,7 +38,7 @@
         android:id="@+id/btn_save_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#d1722e"
+        android:backgroundTint="@color/buttonColor"
         android:text="Save Transaction"
         android:layout_marginTop="16dp" />
 </LinearLayout>

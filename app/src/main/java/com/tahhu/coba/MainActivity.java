@@ -67,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         SlideAdapter adapterslid = new SlideAdapter(slideItems);
         viewPager2.setAdapter(adapterslid);
 
+        ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
+        // Membuat data untuk slide
+        List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Slide 1"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Slide 2"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Slide 3"));
+        // Set adapter ke ViewPager2
+        SlideAdapter adapterslids = new SlideAdapter(slideItemss);
+        viewPager3.setAdapter(adapterslids);
+
         // Menghubungkan ViewPager2 dengan TabLayout
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             // Anda dapat menambahkan teks atau icon jika diperlukan

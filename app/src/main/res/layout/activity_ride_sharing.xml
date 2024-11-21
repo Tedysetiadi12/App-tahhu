@@ -139,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Confirm Location"
-            android:backgroundTint="#d1722e"
+            android:backgroundTint="@color/buttonColor"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
     </LinearLayout>

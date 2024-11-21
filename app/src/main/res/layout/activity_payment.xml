@@ -12,6 +12,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
+        android:background="@color/accentColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +25,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="@dimen/margin_standard"
             android:src="@drawable/left"
-            app:tint="#000000"/>
+            app:tint="#fff"/>
 
         <!-- Teks "Your Cart" -->
         <TextView
@@ -36,7 +37,7 @@
             android:text="Payment method"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#fff" />
     </LinearLayout>
 
     <ScrollView
@@ -241,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#d1722e"
+                android:backgroundTint="@color/buttonColor"
                 android:text="Proceed Payment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
