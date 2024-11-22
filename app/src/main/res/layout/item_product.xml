@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="8dp"
+    android:layout_margin="3dp"
     app:cardCornerRadius="8dp"
     android:backgroundTint="@color/white"
     android:id="@+id/productCard">
@@ -14,13 +14,12 @@
         android:orientation="vertical"
 
       >
-
         <!-- Product Image -->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/productImage"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
             app:shapeAppearanceOverlay="@style/radicardproduct"
             tools:srcCompat="@tools:sample/avatars" />
 

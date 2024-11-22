@@ -2,6 +2,8 @@ package com.tahhu.coba;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,8 +62,14 @@ public class CCTVAdapter extends RecyclerView.Adapter<CCTVAdapter.ViewHolder> {
     }
 
     private void showPopupVideo(String videoUrl) {
-        Log.d("CCTV_URL", videoUrl);
-        // Membuat popup dialog
+        if (!videoUrl.endsWith(".m3u8")) {
+            // Jika URL adalah halaman web, buka di browser
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
+            context.startActivity(browserIntent);
+            return;
+        }
+
+        // Membuat popup dialog untuk memutar video
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_cctv_video);
         dialog.setCancelable(true);
@@ -71,7 +79,6 @@ public class CCTVAdapter extends RecyclerView.Adapter<CCTVAdapter.ViewHolder> {
         playerView.setPlayer(player);
 
         // Menyiapkan video
-         String testUrl = "https://livepantau.semarangkota.go.id/hls/414/4501/2024/8795266c-ebc3-4a95-8827-b82360403f0a_4501.m3u8";
         MediaItem mediaItem = MediaItem.fromUri(videoUrl);
         player.setMediaItem(mediaItem);
         player.prepare();
@@ -82,4 +89,5 @@ public class CCTVAdapter extends RecyclerView.Adapter<CCTVAdapter.ViewHolder> {
 
         dialog.show();
     }
+
 }

@@ -8,7 +8,7 @@
     android:gravity="center"
     android:layout_gravity="center"
     android:elevation="4dp"
-    android:background="@drawable/rounded_background">
+    android:background="@drawable/rouded">
 
     <!-- Icon Sukses -->
     <ImageView

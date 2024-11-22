@@ -490,7 +490,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#654236"
                         app:cardElevation="4dp"
-                        android:background="@color/buttonColor"
+                        android:background="@drawable/btn_round"
                         android:text="Lihat"
                         android:textSize="14dp"
                         android:textColor="@color/white"
@@ -520,9 +520,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/card_margin"
                 android:backgroundTint="@color/white"
-                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="4dp">
 
                 <androidx.cardview.widget.CardView
@@ -616,6 +614,7 @@
                 android:text="Promo this day"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -703,8 +702,8 @@
             android:layout_height="45dp"
             android:layout_gravity="bottom"
             app:fabAlignmentMode="center"
-            app:fabCradleMargin="15dp"
-            app:fabCradleRoundedCornerRadius="20dp"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="15dp"
             app:fabCradleVerticalOffset="0dp"
             android:backgroundTint="@color/buttonColor">
             <LinearLayout
@@ -726,7 +725,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        app:tint="#D6D4A0"
+                        app:tint="#FFFFFF"
                         app:srcCompat="@drawable/home" />
 
                 </LinearLayout>
@@ -744,7 +743,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        app:tint="#D6D4A0"
+                        app:tint="#FFFFFF"
                         app:srcCompat="@drawable/favorite" />
 
                 </LinearLayout>
@@ -780,7 +779,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        app:tint="#D6D4A0"
+                        app:tint="#FFFFFF"
                         app:srcCompat="@drawable/clapper" />
 
                 </LinearLayout>
@@ -798,7 +797,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        app:tint="#D6D4A0"
+                        app:tint="#FFFFFF"
                         app:srcCompat="@drawable/user" />
                 </LinearLayout>
             </LinearLayout>
@@ -809,7 +808,7 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:src="@drawable/ic_cartt"
-            app:tint="#D6D4A0"
+            app:tint="#FFFFFF"
             android:layout_gravity="center"
             android:backgroundTint="@color/buttonColor"
             app:layout_anchor="@id/bottomAppBar"

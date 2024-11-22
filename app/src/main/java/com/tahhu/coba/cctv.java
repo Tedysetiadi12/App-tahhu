@@ -78,10 +78,14 @@ public class cctv extends AppCompatActivity {
         semarangList.add(new CCTVData("Tugu Muda", "Semarang", "https://livepantau.semarangkota.go.id/hls/414/101/2024/8795266c-ebc3-4a95-8827-b82360403f0a_101.m3u8"));
         semarangList.add(new CCTVData("Anjasmoro", "Semarang", "https://livepantau.semarangkota.go.id/hls/414/4601/2024/8795266c-ebc3-4a95-8827-b82360403f0a_4601.m3u8"));
 
+        List<CCTVData> madiunList = new ArrayList<>();
+        madiunList.add(new CCTVData("Madiun Pusat", "Madiun", "http://103.149.120.205/cctv/"));
+
         dataMap.put("Yogyakarta", jogjaList);
         dataMap.put("Jakarta", jakartaList);
         dataMap.put("Klaten", klatenList);
         dataMap.put("Semarang", semarangList);
+        dataMap.put("Madiun", madiunList);
     }
 
     private void setupDropdown() {
