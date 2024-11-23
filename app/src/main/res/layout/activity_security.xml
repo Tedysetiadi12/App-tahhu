@@ -50,7 +50,7 @@
                 android:text="Security"
                 android:textSize="24sp"
                 android:textColor="#FFFFFF"
-                android:fontFamily="@font/poppins_bold" />
+                android:fontFamily="@font/googlesans_medium" />
 
             <ImageView
                 android:id="@+id/btn_titiktiga"
@@ -113,7 +113,7 @@
                     android:id="@+id/os"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Office Security"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -124,7 +124,7 @@
                     android:id="@+id/descripOS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Jasa Keamaan Kantor Di Wilayah jogja"
                     android:textColor="#000000"
                     android:textSize="14sp" />
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Personal Security"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/googlesans_medium"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -193,7 +193,7 @@
                     android:id="@+id/descrip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Jasa Keamaan Pribadi Di Wilayah jogja"
                     android:textColor="#000000"
                     android:textSize="14sp" />

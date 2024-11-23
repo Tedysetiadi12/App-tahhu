@@ -111,7 +111,7 @@ public class PaymentActivityFood extends AppCompatActivity {
             itemName.setText(item.getName());
             itemName.setTextSize(16);
             itemName.setTextColor(getResources().getColor(R.color.black));
-            itemName.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            itemName.setTypeface(ResourcesCompat.getFont(this, R.font.googlesans_medium));
             textLayout.addView(itemName);
 
             // Quantity
@@ -119,7 +119,7 @@ public class PaymentActivityFood extends AppCompatActivity {
             itemQuantity.setText("x" + item.getQuantity());
             itemQuantity.setTextSize(14);
             itemQuantity.setTextColor(getResources().getColor(R.color.black));
-            itemQuantity.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            itemQuantity.setTypeface(ResourcesCompat.getFont(this, R.font.googlesans_medium));
             textLayout.addView(itemQuantity);
 
             // Tambahkan layout teks ke layout item
@@ -130,7 +130,7 @@ public class PaymentActivityFood extends AppCompatActivity {
             priceText.setText("Rp " + (item.getPrice() * item.getQuantity()));
             priceText.setTextSize(14);
             priceText.setTextColor(getResources().getColor(R.color.black));
-            priceText.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            priceText.setTypeface(ResourcesCompat.getFont(this, R.font.googlesans_medium));
             priceText.setGravity(Gravity.END | Gravity.CENTER_VERTICAL); // Posisi kanan dan vertikal tengah
             LinearLayout.LayoutParams priceParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,

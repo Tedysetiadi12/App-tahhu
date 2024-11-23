@@ -94,7 +94,7 @@
             android:textColor="@color/black"
             android:layout_marginStart="8dp"
             android:hint="Enter pickup location"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/googlesans_medium"
             android:padding="10dp"
             android:background="@drawable/rounded_edittext" />
     </LinearLayout>

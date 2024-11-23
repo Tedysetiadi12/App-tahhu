@@ -63,7 +63,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/googlesans_medium"
         android:text="Pilih Lama Waktu Pengamanan"
         android:textSize="18sp"
         android:textColor="#000"
@@ -91,14 +92,15 @@
                 android:layout_height="wrap_content"
                 android:text="Harian"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="#000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 100.000"
+                android:text="Rp 20.000"
                 android:textSize="14sp"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
@@ -138,13 +140,14 @@
                 android:layout_height="wrap_content"
                 android:text="Bulanan"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="#000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 500.000"
+                android:fontFamily="@font/googlesans_medium"
                 android:textSize="14sp"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
@@ -184,13 +187,14 @@
                 android:layout_height="wrap_content"
                 android:text="Tahunan"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="#000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 5.000.000"
+                android:fontFamily="@font/googlesans_medium"
                 android:textSize="14sp"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />

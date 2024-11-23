@@ -45,7 +45,7 @@
                 android:layout_height="37dp"
                 android:ems="10"
                 android:inputType="text"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="7dp"
                 android:background="@drawable/rounded_search"
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:backgroundTint="@color/buttonColor"
                     android:textColor="@android:color/white" />
 
@@ -127,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Popular"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:layout_marginStart="8dp"
                     android:backgroundTint="@color/buttonColor"
                     android:textColor="@android:color/white" />
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:layout_marginStart="8dp"
                     android:backgroundTint="@color/buttonColor"
                     android:textColor="@android:color/white" />

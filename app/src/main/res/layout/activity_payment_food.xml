@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/googlesans_medium"
             android:text="Payment Method"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -63,11 +63,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="List chekout"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:id="@+id/parent_final_data"
@@ -75,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
@@ -83,11 +82,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:text="Selected payment" />
 
             <RadioGroup
@@ -102,21 +100,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Credit Card" />
                 <RadioButton
                     android:id="@+id/rb_bank_transfer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Bank Transfer" />
                 <RadioButton
                     android:id="@+id/rb_paypal"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="PayPal" />
             </RadioGroup>
 
@@ -126,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Or input new card"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,7 +138,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Card Number"
                 android:textColor="@color/gray"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title" />
@@ -234,6 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/margin_standard"
                 android:background="@drawable/border_rating"
                 android:hint="Enter cardholder name"
                 android:padding="12dp"
@@ -245,8 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:padding="8dp">
+                android:orientation="vertical">
 
                 <!-- Row for Service Fee -->
                 <LinearLayout
@@ -260,7 +258,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/googlesans_medium"
                         android:text="Service Fee"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -270,7 +268,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 30,000"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -289,7 +287,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Total"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -298,7 +296,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 0"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -311,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Confirm Payment"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/googlesans_medium"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
         </LinearLayout>

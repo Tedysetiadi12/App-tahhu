@@ -44,7 +44,6 @@ public class TVStreamingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_stream);
-
         GridView gridView = findViewById(R.id.gridview_channels);
 
         // Set adapter to GridView
@@ -68,8 +67,6 @@ public class TVStreamingActivity extends AppCompatActivity {
 
         // Inisialisasi btn_back
         ImageView btnBack = findViewById(R.id.btn_back);
-
-        // Menangani klik pada tombol kembali
         btnBack.setOnClickListener(v -> {
             // Menyelesaikan aktivitas saat tombol kembali diklik
             onBackPressed();

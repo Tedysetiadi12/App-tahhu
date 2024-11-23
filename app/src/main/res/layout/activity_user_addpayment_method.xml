@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <!-- LinearLayout for the entire content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Topbar (Header) -->
+            <LinearLayout
+                android:id="@+id/back_beranda"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@color/accentColor"
+                android:layout_gravity="top|center_horizontal">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/left"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/user_settings_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:gravity="center"
+                    android:text="Add Payment Method"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+
+            <!-- Payment Method Form -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Cardholder Name -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cardholder Name"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/cardholderName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Cardholder Name"
+                    android:textColorHint="@color/gray"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_edittext"/>
+
+                <!-- Card Number -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Card Number"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/cardNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Card Number"
+                    android:textColorHint="@color/gray"
+                    android:inputType="phone"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_edittext"/>
+
+                <!-- Expiry Date -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Expiry Date (MM/YY)"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/expiryDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="MM/YY"
+                    android:textColorHint="@color/gray"
+                    android:inputType="text"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_edittext"/>
+
+                <!-- CVV -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CVV"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/cvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter CVV"
+                    android:textColorHint="@color/gray"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_edittext"/>
+
+                <!-- Save Button -->
+                <Button
+                    android:id="@+id/savePaymentMethodButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save Payment Method"
+                    android:backgroundTint="@color/accentColor"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="32dp"
+                    android:padding="14dp"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

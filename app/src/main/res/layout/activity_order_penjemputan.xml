@@ -32,6 +32,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Order Penjemputan"
+            android:fontFamily="@font/googlesans_medium"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"/>
@@ -64,6 +65,7 @@
         android:padding="15dp"
         android:hint="Masukkan alamat penjemputan"
         android:inputType="text"
+        android:fontFamily="@font/googlesans_medium"
         android:background="@drawable/rounded_edittext"
         app:layout_constraintTop_toBottomOf="@id/mapFragment"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -82,6 +84,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/edtAlamatPenjemputan"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="@font/googlesans_medium"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"

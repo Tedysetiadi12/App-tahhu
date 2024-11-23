@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna latar belakang -->
+    <item android:top="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/accentColor"/>
+        </shape>
+    </item>
 
-</selector>
+    <!-- Sudut atas dengan warna berbeda -->
+    <item android:top="0dp">
+        <shape android:shape="rectangle">
+            <corners android:topRightRadius="30dp" android:topLeftRadius="30dp"/>
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+</layer-list>

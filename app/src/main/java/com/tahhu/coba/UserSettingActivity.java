@@ -1,5 +1,6 @@
 package com.tahhu.coba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,19 +10,22 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton;
+import android.util.Log;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UserSettingActivity extends AppCompatActivity {
 
     private ImageView backButton, titleButton;
     private LinearLayout changePasswordLayout, editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout, privacyPolicyLayout;
-    private Switch notificationSwitch;  // Pastikan hanya ada satu deklarasi Switch
+    private Switch notificationSwitch;
+    private ActivityResultLauncher<Intent> editProfileLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_setting);
-
         // Initialize views
         backButton = findViewById(R.id.back);
         titleButton = findViewById(R.id.btn_titiktiga);
@@ -44,20 +48,55 @@ public class UserSettingActivity extends AppCompatActivity {
 
         // Set action for change password
         changePasswordLayout.setOnClickListener(v -> {
-            // Handle change password action
-            Toast.makeText(UserSettingActivity.this, "Change Password Clicked", Toast.LENGTH_SHORT).show();
+            // Navigate to UserSettingPasswordSecurityActivity first
+            Intent intent = new Intent(UserSettingActivity.this, UserSecurityPasswordActivity.class);
+            startActivity(intent);
         });
 
-        // Set action for edit profile
-        editProfileLayout.setOnClickListener(v -> {
-            // Handle edit profile action
-            Toast.makeText(UserSettingActivity.this, "Edit Profile Clicked", Toast.LENGTH_SHORT).show();
+        // Inisialisasi ActivityResultLauncher
+        editProfileLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            // Mendapatkan data yang sudah diperbarui
+                            String updatedName = data.getStringExtra("updatedName");
+                            String updatedLastName = data.getStringExtra("updatedLastName");
+                            String updatedEmail = data.getStringExtra("updatedEmail");
+
+                            // Memperbarui UI dengan data baru
+                            TextView nameTextView = findViewById(R.id.nameTextView);
+                            TextView emailTextView = findViewById(R.id.email);
+                            nameTextView.setText(updatedName + " " + updatedLastName);
+                            emailTextView.setText(updatedEmail);
+                        }
+                    }
+                }
+        );
+
+        // Listener untuk Edit Profile
+        findViewById(R.id.editProfileLayout).setOnClickListener(v -> {
+            // Membuat Intent untuk EditProfileActivity
+            Intent intent = new Intent(UserSettingActivity.this, EditProfileActivity.class);
+            intent.putExtra("name", "John");
+            intent.putExtra("lastname", "Doe");
+            intent.putExtra("email", "john.doe@example.com");
+
+            // Meluncurkan Activity menggunakan ActivityResultLauncher
+            if (editProfileLauncher != null) {
+                editProfileLauncher.launch(intent);
+            } else {
+                Log.e("UserSettingActivity", "editProfileLauncher is null");
+            }
         });
+
 
         // Set action for add payment method
         addPaymentMethodLayout.setOnClickListener(v -> {
             // Handle add payment method action
-            Toast.makeText(UserSettingActivity.this, "Add Payment Method Clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UserSettingActivity.this, UserAddPaymentMethodActivity.class);
+            startActivity(intent);
         });
 
         // Set action for push notification toggle
@@ -85,13 +124,15 @@ public class UserSettingActivity extends AppCompatActivity {
         // Set action for about us
         aboutUsLayout.setOnClickListener(v -> {
             // Handle about us action
-            Toast.makeText(UserSettingActivity.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UserSettingActivity.this, UserAboutUsActivity.class);
+            startActivity(intent);
         });
 
         // Set action for privacy policy
         privacyPolicyLayout.setOnClickListener(v -> {
             // Handle privacy policy action
-            Toast.makeText(UserSettingActivity.this, "Privacy Policy Clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UserSettingActivity.this, UserPrivacyPolicyActivity.class);
+            startActivity(intent);
         });
 
         ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
@@ -123,4 +164,5 @@ public class UserSettingActivity extends AppCompatActivity {
         });
         popupMenu.show();
     }
+
 }

@@ -22,5 +22,14 @@
             <item>Madiun</item>
             <item>Lampung</item>
         </string-array>
+    <string name="privacy_policy_text">
+    Welcome to TAHHU! Your privacy is important to us. This Privacy Policy explains:\n\n
+    - What information we collect\n
+    - How we use your information\n
+    - How you can access, update, or delete your information\n\n
+    By using our app, you agree to the collection and use of information as outlined in this policy.\n
+    If you have any questions, contact us at support@tahhu.com. Thank you for trusting TAHHU.
+</string>
+
 
 </resources>

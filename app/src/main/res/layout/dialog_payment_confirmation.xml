@@ -27,7 +27,7 @@
         android:layout_marginTop="16dp"
         android:text="Order Successfully Placed!"
         android:textSize="18sp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/googlesans_medium"
         android:textColor="@android:color/black"
         android:gravity="center"
         android:textAlignment="center" />
@@ -40,7 +40,7 @@
         android:layout_marginTop="8dp"
         android:text="Thank you for your purchase. You can download your invoice below or return to the homepage."
         android:textSize="14sp"
-        android:fontFamily="@font/poppins_regular"
+        android:fontFamily="@font/googlesans_medium"
         android:textColor="@color/gray"
         android:gravity="center"
         android:textAlignment="center" />
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/successGreen"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/googlesans_medium"
         android:text="Download Invoice"
         android:textColor="@android:color/white" />
 
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/buttonColor"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/googlesans_medium"
         android:text="Back to Home"
         android:textColor="@android:color/white" />
 

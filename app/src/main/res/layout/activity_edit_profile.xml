@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="@color/accentColor">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:tint="@color/white"
+            android:src="@drawable/left"
+            android:contentDescription="Back Icon"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:textSize="20sp"
+            android:layout_marginEnd="40dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:fontFamily="@font/googlesans_medium" />
+    </LinearLayout>
+
+    <!-- User Icon and Edit Profile -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/accentColor"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_user1"
+            android:contentDescription="User Icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/googlesans_medium"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Input Fields -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_whitecorner"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="First Name"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_standard"/>
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jony"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Last Name"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="@dimen/margin_standard"/>
+
+        <EditText
+            android:id="@+id/edit_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Don"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="@dimen/margin_standard"/>
+
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="tahhu@mail.com"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:backgroundTint="@color/accentColor"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

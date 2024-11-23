@@ -69,7 +69,6 @@
                     tools:src="@drawable/stan" />
 
 
-
                 <LinearLayout
                     android:id="@+id/linearLayout5"
                     android:layout_width="match_parent"
@@ -86,7 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Deskripsi Product"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -96,9 +95,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="descripsi"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/googlesans_regular"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18dp"
+                        android:textAlignment="viewStart"
+                        android:justificationMode="inter_word" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -118,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="4,6K Sold"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
@@ -133,6 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.5"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/accent"
                         android:textSize="18dp" />
                 </LinearLayout>
@@ -163,6 +166,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:text="Seller"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
@@ -200,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nama Prduct"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/black"
                         android:textSize="20dp" />
 
@@ -208,7 +212,7 @@
                         android:id="@+id/productPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
+                        android:fontFamily="@font/googlesans_medium"
                         android:text="Rp."
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -232,7 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/googlesans_medium"
             android:layout_marginBottom="24dp"
             android:text="Add To Cart" />
 

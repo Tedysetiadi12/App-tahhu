@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
                         android:text="Hi, Zusfan"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/googlesans_medium"
                         android:textColor="@color/white"
                         android:textSize="20dp"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -45,7 +45,7 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/googlesans_medium"
                     android:background="@drawable/rounded_edittext"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="24dp"
@@ -56,7 +56,7 @@
                     android:padding="10dp"
                     android:textColorHint="@color/card_background"
                     android:layout_marginBottom="24dp"
-                    android:hint="Search anynithing . . . ." />
+                    android:hint="Search anything . . . ." />
 
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/googlesans_medium"
                         android:text="Market"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -138,7 +138,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/googlesans_medium"
                         android:text="Finance"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -177,8 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Ride"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Ride"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -217,8 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Uco"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Uco"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -264,8 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Cctv"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Cctv"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -302,8 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Tv"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Tv"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -341,8 +337,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Food"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Food"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -382,8 +377,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Scurity"
+                        android:fontFamily="@font/googlesans_medium"                        android:text="Scurity"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -434,7 +428,7 @@
                 android:id="@+id/vocher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/googlesans_medium"
                 android:text="Voucher"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
@@ -474,7 +468,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
+                            android:fontFamily="@font/googlesans_medium"
                             android:gravity="center"
                             android:text="Cek Free Internet"
                             android:textColor="@color/white"
@@ -507,7 +501,7 @@
                 android:id="@+id/productTexts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/googlesans_medium"
                 android:text="Chanel Radio"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
@@ -564,8 +558,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/title_margin_top"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="SWADESI STREAMING"
+                                android:fontFamily="@font/googlesans_medium"                                android:text="SWADESI STREAMING"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/title_text_size"
                                 android:textStyle="bold" />
@@ -574,8 +567,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/subtitle_margin_top"
-                                android:fontFamily="@font/poppins_bolditalic"
-                                android:text="RADIO SWADESI"
+                                android:fontFamily="@font/googlesans_medium"                                android:text="RADIO SWADESI"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/subtitle_text_size" />
                         </LinearLayout>
@@ -610,11 +602,11 @@
                 android:id="@+id/promo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/googlesans_medium"
                 android:text="Promo this day"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="18dp"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -646,8 +638,7 @@
                     android:id="@+id/productText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Product"
+                    android:fontFamily="@font/googlesans_medium"                    android:text="Product"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -658,8 +649,7 @@
                     android:id="@+id/all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="All"
+                    android:fontFamily="@font/googlesans_medium"                    android:text="All"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
