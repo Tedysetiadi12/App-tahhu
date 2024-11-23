@@ -11,8 +11,10 @@
         android:id="@+id/et_nominal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Amount"
         android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:hint="Enter Amount"
         android:background="@drawable/rounded_edittext"
         android:inputType="numberDecimal" />
 

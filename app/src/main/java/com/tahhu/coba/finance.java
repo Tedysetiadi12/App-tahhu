@@ -125,8 +125,8 @@ public class finance extends AppCompatActivity {
 
         double totalBalance = totalIncome - totalExpense;
         tvBalanceAmount.setText("Rp " + totalBalance);
-        tvBalanceIncome.setText("Pemasukan: Rp " + totalIncome);
-        tvBalanceExpense.setText("Pengeluaran: Rp " + totalExpense);
+        tvBalanceIncome.setText("Rp " + totalIncome);
+        tvBalanceExpense.setText("Rp " + totalExpense);
 
         // Pastikan kita menambahkan ke LinearLayout yang benar
         LinearLayout transactionContainer = findViewById(R.id.transaction_container);
