@@ -1,22 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Home Menu Item -->
     <item
         android:id="@+id/nav_home"
-        android:src="@drawable/home"
-        android:title="Home" />
+        android:icon="@drawable/home"
+        android:title="Settings" />
 
-    <!-- Transactions Menu Item -->
     <item
         android:id="@+id/nav_transactions"
-        android:src="@drawable/favorite"
-        android:title="Transactions" />
+        android:icon="@drawable/favorite"
+        android:title="Help" />
 
-    <!-- Profile Menu Item -->
     <item
         android:id="@+id/nav_profile"
-        android:src="@drawable/shoppingcart"
-        android:title="Cart" />
-
+        app:tint="#000"
+        android:icon="@drawable/profile"
+        android:title="Logout" />
 </menu>

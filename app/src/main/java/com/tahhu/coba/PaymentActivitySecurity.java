@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -59,6 +60,15 @@ public class PaymentActivitySecurity extends AppCompatActivity {
             }
 
                 showSuccessDialog();
+        });
+
+        // Inisialisasi btn_back
+        ImageView btnBack = findViewById(R.id.btn_back);
+
+        // Menangani klik pada tombol kembali
+        btnBack.setOnClickListener(v -> {
+            // Menyelesaikan aktivitas saat tombol kembali diklik
+            onBackPressed();
         });
     }
 

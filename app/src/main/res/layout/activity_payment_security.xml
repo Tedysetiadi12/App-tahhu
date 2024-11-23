@@ -18,7 +18,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/back_to_marketplace"
+            android:id="@+id/btn_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"

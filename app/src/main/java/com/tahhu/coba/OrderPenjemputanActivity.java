@@ -63,6 +63,12 @@ public class OrderPenjemputanActivity extends FragmentActivity implements OnMapR
                 showPopupMenu(v);
             }
         });
+
+        // Menangani klik pada tombol kembali
+        btnBack.setOnClickListener(v -> {
+            // Menyelesaikan aktivitas saat tombol kembali diklik
+            onBackPressed();
+        });
     }
 
     // Metode untuk menampilkan PopupMenu

@@ -180,7 +180,6 @@
                     android:hint="MM/YY"
                     android:padding="12dp" />
 
-
                 <!-- Security Code (CVV) -->
                 <EditText
                     android:id="@+id/editSecurityNumber"

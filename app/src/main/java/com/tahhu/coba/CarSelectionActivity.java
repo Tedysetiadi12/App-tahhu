@@ -6,6 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.ImageView;
+import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 public class CarSelectionActivity extends AppCompatActivity {
 
@@ -24,9 +28,9 @@ public class CarSelectionActivity extends AppCompatActivity {
 
         // Populate the list of bikes (you can replace this with your actual data)
         carList = new ArrayList<>();
-        carList.add(new Car("Mercedes Bens", 299.99, R.drawable.ic_cars));
-        carList.add(new Car("Inova reborn", 499.99, R.drawable.ic_cars));
-        carList.add(new Car("Avanza", 349.99, R.drawable.ic_cars));
+        carList.add(new Car("Mercedes Bens", 29999, R.drawable.ic_cars));
+        carList.add(new Car("Inova reborn", 49999, R.drawable.ic_cars));
+        carList.add(new Car("Avanza", 34999, R.drawable.ic_cars));
 
         // Inisialisasi RecyclerView
         recyclerView = findViewById(R.id.recyclerViewCars);
@@ -35,5 +39,42 @@ public class CarSelectionActivity extends AppCompatActivity {
         // Siapkan adapter dan kirim data ke adapter
         carAdapter = new CarAdapter(this, carList, address, destination);
         recyclerView.setAdapter(carAdapter);
+
+        // Inisialisasi btn_back
+        ImageView btnBack = findViewById(R.id.btn_back);
+
+        // Menangani klik pada tombol kembali
+        btnBack.setOnClickListener(v -> {
+            // Menyelesaikan aktivitas saat tombol kembali diklik
+            onBackPressed();
+        });
+
+        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        kebabIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.bottom_nav_menu);
+
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(CarSelectionActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_transactions) {
+                Toast.makeText(CarSelectionActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                Toast.makeText(CarSelectionActivity.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 }

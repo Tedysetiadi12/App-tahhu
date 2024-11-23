@@ -69,6 +69,15 @@ public class LokasiPenukaranActivity extends AppCompatActivity implements OnMapR
                 showPopupMenu(v);
             }
         });
+
+        // Inisialisasi btn_back
+        ImageView btnBack = findViewById(R.id.btn_back);
+
+        // Menangani klik pada tombol kembali
+        btnBack.setOnClickListener(v -> {
+            // Menyelesaikan aktivitas saat tombol kembali diklik
+            onBackPressed();
+        });
     }
 
     // Metode untuk menampilkan PopupMenu

@@ -47,6 +47,17 @@ public class finance extends AppCompatActivity {
 
         Button btnAddMoney = findViewById(R.id.btn_add_money);
         btnAddMoney.setOnClickListener(v -> showAddMoneyDialog());
+
+        // Tambahkan data statis
+        addDefaultTransactions();
+    }
+
+    private void addDefaultTransactions() {
+        // Tambahkan beberapa transaksi default
+        addTransactionCard("Income", 50000);  // Pemasukan
+        addTransactionCard("Expense", 20000); // Pengeluaran
+        addTransactionCard("Income", 30000);  // Pemasukan
+        addTransactionCard("Expense", 15000); // Pengeluaran
     }
 
     private void showAddMoneyDialog() {
@@ -114,8 +125,8 @@ public class finance extends AppCompatActivity {
 
         double totalBalance = totalIncome - totalExpense;
         tvBalanceAmount.setText("Rp " + totalBalance);
-        tvBalanceIncome.setText("Total Pemasukan: Rp " + totalIncome);
-        tvBalanceExpense.setText("Total Pengeluaran: Rp " + totalExpense);
+        tvBalanceIncome.setText("Pemasukan: Rp " + totalIncome);
+        tvBalanceExpense.setText("Pengeluaran: Rp " + totalExpense);
 
         // Pastikan kita menambahkan ke LinearLayout yang benar
         LinearLayout transactionContainer = findViewById(R.id.transaction_container);

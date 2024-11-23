@@ -37,7 +37,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
     public void onBindViewHolder(@NonNull BikeViewHolder holder, int position) {
         Bike bike = BikeList.get(position);
         holder.titleBike.setText(bike.getTitle());
-        holder.priceBike.setText("Price: Rp" + bike.getPrice());
+        holder.priceBike.setText("Rp" + bike.getPrice());
         holder.imageBike.setImageResource(bike.getImageResource());
 
         holder.btnRideNow.setOnClickListener(v -> {

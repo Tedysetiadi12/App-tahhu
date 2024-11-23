@@ -37,7 +37,7 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.PickupView
     public void onBindViewHolder(@NonNull PickupViewHolder holder, int position) {
         Pickup pickup = PickupList.get(position);
         holder.titlePickup.setText(pickup.getTitle());
-        holder.pricePickup.setText("Price: Rp" + pickup.getPrice());
+        holder.pricePickup.setText("Rp" + pickup.getPrice());
         holder.imagePickup.setImageResource(pickup.getImageResource());
 
         holder.btnRideNow.setOnClickListener(v -> {

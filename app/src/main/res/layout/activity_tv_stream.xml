@@ -8,7 +8,7 @@
 
     <!-- Header Title for the Survey Page -->
     <LinearLayout
-        android:id="@+id/back_beranda"
+        android:id="@+id/btn_back"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"

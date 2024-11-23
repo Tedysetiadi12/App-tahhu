@@ -1,15 +1,19 @@
 package com.tahhu.coba;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Handler;
 import android.app.Dialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+
 import java.util.List;
 
 public class PaymentActivityFood extends AppCompatActivity {
@@ -24,17 +28,9 @@ public class PaymentActivityFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_food);
 
-        tvFinalData = findViewById(R.id.tv_final_data);
         tvServicesFee = findViewById(R.id.tv_services_fee);
         tvFinalTotal = findViewById(R.id.tv_final_total);
-        ImageView back = findViewById(R.id.back_to_cekout);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), CheckoutActivityFood.class));
-            }
-        });
+        ImageView btnBack = findViewById(R.id.back_to_cekout);
 
         finalItems = getIntent().getParcelableArrayListExtra("finalItems");
         finalTotal = getIntent().getIntExtra("finalTotal", 0);
@@ -51,6 +47,13 @@ public class PaymentActivityFood extends AppCompatActivity {
                 Toast.makeText(PaymentActivityFood.this, "Tidak ada item untuk diproses.", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Menangani klik pada tombol kembali
+        btnBack.setOnClickListener(v -> {
+            // Menyelesaikan aktivitas saat tombol kembali diklik
+            onBackPressed();
+        });
+
 
     }
 
@@ -74,23 +77,78 @@ public class PaymentActivityFood extends AppCompatActivity {
         }, 2000); // Delay selama 2 detik
     }
 
-
     private void displayFinalData() {
-        StringBuilder dataBuilder = new StringBuilder();
-        int serviceFee = 30000;  // Set service fee amount
-        int totalWithServiceFee = finalTotal + serviceFee;  // Calculate the total including service fee
+        LinearLayout parentLayout = findViewById(R.id.parent_final_data); // LinearLayout untuk menampung item
+        parentLayout.removeAllViews(); // Kosongkan layout sebelumnya
+        int serviceFee = 30000;  // Set biaya layanan
+        int totalWithServiceFee = finalTotal + serviceFee;  // Hitung total dengan biaya layanan
 
-        // Display the items in the final list
         for (FoodItem item : finalItems) {
-            dataBuilder.append(item.getName()).append(" x").append(item.getQuantity())
-                    .append(" = Rp ").append(item.getPrice() * item.getQuantity()).append("\n");
+            // Layout horizontal untuk setiap item
+            LinearLayout itemLayout = new LinearLayout(this);
+            itemLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            itemLayout.setOrientation(LinearLayout.HORIZONTAL);
+            itemLayout.setPadding(16, 16, 16, 16);
+
+            // Tambahkan gambar makanan
+            ImageView itemImage = new ImageView(this);
+            itemImage.setLayoutParams(new LinearLayout.LayoutParams(100, 100)); // Ukuran gambar
+            itemImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            itemImage.setImageResource(item.getImageResId()); // Set gambar dari FoodItem
+            itemLayout.addView(itemImage);
+
+            // Layout vertikal untuk nama dan quantity
+            LinearLayout textLayout = new LinearLayout(this);
+            textLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1)); // Bobot 1 untuk memenuhi sisa ruang
+            textLayout.setOrientation(LinearLayout.VERTICAL);
+            textLayout.setPadding(16, 0, 0, 0); // Padding kiri
+
+            // Nama makanan
+            TextView itemName = new TextView(this);
+            itemName.setText(item.getName());
+            itemName.setTextSize(16);
+            itemName.setTextColor(getResources().getColor(R.color.black));
+            itemName.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            textLayout.addView(itemName);
+
+            // Quantity
+            TextView itemQuantity = new TextView(this);
+            itemQuantity.setText("x" + item.getQuantity());
+            itemQuantity.setTextSize(14);
+            itemQuantity.setTextColor(getResources().getColor(R.color.black));
+            itemQuantity.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            textLayout.addView(itemQuantity);
+
+            // Tambahkan layout teks ke layout item
+            itemLayout.addView(textLayout);
+
+            // Harga total di kanan
+            TextView priceText = new TextView(this);
+            priceText.setText("Rp " + (item.getPrice() * item.getQuantity()));
+            priceText.setTextSize(14);
+            priceText.setTextColor(getResources().getColor(R.color.black));
+            priceText.setTypeface(ResourcesCompat.getFont(this, R.font.poppins_regular));
+            priceText.setGravity(Gravity.END | Gravity.CENTER_VERTICAL); // Posisi kanan dan vertikal tengah
+            LinearLayout.LayoutParams priceParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            priceParams.gravity = Gravity.END; // Pastikan posisi di kanan
+            priceText.setLayoutParams(priceParams);
+
+            // Tambahkan harga ke layout item
+            itemLayout.addView(priceText);
+
+            // Tambahkan layout item ke parent layout
+            parentLayout.addView(itemLayout);
         }
 
-        // Set final data and service fee
-        tvFinalData.setText(dataBuilder.toString());
+        // Update biaya layanan dan total akhir
         tvServicesFee.setText("Rp " + serviceFee);
-
-        // Set the final total including the service fee
         tvFinalTotal.setText("Rp " + totalWithServiceFee);
     }
+
+
 }
