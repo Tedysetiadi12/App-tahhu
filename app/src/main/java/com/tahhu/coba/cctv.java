@@ -1,9 +1,11 @@
 package com.tahhu.coba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,7 @@ public class cctv extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         recyclerView = findViewById(R.id.recyclerView);
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        ImageView imageback = findViewById(R.id.imageViewBack);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,6 +48,13 @@ public class cctv extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
 
         loadData("Yogyakarta"); // Default wilayah Jogja
+
+        imageback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
     }
 
     private void setupData() {

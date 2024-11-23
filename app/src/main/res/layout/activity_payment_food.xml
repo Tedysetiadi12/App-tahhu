@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/back_to_marketplace"
+            android:id="@+id/back_to_cekout"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="@dimen/margin_standard"
@@ -33,8 +33,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
             android:gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:text="Payment Method"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -62,6 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="List chekout"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:padding="8dp" />
@@ -71,6 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Final Data"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:padding="8dp" />
 
@@ -79,7 +83,9 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Selected payment" />
 
             <RadioGroup
@@ -93,16 +99,22 @@
                     android:id="@+id/rb_credit_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Credit Card" />
                 <RadioButton
                     android:id="@+id/rb_bank_transfer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Bank Transfer" />
                 <RadioButton
                     android:id="@+id/rb_paypal"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="PayPal" />
             </RadioGroup>
 
@@ -125,7 +137,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Service Fee"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -133,6 +147,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 30,000"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -150,6 +166,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Total"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -157,6 +175,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 0"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -168,6 +188,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Confirm Payment"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
         </LinearLayout>

@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
+    android:padding="7dp"
+    android:layout_marginTop="5dp"
     android:backgroundTint="@color/white"
     app:cardElevation="4dp">
 
@@ -37,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transaction Name"
+                android:fontFamily="@font/poppins_regular"
                 android:textSize="16sp"
                 android:textColor="#000000" />
 

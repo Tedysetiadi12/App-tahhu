@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:text="Payment"
             android:textSize="20sp"
@@ -120,6 +120,8 @@
                         android:id="@+id/vehicleName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
                         android:text="Vehicle Name"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -128,6 +130,8 @@
                         android:id="@+id/vehiclePrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/black"
                         android:text="Rp 0.00"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -154,6 +158,8 @@
                     android:id="@+id/radioPayPal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="PayPal"
                     android:layout_marginBottom="8dp"/>
 
@@ -161,6 +167,8 @@
                     android:id="@+id/radioPayoneer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Payoneer"
                     android:layout_marginBottom="8dp" />
 
@@ -168,6 +176,8 @@
                     android:id="@+id/radioCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Card"
                     android:layout_marginBottom="8dp"/>
 

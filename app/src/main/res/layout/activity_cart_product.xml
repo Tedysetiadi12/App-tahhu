@@ -102,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Express Shipping - Rp 20,000"
                     android:padding="8dp" />
 
@@ -109,6 +110,7 @@
                     android:id="@+id/rb_nextday_shipping"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Next-Day Shipping - Rp 30,000"
                     android:padding="8dp" />

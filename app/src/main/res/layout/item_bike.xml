@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="12dp"
+    android:gravity="center"
     android:layout_marginBottom="8dp"
     android:background="@drawable/background_with_border">
 
@@ -28,7 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bike Name"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -37,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="Rp 50000"
             android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -45,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ride Now"
+        android:fontFamily="@font/poppins_regular"
         android:backgroundTint="@color/accentColor"
         android:textColor="#FFFFFF" />
 </LinearLayout>

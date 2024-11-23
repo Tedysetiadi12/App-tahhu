@@ -63,6 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Lengkap"
+                android:padding="10dp"
+                android:background="@drawable/rounded_edittext"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="12dp" />
 
@@ -71,6 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+                android:padding="10dp"
+                android:background="@drawable/rounded_edittext"
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="12dp" />
 
@@ -80,6 +84,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Alamat Lengkap"
                 android:inputType="textPostalAddress"
+                android:padding="10dp"
+                android:background="@drawable/rounded_edittext"
                 android:layout_marginBottom="16dp" />
 
             <!-- Payment Method Section -->
@@ -102,6 +108,8 @@
                     android:id="@+id/rb_paypal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="PayPal"
                     android:layout_marginBottom="8dp" />
 
@@ -109,6 +117,8 @@
                     android:id="@+id/rb_credit_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Kartu Kredit"
                     android:layout_marginBottom="8dp" />
 
@@ -116,6 +126,8 @@
                     android:id="@+id/rb_payoneer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Payoneer"
                     android:layout_marginBottom="16dp" />
             </RadioGroup>
@@ -127,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:text="Detail Pembayaran"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:textSize="16sp"
                 android:textColor="#000000"
                 android:layout_marginBottom="12dp" />
@@ -136,6 +149,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lama Waktu: "
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:layout_marginBottom="16dp" />
 
             <!-- Tombol Bayar -->
@@ -145,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Bayar Sekarang"
+                android:fontFamily="@font/poppins_semibold"
                 android:textColor="#FFFFFF"
                 android:padding="12dp" />
         </LinearLayout>

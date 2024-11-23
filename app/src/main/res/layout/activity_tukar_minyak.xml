@@ -56,6 +56,7 @@
             android:layout_height="wrap_content"
             android:text="Tukar Minyak Jelantah Anda"
             android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="#333333"
             android:layout_marginBottom="10dp"
             android:textStyle="bold"/>
@@ -64,8 +65,12 @@
             android:id="@+id/edtJumlahMinyak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Masukkan jumlah minyak jelantah (liter)"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Masukkan jumlah minyak jelantah (l)"
             android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="10dp"
             android:layout_marginBottom="10dp"/>
 
         <Spinner
@@ -81,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="* 1 liter = 1 poin penukaran"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="14sp"
             android:textColor="#555555"/>
 
@@ -97,7 +103,7 @@
             android:id="@+id/btnLihatLokasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#57654236"
+            android:backgroundTint="#57FF6428"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:text="Lihat Lokasi Penukaran Terdekat" />

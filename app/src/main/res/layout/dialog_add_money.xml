@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Amount"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
         android:inputType="numberDecimal" />
 
     <RadioGroup
@@ -25,6 +27,8 @@
             android:id="@+id/rb_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
             android:text="Income" />
 
         <RadioButton
@@ -32,6 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Expense"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+
             android:layout_marginStart="16dp" />
     </RadioGroup>
 
@@ -41,5 +48,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttonColor"
         android:text="Save Transaction"
+        android:textColor="@color/white"
         android:layout_marginTop="16dp" />
 </LinearLayout>

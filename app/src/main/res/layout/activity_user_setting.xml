@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:text="Setting"
             android:textSize="20sp"
@@ -77,6 +77,8 @@
                 android:layout_height="wrap_content"
                 android:text="User Name"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -95,6 +97,7 @@
                 android:layout_weight="1"
                 android:text="User settings"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:textSize="16sp"
                 android:layout_marginBottom="15dp"/>
 
@@ -120,6 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Change Password"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -151,6 +156,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Edit Profile"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -182,6 +189,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Add Payment Method"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -197,6 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+
                 android:gravity="center_vertical"
                 android:layout_marginBottom="25dp">
 
@@ -213,6 +223,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Push Notification"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <Switch
@@ -252,6 +264,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="About Us"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -282,6 +296,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Privacy Policy"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <ImageView

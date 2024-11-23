@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +45,14 @@ public class FoodActivity extends AppCompatActivity {
         View btnMinuman = findViewById(R.id.btn_minuman);
         View btnBuah = findViewById(R.id.btn_buah);
         View btnSnack = findViewById(R.id.btn_snack);
+        ImageView btnback = findViewById(R.id.beranda);
+
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
         View.OnClickListener categoryClickListener = v -> {
             // Atur ulang warna kategori sebelumnya

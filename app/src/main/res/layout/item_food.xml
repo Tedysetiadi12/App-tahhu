@@ -31,6 +31,7 @@
                 android:text="Food Name"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:paddingBottom="4dp" />
@@ -43,7 +44,8 @@
                 android:layout_height="wrap_content"
                 android:text="Time: 20 min"
                 android:textSize="14sp"
-                android:textColor="#757575" />
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#070707" />
 
             <!-- Harga -->
             <TextView
@@ -52,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="Rp 0"
                 android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingEnd="8dp"
                 android:gravity="end" />
 
@@ -63,6 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
             android:backgroundTint="@color/accentColor"
             android:layout_marginStart="16dp"/>
     </LinearLayout>

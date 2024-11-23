@@ -1,6 +1,8 @@
 package com.tahhu.coba;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +24,7 @@ public class CheckoutActivityFood extends AppCompatActivity {
         setContentView(R.layout.activity_checkout_food);
 
         recyclerView = findViewById(R.id.recyclerView_checkout);
+        ImageView back = findViewById(R.id.imageViewBack);
         tvTotal = findViewById(R.id.tv_total);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -41,6 +44,12 @@ public class CheckoutActivityFood extends AppCompatActivity {
             intent.putParcelableArrayListExtra("finalItems", new ArrayList<>(cartItems));
             intent.putExtra("finalTotal", totalPrice);
             startActivity(intent);
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FoodActivity.class));
+            }
         });
     }
 

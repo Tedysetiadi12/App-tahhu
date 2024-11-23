@@ -1,7 +1,9 @@
 package com.tahhu.coba;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -25,6 +27,14 @@ public class PaymentActivityFood extends AppCompatActivity {
         tvFinalData = findViewById(R.id.tv_final_data);
         tvServicesFee = findViewById(R.id.tv_services_fee);
         tvFinalTotal = findViewById(R.id.tv_final_total);
+        ImageView back = findViewById(R.id.back_to_cekout);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CheckoutActivityFood.class));
+            }
+        });
 
         finalItems = getIntent().getParcelableArrayListExtra("finalItems");
         finalTotal = getIntent().getIntExtra("finalTotal", 0);

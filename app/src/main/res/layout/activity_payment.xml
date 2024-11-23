@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_bold"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:text="Payment method"
             android:textSize="20sp"
@@ -60,6 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select payment method:"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,18 +80,24 @@
                     android:id="@+id/rb_credit_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Credit Card" />
 
                 <RadioButton
                     android:id="@+id/rb_bank_transfer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="Bank Transfer" />
 
                 <RadioButton
                     android:id="@+id/rb_paypal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
                     android:text="PayPal" />
             </RadioGroup>
 
@@ -99,6 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Or input new card"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/radioGroupPayment" />
@@ -111,6 +121,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Card Number"
                 android:textColor="@color/gray"
+                android:fontFamily="@font/poppins_regular"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title" />
@@ -215,6 +226,8 @@
                 android:layout_marginTop="16dp"
                 android:text="Order Summary"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editCardHolder" />
 
@@ -225,6 +238,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Totals"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview3" />
 
@@ -233,6 +248,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:text="Rp 0.00"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview3" />
@@ -245,6 +262,7 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Proceed Payment"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/totalPricePayment" />
