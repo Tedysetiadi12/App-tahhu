@@ -50,11 +50,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/googlesans_medium"
+            android:fontFamily="@font/googlesans_bold"
             android:gravity="center"
             android:text="Ride Sharing"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"/>
 
         <ImageView
@@ -72,7 +71,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
         android:background="@drawable/rounded_top_border"
         app:layout_constraintTop_toBottomOf="@id/mapContainer"
         app:layout_constraintBottom_toTopOf="@id/bottomLayout"
@@ -80,12 +78,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Pickup Location -->
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_gravity="center"
-            android:layout_width="40dp"
-            android:layout_height="80dp"
-            app:srcCompat="@drawable/arah" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -93,17 +85,29 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mau pergi atau kirim barang saja?"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:fontFamily="@font/googlesans_medium"
+                android:gravity="center"/>
+
             <EditText
                 android:id="@+id/pickupLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter pickup location"
+                android:hint="Masukkan alamat rumah"
                 android:drawableStart="@drawable/location"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
-                android:fontFamily="@font/googlesans_medium"
+                android:fontFamily="@font/googlesans_regular"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/gray"
                 android:background="@drawable/rounded_edittext"
                 android:layout_marginBottom="8dp"/>
 
@@ -112,12 +116,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Masukan Tujuan Anda "
-                android:fontFamily="@font/googlesans_medium"
+                android:fontFamily="@font/googlesans_regular"
                 android:drawableStart="@drawable/placeholder"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/gray"
                 android:background="@drawable/rounded_edittext"/>
         </LinearLayout>
 
@@ -140,11 +144,11 @@
             android:id="@+id/requestRideButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Confirm Location"
+            android:text="Konfirmasi lokasi"
             android:fontFamily="@font/googlesans_medium"
             android:backgroundTint="@color/buttonColor"
             android:textColor="@android:color/white"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="0dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

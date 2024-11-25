@@ -107,7 +107,6 @@
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:layout_marginBottom="4dp" />
-
                     </LinearLayout>
 
                     <!-- User email -->
@@ -120,9 +119,7 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
-
             </LinearLayout>
-
 
             <!-- List of user settings options -->
                 <LinearLayout

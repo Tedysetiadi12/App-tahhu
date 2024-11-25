@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -46,142 +45,252 @@
             app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <!-- Tukar Minyak Jelantah -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_tukar_minyak"
+    <!-- Scrollable Content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        android:backgroundTint="@color/white"
-        app:cardElevation="6dp"
+        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@id/header_uco"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/tukar_minyak"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_cars" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Card Mobil -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_tukar_minyak"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Mobil"
-                android:textSize="16sp"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/black" />
+                app:cardCornerRadius="18dp"
+                android:backgroundTint="@color/white">
 
-            <Button
-                android:id="@+id/optionMobil"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_car1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mobil"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/googlesans_medium"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    app:tint="#81C784"
+                                    android:layout_gravity="start"
+                                    android:src="@drawable/ic_discount" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:text="Discount up to 50%"
+                                    android:textSize="16sp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:textColor="#81C784" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/optionMobil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/buttonColor"
+                            android:text="Ayo Pesan"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card Motor -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_lokasi_penukaran"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/buttonColor"
-                android:text="Ayo Pesan"
-                android:textColor="@color/white" />
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="18dp"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/lokasi_penukaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_bike1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Motor"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/googlesans_medium"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    app:tint="#81C784"
+                                    android:layout_gravity="start"
+                                    android:src="@drawable/ic_discount" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:text="Discount up to 40%"
+                                    android:textSize="16sp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:textColor="#81C784" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/optionMotor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/buttonColor"
+                            android:text="Ayo Pesan"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card Tukar Barang -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_order_penjemputan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="18dp"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/order_penjemputan"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_change1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kirim Barang"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/googlesans_medium"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    app:tint="#81C784"
+                                    android:layout_gravity="start"
+                                    android:src="@drawable/ic_discount" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:text="Discount up to 60%"
+                                    android:textSize="16sp"
+                                    android:fontFamily="@font/googlesans_medium"
+                                    android:textColor="#81C784" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/optionPickup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/buttonColor"
+                            android:text="Ayo Pesan"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Lokasi Penukaran -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_lokasi_penukaran"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/card_tukar_minyak"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:id="@+id/lokasi_penukaran"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_motors" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Motor"
-                android:textSize="16sp"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/optionMotor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/buttonColor"
-                android:text="Ayo Pesan"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Order Penjemputan -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_order_penjemputan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/card_lokasi_penukaran"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:id="@+id/order_penjemputan"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_tukar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Tukar barang"
-                android:textSize="16sp"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/optionPickup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/buttonColor"
-                android:text="Ayo Pesan"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,10 +57,6 @@
         <activity android:name=".PaymentActivityFood"
             android:exported="false"/>
 
-        <activity
-            android:name=".PickupSelectionActivity"
-            android:exported="false" />
-
         <activity android:name=".PaymentActivityRideSharing"
             android:exported="false" />
 
@@ -115,12 +111,24 @@
             android:name=".Survey"
             android:exported="false" />
         <activity android:name=".TVStreamingActivity" />
+
         <activity
             android:name=".finance"
             android:exported="false" />
+
+        <activity android:name=".KirimBarangActivity"
+            android:exported="false" />
+
+        <activity android:name=".PaymentKirimBarangActivity"
+            android:exported="false" />
+
         <activity
             android:name=".UcoActivity"
             android:exported="false" />
+
+        <activity android:name=".PaymentUcoActivity"
+            android:exported="false" />
+
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
         <activity android:name=".OrderPenjemputanActivity" /> <!-- <activity android:name=".CartActivity" /> -->

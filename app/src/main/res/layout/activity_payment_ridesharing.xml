@@ -64,6 +64,13 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Alamat Rumah"
+                android:textSize="18dp"/>
+
             <!-- Pickup Location -->
             <TextView
                 android:id="@+id/addressTextView"
@@ -71,14 +78,21 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/location"
-                android:fontFamily="@font/googlesans_medium"
+                android:fontFamily="@font/googlesans_regular"
                 android:drawablePadding="8dp"
                 android:textSize="@dimen/margin_standard"
                 android:hint="Address"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Alamat Tujuan"
+                android:textSize="18dp"/>
 
             <!-- Destination Address -->
             <TextView
@@ -87,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/placeholder"
-                android:fontFamily="@font/googlesans_medium"
+                android:fontFamily="@font/googlesans_regular"
                 android:textSize="@dimen/margin_standard"
                 android:drawablePadding="8dp"
                 android:hint="Destination"
@@ -100,21 +114,22 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+                android:backgroundTint="@color/black"
+                android:layout_margin="5dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp">
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/vehicleImage"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="90dp"
+                        android:layout_height="70dp"
                         android:layout_marginEnd="12dp"
                         android:scaleType="centerCrop"/>
 
@@ -131,17 +146,25 @@
                             android:fontFamily="@font/googlesans_medium"
                             android:textColor="@color/black"
                             android:text="Vehicle Name"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textSize="16sp"/>
 
-                        <TextView
-                            android:id="@+id/vehiclePrice"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/googlesans_medium"
-                            android:textColor="@color/gray"
-                            android:text="Rp 0.00"
-                            android:textSize="14sp" />
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/detailVehicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_regular"
+                                android:textColor="@color/black"
+                                android:text="Detail"
+                                android:layout_weight="1"
+                                android:textSize="16sp"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -151,44 +174,45 @@
                 android:id="@+id/paymentMethodGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp">
 
                 <TextView
                     android:id="@+id/selectedPaymentTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selected payment"
-                    android:textStyle="bold"
+                    android:text="Pilih Metode Pembayaran"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/googlesans_medium"
                     android:layout_marginBottom="10dp"
                     android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/radioPayPal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:layout_height="40dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
-                    android:text="PayPal"
-                    android:layout_marginBottom="8dp"/>
+                    android:text="PayPal"/>
 
                 <RadioButton
                     android:id="@+id/radioPayoneer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
-                    android:text="Payoneer"
-                    android:layout_marginBottom="8dp" />
+                    android:textSize="16sp"
+                    android:text="Payoneer"/>
 
                 <RadioButton
                     android:id="@+id/radioCard"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
-                    android:text="Card"
-                    android:layout_marginBottom="8dp"/>
+                    android:textSize="16sp"
+                    android:text="Card"/>
 
             </RadioGroup>
 
@@ -200,7 +224,7 @@
                 android:text="Or input new card"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
-                android:textStyle="bold"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/radioGroupPayment" />
 
@@ -333,17 +357,18 @@
                     android:fontFamily="@font/googlesans_medium"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:text="Fee Services" />
+                    android:text="Biaya Pokok" />
 
                 <TextView
-                    android:id="@+id/feeService"
+                    android:id="@+id/vehiclePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
-                    android:text="Rp " />
+                    android:text="Rp "
+                    android:textSize="18sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -356,13 +381,37 @@
                     android:fontFamily="@font/googlesans_medium"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:text="Totals" />
+                    android:text="Biaya Tambahan" />
+
+                <TextView
+                    android:id="@+id/feeService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Rp " />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="Total Harga" />
 
                 <TextView
                     android:id="@+id/totalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:fontFamily="@font/googlesans_regular"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Rp " />
@@ -375,7 +424,7 @@
                 android:fontFamily="@font/googlesans_medium"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
-                android:text="Confirm Payment"
+                android:text="Konfirmasi Pembayaran"
                 android:layout_marginTop="16dp"
                 android:textColor="#FFFFFF" />
         </LinearLayout>

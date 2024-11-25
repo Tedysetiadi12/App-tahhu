@@ -1,5 +1,6 @@
 package com.tahhu.coba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,9 +16,8 @@ import com.tahhu.coba.R;
 public class TukarMinyakActivity extends AppCompatActivity {
 
     private EditText edtJumlahMinyak;
-    private Spinner spinnerKategoriTukar;
+    private Spinner spinnerKategoriTukar, spinnerLihatLokasi;
     private Button btnTukar;
-    private Button btnLihatLokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +28,13 @@ public class TukarMinyakActivity extends AppCompatActivity {
         edtJumlahMinyak = findViewById(R.id.edtJumlahMinyak);
         spinnerKategoriTukar = findViewById(R.id.spinnerKategoriTukar);
         btnTukar = findViewById(R.id.btnTukar);
-        btnLihatLokasi = findViewById(R.id.btnLihatLokasi);
+        spinnerLihatLokasi = findViewById(R.id.spinnerLihatLokasi);
 
         // Listener untuk Button Tukar
         btnTukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Validasi input jumlah minyak
+                // Validasi input
                 String jumlahMinyakText = edtJumlahMinyak.getText().toString();
                 if (jumlahMinyakText.isEmpty()) {
                     Toast.makeText(TukarMinyakActivity.this, "Masukkan jumlah minyak terlebih dahulu", Toast.LENGTH_SHORT).show();
@@ -47,23 +47,32 @@ public class TukarMinyakActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Ambil kategori yang dipilih dari Spinner
                 String kategoriTukar = spinnerKategoriTukar.getSelectedItem().toString();
-                // Implementasikan logika tukar minyak berdasarkan jumlah dan kategori
-                // Misalnya: menampilkan pesan konfirmasi
-                Toast.makeText(TukarMinyakActivity.this, "Tukar " + jumlahMinyak + " liter minyak untuk kategori: " + kategoriTukar, Toast.LENGTH_LONG).show();
+                String lokasi = spinnerLihatLokasi.getSelectedItem().toString();
+
+                if (kategoriTukar.isEmpty() || lokasi.isEmpty()) {
+                    Toast.makeText(TukarMinyakActivity.this, "Pilih kategori dan lokasi terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Hitung jumlah minyak yang valid berdasarkan rasio 2:1
+                int jumlahMinyakValid = (int) Math.floor(jumlahMinyak / 2); // Pembulatan ke bawah
+
+                if (jumlahMinyakValid <= 0) {
+                    Toast.makeText(TukarMinyakActivity.this, "Jumlah minyak terlalu sedikit untuk ditukar", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Pindah ke PaymentUcoActivity
+                Intent intent = new Intent(TukarMinyakActivity.this, PaymentUcoActivity.class);
+                intent.putExtra("jumlahMinyak", String.valueOf(jumlahMinyakValid)); // Kirim hasil yang valid
+                intent.putExtra("kategoriTukar", kategoriTukar);
+                intent.putExtra("lokasi", lokasi);
+                startActivity(intent);
             }
         });
 
-        // Listener untuk Button Lihat Lokasi
-        btnLihatLokasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Implementasikan logika untuk melihat lokasi penukaran terdekat
-                // Misalnya, navigasi ke activity lain atau buka peta
-                Toast.makeText(TukarMinyakActivity.this, "Menampilkan lokasi penukaran terdekat", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
         kebabIcon.setOnClickListener(new View.OnClickListener() {

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PaymentActivityRideSharing extends AppCompatActivity {
 
-    private TextView addressTextView, destinationTextView, vehicleNameTextView, vehiclePriceTextView, totalPriceTextView, feeService;
+    private TextView addressTextView, destinationTextView, vehicleNameTextView, vehiclePriceTextView, totalPriceTextView, feeService, detailVehicleView;
     private ImageView vehicleImageView;
     private RadioGroup paymentMethodGroup;
     private Button confirmPaymentButton;
@@ -30,6 +30,7 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         vehicleNameTextView = findViewById(R.id.vehicleName);
         vehiclePriceTextView = findViewById(R.id.vehiclePrice);
         vehicleImageView = findViewById(R.id.vehicleImage);
+        detailVehicleView = findViewById(R.id.detailVehicle);
         addressTextView = findViewById(R.id.addressTextView);
         destinationTextView = findViewById(R.id.destinationTextView);
         paymentMethodGroup = findViewById(R.id.paymentMethodGroup);
@@ -37,10 +38,10 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         feeService = findViewById(R.id.feeService);
 
         // Mengambil data dari Intent
-
         String vehicleName = getIntent().getStringExtra("selected_vehicle_name");
-        double vehiclePrice = getIntent().getDoubleExtra("selected_vehicle_price", 0.0);
+        double vehiclePrice = getIntent().getDoubleExtra("selected_vehicle_price", 0);
         int vehicleImageResId = getIntent().getIntExtra("selected_vehicle_image_res_id", R.drawable.home);
+        String detailVehicle = getIntent().getStringExtra("selected_vehicle_detail");
         String address = getIntent().getStringExtra("address");
         String destination = getIntent().getStringExtra("destination");
         double serviceFee = 20000;  // Set biaya layanan
@@ -49,13 +50,14 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
 
         // Menampilkan data yang diterima pada TextView
         vehicleNameTextView.setText(vehicleName);
-        vehiclePriceTextView.setText(String.format("Rp %.2f", vehiclePrice));
+        vehiclePriceTextView.setText(("Rp. " + vehiclePrice));
         vehicleImageView.setImageResource(vehicleImageResId);
+        detailVehicleView.setText(detailVehicle);
         addressTextView.setText(address);
         destinationTextView.setText(destination);
 
-        feeService.setText("Rp " + serviceFee);
-        totalPriceTextView.setText("Rp " + totalWithServiceFee);
+        feeService.setText("Rp. " + serviceFee);
+        totalPriceTextView.setText("Rp. " + totalWithServiceFee);
 
         // Konfirmasi pembayaran
         Button btnConfirm = findViewById(R.id.confirmPaymentButton);

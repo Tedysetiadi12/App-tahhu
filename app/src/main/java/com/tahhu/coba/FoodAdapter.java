@@ -56,8 +56,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         TextView nameTextView;
         TextView priceTextView;
         TextView cookingTimeTextView;
-        ImageView foodImageView;
-        Button orderButton;
+        ImageView foodImageView, orderButton;
+//        Button orderButton;
 
         public FoodViewHolder(View itemView) {
             super(itemView);

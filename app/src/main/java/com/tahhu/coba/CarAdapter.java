@@ -38,7 +38,8 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     public void onBindViewHolder(@NonNull CarViewHolder holder, int position) {
         Car car = carList.get(position);
         holder.titleCar.setText(car.getTitle());
-        holder.priceCar.setText("Rp" + car.getPrice());
+        holder.priceCar.setText("Rp. " + car.getPrice());
+        holder.detailCar.setText(car.getDetail());
         holder.imageCar.setImageResource(car.getimageResource());
 
         holder.btnRideNow.setOnClickListener(v -> {
@@ -46,6 +47,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             Intent intent = new Intent(context, PaymentActivityRideSharing.class);
             intent.putExtra("selected_vehicle_name", car.getTitle());
             intent.putExtra("selected_vehicle_price", car.getPrice());
+            intent.putExtra("selected_vehicle_detail", car.getDetail());
             intent.putExtra("selected_vehicle_image_res_id", car.getimageResource());
             intent.putExtra("address", address);
             intent.putExtra("destination", destination);
@@ -60,7 +62,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     public static class CarViewHolder extends RecyclerView.ViewHolder {
         ImageView imageCar;
-        TextView titleCar, priceCar;
+        TextView titleCar, priceCar, detailCar;
         Button btnRideNow;
 
         public CarViewHolder(@NonNull View itemView) {
@@ -68,6 +70,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             imageCar = itemView.findViewById(R.id.imageCar);
             titleCar = itemView.findViewById(R.id.titleCar);
             priceCar = itemView.findViewById(R.id.priceCar);
+            detailCar = itemView.findViewById(R.id.detailCar);
             btnRideNow = itemView.findViewById(R.id.btnRideNow);
         }
     }

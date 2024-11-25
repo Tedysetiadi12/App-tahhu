@@ -8,6 +8,10 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UcoActivity extends AppCompatActivity {
     @Override
@@ -34,26 +38,6 @@ public class UcoActivity extends AppCompatActivity {
             }
         });
 
-        // Tombol Lokasi Penukaran
-        Button btnLokasiPenukaran = findViewById(R.id.btn_lokasi_penukaran);
-        btnLokasiPenukaran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UcoActivity.this, LokasiPenukaranActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Tombol Order Penjemputan
-        Button btnOrderPenjemputan = findViewById(R.id.btn_order_penjemputan);
-        btnOrderPenjemputan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UcoActivity.this, OrderPenjemputanActivity.class);
-                startActivity(intent);
-            }
-        });
-
         ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
         kebabIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +45,15 @@ public class UcoActivity extends AppCompatActivity {
                 showPopupMenu(v);
             }
         });
+
+        ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
+        // Membuat data untuk slide
+        List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1"));
+        // Set adapter ke ViewPager2
+        SlideAdapter adapterslids = new SlideAdapter(slideItemss);
+        viewPager3.setAdapter(adapterslids);
+
     }
 
     // Metode untuk menampilkan PopupMenu

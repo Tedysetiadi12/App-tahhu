@@ -55,7 +55,7 @@ public class SelectionTransport extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Arahkan ke PickupSelectionActivity dan kirimkan data yang diterima
-                Intent intent = new Intent(SelectionTransport.this, PickupSelectionActivity.class);
+                Intent intent = new Intent(SelectionTransport.this, KirimBarangActivity.class);
                 intent.putExtra("address", addressFromPreviousActivity);
                 intent.putExtra("destination", destinationFromPreviousActivity);
                 startActivity(intent);

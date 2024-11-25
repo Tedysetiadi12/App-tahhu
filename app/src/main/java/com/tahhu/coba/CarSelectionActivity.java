@@ -28,9 +28,16 @@ public class CarSelectionActivity extends AppCompatActivity {
 
         // Populate the list of bikes (you can replace this with your actual data)
         carList = new ArrayList<>();
-        carList.add(new Car("Mercedes Bens", 29999, R.drawable.ic_cars));
-        carList.add(new Car("Inova reborn", 49999, R.drawable.ic_cars));
-        carList.add(new Car("Avanza", 34999, R.drawable.ic_cars));
+        carList.add(new Car("Mercedes Bens", 29999,"4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Inova reborn", 49999, "4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Avanza", 34999, "4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Kijang", 29999,"4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Daihatsu", 49999, "4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Honda Supra", 34999, "4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Lamborgini", 29999,"4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Panther", 49999, "4 Penumpang" ,R.drawable.ic_carnew));
+        carList.add(new Car("Pajero", 34999, "4 Penumpang" ,R.drawable.ic_carnew));
+
 
         // Inisialisasi RecyclerView
         recyclerView = findViewById(R.id.recyclerViewCars);

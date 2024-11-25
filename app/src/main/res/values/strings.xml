@@ -3,18 +3,28 @@
     <string name="search_icon">Search icon</string>
     <string name="kategori_prompt">Pilih Kategori Penukaran</string>
     <!-- Array untuk Spinner kategori penukaran -->
-    <string-array name="kategori_penukaran">
-        <item>Hadiah A</item>
-        <item>Hadiah B</item>
-        <item>Hadiah C</item>
-        <item>Voucher</item>
-        <item>Lainnya</item>
+    <string-array name="ready_stock">
+        <item>Minyak Sunco</item>
+        <item>Minyak Sania</item>
+        <item>Minyak Tropical</item>
+        <item>Minyak Fortune</item>
+        <item>Minyak Bimoli</item>
     </string-array>
+
+    <string name="lokasi_prompt">Pilih Lokasi Terdekat</string>
+    <string-array name="lokasi_terdekat">
+        <item>Jl. Malioboro</item>
+        <item>Jl. Mayden Sutomo</item>
+        <item>Jl. Wr. Supratman</item>
+        <item>Jl. Lingkar Utara</item>
+        <item>Jl. Lingkar Selatan</item>
+        <item>Jl. Sumoharjo</item>
+    </string-array>
+
     <string name="title_activity_full_screen">FullScreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-
-        <string-array name="region_array">
+    <string-array name="region_array">
             <item>Yogyakarta</item>
             <item>Jakarta</item>
             <item>Klaten</item>

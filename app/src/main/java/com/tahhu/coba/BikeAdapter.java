@@ -37,7 +37,8 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
     public void onBindViewHolder(@NonNull BikeViewHolder holder, int position) {
         Bike bike = BikeList.get(position);
         holder.titleBike.setText(bike.getTitle());
-        holder.priceBike.setText("Rp" + bike.getPrice());
+        holder.priceBike.setText("Rp. " + bike.getPrice());
+        holder.detailBike.setText(bike.getDetail());
         holder.imageBike.setImageResource(bike.getImageResource());
 
         holder.btnRideNow.setOnClickListener(v -> {
@@ -46,6 +47,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
             intent.putExtra("selected_vehicle_image_res_id", bike.getImageResource());
             intent.putExtra("selected_vehicle_name", bike.getTitle());
             intent.putExtra("selected_vehicle_price", bike.getPrice());
+            intent.putExtra("selected_vehicle_detail", bike.getDetail());
             intent.putExtra("address", address);
             intent.putExtra("destination", destination);
             context.startActivity(intent);
@@ -59,7 +61,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
 
     public static class BikeViewHolder extends RecyclerView.ViewHolder {  // Pastikan nama kelas sesuai
         ImageView imageBike;
-        TextView titleBike, priceBike;
+        TextView titleBike, priceBike, detailBike;
         Button btnRideNow;
 
         public BikeViewHolder(@NonNull View itemView) {
@@ -67,6 +69,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
             imageBike = itemView.findViewById(R.id.imageBike);
             titleBike = itemView.findViewById(R.id.titleBike);
             priceBike = itemView.findViewById(R.id.priceBike);
+            detailBike = itemView.findViewById(R.id.detailBike);
             btnRideNow = itemView.findViewById(R.id.btnRideNow);
         }
     }

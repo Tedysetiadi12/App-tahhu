@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".rideSharing">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/back_beranda"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/accentColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/left"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/googlesans_medium"
+            android:gravity="center"
+            android:text="Payment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/btn_titiktiga"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/kebab"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/back_beranda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Alamat Pengirim"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:drawableStart="@drawable/location"
+            android:fontFamily="@font/googlesans_regular"
+            android:drawablePadding="8dp"
+            android:padding="10dp"
+            android:textSize="@dimen/margin_standard"
+            android:hint="Address"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Alamat Penerima"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/destinationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:drawableStart="@drawable/placeholder"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/googlesans_regular"
+            android:hint="Destination"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/margin_standard" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Pengirim"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/et_pengirim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:drawableStart="@drawable/pencil1"
+            android:drawableTint="@color/gray"
+            android:drawablePadding="8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/margin_standard"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Penerima"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/et_penerima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:drawableStart="@drawable/pencil1"
+            android:drawableTint="@color/gray"
+            android:drawablePadding="8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berat Barang (kg)"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/et_berat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:hint=""
+            android:textSize="@dimen/margin_standard"
+            android:drawableStart="@drawable/pencil1"
+            android:drawableTint="@color/gray"
+            android:drawablePadding="8dp"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="numberDecimal" />
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dimensi Barang (P x L x T cm)"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="18dp"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/et_dimensi"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:background="@drawable/rounded_edittext"-->
+<!--            android:layout_marginBottom="@dimen/margin_standard"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:hint=""-->
+<!--            android:inputType="text" />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih kategori pengiriman"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:id="@+id/rg_layanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_ekspres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Ekspres" />
+
+            <RadioButton
+                android:id="@+id/rb_reguler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Reguler" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_lanjut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:backgroundTint="@color/accentColor"
+            android:textColor="@color/white"
+            android:fontFamily="@font/googlesans_medium"
+            android:text="Selanjutnya" />
+    </LinearLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

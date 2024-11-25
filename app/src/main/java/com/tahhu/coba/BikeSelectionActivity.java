@@ -32,9 +32,12 @@ public class BikeSelectionActivity extends AppCompatActivity {
 
         // Populate the list of bikes (you can replace this with your actual data)
         bikeList = new ArrayList<>();
-        bikeList.add(new Bike("Vario 150", 29999, R.drawable.ic_motors));
-        bikeList.add(new Bike("Honda supra", 49999, R.drawable.ic_motors));
-        bikeList.add(new Bike("PCX 150", 34999, R.drawable.ic_motors));
+        bikeList.add(new Bike("Vario 150", 29999, "2 Penumpang", R.drawable.ic_motor1));
+        bikeList.add(new Bike("Honda supra", 49999,"2 Penumpang",  R.drawable.ic_motor1));
+        bikeList.add(new Bike("KLX 150", 34999, "2 Penumpang", R.drawable.ic_motor1));
+        bikeList.add(new Bike("Mio Sport", 29999, "2 Penumpang", R.drawable.ic_motor1));
+        bikeList.add(new Bike("NMax 150", 49999,"2 Penumpang",  R.drawable.ic_motor1));
+        bikeList.add(new Bike("PCX 150", 34999, "2 Penumpang", R.drawable.ic_motor1));
 
         // Set the adapter
         bikeAdapter = new BikeAdapter(this, bikeList, address, destination);

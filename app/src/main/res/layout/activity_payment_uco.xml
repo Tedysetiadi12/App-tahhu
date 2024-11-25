@@ -1,6 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/back_beranda"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/accentColor">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/left"
+            app:tint="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Payment"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:fontFamily="@font/googlesans_bold"/>
+
+        <ImageView
+            android:id="@+id/btn_titiktiga"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/kebab"
+            app:tint="#FFF"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans_medium"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Lokasi Penukaran"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/txtLokasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans_regular"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:textColor="@color/black"
+        android:text="jl."
+        android:textSize="16sp"
+        android:layout_marginBottom="@dimen/margin_standard" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans_medium"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Variant Penukaran"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/txtKategoriTukar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/googlesans_regular"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:text="sunco "
+        android:textSize="16sp"
+        android:layout_marginBottom="@dimen/margin_standard" />
+
+    <!-- Data yang diinputkan -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans_medium"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Jumlah minyak yang didapat"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtJumlahMinyak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:fontFamily="@font/googlesans_regular"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:textColor="@color/black"
+        android:text="1 liter"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+
+    <!-- Opsi Pembayaran -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Metode Pengambilan"
+        android:fontFamily="@font/googlesans_medium"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
+
+    <RadioGroup
+        android:id="@+id/rgPaymentOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans_regular"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbPickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Ambil Sendiri" />
+
+        <RadioButton
+            android:id="@+id/rbDelivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Diantar" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edtDeliveryAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan alamat Anda"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPostalAddress" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <!-- Label "Total Biaya" -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:fontFamily="@font/googlesans_medium"
+            android:text="Delivery charge"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+
+        <!-- Nilai "Rp. 10,000" -->
+        <TextView
+            android:id="@+id/txtService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:text="Rp. 0"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
+            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginBottom="20dp">
+
+        <!-- Label "Total Biaya" -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:text="Fee Service"
+            android:textSize="18sp"
+            android:fontFamily="@font/googlesans_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+
+        <!-- Nilai "Rp. 10,000" -->
+        <TextView
+            android:id="@+id/txtFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:text="Rp. 10,000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
+            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginBottom="20dp">
+
+        <!-- Label "Total Biaya" -->
+        <TextView
+            android:id="@+id/labelTotalFee"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:text="Total Biaya"
+            android:fontFamily="@font/googlesans_medium"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+
+        <!-- Nilai "Rp. 10,000" -->
+        <TextView
+            android:id="@+id/txtTotalFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:text="Rp. 10,000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
+            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
+
+    </LinearLayout>
+
+    <!-- Tombol Konfirmasi -->
+    <Button
+        android:id="@+id/btnConfirmPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:fontFamily="@font/googlesans_medium"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Konfirmasi Pembayaran"
+        android:textSize="16sp"
+        android:backgroundTint="@color/accentColor"
+        android:textColor="#FFFFFF" />
+</LinearLayout>
