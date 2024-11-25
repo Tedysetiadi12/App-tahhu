@@ -59,7 +59,7 @@ public class cctv extends AppCompatActivity {
 
     private void setupData() {
         List<CCTVData> jogjaList = new ArrayList<>();
-        jogjaList.add(new CCTVData("Simpang rejowinangun", "Yogyakarta", "https://livepantau.semarangkota.go.id/hls/414/4501/2024/8795266c-ebc3-4a95-8827-b82360403f0a_4501.m3u8"));
+        jogjaList.add(new CCTVData("Simpang rejowinangun", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_Simpang_Rejowinangun_View_Timur.stream/playlist.m3u8"));
         jogjaList.add(new CCTVData("Simpang Gayam", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_gayam.stream/playlist.m3u8"));
         jogjaList.add(new CCTVData("Nol KM", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_kmnol.stream/playlist.m3u8"));
         jogjaList.add(new CCTVData("Jalan Gajah", "Yogyakarta", "https://cctvjss.jogjakota.go.id/tps-liar/S3_Jalan_Gajah.stream/playlist.m3u8"));

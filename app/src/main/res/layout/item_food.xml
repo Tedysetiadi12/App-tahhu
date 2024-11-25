@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="@color/white"
-        android:gravity="center_vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_listfood"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:gravity="center_vertical">
 
         <!-- ImageView untuk gambar makanan -->
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/radicardproduct"
             android:id="@+id/iv_food_image"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/home" />
+            tools:srcCompat="@tools:sample/avatars"  />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="7dp"
             android:orientation="vertical">
 
             <!-- Nama makanan -->
@@ -30,13 +33,26 @@
                 android:layout_height="wrap_content"
                 android:text="Food Name"
                 android:textSize="18sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:fontFamily="@font/googlesans_medium"
                 android:maxLines="1"
-                android:ellipsize="end"
-                android:paddingBottom="4dp" />
+                android:ellipsize="end" />
 
 
+
+
+            <!-- Harga -->
+            <TextView
+                android:id="@+id/tv_food_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 0"
+                android:textSize="14sp"
+                android:textColor="@color/primaryDarkColor"
+                android:fontFamily="@font/googlesans_medium"
+                android:paddingEnd="8dp"
+                android:gravity="end" />
             <!-- Estimasi waktu masak -->
             <TextView
                 android:id="@+id/tv_food_time"
@@ -47,27 +63,48 @@
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="#070707" />
 
-            <!-- Harga -->
-            <TextView
-                android:id="@+id/tv_food_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp 0"
-                android:textSize="14sp"
-                android:fontFamily="@font/googlesans_medium"
-                android:paddingEnd="8dp"
-                android:gravity="end" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rating_star"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rating_star"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rating_star"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/rating_star"/>
+                <TextView
+                    android:id="@+id/retingfood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:gravity="bottom" />
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Tombol Order -->
-        <Button
+        <ImageButton
             android:id="@+id/btn_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:src="@drawable/plus"
+            app:tint="@color/accentColor"
+            android:layout_marginEnd="27dp"
             android:textColor="@color/white"
-            android:fontFamily="@font/googlesans_medium"
-            android:backgroundTint="@color/accentColor"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
+            android:background="@android:color/transparent"/>
+
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.tahhu.coba;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,11 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -25,7 +28,8 @@ public class FoodActivity extends AppCompatActivity {
     private Button btnCheckout;
     private List<FoodItem> cartItems = new ArrayList<>();
     private Map<String, List<FoodItem>> foodData = new HashMap<>();
-
+    private ViewPager2 bannerViewPager;
+    private BannerAdapter bannerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,19 @@ public class FoodActivity extends AppCompatActivity {
         View btnBuah = findViewById(R.id.btn_buah);
         View btnSnack = findViewById(R.id.btn_snack);
         ImageView btnback = findViewById(R.id.beranda);
+
+
+        List<Integer> bannerImages = List.of(
+                R.drawable.bannerfood,
+                R.drawable.bannerfood2
+        );
+
+        // Inisialisasi ViewPager2 untuk banner
+        bannerViewPager = findViewById(R.id.bannerViewPager);
+        BannerAdapter bannerAdapter = new BannerAdapter(bannerImages);
+        bannerViewPager.setAdapter(bannerAdapter);
+
+        autoSlideBanner();
 
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,8 +123,8 @@ public class FoodActivity extends AppCompatActivity {
         foodData.put("Makanan", List.of(
                 new FoodItem("Hamburger", 15000, R.drawable.hamburget, 15),
                 new FoodItem("Pizza", 20000, R.drawable.pizza, 20),
-                new FoodItem("HotDog", 15000, R.drawable.hamburget, 15),
-                new FoodItem("PizzaHut", 20000, R.drawable.pizza, 20)
+                new FoodItem("HotDog", 15000, R.drawable.hotdogs, 15),
+                new FoodItem("PizzaHut", 20000, R.drawable.pizzahut, 20)
         ));
         foodData.put("Minuman", List.of(
                 new FoodItem("Es Teh", 5000, R.drawable.drink1, 5),
@@ -174,4 +191,22 @@ public class FoodActivity extends AppCompatActivity {
         });
         popupMenu.show();
     }
+
+    private void autoSlideBanner() {
+        final int delayMillis = 3000; // Delay antara slide
+        final int[] currentItem = {0};
+
+        bannerViewPager.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (bannerViewPager.getAdapter() != null) {
+                    int itemCount = bannerViewPager.getAdapter().getItemCount();
+                    currentItem[0] = (currentItem[0] + 1) % itemCount;
+                    bannerViewPager.setCurrentItem(currentItem[0], true);
+                }
+                bannerViewPager.postDelayed(this, delayMillis);
+            }
+        }, delayMillis);
+    }
+
 }
