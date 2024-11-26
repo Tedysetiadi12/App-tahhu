@@ -77,7 +77,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Shipping Option"
+                android:text="Pilih Pengiriman"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/googlesans_medium"
@@ -94,7 +94,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_regular"
-                    android:text="Standard Shipping - Rp 10,000"
+                    android:textColor="@color/black"
+                    android:text="Regular - Rp 10,000"
                     android:padding="8dp" />
 
                 <RadioButton
@@ -103,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
-                    android:text="Express Shipping - Rp 20,000"
+                    android:text="Express - Rp 20,000"
                     android:padding="8dp" />
 
                 <RadioButton
@@ -112,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:fontFamily="@font/googlesans_regular"
-                    android:text="Next-Day Shipping - Rp 30,000"
+                    android:text="Next-Day - Rp 30,000"
                     android:padding="8dp" />
             </RadioGroup>
         </LinearLayout>
@@ -137,7 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Total Quantity"
+        android:text="Total Kuantitas"
         android:textColor="@color/white"
         android:fontFamily="@font/googlesans_regular"
         app:layout_constraintStart_toStartOf="parent"
@@ -260,7 +261,7 @@
         android:id="@+id/btnPayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select payment method"
+        android:text="konfirmasi metode pembayaran"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:backgroundTint="@color/buttonColor"

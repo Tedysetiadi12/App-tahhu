@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:background="@color/accentColor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:paddingStart="@dimen/margin_standard"
-        android:paddingEnd="@dimen/margin_standard">
+        android:paddingEnd="@dimen/margin_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/back_to_marketplace"
@@ -26,7 +25,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="@dimen/margin_standard"
             android:src="@drawable/left"
-            app:tint="#fff"/>
+            app:tint="#fff" />
 
         <!-- Teks "Your Cart" -->
         <TextView
@@ -36,9 +35,9 @@
             android:fontFamily="@font/googlesans_medium"
             android:gravity="center"
             android:text="Payment method"
+            android:textColor="#fff"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#fff" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView
@@ -59,8 +58,8 @@
                 android:id="@+id/textview1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select payment method:"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Pilih Metode Pembayaran"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -80,25 +79,25 @@
                     android:id="@+id/rb_credit_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColor="@color/black"
-                    android:text="Credit Card" />
+                    android:fontFamily="@font/googlesans_regular"
+                    android:text="Credit Card"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/rb_bank_transfer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColor="@color/black"
-                    android:text="Bank Transfer" />
+                    android:fontFamily="@font/googlesans_regular"
+                    android:text="Bank Transfer"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/rb_paypal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColor="@color/black"
-                    android:text="PayPal" />
+                    android:fontFamily="@font/googlesans_regular"
+                    android:text="PayPal"
+                    android:textColor="@color/black" />
             </RadioGroup>
 
             <TextView
@@ -106,8 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Or input new card"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Input Kartu Baru"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,10 +118,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Card Number"
+                android:fontFamily="@font/googlesans_regular"
+                android:text="Nomor Kartu"
                 android:textColor="@color/gray"
-                android:fontFamily="@font/googlesans_medium"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -132,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border_rating"
-                android:hint="Enter card number"
+                android:hint="Masukkan nomor kartu"
                 android:padding="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -143,8 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Exp. Date"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Tanggal Kadaluarsa"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -155,8 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Security code"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Kode Keamanan"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -178,8 +176,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_medium"
                     android:background="@drawable/border_rating"
+                    android:fontFamily="@font/googlesans_regular"
                     android:hint="MM/YY"
                     android:padding="12dp" />
 
@@ -190,8 +188,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_medium"
                     android:background="@drawable/border_rating"
+                    android:fontFamily="@font/googlesans_regular"
                     android:hint="CVV"
                     android:inputType="textPassword"
                     android:padding="12dp" />
@@ -203,8 +201,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Cardholder Name"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Nama Pemegang Kartu"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -216,9 +214,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border_rating"
-                android:hint="Enter cardholder name"
+                android:fontFamily="@font/googlesans_regular"
+                android:hint="Masukkan nama pemegang kartu"
                 android:padding="12dp"
-                android:fontFamily="@font/googlesans_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelCardHolder" />
@@ -229,9 +227,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Order Summary"
-                android:textStyle="bold"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Ringkasan Pemesanan"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editCardHolder" />
@@ -242,8 +239,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Totals"
                 android:fontFamily="@font/googlesans_medium"
+                android:text="Totals"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview3" />
@@ -254,8 +251,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/black"
                 android:text="Rp 0.00"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview3" />
 
@@ -265,9 +262,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:fontFamily="@font/googlesans_medium"
                 android:backgroundTint="@color/buttonColor"
-                android:text="Proceed Payment"
+                android:fontFamily="@font/googlesans_medium"
+                android:text="Lanjut pembayaran"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

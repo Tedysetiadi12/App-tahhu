@@ -133,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="7dp"
                         android:fontFamily="@font/googlesans_medium"
-                        android:text="Total Balance"
+                        android:text="Total Saldo"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -170,7 +170,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Income "
+                        android:text="Pemasukan "
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -198,7 +198,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Expenses "
+                        android:text="Pengeluaran "
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_round"
                     android:backgroundTint="@color/buttonColor"
-                    android:text="Add Money"
+                    android:text="tambah saldo"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -254,7 +254,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/googlesans_medium"
-            android:text="Transactions"
+            android:text="Transaksi"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
@@ -265,7 +265,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/googlesans_medium"
             android:gravity="end"
-            android:text="All"
+            android:text="Semua"
             android:textColor="@color/black"
             android:textSize="17dp" />
 

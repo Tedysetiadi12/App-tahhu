@@ -62,7 +62,7 @@
                 android:id="@+id/tv_final_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="List chekout"
+                android:text="Ringkasan Pemesanan"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -86,7 +86,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:fontFamily="@font/googlesans_medium"
-                android:text="Selected payment" />
+                android:text="Pilih Metode Pembayaran" />
 
             <RadioGroup
                 android:id="@+id/radioGroupPayment"
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Or input new card"
+                android:text="Atau Masukkan Kartu Baru"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Card Number"
+                android:text="Nomor Kartu Kredit"
                 android:textColor="@color/black"
                 android:fontFamily="@font/googlesans_medium"
                 android:textStyle="bold"
@@ -150,7 +150,7 @@
                 android:layout_marginTop="8dp"
                 android:textColor="@color/black"
                 android:background="@drawable/border_rating"
-                android:hint="Enter card number"
+                android:hint="Masukkan Nomor Kartu"
                 android:padding="12dp"
                 android:textColorHint="@color/gray"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Exp. Date"
+                    android:text="Tanggal Kadaluarsa"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start" />
@@ -178,7 +178,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Security code"
+                    android:text="Kode Keamanan"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="end" />
@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Cardholder Name"
+                android:text="Nama Pemegang Kartu Kredit"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -240,7 +240,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="@dimen/margin_standard"
                 android:background="@drawable/border_rating"
-                android:hint="Enter cardholder name"
+                android:hint="Masukkan Nama Anda"
                 android:padding="12dp"
                 android:textColorHint="@color/gray"
                 android:textColor="@color/black"
@@ -267,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/googlesans_medium"
-                        android:text="Service Fee"
+                        android:text="Biaya Layanan"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -315,7 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
-                android:text="Confirm Payment"
+                android:text="Konfirmasi Pembayaran"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />

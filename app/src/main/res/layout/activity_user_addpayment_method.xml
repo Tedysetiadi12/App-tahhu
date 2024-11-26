@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cardholder Name"
+                    android:text="Nama Kartu"
                     android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
                     android:textSize="16sp"/>
@@ -68,7 +68,7 @@
                     android:id="@+id/cardholderName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Cardholder Name"
+                    android:hint="Masukan nama kartu"
                     android:textColorHint="@color/gray"
                     android:inputType="textPersonName"
                     android:layout_marginTop="8dp"
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Card Number"
+                    android:text="Nomor Kartu"
                     android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -89,7 +89,7 @@
                     android:id="@+id/cardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Card Number"
+                    android:hint="Masukkan nomor kartu"
                     android:textColorHint="@color/gray"
                     android:inputType="phone"
                     android:layout_marginTop="8dp"
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Expiry Date (MM/YY)"
+                    android:text="Tanggal Kadaluarsa (Bulan/Tahun)"
                     android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -131,7 +131,7 @@
                     android:id="@+id/cvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter CVV"
+                    android:hint="Masukkan CVV"
                     android:textColorHint="@color/gray"
                     android:inputType="textPassword"
                     android:layout_marginTop="8dp"

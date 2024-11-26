@@ -88,5 +88,5 @@
         android:layout_marginEnd="10dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/buttonColor"
-        android:text="Proceed to Payment"/>
+        android:text="lanjut pembayaran"/>
 </LinearLayout>

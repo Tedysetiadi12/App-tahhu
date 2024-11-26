@@ -78,7 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_car1" />
+                        android:src="@drawable/ic_ridecar" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -155,7 +155,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_bike1" />
+                        android:src="@drawable/ic_ridebike" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -234,7 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_change1" />
+                        android:src="@drawable/ic_kirim_barang" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

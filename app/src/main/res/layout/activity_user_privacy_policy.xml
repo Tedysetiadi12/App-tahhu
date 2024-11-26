@@ -35,8 +35,7 @@
             android:gravity="center"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/googlesans_medium"
-            android:textStyle="bold" />
+            android:fontFamily="@font/googlesans_bold"/>
     </LinearLayout>
 
     <!-- Content Section -->
@@ -55,9 +54,8 @@
                 android:id="@+id/privacyPolicyContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This is the privacy policy content. Add your actual privacy policy text here to ensure compliance with relevant regulations."
-                android:fontFamily="@font/googlesans_regular"
                 android:textColor="@color/black"
+                android:text="Ini adalah konten kebijakan privasi. Tambahkan teks kebijakan privasi Anda yang sebenarnya di sini untuk memastikan kepatuhan terhadap peraturan yang relevan."                android:fontFamily="@font/googlesans_regular"
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp" />
 
@@ -71,7 +69,7 @@
                 android:id="@+id/acceptButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Accept"
+                android:text="Terima"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/white"
                 android:backgroundTint="#81C784"
@@ -84,7 +82,7 @@
                 android:id="@+id/declineButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Decline"
+                android:text="Tolak"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/white"
                 android:backgroundTint="#F06262"

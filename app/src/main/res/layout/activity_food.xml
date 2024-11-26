@@ -200,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/googlesans_medium"
-            android:text="Go to Checkout"
+            android:text="Tambah ke Keranjang"
             android:backgroundTint="@color/accentColor"
             android:textColor="@color/white" />
     </LinearLayout>

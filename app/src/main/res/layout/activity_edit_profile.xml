@@ -73,16 +73,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="First Name"
-            android:textSize="16dp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="Nama Depan"
             android:textColor="@color/black"
-            android:layout_marginTop="@dimen/margin_standard"/>
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Jony"
+            android:hint="Masukkan nama depan"
             android:layout_marginTop="15dp"
             android:textColorHint="@color/gray"
             android:textColor="@color/black"
@@ -94,7 +94,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Last Name"
+            android:text="Nama Terakhir"
             android:textColor="@color/black"
             android:textSize="16dp"
             android:layout_marginTop="@dimen/margin_standard"/>
@@ -103,13 +103,13 @@
             android:id="@+id/edit_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Don"
-            android:textColorHint="@color/gray"
-            android:textColor="@color/black"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Masukkan nama terakhir"
             android:inputType="textPersonName"
             android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
-            android:layout_marginBottom="12dp" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray" />
 
         <TextView
             android:layout_width="match_parent"
@@ -136,7 +136,7 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="Simpan"
             android:backgroundTint="@color/accentColor"
             android:textColor="@color/white"
             android:padding="12dp"
