@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
 
+    <!-- Header Section -->
     <LinearLayout
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/accentColor">
+        android:background="@color/accentColor"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
             android:src="@drawable/left"
             app:tint="#FFFFFF"/>
 
@@ -28,271 +28,149 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Payment"
+            android:text="Penukaran Minyak"
             android:textSize="20sp"
-            android:textColor="#FFF"
+            android:textColor="#FFFFFF"
             android:fontFamily="@font/googlesans_bold"/>
 
         <ImageView
             android:id="@+id/btn_titiktiga"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="20dp"
             android:src="@drawable/kebab"
-            app:tint="#FFF"/>
+            app:tint="#FFFFFF"/>
     </LinearLayout>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/googlesans_medium"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Lokasi Penukaran"
-        android:textColor="@color/black"
-        android:textSize="16sp"/>
+        android:layout_marginTop="30dp"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/txtLokasi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/googlesans_regular"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:textColor="@color/black"
-        android:text="jl."
-        android:textSize="16sp"
-        android:layout_marginBottom="@dimen/margin_standard" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/googlesans_medium"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Variant Penukaran"
-        android:textColor="@color/black"
-        android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/txtKategoriTukar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="@font/googlesans_regular"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:text="sunco "
-        android:textSize="16sp"
-        android:layout_marginBottom="@dimen/margin_standard" />
-
-    <!-- Data yang diinputkan -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/googlesans_medium"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Jumlah minyak yang didapat"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/txtJumlahMinyak"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:fontFamily="@font/googlesans_regular"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:textColor="@color/black"
-        android:text="1 liter"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-
-    <!-- Opsi Pembayaran -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Metode Pengambilan"
-        android:fontFamily="@font/googlesans_medium"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:textSize="18sp"
-        android:textColor="@color/black"/>
-
-    <RadioGroup
-        android:id="@+id/rgPaymentOptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/googlesans_regular"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/rbPickup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Ambil Sendiri" />
-
-        <RadioButton
-            android:id="@+id/rbDelivery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Diantar" />
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/edtDeliveryAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan alamat Anda"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:visibility="gone"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="@dimen/margin_standard"
-        android:padding="8dp"
-        android:background="@drawable/rounded_edittext"
-        android:inputType="textPostalAddress" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
-
-        <!-- Label "Total Biaya" -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="start"
-            android:fontFamily="@font/googlesans_medium"
-            android:text="Delivery charge"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+            android:orientation="vertical"
+            android:background="@color/white">
 
-        <!-- Nilai "Rp. 10,000" -->
-        <TextView
-            android:id="@+id/txtService"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="end"
-            android:text="Rp. 0"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
-            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
-    </LinearLayout>
+            <!-- Ringkasan Data -->
+            <TextView
+                android:id="@+id/tvRingkasan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ringkasan"
+                android:textSize="20sp"
+                android:textColor="#333333"
+                android:fontFamily="@font/googlesans_bold"
+                android:layout_marginBottom="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginBottom="20dp">
+            <TextView
+                android:id="@+id/tvDetailRingkasan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detail"
+                android:textSize="16sp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="#333333"
+                android:layout_marginBottom="20dp"/>
 
-        <!-- Label "Total Biaya" -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="start"
-            android:text="Fee Service"
-            android:textSize="18sp"
-            android:fontFamily="@font/googlesans_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white">
 
-        <!-- Nilai "Rp. 10,000" -->
-        <TextView
-            android:id="@+id/txtFee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="end"
-            android:text="Rp. 10,000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
-            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
-    </LinearLayout>
+                <!-- Ringkasan Data -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginBottom="20dp">
+                <TextView
+                    android:id="@+id/tvTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Minyak/uang yang diperoleh"
+                    android:textColor="#333333"
+                    android:textSize="20sp" />
 
-        <!-- Label "Total Biaya" -->
-        <TextView
-            android:id="@+id/labelTotalFee"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="start"
-            android:text="Total Biaya"
-            android:fontFamily="@font/googlesans_medium"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txtTotalFee"/>
+                <TextView
+                    android:id="@+id/tv_total1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white">
 
-        <!-- Nilai "Rp. 10,000" -->
-        <TextView
-            android:id="@+id/txtTotalFee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:gravity="end"
-            android:text="Rp. 10,000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/labelTotalFee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/labelTotalFee"
-            app:layout_constraintBottom_toBottomOf="@id/labelTotalFee" />
+                <!-- Ringkasan Data -->
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tvTextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Fee tukar uang/tukar minyak baru"
+                    android:textColor="#333333"
+                    android:textSize="20sp" />
 
-    <!-- Tombol Konfirmasi -->
-    <Button
-        android:id="@+id/btnConfirmPayment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:fontFamily="@font/googlesans_medium"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Konfirmasi Pembayaran"
-        android:textSize="16sp"
-        android:backgroundTint="@color/accentColor"
-        android:textColor="#FFFFFF" />
+                <TextView
+                    android:id="@+id/tv_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:text="Total"
+                    android:textColor="#333333"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_total2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+
+            <!-- Tombol Konfirmasi -->
+            <Button
+                android:id="@+id/btnKonfirmasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/buttonColor"
+                android:text="Konfirmasi Tukar"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

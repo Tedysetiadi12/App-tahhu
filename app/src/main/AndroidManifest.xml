@@ -129,6 +129,9 @@
         <activity android:name=".PaymentUcoActivity"
             android:exported="false" />
 
+        <activity android:name=".PanduanUcoActivity"
+            android:exported="false" />
+
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
         <activity android:name=".OrderPenjemputanActivity" /> <!-- <activity android:name=".CartActivity" /> -->

@@ -1,6 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/header_uco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@color/accentColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/left"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Panduan"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/googlesans_medium" />
+    </LinearLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Panduan Penukaran Minyak Jelantah Menjadi Minyak Baru"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Menentukan Ketersediaan -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Menentukan Ketersediaan"
+            android:fontFamily="@font/googlesans_medium"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Silakan menukarkan 2 liter minyak jelantah Anda dengan 1 liter minyak baru (merk ditentukan oleh PT. TAHUTEK)."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Mengakses Agen -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Mengakses Agen Tahhu Terdekat atau Menggunakan Aplikasi"
+            android:textSize="18sp"
+            android:fontFamily="@font/googlesans_medium"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Mendatangi agen Tahhu terdekat untuk melakukan penukaran.\n• Melalui aplikasi agar minyak jelantah Anda di pickup oleh petugas kami."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Pilihan Penukaran -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Pilihan Penukaran"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Penukaran Minyak Jelantah dengan Minyak Baru: Menukar 2 liter minyak jelantah dengan 1 liter minyak baru.\n• Penukaran Minyak Jelantah dengan Uang: Menukar 2 liter minyak jelantah dengan nominal uang sesuai nilai minyak baru yang saat ini ada di pasaran."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Perhatian -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perhatian:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:paddingBottom="8dp"
+            android:textColor="#FF0000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Pastikan untuk memeriksa nilai minyak baru yang saat ini ada di pasaran sebelum melakukan penukaran.\n• Jika Anda memiliki pertanyaan atau kesulitan, silakan menghubungi agen Tahhu terdekat atau aplikasi kami untuk mendapatkan bantuan."
+            android:textSize="16sp"
+            android:paddingBottom="16dp"
+            android:fontFamily="@font/googlesans_regular"
+            android:textColor="@color/black" />
+
+        <!-- Program KILAU -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ikuti program KILAU bersama TAHHU"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Kilau: Pengguna aplikasi TAHHU yang telah berhasil melakukan penukaran minyak jelantah menjadi minyak baru. Kilau memiliki kemampuan untuk menambahkan pengguna baru ke dalam jaringan mereka.\n• Mentor: Kilau yang telah mencapai tingkat tertentu di dalam sistem dan dapat membantu memajukan kilau mereka."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Tingkatan Penukaran -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tingkatan Penukaran"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Sederhana: Penguasaan minyak jelantah 1 liter dengan menyelesaikan penukaran minyak.\n• Menengah: Penguasaan minyak jelantah 2 liter dengan menyelesaikan penukaran minyak.\n• Mentor: Penguasaan minyak jelantah 5 liter dengan menyelesaikan penukaran minyak dan memiliki jumlah pengguna kilau yang signifikan."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Footer -->
+        <!-- Bonus dan Kompensasi -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bonus dan Kompensasi"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:paddingBottom="8dp"
+            android:textColor="#15CF1D" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Bonus Kilau: Untuk setiap pengguna baru yang ditambahkan ke dalam jaringan, kilau akan mendapatkan bonus 5% dari nilai minyak baru.\n• Bonus Mentor: Untuk setiap mentor yang ditambahkan ke dalam jaringan, mentor akan mendapatkan bonus 10% dari nilai minyak baru dan memperoleh hak untuk mendapatkan komisi dari pengguna baru mereka."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Komisi -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Komisi"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Komisi Kilau: Untuk setiap penukaran minyak jelantah yang dilakukan oleh kilau, mereka akan mendapatkan komisi 5% dari nilai minyak baru.\n• Komisi Mentor: Untuk setiap penukaran minyak jelantah yang dilakukan oleh mentor, mereka akan mendapatkan komisi 10% dari nilai minyak baru."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Kebijakan Monetisasi -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kebijakan Monetisasi"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/googlesans_medium"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• TAHHU akan mengumpulkan biaya penukaran minyak dari pengguna aplikasi.\n• TAHHU akan juga menerima komisi dari pemesanan minyak baru.\n• TAHHU dapat menawarkan produk dan layanan tambahan kepada pengguna aplikasi untuk meningkatkan pendapatan."
+            android:textSize="16sp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

@@ -54,6 +54,16 @@ public class UcoActivity extends AppCompatActivity {
         SlideAdapter adapterslids = new SlideAdapter(slideItemss);
         viewPager3.setAdapter(adapterslids);
 
+        Button btn_panduan = findViewById(R.id.btn_panduan);
+        btn_panduan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UcoActivity.this, PanduanUcoActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
+
     }
 
     // Metode untuk menampilkan PopupMenu
