@@ -23,6 +23,7 @@
                 android:id="@+id/productImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/radicardproduct"
                 tools:srcCompat="@tools:sample/avatars" />
             <TextView

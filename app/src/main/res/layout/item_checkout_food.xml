@@ -14,6 +14,7 @@
         android:id="@+id/iv_checkout_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/radicardproduct"
         tools:srcCompat="@tools:sample/avatars"
         android:layout_marginEnd="16dp"/>

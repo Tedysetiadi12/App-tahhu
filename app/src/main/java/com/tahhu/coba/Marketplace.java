@@ -2,6 +2,7 @@ package com.tahhu.coba;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -72,11 +73,16 @@ public class Marketplace extends AppCompatActivity {
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
-        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Slide 1"));
-        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Slide 2"));
-        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Slide 3"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Slide 1","https://tahhu.com"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Slide 2","https://tahhu.com"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Slide 3","https://tahhu.com"));
         // Set adapter ke ViewPager2
-        SlideAdapter adapterslids = new SlideAdapter(slideItemss);
+        // Buat adapter dan pasang listener
+        SlideAdapter adapterslids = new SlideAdapter(slideItemss, (position, url) -> {
+            // Aksi saat banner diklik, buka URL
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
         viewPager3.setAdapter(adapterslids);
     }
 

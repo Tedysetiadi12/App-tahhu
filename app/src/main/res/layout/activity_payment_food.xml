@@ -309,7 +309,6 @@
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
-
             <!-- Tombol Konfirmasi -->
             <Button
                 android:id="@+id/btn_confirm"
@@ -320,6 +319,9 @@
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

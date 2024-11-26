@@ -33,6 +33,14 @@ public class CheckoutActivityFood extends AppCompatActivity {
 
         cartItems = getIntent().getParcelableArrayListExtra("cartItems");
         calculateTotal();
+        Intent intent2 = getIntent();
+        List<FoodItem> cartItems = intent2.getParcelableArrayListExtra("cartItems");
+
+        if (cartItems == null || cartItems.isEmpty()) {
+            // Jika cartItems null atau kosong, tampilkan pesan atau tangani sesuai kebutuhan
+            Toast.makeText(this, "Keranjang belanja kosong.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         adapter = new CheckoutAdapterFood(cartItems, new CheckoutAdapterFood.OnQuantityChangeListener() {
             @Override

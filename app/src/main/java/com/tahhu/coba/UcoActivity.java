@@ -1,6 +1,7 @@
 package com.tahhu.coba;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,9 +50,13 @@ public class UcoActivity extends AppCompatActivity {
         ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
-        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1","https://tahhu.com"));
         // Set adapter ke ViewPager2
-        SlideAdapter adapterslids = new SlideAdapter(slideItemss);
+        SlideAdapter adapterslids = new SlideAdapter(slideItemss, (position, url) -> {
+            // Aksi saat banner diklik, buka URL
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
         viewPager3.setAdapter(adapterslids);
 
         Button btn_panduan = findViewById(R.id.btn_panduan);

@@ -24,13 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public Button btninternet;
+    public Button btninternet,btn_test;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
             btn_tv, btn_food, btn_security;
     private ProgressBar progressBar2;
     private BannerAdapter bannerAdapter;
-    ViewPager2 viewPager3;
+    ViewPager2 viewPager3, viewPager4;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize the ImageView
 
         btninternet = findViewById(R.id.btn_internet);
+        btn_test = findViewById(R.id.btn_test);
         btn_finence = findViewById(R.id.financeIcon);
         btn_market = findViewById(R.id.marketIcon);
         btn_ride = findViewById(R.id.rideIcon);
@@ -62,21 +63,44 @@ public class MainActivity extends AppCompatActivity {
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
-        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1"));
-        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner2, "Slide 2"));
-        slideItems.add(new SlideAdapter.SlideItem(R.drawable.bener1, "Slide 3"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1","https://tahhu.com"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner2, "Slide 2","https://tahhu.com"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.bener1, "Slide 3","https://tahhu.com"));
         // Set adapter ke ViewPager2
-        SlideAdapter adapterslid = new SlideAdapter(slideItems);
+
+        // Buat adapter dan pasang listener
+        SlideAdapter adapterslid = new SlideAdapter(slideItems, (position, url) -> {
+            // Aksi saat banner diklik, buka URL
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
         viewPager2.setAdapter(adapterslid);
 
         viewPager3 = findViewById(R.id.viewPager3);
         List<SlideAdapter.SlideItem> bannerItems = new ArrayList<>();
-        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Diskon 1"));
-        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Diskon 2"));
-        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Diskon 3"));
-        SlideAdapter bannerAdapter = new SlideAdapter(bannerItems);
+        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon1, "Diskon 1","https://tahhu.com"));
+        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon2, "Diskon 2","https://tahhu.com"));
+        bannerItems.add(new SlideAdapter.SlideItem(R.drawable.diskon3, "Diskon 3","https://tahhu.com"));
+        // Buat adapter dan pasang listener
+        SlideAdapter bannerAdapter = new SlideAdapter(bannerItems, (position, url) -> {
+            // Aksi saat banner diklik, buka URL
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
         viewPager3.setAdapter(bannerAdapter);
-        autoSlideBanner();
+
+        viewPager4 = findViewById(R.id.viewPager4);
+        List<SlideAdapter.SlideItem> bannerItem2 = new ArrayList<>();
+        bannerItem2.add(new SlideAdapter.SlideItem(R.drawable.speedtest, "Test Speed","https://tahhu.com/speed"));
+
+        // Buat adapter dan pasang listener
+        SlideAdapter bannerAdapter1 = new SlideAdapter(bannerItem2, (position, url) -> {
+            // Aksi saat banner diklik, buka URL
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
+// Set adapter pada ViewPager2
+        viewPager4.setAdapter(bannerAdapter1);
 
         // Mulai auto scroll
         autoSlideBanner();
@@ -121,6 +145,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = "http://11.15.0.1";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://tahhu.com/speed";
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);

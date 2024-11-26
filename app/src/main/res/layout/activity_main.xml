@@ -453,6 +453,7 @@
                     android:background="@color/accentColor"
                     android:padding="11dp">
 
+
                     <!-- Vertical layout for title and subtitle text -->
                     <LinearLayout
                         android:layout_width="0dp"
@@ -496,7 +497,47 @@
                     </androidx.appcompat.widget.AppCompatButton>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="10dp">
+
+                <!-- FrameLayout untuk menumpuk tombol di atas ViewPager2 -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- ViewPager2 untuk banner -->
+
+                    <!-- Tombol di pojok kanan bawah -->
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Test"
+                        android:textSize="13dp"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:background="@drawable/button_oval_orange_border"
+                        android:backgroundTint="@color/white"
+                        android:layout_gravity="bottom|end"
+                        android:elevation="4dp"
+                        android:textColor="@android:color/black" />
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
             <TextView
                 android:id="@+id/productTexts"
                 android:layout_width="wrap_content"

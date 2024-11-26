@@ -13,6 +13,7 @@
         android:id="@+id/cartProductImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/radicardproduct"
         tools:srcCompat="@tools:sample/avatars" />
 

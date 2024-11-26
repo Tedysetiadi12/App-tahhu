@@ -69,12 +69,14 @@ public class FoodActivity extends AppCompatActivity {
         ImageView btnBack = findViewById(R.id.beranda);
         btnBack.setOnClickListener(v -> startActivity(new Intent(FoodActivity.this, MainActivity.class)));
 
-        // Tombol menu kebab
-        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
-        kebabIcon.setOnClickListener(v -> {
-            Toast.makeText(FoodActivity.this, "Menu Options Clicked", Toast.LENGTH_SHORT).show();
-            // Tambahkan popup menu jika diperlukan
+        // Tombol menu cart
+        ImageView btn_cart = findViewById(R.id.btn_cart);
+        btn_cart.setOnClickListener(v -> {
+            Intent intent = new Intent(FoodActivity.this, CheckoutActivityFood.class);
+            intent.putParcelableArrayListExtra("cartItems", new ArrayList<>(cartItems));
+            startActivity(intent);
         });
+
     }
 
     private void initFoodData() {
