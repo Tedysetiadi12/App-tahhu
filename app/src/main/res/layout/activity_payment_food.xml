@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Card Number"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:fontFamily="@font/googlesans_medium"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,9 +148,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textColor="@color/black"
                 android:background="@drawable/border_rating"
                 android:hint="Enter card number"
                 android:padding="12dp"
+                android:textColorHint="@color/gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelCardNumber" />
@@ -167,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Exp. Date"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="start" />
 
@@ -177,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Security code"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:gravity="end" />
             </LinearLayout>
@@ -200,6 +202,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_rating"
                     android:hint="MM/YY"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
                     android:padding="12dp" />
 
                 <!-- Security Code (CVV) -->
@@ -211,6 +215,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_rating"
                     android:hint="CVV"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
                     android:inputType="textPassword"
                     android:padding="12dp" />
             </LinearLayout>
@@ -222,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Cardholder Name"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editCardCvv" />
@@ -236,6 +242,8 @@
                 android:background="@drawable/border_rating"
                 android:hint="Enter cardholder name"
                 android:padding="12dp"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelCardHolder" />

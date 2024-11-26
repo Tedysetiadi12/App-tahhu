@@ -136,7 +136,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="5dp"
         android:text="Panduan"
-        android:backgroundTint="#81C784"
+        android:backgroundTint="#FF9800"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:fontFamily="@font/googlesans_medium"

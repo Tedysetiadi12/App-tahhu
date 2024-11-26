@@ -71,6 +71,7 @@
         android:text="Total: Rp 0"
         android:textSize="18sp"
         android:gravity="end"
+        android:textColor="@color/black"
         android:fontFamily="@font/googlesans_medium"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"

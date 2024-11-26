@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHolder> {
-
     private List<SlideItem> slideItems;
 
     public SlideAdapter(List<SlideItem> slideItems) {
@@ -46,8 +45,8 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHol
             textView = itemView.findViewById(R.id.textView);
         }
     }
-    public static class SlideItem {
 
+    public static class SlideItem {
         private int imageResId;
         private String title;
 
@@ -64,6 +63,6 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHol
             return title;
         }
     }
-
 }
+
 

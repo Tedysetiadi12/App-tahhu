@@ -3,6 +3,7 @@ package com.tahhu.coba;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+
 public class TukarMinyakActivity extends AppCompatActivity {
     private EditText edtJumlahMinyak, edtAlamatPenjemputan;
     private RadioGroup radioGroup;
-    private Spinner spinnerLokasi;
+    private MaterialAutoCompleteTextView spinnerLokasi;
     private Button btnTukar;
 
     @Override
@@ -29,6 +32,15 @@ public class TukarMinyakActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         spinnerLokasi = findViewById(R.id.spinnerLihatLokasi);
         btnTukar = findViewById(R.id.btnTukar);
+
+        // Atur Adapter untuk spinnerLokasi
+        String[] lokasiTerdekat = getResources().getStringArray(R.array.lokasi_terdekat);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line, // Layout bawaan
+                lokasiTerdekat
+        );
+        spinnerLokasi.setAdapter(adapter);
 
         // Tombol Tukar
         btnTukar.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +62,7 @@ public class TukarMinyakActivity extends AppCompatActivity {
                     return;
                 }
 
-                String lokasi = spinnerLokasi.getSelectedItem().toString();
+                String lokasi = spinnerLokasi.getText().toString();
                 String pilihanPenukaran = selectedOption.getText().toString();
 
                 // Kirim data ke halaman payment

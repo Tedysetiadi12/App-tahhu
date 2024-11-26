@@ -15,13 +15,33 @@
 
       >
         <!-- Product Image -->
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/productImage"
+        <FrameLayout
             android:layout_width="190dp"
             android:layout_height="190dp"
-            app:shapeAppearanceOverlay="@style/radicardproduct"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shapeAppearanceOverlay="@style/radicardproduct"
+                tools:srcCompat="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/discountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/discount_label_bg"
+                android:padding="4dp"
+                android:text="-25%"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/googlesans_medium"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +66,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/googlesans_medium"
                 android:text="Rp 50,000"
-                android:textColor="@color/orenge"
+                android:textColor="#FF0000"
                 android:textSize="14sp" />
         </LinearLayout>
 

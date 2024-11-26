@@ -42,9 +42,9 @@
 
             <ImageView
                 android:id="@+id/btn_titiktiga"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/kebab"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_cart"
                 app:tint="#FFFFFF" />
         </LinearLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,90 +61,151 @@
                 android:layout_marginEnd="14dp"
                 tools:layout_editor_absoluteX="16dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Horizontal ScrollView untuk kategori -->
-        <HorizontalScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:scrollbars="none">
+            android:orientation="horizontal"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <!-- Kategori dengan perubahan warna -->
-                <TextView
-                    android:id="@+id/btn_makanan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:text="Makanan"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="16sp"/>
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:fontFamily="@font/googlesans_medium"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="7dp"
+                android:background="@drawable/rounded_search"
+                android:padding="13dp"
+                android:textColor="@color/card_background"
+                android:textColorHint="@color/black_overlay"
+                android:hint="What Do You Want Eat Today ?"
+                android:textSize="16dp"/>
 
-                <TextView
-                    android:id="@+id/btn_minuman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:text="Minuman"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/btn_buah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:text="Camilan"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/btn_snack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:text="Oleh-oleh Khas"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="16sp"/>
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <!-- RecyclerView untuk daftar item -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        </LinearLayout>
+        <!-- Horizontal ScrollView untuk kategori -->
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"/>
+            android:layout_weight="1">
 
-        <!-- Tombol ke halaman checkout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Kategori Makanan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:gravity="start"
+                        android:text="Makanan"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textColor="@color/black_overlay"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_makanan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp" />
+                </LinearLayout>
+
+                <!-- Kategori Minuman -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:gravity="start"
+                        android:text="Minuman"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textColor="@color/black_overlay"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_minuman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:gravity="start"
+                        android:text="Camilan"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textColor="@color/black_overlay"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_camilan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:gravity="start"
+                        android:text="Oleh-oleh Khas"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textColor="@color/black_overlay"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_khas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Tombol Checkout -->
         <Button
             android:id="@+id/btn_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/googlesans_medium"
             android:text="Go to Checkout"
-            android:visibility="gone"
             android:backgroundTint="@color/accentColor"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

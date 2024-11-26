@@ -1,107 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@drawable/bg_listfood"
     android:layout_margin="8dp"
     android:elevation="4dp"
-    android:gravity="center_vertical">
+    android:gravity="center_horizontal">  <!-- Center the whole item horizontally -->
+    <!-- Container for Image and TextView overlay -->
 
-        <!-- ImageView untuk gambar makanan -->
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"> <!-- Add space below the image -->
+
+        <!-- ImageView for the food image -->
         <com.google.android.material.imageview.ShapeableImageView
-            app:shapeAppearanceOverlay="@style/radicardproduct"
+            app:shapeAppearanceOverlay="@style/TopRoundedCorners"
             android:id="@+id/iv_food_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="16dp"
-            tools:srcCompat="@tools:sample/avatars"  />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
+        <!-- TextView for cooking time (overlayed on the image) -->
+        <TextView
+            android:id="@+id/tv_food_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="7dp"
-            android:orientation="vertical">
-
-            <!-- Nama makanan -->
-            <TextView
-                android:id="@+id/tv_food_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Food Name"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:fontFamily="@font/googlesans_medium"
-                android:maxLines="1"
-                android:ellipsize="end" />
-
-            <!-- Harga -->
-            <TextView
-                android:id="@+id/tv_food_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp 0"
-                android:textSize="14sp"
-                android:textColor="@color/primaryDarkColor"
-                android:fontFamily="@font/googlesans_medium"
-                android:paddingEnd="8dp"
-                android:gravity="end" />
-            <!-- Estimasi waktu masak -->
-            <TextView
-                android:id="@+id/tv_food_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time: 20 min"
-                android:textSize="14sp"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="#070707" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/rating_star"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/rating_star"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/rating_star"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/rating_star"/>
-                <TextView
-                    android:id="@+id/retingfood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.5"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:gravity="bottom" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Tombol Order -->
-        <ImageButton
-            android:id="@+id/btn_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/plus"
-            app:tint="@color/accentColor"
-            android:layout_marginEnd="27dp"
+            android:text="20 - 25 min"
+            android:textSize="14sp"
+            android:fontFamily="@font/googlesans_medium"
             android:textColor="@color/white"
-            android:background="@android:color/transparent"/>
+            android:layout_gravity="top|end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp" />
 
+    </FrameLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="7dp"
+    android:orientation="vertical">
+
+<!-- Food name -->
+<TextView
+    android:id="@+id/tv_food_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Food Name"
+    android:textSize="15sp"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:fontFamily="@font/googlesans_medium"
+    android:maxLines="1"
+    android:ellipsize="end" />
+
+<!-- Price -->
+<TextView
+    android:id="@+id/tv_food_price"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Rp 0"
+    android:textSize="14sp"
+    android:textColor="@color/primaryDarkColor"
+    android:fontFamily="@font/googlesans_medium"
+    android:gravity="end" />
+
+<!-- Cooking time -->
+
+
+<!-- Rating section -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/rating_star"/>
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/rating_star"/>
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/rating_star"/>
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/rating_star"/>
+    <TextView
+        android:id="@+id/retingfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.5"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/googlesans_medium"
+        android:gravity="bottom" />
 </LinearLayout>
+</LinearLayout>
+
+    <!-- Order button positioned at the bottom -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_order"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_oval_orange_border"
+        android:fontFamily="@font/googlesans_medium"
+        android:textColor="@android:color/black"
+        android:text="Tambah"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textSize="14sp"
+        android:layout_gravity="center"/>
+
+
+    </LinearLayout>

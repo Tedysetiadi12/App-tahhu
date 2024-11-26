@@ -1,24 +1,29 @@
 package com.tahhu.coba;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
     private List<FoodItem> foodItems;
     private final OnItemClickListener onItemClickListener;
+    private final Context context;
 
-    public FoodAdapter(List<FoodItem> foodItems, OnItemClickListener onItemClickListener) {
+    public FoodAdapter(List<FoodItem> foodItems, OnItemClickListener onItemClickListener, Context context) {
         this.foodItems = foodItems;
         this.onItemClickListener = onItemClickListener;
+        this.context = context;
     }
 
     @Override
@@ -33,19 +38,18 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         FoodItem item = foodItems.get(position);
         holder.nameTextView.setText(item.getName());
         holder.priceTextView.setText("Rp " + item.getPrice());
-        holder.cookingTimeTextView.setText("Time: " + item.getCookingTime() + " min");
+        holder.cookingTimeTextView.setText(item.getCookingTime() + "-" + item.getCookingTime() + " min");
         holder.foodImageView.setImageResource(item.getImageResId()); // Set image
-        holder.orderButton.setOnClickListener(v -> onItemClickListener.onItemClick(item));
+
+        // Set click listener for the order button
+        holder.orderButton.setOnClickListener(v -> {
+            onItemClickListener.onItemClick(item);  // Add the item to cart
+        });
     }
 
     @Override
     public int getItemCount() {
         return foodItems.size();
-    }
-
-    public void updateData(List<FoodItem> foodItems) {
-        this.foodItems = foodItems;
-        notifyDataSetChanged();
     }
 
     public interface OnItemClickListener {
@@ -56,8 +60,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         TextView nameTextView;
         TextView priceTextView;
         TextView cookingTimeTextView;
-        ImageView foodImageView, orderButton;
-//        Button orderButton;
+        ImageView foodImageView;
+        Button orderButton;
 
         public FoodViewHolder(View itemView) {
             super(itemView);
