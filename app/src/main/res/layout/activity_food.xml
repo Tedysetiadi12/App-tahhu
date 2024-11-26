@@ -108,7 +108,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
                         android:gravity="start"
                         android:text="Makanan"
                         android:fontFamily="@font/googlesans_medium"
@@ -133,7 +132,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
                         android:gravity="start"
                         android:text="Minuman"
                         android:fontFamily="@font/googlesans_medium"
@@ -157,7 +155,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
                         android:gravity="start"
                         android:text="Camilan"
                         android:fontFamily="@font/googlesans_medium"
@@ -181,7 +178,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
                         android:gravity="start"
                         android:text="Oleh-oleh Khas"
                         android:fontFamily="@font/googlesans_medium"

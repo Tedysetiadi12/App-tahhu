@@ -85,7 +85,9 @@ public class FoodActivity extends AppCompatActivity {
         ));
         foodData.put("Minuman", List.of(
                 new FoodItem("Es Teh", 5000, R.drawable.drink1, 5),
-                new FoodItem("Jus Alpukat", 12000, R.drawable.drink2, 10)
+                new FoodItem("Jus Alpukat", 12000, R.drawable.drink2, 10),
+                new FoodItem("Es Teh Jumbo", 5000, R.drawable.drink1, 5),
+                new FoodItem("Jus Alpukat Kocok", 12000, R.drawable.drink2, 10)
         ));
         foodData.put("Camilan", List.of(
                 new FoodItem("Pisang", 5000, R.drawable.camilan1, 0),
