@@ -135,7 +135,7 @@
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
         <activity android:name=".OrderPenjemputanActivity" /> <!-- <activity android:name=".CartActivity" /> -->
-        <activity android:name=".PaymentActivity" />
+        <activity android:name=".PaymentActivityMarketplace" />
         <activity
             android:name=".Marketplace"
             android:exported="false" />

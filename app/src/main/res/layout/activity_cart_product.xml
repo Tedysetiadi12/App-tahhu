@@ -261,7 +261,7 @@
         android:id="@+id/btnPayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="konfirmasi metode pembayaran"
+        android:text="lanjut pembayaran"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:backgroundTint="@color/buttonColor"

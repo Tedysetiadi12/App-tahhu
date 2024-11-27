@@ -50,7 +50,7 @@ public class UcoActivity extends AppCompatActivity {
         ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
-        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1","https://tahhu.com"));
+        slideItemss.add(new SlideAdapter.SlideItem(R.drawable.banner_minyak, "Slide 1","https://tahhu.com"));
         // Set adapter ke ViewPager2
         SlideAdapter adapterslids = new SlideAdapter(slideItemss, (position, url) -> {
             // Aksi saat banner diklik, buka URL
@@ -68,7 +68,6 @@ public class UcoActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-
     }
 
     // Metode untuk menampilkan PopupMenu

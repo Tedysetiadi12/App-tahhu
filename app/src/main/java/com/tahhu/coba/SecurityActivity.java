@@ -27,7 +27,7 @@ public class SecurityActivity extends AppCompatActivity {
 
         List<Integer> banners = Arrays.asList(
                 R.drawable.banner1,
-                R.drawable.benner1
+                R.drawable.banner_minyak
         );
 
         BannerAdapter bannerAdapter = new BannerAdapter(banners);

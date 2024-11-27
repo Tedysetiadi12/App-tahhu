@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("androidx.appcompat:appcompat:1.4.0")
     implementation ("com.google.android.exoplayer:exoplayer-hls:2.19.1")
     implementation ("com.google.android.exoplayer:exoplayer:2.19.1")

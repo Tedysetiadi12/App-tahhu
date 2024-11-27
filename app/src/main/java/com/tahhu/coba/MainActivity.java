@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
-        slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner1, "Slide 1","https://tahhu.com"));
+        slideItems.add(new SlideAdapter.SlideItem(R.drawable.banner_minyak, "Slide 1","https://tahhu.com"));
         slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner2, "Slide 2","https://tahhu.com"));
         slideItems.add(new SlideAdapter.SlideItem(R.drawable.bener1, "Slide 3","https://tahhu.com"));
         // Set adapter ke ViewPager2

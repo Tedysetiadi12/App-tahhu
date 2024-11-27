@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.RadioGroup;
 import android.widget.Button;
+import android.widget.Toast;
 import android.content.Intent;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class CartProductActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class CartProductActivity extends AppCompatActivity {
     private RadioGroup radioGroupShipping;
     private int shippingCost = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +33,25 @@ public class CartProductActivity extends AppCompatActivity {
         cartRecyclerView = findViewById(R.id.cartRecyclerView);
         totalQuantityView = findViewById(R.id.totalQuantityView);
         totalPriceView = findViewById(R.id.totalPriceView);
+
+        cartProductList = CartManager.getInstance().getCartProducts();
+
+        if (cartProductList != null && !cartProductList.isEmpty()) {
+            // Buat callback untuk memperbarui total
+            Runnable updateTotalsCallback = this::updateTotals;
+
+            // Inisialisasi adapter dengan callback
+            cartProductAdapter = new CartProductAdapter(cartProductList, updateTotalsCallback);
+            cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            cartRecyclerView.setAdapter(cartProductAdapter);
+        } else {
+            Toast.makeText(this, "Cart is empty", Toast.LENGTH_SHORT).show();
+        }
+
         ImageView btnBack = findViewById(R.id.back_to_marketplace);
         radioGroupShipping = findViewById(R.id.radioGroupShipping);
         TextView ongkirPriceView = findViewById(R.id.ongkirPriceView);
 
-        cartProductList = CartManager.getInstance().getCartProducts();
         cartProductAdapter = new CartProductAdapter(cartProductList, this::updateTotals);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartRecyclerView.setAdapter(cartProductAdapter);
@@ -43,10 +60,16 @@ public class CartProductActivity extends AppCompatActivity {
 
         Button btnPayment = findViewById(R.id.btnPayment);
         btnPayment.setOnClickListener(v -> {
-            Intent intent = new Intent(CartProductActivity.this, PaymentActivity.class);
-            // Kirim data totalPrice ke PaymentActivity
-            intent.putExtra("totalPrice", totalPrice);
-            startActivity(intent);
+            if (radioGroupShipping.getCheckedRadioButtonId() == -1) {
+                // Jika tidak ada ongkir yang dipilih, tampilkan pesan peringatan
+                Toast.makeText(CartProductActivity.this, "Silakan pilih ongkos kirim terlebih dahulu!", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(CartProductActivity.this, PaymentActivityMarketplace.class);
+                // Kirim data totalPrice ke PaymentActivity
+                intent.putExtra("totalPrice", totalPrice);
+                intent.putExtra("shippingCost", shippingCost);
+                startActivity(intent);
+            }
         });
 
         radioGroupShipping.setOnCheckedChangeListener((group, checkedId) -> {

@@ -32,8 +32,9 @@ public class PaymentUcoActivity extends AppCompatActivity {
         TextView tvTextView3 = findViewById(R.id.tvTextView3);
 
         // Menambahkan referensi untuk RadioGroup
+        TextView pilihanpayment = findViewById(R.id.idBayar);
+        TextView terimaUang = findViewById(R.id.idTerima);
         RadioGroup radioGroupPaymentOptions = findViewById(R.id.radioGroupPaymentOptions);
-        TextView pilihanpayment = findViewById(R.id.idPayment);
 
         // Ambil data dari Intent
         int jumlahMinyak = getIntent().getIntExtra("jumlahMinyak", 0);
@@ -62,7 +63,8 @@ public class PaymentUcoActivity extends AppCompatActivity {
             tvtotal2.setText("Rp" + fee);
 
             // Sembunyikan RadioGroup Payment jika Tukar Minyak
-            radioGroupPaymentOptions.setVisibility(View.GONE);
+            terimaUang.setVisibility(View.GONE);
+            pilihanpayment.setVisibility(View.VISIBLE);
 
         } else {
             fee = 5000;
@@ -81,8 +83,8 @@ public class PaymentUcoActivity extends AppCompatActivity {
             tvtotal2.setText("Rp" + jumlahUangTotal);
 
             // Tampilkan RadioGroup Payment jika Tukar Uang
-            radioGroupPaymentOptions.setVisibility(View.VISIBLE);
-            pilihanpayment.setVisibility(View.VISIBLE);
+            pilihanpayment.setVisibility(View.GONE);
+            terimaUang.setVisibility(View.VISIBLE);
         }
 
         // Tampilkan ringkasan

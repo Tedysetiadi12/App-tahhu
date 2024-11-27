@@ -96,7 +96,7 @@ public class FoodActivity extends AppCompatActivity {
                 new FoodItem("Mangga", 8000, R.drawable.camilan2, 0)
         ));
         foodData.put("Oleh-oleh Khas", List.of(
-                new FoodItem("Keripik Singkong", 7000, R.drawable.khas1, 0),
+                new FoodItem("Keripik Singkong", 7000, R.drawable.kacang, 0),
                 new FoodItem("Kacang Goreng", 10000, R.drawable.khas2, 0)
         ));
     }

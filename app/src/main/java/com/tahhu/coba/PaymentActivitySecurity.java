@@ -18,7 +18,6 @@ public class PaymentActivitySecurity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_security);
 
-
         // Tangkap data dari Intent
         String securityType = getIntent().getStringExtra("SECURITY_TYPE");
         String duration = getIntent().getStringExtra("DURATION");
@@ -36,7 +35,6 @@ public class PaymentActivitySecurity extends AppCompatActivity {
                 "\nHarga: " + price);
 
         RadioGroup radioGroupPayment = findViewById(R.id.radio_group_payment);
-
         findViewById(R.id.btn_pay_now).setOnClickListener(v -> {
             String name = etName.getText().toString();
             String email = etEmail.getText().toString();
