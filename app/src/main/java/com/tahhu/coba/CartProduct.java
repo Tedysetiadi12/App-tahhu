@@ -1,6 +1,7 @@
 package com.tahhu.coba;
+import java.io.Serializable;
 
-public class CartProduct {
+public class CartProduct implements Serializable{
     private Product product;
     private int quantity;
 

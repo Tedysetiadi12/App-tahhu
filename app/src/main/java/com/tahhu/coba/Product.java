@@ -1,6 +1,7 @@
 package com.tahhu.coba;
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable{
     private String name;
     private String price;
     private int imageResource;

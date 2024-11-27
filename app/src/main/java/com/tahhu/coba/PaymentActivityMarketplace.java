@@ -45,12 +45,20 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
         // Inisialisasi view dari XML
         Button btnProceedPayment = findViewById(R.id.btnProceedPayment);
         ImageView iconArrow = findViewById(R.id.icon_arrow);
-        totalPriceView = findViewById(R.id.totalPriceView);
+        finalPriceView = findViewById(R.id.totalPriceView);
         shippingCostView = findViewById(R.id.shippingCostView);
-        finalPriceView = findViewById(R.id.finalPriceView);
+        totalPriceView = findViewById(R.id.finalPriceView);
 
         // Menerima data dari Intent
         Intent intent = getIntent();
+        List<CartProduct> cartProductList =
+                (List<CartProduct>) getIntent().getSerializableExtra("cartProductList");
+
+        RecyclerView paymentRecyclerView = findViewById(R.id.paymentRecyclerView);
+        PaymentAdapter paymentAdapter = new PaymentAdapter(this, cartProductList);
+        paymentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        paymentRecyclerView.setAdapter(paymentAdapter);
+
         double totalPrice = getIntent().getDoubleExtra("totalPrice", 0);
         int shippingCost = getIntent().getIntExtra("shippingCost", 0);
 
@@ -58,8 +66,8 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
         totalPriceView.setText("Rp " + String.format("%,.2f", totalPrice));
 
         // Menghitung harga final (totalPrice + shippingCost)
-        double finalPrice = totalPrice + shippingCost;
-        finalPriceView.setText("Total: Rp " + String.format("%,.2f", finalPrice));
+        double finalPrice = totalPrice - shippingCost;
+        finalPriceView.setText("Rp" + String.format("%,.2f", finalPrice));
 
         btnProceedPayment.setEnabled(false);
         RadioGroup radioGroupPayment = findViewById(R.id.radioGroupPayment);

@@ -18,7 +18,7 @@ public class CartProductActivity extends AppCompatActivity {
     private RecyclerView cartRecyclerView;
     private TextView totalQuantityView, totalPriceView;
     private CartProductAdapter cartProductAdapter;
-    private List<CartProduct> cartProductList;  // Daftar CartProduct, bukan Product
+    private List<CartProduct> cartProductList;
     private double totalPrice;
     private int totalQuantity;
     private RadioGroup radioGroupShipping;
@@ -68,6 +68,8 @@ public class CartProductActivity extends AppCompatActivity {
                 // Kirim data totalPrice ke PaymentActivity
                 intent.putExtra("totalPrice", totalPrice);
                 intent.putExtra("shippingCost", shippingCost);
+                intent.putExtra("cartProductList", (Serializable) cartProductList);
+
                 startActivity(intent);
             }
         });
@@ -85,7 +87,6 @@ public class CartProductActivity extends AppCompatActivity {
 
             updateTotals();
         });
-
 
         updateTotals();
     }
