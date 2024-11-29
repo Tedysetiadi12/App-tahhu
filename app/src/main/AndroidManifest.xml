@@ -21,14 +21,15 @@
         android:theme="@style/Theme.tahhu"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AddAddressActivity"
+            android:exported="false" />
         <activity
             android:name=".FullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_full_screen"
             android:theme="@style/Theme.tahhu.Fullscreen" />
-
         <activity
             android:name=".CartProductActivity"
             android:exported="false" />
@@ -47,53 +48,51 @@
         <activity
             android:name=".BikeSelectionActivity"
             android:exported="false" />
-
-        <activity android:name=".FoodActivity"
+        <activity
+            android:name=".FoodActivity"
             android:exported="false" />
-
-        <activity android:name=".CheckoutActivityFood"
+        <activity
+            android:name=".CheckoutActivityFood"
             android:exported="false" />
-
-        <activity android:name=".PaymentActivityFood"
-            android:exported="false"/>
-
-        <activity android:name=".PaymentActivityRideSharing"
+        <activity
+            android:name=".PaymentActivityFood"
             android:exported="false" />
-
+        <activity
+            android:name=".PaymentActivityRideSharing"
+            android:exported="false" />
         <activity
             android:name=".PaymentActivitySecurity"
             android:exported="false" />
-
         <activity
             android:name=".SecurityActivity"
-            android:exported="false"/>
-
-        <activity android:name=".DurationActivity"
-            android:exported="false"/>
-
-        <activity android:name=".UserSettingActivity"
-            android:exported="false"/>
-
-        <activity android:name=".EditProfileActivity"
-            android:exported="false"/>
-
-        <activity android:name=".EditSecurityPasswordActivity"
-            android:exported="false"/>
-
-        <activity android:name=".UserSecurityPasswordActivity"
-            android:exported="false"/>
-
-        <activity android:name=".SecurityQuestionsActivity"
-            android:exported="false"/>
-
-        <activity android:name=".UserAddPaymentMethodActivity"
-            android:exported="false"/>
-
-        <activity android:name=".UserAboutUsActivity"
-            android:exported="false"/>
-
-        <activity android:name=".UserPrivacyPolicyActivity"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity
+            android:name=".DurationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditSecurityPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSecurityPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SecurityQuestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserAddPaymentMethodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserAboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserPrivacyPolicyActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -111,42 +110,32 @@
             android:name=".Survey"
             android:exported="false" />
         <activity android:name=".TVStreamingActivity" />
-
         <activity
             android:name=".finance"
             android:exported="false" />
-
-        <activity android:name=".KirimBarangActivity"
+        <activity
+            android:name=".KirimBarangActivity"
             android:exported="false" />
-
-        <activity android:name=".PaymentKirimBarangActivity"
+        <activity
+            android:name=".PaymentKirimBarangActivity"
             android:exported="false" />
-
         <activity
             android:name=".UcoActivity"
             android:exported="false" />
-
-        <activity android:name=".PaymentUcoActivity"
+        <activity
+            android:name=".PaymentUcoActivity"
             android:exported="false" />
-
-        <activity android:name=".PanduanUcoActivity"
+        <activity
+            android:name=".PanduanUcoActivity"
             android:exported="false" />
-
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
-
         <activity android:name=".OrderPenjemputanActivity" />
-
         <activity android:name=".PaymentActivityMarketplace" />
-
-        <activity android:name=".DialogOrderFinishedMarketplace"/>
-
-        <activity android:name=".DialogOrderFinishedUco"/>
-
-        <activity android:name=".DialogOrderFinishedKirimBarang"/>
-
-        <activity android:name=".RatingRideSharingActivity"/>
-
+        <activity android:name=".DialogOrderFinishedMarketplace" />
+        <activity android:name=".DialogOrderFinishedUco" />
+        <activity android:name=".DialogOrderFinishedKirimBarang" />
+        <activity android:name=".RatingRideSharingActivity" />
         <activity
             android:name=".Marketplace"
             android:exported="false" />

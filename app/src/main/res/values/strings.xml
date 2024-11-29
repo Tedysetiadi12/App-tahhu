@@ -25,13 +25,13 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string-array name="region_array">
-            <item>Yogyakarta</item>
-            <item>Jakarta</item>
-            <item>Klaten</item>
-            <item>Semarang</item>
-            <item>Madiun</item>
-            <item>Lampung</item>
-        </string-array>
+        <item>Yogyakarta</item>
+        <item>Jakarta</item>
+        <item>Klaten</item>
+        <item>Semarang</item>
+        <item>Madiun</item>
+        <item>Lampung</item>
+    </string-array>
     <string name="privacy_policy_text">
     Welcome to TAHHU! Your privacy is important to us. This Privacy Policy explains:\n\n
     - What information we collect\n

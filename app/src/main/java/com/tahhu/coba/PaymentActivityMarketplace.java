@@ -21,7 +21,8 @@ import android.widget.RadioButton;
 
 public class PaymentActivityMarketplace extends AppCompatActivity {
     private TextView totalPriceView, shippingCostView, finalPriceView;
-
+    private static final int REQUEST_ADD_ADDRESS = 1;
+    private TextView addressView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +101,31 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
                 isExpanded = !isExpanded;
             }
         });
+        Button btnAddAddress = findViewById(R.id.btnAddAddress);
+        addressView = findViewById(R.id.addressView); // TextView untuk menampilkan alamat
+
+        // Klik tombol Tambah Alamat
+        btnAddAddress.setOnClickListener(v -> {
+            Intent alamat = new Intent(PaymentActivityMarketplace.this, AddAddressActivity.class);
+            startActivityForResult(alamat, REQUEST_ADD_ADDRESS);
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_ADD_ADDRESS && resultCode == RESULT_OK) {
+            // Ambil data dari AddAddressActivity
+            String recipientName = data.getStringExtra("recipientName");
+            String address = data.getStringExtra("address");
+            String city = data.getStringExtra("city");
+            String district = data.getStringExtra("district");
+
+            // Tampilkan data di TextView dan sembunyikan tombol Tambah Alamat
+            addressView.setText(String.format("Nama: %s\nalamat: %s\nKota: %s\nKecamatan: %s", recipientName, address, city, district));
+            findViewById(R.id.btnAddAddress).setVisibility(View.GONE);
+            addressView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void showSuccessDialog(List<CartProduct> cartProductList, double totalPrice, double finalPrice, int shippingCost) {

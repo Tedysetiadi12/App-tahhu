@@ -187,6 +187,45 @@
                     android:paddingEnd="16dp" />
             </RadioGroup>
 
+            <TextView
+                android:id="@+id/addressView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:background="@drawable/rounded_backgroundcard"
+                android:elevation="4dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:lineSpacingExtra="8dp"
+                android:gravity="start|top"
+                android:text="Nama: John Doe\nAlamat: Jl. Sudirman No. 5, Jakarta\nKota: Jakarta\nKecamatan: Tanah Abang"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="5"
+                android:scrollHorizontally="false" />
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tambah Alamat"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/lightGray"
+                android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_medium"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paymentRecyclerView" />
+
             <!-- Total Price -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cartBottomLayout"
@@ -325,13 +364,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
 
                 <!-- Tombol Checkout -->
-                <com.google.android.material.button.MaterialButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnProceedPayment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="KOnfirmasi pembayaran"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    android:background="@drawable/rounded_background"
                     android:backgroundTint="@color/buttonColor"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/googlesans_medium"
