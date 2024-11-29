@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -31,12 +33,41 @@ public class PaymentActivityFood extends AppCompatActivity {
         tvServicesFee = findViewById(R.id.tv_services_fee);
         tvFinalTotal = findViewById(R.id.tv_final_total);
         ImageView btnBack = findViewById(R.id.back_to_cekout);
+        ImageView iconArrow = findViewById(R.id.icon_arrow);
+        RadioGroup radioGroupPayment = findViewById(R.id.radioGroupPayment);
 
         finalItems = getIntent().getParcelableArrayListExtra("finalItems");
         finalTotal = getIntent().getIntExtra("finalTotal", 0);
 
         displayFinalData();
+        iconArrow.setOnClickListener(new View.OnClickListener() {
+            private boolean isExpanded = false;
 
+            @Override
+            public void onClick(View v) {
+                RadioButton rbOne = findViewById(R.id.rb_dana);
+                RadioButton rbTwo = findViewById(R.id.rb_gopay);
+
+                if (isExpanded) {
+                    // Sembunyikan semua radio button kecuali rbOne dan rbTwo
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        if (child != rbOne && child != rbTwo) {
+                            child.setVisibility(View.GONE);
+                        }
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowdown); // Ganti ke ikon panah ke bawah
+                } else {
+                    // Tampilkan semua radio button
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        child.setVisibility(View.VISIBLE);
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowup); // Ganti ke ikon panah ke atas
+                }
+                isExpanded = !isExpanded;
+            }
+        });
         Button btnConfirm = findViewById(R.id.btn_confirm);
         btnConfirm.setOnClickListener(v -> {
             if (!finalItems.isEmpty()) {

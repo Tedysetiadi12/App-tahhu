@@ -39,7 +39,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/imageViewBack"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -115,6 +115,7 @@
         android:layout_marginEnd="@dimen/margin_standard"
         android:text="Detail: Pengamanan harian termasuk patroli setiap 3 jam."
         android:textSize="14sp"
+        android:textColor="@color/black"
         android:layout_marginBottom="16dp"
         android:padding="8dp"
         android:background="#eeeeee"
@@ -166,6 +167,7 @@
         android:textSize="14sp"
         android:layout_marginBottom="16dp"
         android:padding="8dp"
+        android:textColor="@color/black"
         android:background="#eeeeee"
         android:visibility="gone" />
 
@@ -212,6 +214,7 @@
         android:layout_marginEnd="@dimen/margin_standard"
         android:text="Detail: Pengamanan harian termasuk patroli setiap 3 jam."
         android:textSize="14sp"
+        android:textColor="@color/black"
         android:layout_marginBottom="16dp"
         android:padding="8dp"
         android:background="#eeeeee"

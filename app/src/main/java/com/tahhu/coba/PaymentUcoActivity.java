@@ -65,6 +65,7 @@ public class PaymentUcoActivity extends AppCompatActivity {
             // Sembunyikan RadioGroup Payment jika Tukar Minyak
             terimaUang.setVisibility(View.GONE);
             pilihanpayment.setVisibility(View.VISIBLE);
+//            radioGroupPaymentOptions.setVisibility(View.GONE);
 
         } else {
             fee = 5000;
@@ -85,6 +86,7 @@ public class PaymentUcoActivity extends AppCompatActivity {
             // Tampilkan RadioGroup Payment jika Tukar Uang
             pilihanpayment.setVisibility(View.GONE);
             terimaUang.setVisibility(View.VISIBLE);
+//            radioGroupPaymentOptions.setVisibility(View.VISIBLE);
         }
 
         // Tampilkan ringkasan

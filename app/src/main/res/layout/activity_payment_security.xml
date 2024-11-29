@@ -54,8 +54,9 @@
                 android:layout_height="wrap_content"
                 android:text="Masukkan Informasi Anda"
                 android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textStyle="bold"
-                android:textColor="#000000"
                 android:layout_marginBottom="16dp" />
 
             <EditText
@@ -63,6 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Lengkap"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
                 android:padding="10dp"
                 android:background="@drawable/rounded_edittext"
                 android:inputType="textPersonName"
@@ -74,6 +77,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
                 android:background="@drawable/rounded_edittext"
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="12dp" />
@@ -85,51 +90,138 @@
                 android:hint="Alamat Lengkap"
                 android:inputType="textPostalAddress"
                 android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
                 android:background="@drawable/rounded_edittext"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Payment Method Section -->
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Payment Method Options -->
+            <!-- Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pilih Metode Pembayaran"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
+                <!-- TextView untuk memilih metode pembayaran -->
+                <TextView
+                    android:id="@+id/textview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:text="Pilih Metode Pembayaran"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <!-- Dropdown Icon -->
+                <ImageView
+                    android:id="@+id/icon_arrowsecurity"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrowdown"
+                    android:contentDescription="Dropdown Arrow"/>
+            </LinearLayout>
+
+            <!-- Radio Group -->
             <RadioGroup
                 android:id="@+id/radio_group_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview1">
 
+                <!-- DANA Option -->
                 <RadioButton
-                    android:id="@+id/rb_paypal"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rb_dana"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:drawableLeft="@drawable/icondana1"
+                    android:text="DANA"
                     android:textColor="@color/black"
-                    android:text="PayPal"
-                    android:layout_marginBottom="8dp" />
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
 
+                <!-- GoPay Option -->
                 <RadioButton
-                    android:id="@+id/rb_credit_card"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rb_gopay"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:drawableLeft="@drawable/icongopay1"
                     android:textColor="@color/black"
-                    android:text="Kartu Kredit"
-                    android:layout_marginBottom="8dp" />
+                    android:text="GoPay"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
 
+                <!-- OVO Option -->
                 <RadioButton
-                    android:id="@+id/rb_payoneer"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rb_ovo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_medium"
+                    android:drawableLeft="@drawable/iconovo1"
+                    android:text="OVO"
+                    android:visibility="gone"
                     android:textColor="@color/black"
-                    android:text="Payoneer"
-                    android:layout_marginBottom="16dp" />
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- QRIS Option -->
+                <RadioButton
+                    android:id="@+id/rb_qris"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconqris1"
+                    android:textColor="@color/black"
+                    android:text="Scan Via QRIS"
+                    android:visibility="gone"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank BRI Option -->
+                <RadioButton
+                    android:id="@+id/rb_bri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconbri1"
+                    android:text="Transfer Bank BRI"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank BCA Option -->
+                <RadioButton
+                    android:id="@+id/rb_bca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconbca1"
+                    android:text="Transfer Bank BCA"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank Mandiri Option -->
+                <RadioButton
+                    android:id="@+id/rb_mandiri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconmandiri1"
+                    android:text="Transfer Bank Mandiri"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
             </RadioGroup>
 
             <!-- Detail Pembayaran -->
@@ -139,6 +231,7 @@
                 android:layout_height="wrap_content"
                 android:text="Detail Pembayaran"
                 android:textStyle="bold"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/googlesans_medium"
                 android:textSize="16sp"
                 android:textColor="#000000"

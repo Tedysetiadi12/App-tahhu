@@ -1,11 +1,14 @@
 package com.tahhu.coba;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
     private EditText etInputPembayaran;
     private Button btnBayar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +35,12 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
         namaPengirim = findViewById(R.id.namaPengirim);
         namaPenerima = findViewById(R.id.namaPenerima);
         btnBayar = findViewById(R.id.btn_bayar_sekarang);
-        rgMetodePembayaran = findViewById(R.id.rg_metode_pembayaran);
+        rgMetodePembayaran = findViewById(R.id.rDpaymentBarang);
         etInputPembayaran = findViewById(R.id.et_input_pembayaran);
         tvTotalPrice = findViewById(R.id.totalPrice);
         biayaBerat = findViewById(R.id.biayaBerat);
         biayaLayanan = findViewById(R.id.biayaLayanan);
+        ImageView iconArrow = findViewById(R.id.icon_arrow3);
 
         // Ambil data dari Intent
         Intent intent = getIntent();
@@ -67,6 +72,34 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
                 return;
             } else {
                 showSuccessDialog();
+            }
+        });
+        iconArrow.setOnClickListener(new View.OnClickListener() {
+            private boolean isExpanded = false;
+
+            @Override
+            public void onClick(View v) {
+                RadioButton rbOne = findViewById(R.id.rb_dana);
+                RadioButton rbTwo = findViewById(R.id.rb_gopay);
+
+                if (isExpanded) {
+                    // Sembunyikan semua radio button kecuali rbOne dan rbTwo
+                    for (int i = 0; i < rgMetodePembayaran.getChildCount(); i++) {
+                        View child = rgMetodePembayaran.getChildAt(i);
+                        if (child != rbOne && child != rbTwo) {
+                            child.setVisibility(View.GONE);
+                        }
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowdown); // Ganti ke ikon panah ke bawah
+                } else {
+                    // Tampilkan semua radio button
+                    for (int i = 0; i < rgMetodePembayaran.getChildCount(); i++) {
+                        View child = rgMetodePembayaran.getChildAt(i);
+                        child.setVisibility(View.VISIBLE);
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowup); // Ganti ke ikon panah ke atas
+                }
+                isExpanded = !isExpanded;
             }
         });
     }

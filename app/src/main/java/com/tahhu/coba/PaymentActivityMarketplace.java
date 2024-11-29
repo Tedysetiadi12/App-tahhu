@@ -188,7 +188,14 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
         paint.setTextSize(12);
         paint.setColor(Color.BLACK);
         canvas.drawText("Invoice", 20, 20, paint);
-        canvas.drawText("Total Price: Rp " + String.format("%,.2f", finalPriceView), 20, 50, paint);
+        try {
+            String finalPriceText = finalPriceView.getText().toString().replaceAll("[^\\d.]", ""); // Hanya angka
+            double finalPrice = Double.parseDouble(finalPriceText);
+            canvas.drawText("Total Price: Rp " + String.format("%,.2f", finalPrice), 20, 50, paint);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error formatting price for PDF", Toast.LENGTH_SHORT).show();
+        }
         canvas.drawText("Thank you for your order!", 20, 80, paint);
 
         pdfDocument.finishPage(page);

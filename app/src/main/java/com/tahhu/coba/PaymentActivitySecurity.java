@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -33,8 +35,37 @@ public class PaymentActivitySecurity extends AppCompatActivity {
         paymentDetails.setText("Pengamanan: " + securityType +
                 "\nLama Waktu: " + duration +
                 "\nHarga: " + price);
-
+        ImageView iconArrow = findViewById(R.id.icon_arrowsecurity);
         RadioGroup radioGroupPayment = findViewById(R.id.radio_group_payment);
+        iconArrow.setOnClickListener(new View.OnClickListener() {
+            private boolean isExpanded = false;
+
+            @Override
+            public void onClick(View v) {
+                RadioButton rbOne = findViewById(R.id.rb_dana);
+                RadioButton rbTwo = findViewById(R.id.rb_gopay);
+
+                if (isExpanded) {
+                    // Sembunyikan semua radio button kecuali rbOne dan rbTwo
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        if (child != rbOne && child != rbTwo) {
+                            child.setVisibility(View.GONE);
+                        }
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowdown); // Ganti ke ikon panah ke bawah
+                } else {
+                    // Tampilkan semua radio button
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        child.setVisibility(View.VISIBLE);
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowup); // Ganti ke ikon panah ke atas
+                }
+                isExpanded = !isExpanded;
+            }
+        });
+
         findViewById(R.id.btn_pay_now).setOnClickListener(v -> {
             String name = etName.getText().toString();
             String email = etEmail.getText().toString();
@@ -43,12 +74,18 @@ public class PaymentActivitySecurity extends AppCompatActivity {
             int selectedPaymentId = radioGroupPayment.getCheckedRadioButtonId();
             String paymentMethod = "";
 
-            if (selectedPaymentId == R.id.rb_paypal) {
-                paymentMethod = "PayPal";
-            } else if (selectedPaymentId == R.id.rb_credit_card) {
-                paymentMethod = "Kartu Kredit";
-            } else if (selectedPaymentId == R.id.rb_payoneer) {
-                paymentMethod = "Payoneer";
+            if (selectedPaymentId == R.id.rb_dana) {
+                paymentMethod = "Dana";
+            } else if (selectedPaymentId == R.id.rb_gopay) {
+                paymentMethod = "Gopay ";
+            } else if (selectedPaymentId == R.id.rb_ovo) {
+                paymentMethod = "Ovo";
+            }else if (selectedPaymentId == R.id.rb_qris) {
+                paymentMethod = "Qris";
+            }else if (selectedPaymentId == R.id.rb_bri) {
+                paymentMethod = "Bri";
+            }else if (selectedPaymentId == R.id.rb_mandiri) {
+                paymentMethod = "Mandiri";
             }
 
             if (name.isEmpty() || email.isEmpty() || address.isEmpty() || paymentMethod.isEmpty()) {

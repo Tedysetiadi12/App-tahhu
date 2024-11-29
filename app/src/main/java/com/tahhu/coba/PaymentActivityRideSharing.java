@@ -1,5 +1,6 @@
 package com.tahhu.coba;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,9 +20,10 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
 
     private TextView addressTextView, destinationTextView, vehicleNameTextView, vehiclePriceTextView, totalPriceTextView, feeService, detailVehicleView;
     private ImageView vehicleImageView;
-    private RadioGroup paymentMethodGroup;
+    private RadioGroup radioGroupPayment;
     private Button confirmPaymentButton;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +36,10 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         detailVehicleView = findViewById(R.id.detailVehicle);
         addressTextView = findViewById(R.id.addressTextView);
         destinationTextView = findViewById(R.id.destinationTextView);
-        paymentMethodGroup = findViewById(R.id.paymentMethodGroup);
+        radioGroupPayment = findViewById(R.id.radioGroupPembayaran);
         totalPriceTextView = findViewById(R.id.totalPrice);
         feeService = findViewById(R.id.feeService);
+        ImageView iconArrow = findViewById(R.id.icon_arrow2);
 
         // Mengambil data dari Intent
         String vehicleName = getIntent().getStringExtra("selected_vehicle_name");
@@ -62,11 +66,39 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         // Konfirmasi pembayaran
         Button btnConfirm = findViewById(R.id.confirmPaymentButton);
         btnConfirm.setOnClickListener(v -> {
-            int selectedPaymentMethod = paymentMethodGroup.getCheckedRadioButtonId();
+            int selectedPaymentMethod = radioGroupPayment.getCheckedRadioButtonId();
             if (selectedPaymentMethod == -1) {
                 Toast.makeText(PaymentActivityRideSharing.this, "Please select a payment method", Toast.LENGTH_SHORT).show();
             } else {
                 showSuccessDialog();
+            }
+        });
+        iconArrow.setOnClickListener(new View.OnClickListener() {
+            private boolean isExpanded = false;
+
+            @Override
+            public void onClick(View v) {
+                RadioButton rbOne = findViewById(R.id.rb_dana);
+                RadioButton rbTwo = findViewById(R.id.rb_gopay);
+
+                if (isExpanded) {
+                    // Sembunyikan semua radio button kecuali rbOne dan rbTwo
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        if (child != rbOne && child != rbTwo) {
+                            child.setVisibility(View.GONE);
+                        }
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowdown); // Ganti ke ikon panah ke bawah
+                } else {
+                    // Tampilkan semua radio button
+                    for (int i = 0; i < radioGroupPayment.getChildCount(); i++) {
+                        View child = radioGroupPayment.getChildAt(i);
+                        child.setVisibility(View.VISIBLE);
+                    }
+                    iconArrow.setImageResource(R.drawable.ic_arrowup); // Ganti ke ikon panah ke atas
+                }
+                isExpanded = !isExpanded;
             }
         });
 

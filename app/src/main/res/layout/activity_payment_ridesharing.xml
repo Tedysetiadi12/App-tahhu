@@ -170,184 +170,141 @@
             </androidx.cardview.widget.CardView>
 
             <!-- Payment Method Options -->
-            <RadioGroup
-                android:id="@+id/paymentMethodGroup"
+            <!-- Title -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
+                <!-- TextView untuk memilih metode pembayaran -->
                 <TextView
-                    android:id="@+id/selectedPaymentTitle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textview1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Pilih Metode Pembayaran"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/radioPayPal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
                     android:textSize="16sp"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:textColor="@color/black"
-                    android:text="PayPal"/>
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
 
+                <!-- Dropdown Icon -->
+                <ImageView
+                    android:id="@+id/icon_arrow2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrowdown"
+                    android:contentDescription="Dropdown Arrow"/>
+            </LinearLayout>
+
+            <!-- Radio Group -->
+            <RadioGroup
+                android:id="@+id/radioGroupPembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview1">
+
+                <!-- DANA Option -->
                 <RadioButton
-                    android:id="@+id/radioPayoneer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/googlesans_regular"
+                    android:id="@+id/rb_dana"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icondana1"
+                    android:text="DANA"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:text="Payoneer"/>
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
 
+                <!-- GoPay Option -->
                 <RadioButton
-                    android:id="@+id/radioCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/googlesans_regular"
+                    android:id="@+id/rb_gopay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icongopay1"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:text="Card"/>
+                    android:text="GoPay"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
 
+                <!-- OVO Option -->
+                <RadioButton
+                    android:id="@+id/rb_ovo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconovo1"
+                    android:text="OVO"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- QRIS Option -->
+                <RadioButton
+                    android:id="@+id/rb_qris"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconqris1"
+                    android:textColor="@color/black"
+                    android:text="Scan Via QRIS"
+                    android:visibility="gone"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank BRI Option -->
+                <RadioButton
+                    android:id="@+id/rb_bri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconbri1"
+                    android:text="Transfer Bank BRI"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank BCA Option -->
+                <RadioButton
+                    android:id="@+id/rb_bca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconbca1"
+                    android:text="Transfer Bank BCA"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Transfer Bank Mandiri Option -->
+                <RadioButton
+                    android:id="@+id/rb_mandiri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/iconmandiri1"
+                    android:text="Transfer Bank Mandiri"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="Atau Masukkan Kartu Baru"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radioGroupPayment" />
 
-            <!-- Label dan Input Nomor Kartu Kredit -->
-            <TextView
-                android:id="@+id/labelCardNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Nomor Kartu"
-                android:textColor="@color/gray"
-                android:fontFamily="@font/googlesans_medium"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title" />
-
-            <EditText
-                android:id="@+id/editCardNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/googlesans_medium"
-                android:background="@drawable/border_rating"
-                android:hint="Enter card number"
-                android:padding="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelCardNumber" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:id="@+id/labelExpiryDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tanggal Kadaluwarsa"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    android:gravity="start" />
-
-                <TextView
-                    android:id="@+id/labelCVV"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:text="Kode Keamanan"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    android:gravity="end" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/editCardCvv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelExpiryDate">
-
-                <!-- Expiry Date -->
-                <EditText
-                    android:id="@+id/editExpiryDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:background="@drawable/border_rating"
-                    android:hint="MM/YY"
-                    android:padding="12dp" />
-
-                <!-- Security Code (CVV) -->
-                <EditText
-                    android:id="@+id/editSecurityNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:background="@drawable/border_rating"
-                    android:hint="CVV"
-                    android:inputType="textPassword"
-                    android:padding="12dp" />
-            </LinearLayout>
-
-            <!-- Label dan Input Cardholder Name -->
-            <TextView
-                android:id="@+id/labelCardHolder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Nama Pemegang Kartu"
-                android:fontFamily="@font/googlesans_medium"
-                android:textColor="@color/gray"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editCardCvv" />
-
-            <EditText
-                android:id="@+id/editCardHolder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/googlesans_medium"
-                android:background="@drawable/border_rating"
-                android:hint="Enter cardholder name"
-                android:padding="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelCardHolder" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -372,6 +329,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
