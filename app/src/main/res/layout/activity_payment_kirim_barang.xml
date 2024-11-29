@@ -376,7 +376,7 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:layout_height="wrap_content"
-                android:text="Bayar Sekarang" />
+                android:text="konfirmasi pembayaran" />
 
 </LinearLayout>
 </ScrollView>

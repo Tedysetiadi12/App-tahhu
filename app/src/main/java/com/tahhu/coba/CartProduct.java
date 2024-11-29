@@ -1,7 +1,8 @@
 package com.tahhu.coba;
+
 import java.io.Serializable;
 
-public class CartProduct implements Serializable{
+public class CartProduct implements Serializable {
     private Product product;
     private int quantity;
 
@@ -26,5 +27,14 @@ public class CartProduct implements Serializable{
         if (quantity > 1) {
             quantity--;
         }
+    }
+
+    // Helper methods for easier access to product details
+    public String getProductName() {
+        return product.getName();
+    }
+
+    public String getProductPrice() {
+        return product.getPrice();
     }
 }

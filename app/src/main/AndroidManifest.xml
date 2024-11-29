@@ -134,8 +134,19 @@
 
         <activity android:name=".TukarMinyakActivity" />
         <activity android:name=".LokasiPenukaranActivity" />
-        <activity android:name=".OrderPenjemputanActivity" /> <!-- <activity android:name=".CartActivity" /> -->
+
+        <activity android:name=".OrderPenjemputanActivity" />
+
         <activity android:name=".PaymentActivityMarketplace" />
+
+        <activity android:name=".DialogOrderFinishedMarketplace"/>
+
+        <activity android:name=".DialogOrderFinishedUco"/>
+
+        <activity android:name=".DialogOrderFinishedKirimBarang"/>
+
+        <activity android:name=".RatingRideSharingActivity"/>
+
         <activity
             android:name=".Marketplace"
             android:exported="false" />

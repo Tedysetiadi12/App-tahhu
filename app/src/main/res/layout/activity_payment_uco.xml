@@ -45,12 +45,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="none"
         android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginBottom="15dp"
             android:background="@color/white">
 
             <!-- Ringkasan Data -->
@@ -206,10 +208,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_bold"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Minyak/uang yang diperoleh"
                     android:textColor="#333333"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_total1"
@@ -235,10 +237,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_bold"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Fee tukar uang/tukar minyak baru"
                     android:textColor="#333333"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_fee"
@@ -263,10 +265,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/googlesans_bold"
+                    android:fontFamily="@font/googlesans_medium"
                     android:text="Total"
                     android:textColor="#333333"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_total2"
@@ -280,15 +282,16 @@
             </LinearLayout>
 
             <!-- Tombol Konfirmasi -->
-            <Button
+            <com.google.android.material.button.MaterialButton
+                android:textSize="16sp"
                 android:id="@+id/btnKonfirmasi"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
-                android:text="Konfirmasi Tukar"
-                android:textSize="18sp"
+                android:text="Konfirmasi Penukaran"
                 android:textColor="@color/white"/>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

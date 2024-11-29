@@ -117,10 +117,10 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             successDialog.dismiss(); // Tutup dialog
             // Redirect ke halaman Home
-            Intent intent = new Intent(PaymentKirimBarangActivity.this, MainActivity.class);
+            Intent intent = new Intent(PaymentKirimBarangActivity.this, DialogOrderFinishedKirimBarang.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Menutup aktivitas saat ini
-        }, 2000); // Delay selama 2 detik
+        }, 1000); // Delay selama 2 detik
     }
 }

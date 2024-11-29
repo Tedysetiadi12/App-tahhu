@@ -68,7 +68,7 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         btnConfirm.setOnClickListener(v -> {
             int selectedPaymentMethod = radioGroupPayment.getCheckedRadioButtonId();
             if (selectedPaymentMethod == -1) {
-                Toast.makeText(PaymentActivityRideSharing.this, "Please select a payment method", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivityRideSharing.this, "Pilih metode pembayaran terlebih dahulu.", Toast.LENGTH_SHORT).show();
             } else {
                 showSuccessDialog();
             }
@@ -132,11 +132,11 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             successDialog.dismiss(); // Tutup dialog
             // Redirect ke halaman Home
-            Intent intent = new Intent(PaymentActivityRideSharing.this, MainActivity.class);
+            Intent intent = new Intent(PaymentActivityRideSharing.this, RatingRideSharingActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Menutup aktivitas saat ini
-        }, 2000); // Delay selama 2 detik
+        }, 1000); // Delay selama 2 detik
     }
 
     private void showPopupMenu(View view) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,18 @@ public class PaymentUcoActivity extends AppCompatActivity {
             pilihanpayment.setVisibility(View.VISIBLE);
 //            radioGroupPaymentOptions.setVisibility(View.GONE);
 
+            btnKonfirmasi.setOnClickListener(v -> {
+                int selectedRadioButtonId = radioGroupPaymentOptions.getCheckedRadioButtonId();
+                if (selectedRadioButtonId != -1) {
+                    RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+                    String selectedPaymentOption = selectedRadioButton.getText().toString();
+                    Toast.makeText(PaymentUcoActivity.this, "Kamu memilih: " + selectedPaymentOption, Toast.LENGTH_SHORT).show();
+                    showSuccessDialog();
+                } else {
+                    Toast.makeText(PaymentUcoActivity.this, "Pilih metode pembayaran", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } else {
             fee = 5000;
             int jumlahUang = ((jumlahMinyak / 2) * 15000);
@@ -87,6 +100,18 @@ public class PaymentUcoActivity extends AppCompatActivity {
             pilihanpayment.setVisibility(View.GONE);
             terimaUang.setVisibility(View.VISIBLE);
 //            radioGroupPaymentOptions.setVisibility(View.VISIBLE);
+
+            btnKonfirmasi.setOnClickListener(v -> {
+                int selectedRadioButtonId = radioGroupPaymentOptions.getCheckedRadioButtonId();
+                if (selectedRadioButtonId != -1) {
+                    RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+                    String selectedPaymentOption = selectedRadioButton.getText().toString();
+                    Toast.makeText(PaymentUcoActivity.this, "Kamu memilih: " + selectedPaymentOption, Toast.LENGTH_SHORT).show();
+                    showSuccessDialog();
+                } else {
+                    Toast.makeText(PaymentUcoActivity.this, "Pilih metode penerimaan", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         // Tampilkan ringkasan
@@ -95,12 +120,6 @@ public class PaymentUcoActivity extends AppCompatActivity {
                 "Lokasi Penukaran:\n" + lokasi;
 
         tvDetailRingkasan.setText(detailRingkasan);
-
-        // Tombol konfirmasi
-        btnKonfirmasi.setOnClickListener(v -> {
-            // Proses konfirmasi logika atau transaksi
-            showSuccessDialog();
-        });
 
     }
     private void showSuccessDialog() {
@@ -116,11 +135,11 @@ public class PaymentUcoActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             successDialog.dismiss(); // Tutup dialog
             // Redirect ke halaman Home
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(PaymentUcoActivity.this, DialogOrderFinishedUco.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Menutup aktivitas saat ini
-        }, 2000); // Delay selama 2 detik
+        }, 1000); // Delay selama 2 detik
     }
 
 }

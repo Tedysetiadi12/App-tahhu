@@ -36,6 +36,8 @@
     <color name="accentColor">#DB995A</color>      <!-- utama -->
     <color name="buttonColor">#654236</color> <!-- button -->
 
+    <color name="yellow">#FFD700</color>
+    <color name="gray_300">#D1D5DB</color>
 
     CC2527FF//
 </resources>
