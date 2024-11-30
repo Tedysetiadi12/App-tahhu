@@ -38,6 +38,6 @@
 
     <color name="yellow">#FFD700</color>
     <color name="gray_300">#D1D5DB</color>
-
+    <color name="nav_item_color">#FF0000</color>
     CC2527FF//
 </resources>
