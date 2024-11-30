@@ -40,7 +40,7 @@ public class BikeSelectionActivity extends AppCompatActivity {
         bikeList.add(new Bike("PCX 150", 34999, "2 Penumpang", R.drawable.ic_motor1));
 
         // Set the adapter
-        bikeAdapter = new BikeAdapter(this, bikeList, address, destination);
+        bikeAdapter = new BikeAdapter(this, bikeList, address, destination, "Motor");
         recyclerViewBikeList.setAdapter(bikeAdapter);
 
         // Inisialisasi btn_back

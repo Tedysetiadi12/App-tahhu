@@ -44,7 +44,7 @@ public class DialogOrderFinishedKirimBarang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(DialogOrderFinishedKirimBarang.this, UcoActivity.class);
+                Intent intent = new Intent(DialogOrderFinishedKirimBarang.this, KirimBarangActivity.class);
                 startActivity(intent);
             }
         });

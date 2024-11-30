@@ -26,41 +26,39 @@ public class SelectionTransport extends AppCompatActivity {
         Button optionMotor = findViewById(R.id.optionMotor);
         Button optionPickup = findViewById(R.id.optionPickup);
 
-        // Set OnClickListener untuk "Mobil"
-        optionMobil.setOnClickListener(new View.OnClickListener() {
+        // Set OnClickListener untuk semua Button
+        View.OnClickListener transportClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Arahkan ke CarSelectionActivity dan kirimkan data yang diterima
-                Intent intent = new Intent(SelectionTransport.this, CarSelectionActivity.class);
-                intent.putExtra("address", addressFromPreviousActivity);
-                intent.putExtra("destination", destinationFromPreviousActivity);
-                startActivity(intent);
-            }
-        });
+                Intent intent;
+                if (v.getId() == R.id.optionMobil) {
+                    // Arahkan ke CarSelectionActivity
+                    intent = new Intent(SelectionTransport.this, CarSelectionActivity.class);
+                    intent.putExtra("selection_info", "Mobil");
+                } else if (v.getId() == R.id.optionMotor) {
+                    // Arahkan ke BikeSelectionActivity
+                    intent = new Intent(SelectionTransport.this, BikeSelectionActivity.class);
+                    intent.putExtra("selection_info", "Motor");
+                } else if (v.getId() == R.id.optionPickup) {
+                    // Arahkan ke PickupSelectionActivity
+                    intent = new Intent(SelectionTransport.this, KirimBarangActivity.class);
+                    intent.putExtra("selection_info", "Kirim Barang");
+                } else {
+                    return; // Jika Button tidak dikenali, keluar dari metode
+                }
 
-        // Set OnClickListener untuk "Motor"
-        optionMotor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Arahkan ke BikeSelectionActivity dan kirimkan data yang diterima
-                Intent intent = new Intent(SelectionTransport.this, BikeSelectionActivity.class);
+                // Tambahkan data yang diterima ke Intent
                 intent.putExtra("address", addressFromPreviousActivity);
                 intent.putExtra("destination", destinationFromPreviousActivity);
+                // Mulai aktivitas yang sesuai
                 startActivity(intent);
             }
-        });
+        };
 
-        // Set OnClickListener untuk "Pickup"
-        optionPickup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Arahkan ke PickupSelectionActivity dan kirimkan data yang diterima
-                Intent intent = new Intent(SelectionTransport.this, KirimBarangActivity.class);
-                intent.putExtra("address", addressFromPreviousActivity);
-                intent.putExtra("destination", destinationFromPreviousActivity);
-                startActivity(intent);
-            }
-        });
+        // Tetapkan listener untuk semua tombol
+        optionMobil.setOnClickListener(transportClickListener);
+        optionMotor.setOnClickListener(transportClickListener);
+        optionPickup.setOnClickListener(transportClickListener);
 
         // Inisialisasi btn_back
         ImageView btnBack = findViewById(R.id.btn_back);

@@ -72,10 +72,12 @@ public class PaymentActivityFood extends AppCompatActivity {
         btnConfirm.setOnClickListener(v -> {
             if (!finalItems.isEmpty()) {
                 // Tampilkan dialog animasi centang
-                showSuccessDialog();
-            } else {
-                // Jika tidak ada item, beri notifikasi error
-                Toast.makeText(PaymentActivityFood.this, "Tidak ada item untuk diproses.", Toast.LENGTH_SHORT).show();
+                int selectedPaymentMethod = radioGroupPayment.getCheckedRadioButtonId();
+                if (selectedPaymentMethod == -1) {
+                    Toast.makeText(PaymentActivityFood.this, "Pilih metode pembayaran terlebih dahulu.", Toast.LENGTH_SHORT).show();
+                } else {
+                    showSuccessDialog();
+                }
             }
         });
 
@@ -85,10 +87,10 @@ public class PaymentActivityFood extends AppCompatActivity {
             onBackPressed();
         });
 
-
     }
 
     private void showSuccessDialog() {
+
         // Buat dialog
         Dialog successDialog = new Dialog(this);
         successDialog.setContentView(R.layout.dialog_payment_success);
@@ -101,11 +103,11 @@ public class PaymentActivityFood extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             successDialog.dismiss(); // Tutup dialog
             // Redirect ke halaman Home
-            Intent intent = new Intent(PaymentActivityFood.this, MainActivity.class);
+            Intent intent = new Intent(PaymentActivityFood.this, DialogOrderFinishedFood.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Menutup aktivitas saat ini
-        }, 2000); // Delay selama 2 detik
+        }, 1000); // Delay selama 2 detik
     }
 
     private void displayFinalData() {

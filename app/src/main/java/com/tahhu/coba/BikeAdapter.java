@@ -16,14 +16,14 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
 
     private Context context;
     private List<Bike> BikeList;
-    private String address;
-    private String destination;
+    private String address, destination, selectionInfo;
 
-    public BikeAdapter(Context context, List<Bike> BikeList, String address, String destination) {
+    public BikeAdapter(Context context, List<Bike> BikeList, String address, String destination, String selectionInfo) {
         this.context = context;
         this.BikeList = BikeList;
         this.address = address;
         this.destination = destination;
+        this.selectionInfo = selectionInfo;
     }
 
     @NonNull
@@ -50,6 +50,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
             intent.putExtra("selected_vehicle_detail", bike.getDetail());
             intent.putExtra("address", address);
             intent.putExtra("destination", destination);
+            intent.putExtra("selection_info", selectionInfo);
             context.startActivity(intent);
         });
     }

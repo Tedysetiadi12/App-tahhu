@@ -10,16 +10,18 @@ import java.util.Random;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class DialogOrderFinishedUco extends AppCompatActivity {
+public class DialogOrderFinishedFood extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_order_finished_uco);
+        setContentView(R.layout.dialog_order_finished_food);
 
         Button btnback = findViewById(R.id.checkBookingButton);
         Button btnOrderAgain = findViewById(R.id.orderAgainButton);
         TextView resiTextView = findViewById(R.id.nomor_resi_textview);
+        GifImageView gifImageView = findViewById(R.id.gifImageView);
+        gifImageView.setImageResource(R.drawable.waiting);
 
         // Generate a random resi number
         Random random = new Random();
@@ -35,7 +37,7 @@ public class DialogOrderFinishedUco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(DialogOrderFinishedUco.this, MainActivity.class);
+                Intent intent = new Intent(DialogOrderFinishedFood.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +46,7 @@ public class DialogOrderFinishedUco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(DialogOrderFinishedUco.this, UcoActivity.class);
+                Intent intent = new Intent(DialogOrderFinishedFood.this, FoodActivity.class);
                 startActivity(intent);
             }
         });

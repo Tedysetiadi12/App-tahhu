@@ -16,15 +16,15 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     private Context context;
     private List<Car> carList;
-    private String address;
-    private String destination;
+    private String address, destination, selectionInfo;
 
     // Modifikasi konstruktor untuk menerima address dan destination
-    public CarAdapter(Context context, List<Car> carList, String address, String destination) {
+    public CarAdapter(Context context, List<Car> carList, String address, String destination, String selectionInfo) {
         this.context = context;
         this.carList = carList;
         this.address = address;
         this.destination = destination;
+        this.selectionInfo = selectionInfo;
     }
 
     @NonNull
@@ -51,6 +51,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             intent.putExtra("selected_vehicle_image_res_id", car.getimageResource());
             intent.putExtra("address", address);
             intent.putExtra("destination", destination);
+            intent.putExtra("selection_info", selectionInfo);
             context.startActivity(intent);
         });
     }

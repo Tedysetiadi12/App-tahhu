@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PaymentKirimBarangActivity extends AppCompatActivity {
 
-    private TextView namaPengirim, namaPenerima, tvTotalPrice, biayaBerat, biayaLayanan, addressTextView, destinationTextView;
+    private TextView namaPengirim, namaPenerima, tvTotalPrice, biayaBerat, biayaLayanan, addressTextView, destinationTextView, layananTextView;
     private RadioGroup rgMetodePembayaran;
     private EditText etInputPembayaran;
     private Button btnBayar;
@@ -40,6 +40,8 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
         tvTotalPrice = findViewById(R.id.totalPrice);
         biayaBerat = findViewById(R.id.biayaBerat);
         biayaLayanan = findViewById(R.id.biayaLayanan);
+        layananTextView = findViewById(R.id.layanan);
+
         ImageView iconArrow = findViewById(R.id.icon_arrow3);
 
         // Ambil data dari Intent
@@ -48,6 +50,7 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
         String penerima = intent.getStringExtra("penerima");
         String address = getIntent().getStringExtra("address");
         String destination = getIntent().getStringExtra("destination");
+        String layananText = intent.getStringExtra("selection_info");
         double berat = intent.getDoubleExtra("berat", 0);
         String layanan = intent.getStringExtra("layanan");
         double ongkir = intent.getDoubleExtra("ongkir", 0);
@@ -60,6 +63,7 @@ public class PaymentKirimBarangActivity extends AppCompatActivity {
         namaPenerima.setText(penerima);
         addressTextView.setText(address);
         destinationTextView.setText(destination);
+        layananTextView.setText(layananText);
         biayaBerat.setText(berat + " kg");
         biayaLayanan.setText("Rp. " + (layanan.equalsIgnoreCase("Reguler") ? 15000 : 25000));
         tvTotalPrice.setText("Rp. " + ongkir);

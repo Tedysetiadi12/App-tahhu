@@ -10,7 +10,7 @@
     <View
         android:id="@+id/purpleBackground"
         android:layout_width="0dp"
-        android:layout_height="490dp"
+        android:layout_height="400dp"
         android:background="@drawable/bg_accent_rounded"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,27 +37,27 @@
             <LinearLayout
                 android:id="@+id/gifImageViews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/progressCard"
                 app:layout_constraintStart_toStartOf="parent"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:src="@drawable/completed"
-                    app:tint="@color/white"/>
-
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/gifImageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/waiting"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/orderFinishedTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/googlesans_bold"
+                android:gravity="center"
                 android:text="Pesanan Selesai"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
@@ -69,8 +69,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="Silahkan Tunggu Makanan Anda."
                 android:fontFamily="@font/googlesans_regular"
-                android:text="Gunakan informasi di bawah agar anda\ndapat melihat status pemesanannya"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/orderFinishedTitle"

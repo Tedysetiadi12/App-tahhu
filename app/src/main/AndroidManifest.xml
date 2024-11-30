@@ -135,7 +135,8 @@
         <activity android:name=".DialogOrderFinishedMarketplace" />
         <activity android:name=".DialogOrderFinishedUco" />
         <activity android:name=".DialogOrderFinishedKirimBarang" />
-        <activity android:name=".RatingRideSharingActivity" />
+        <activity android:name=".DialogRatingRideSharing" />
+        <activity android:name=".DialogOrderFinishedFood" />
         <activity
             android:name=".Marketplace"
             android:exported="false" />

@@ -38,6 +38,7 @@ public class KirimBarangActivity extends AppCompatActivity {
         String destinationFromPreviousActivity = getIntent().getStringExtra("destination");
         String address = getIntent().getStringExtra("address");
         String destination = getIntent().getStringExtra("destination");
+        String selectionInfo = getIntent().getStringExtra("selection_info");
 
         addressTextView.setText(address);
         destinationTextView.setText(destination);
@@ -67,6 +68,7 @@ public class KirimBarangActivity extends AppCompatActivity {
             intent.putExtra("berat", berat);
             intent.putExtra("layanan", layanan);
             intent.putExtra("ongkir", ongkir);
+            intent.putExtra("selection_info", selectionInfo);
             startActivity(intent);
         });
     }

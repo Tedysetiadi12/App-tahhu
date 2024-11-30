@@ -38,13 +38,12 @@ public class CarSelectionActivity extends AppCompatActivity {
         carList.add(new Car("Panther", 49999, "4 Penumpang" ,R.drawable.ic_carnew));
         carList.add(new Car("Pajero", 34999, "4 Penumpang" ,R.drawable.ic_carnew));
 
-
         // Inisialisasi RecyclerView
         recyclerView = findViewById(R.id.recyclerViewCars);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Siapkan adapter dan kirim data ke adapter
-        carAdapter = new CarAdapter(this, carList, address, destination);
+        carAdapter = new CarAdapter(this, carList, address, destination, "Mobil");
         recyclerView.setAdapter(carAdapter);
 
         // Inisialisasi btn_back
