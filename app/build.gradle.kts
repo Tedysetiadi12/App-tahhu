@@ -56,5 +56,11 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.android.gms:play-services-maps:19.0.0")
     implementation ("com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4") /* lebih baru */
+
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")  // Kalender kustom
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")         // Grafik visual
+    implementation ("androidx.recyclerview:recyclerview:1.3.1")
+//    implementation(files("libs/ZCustomCalendar-1.0.4.jar"))
+
 }
 

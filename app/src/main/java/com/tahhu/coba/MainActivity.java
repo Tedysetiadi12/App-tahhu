@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btninternet,btn_test;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
-            btn_tv, btn_food, btn_security;
+            btn_tv, btn_food, btn_security, btn_homeButton;
     private ProgressBar progressBar2;
     private BannerAdapter bannerAdapter;
     ViewPager2 viewPager3, viewPager4;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btn_cctv = findViewById(R.id.cctvicon);
         btn_food = findViewById(R.id.foodIcon);
         btn_security = findViewById(R.id.securityIcon);
+        btn_homeButton = findViewById(R.id.homeButton);
         TextView btn_all = findViewById(R.id.all);
 
 
@@ -273,6 +274,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
                 Intent intent = new Intent(MainActivity.this, ShortVidio.class);
+                startActivity(intent);
+            }
+        });
+        btn_homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, CalenderActivity.class);
                 startActivity(intent);
             }
         });
