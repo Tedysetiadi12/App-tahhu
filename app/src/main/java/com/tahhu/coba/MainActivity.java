@@ -26,46 +26,35 @@ public class MainActivity extends AppCompatActivity {
     public Button btninternet,btn_test;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
-            btn_tv, btn_food, btn_security, btn_homeButton;
+                btn_tv, btn_food, btn_security, btn_homeButton;
     private ProgressBar progressBar2;
     private BannerAdapter bannerAdapter;
     ViewPager2 viewPager3, viewPager4;
-    private FrameLayout navHome, navSearch, navFavorite, navSettings;
-    private FrameLayout[] navItems;
-    private int selectedItem = 0;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Initialize the ImageView
-        navHome = findViewById(R.id.nav_home);
-        navSearch = findViewById(R.id.nav_search);
-        navFavorite = findViewById(R.id.nav_favorite);
-        navSettings = findViewById(R.id.nav_settings);
-        navItems = new FrameLayout[]{navHome, navSearch, navFavorite, navSettings};
 
-        for (int i = 0; i < navItems.length; i++) {
-            final int index = i;
-            navItems[i].setOnClickListener(v -> selectItem(index));
-        }
-
-        // Initialize the first item as selected
-        selectItem(0);
         btninternet = findViewById(R.id.btn_internet);
         btn_test = findViewById(R.id.btn_test);
         btn_finence = findViewById(R.id.financeIcon);
-        btn_market = findViewById(R.id.marketIcon);
+        btn_market = findViewById(R.id.MarketIcon);
         btn_ride = findViewById(R.id.rideIcon);
         btn_uco = findViewById(R.id.ucoIcon);
-
         btn_radio = findViewById(R.id.streaming);
         btn_tv = findViewById(R.id.tvIcon);
         btn_cctv = findViewById(R.id.cctvicon);
         btn_food = findViewById(R.id.foodIcon);
         btn_security = findViewById(R.id.securityIcon);
+
         btn_homeButton = findViewById(R.id.homeButton);
+        menu_ride = findViewById(R.id.shortvidio);
+        menu_market = findViewById(R.id.menumarket);
+        menu_user = findViewById(R.id.menufinace);
+        btnmarket = findViewById(R.id.Market);
+
         TextView btn_all = findViewById(R.id.all);
 
 
@@ -255,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-<<<<<<< HEAD
 
         menu_market.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -289,38 +277,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-=======
->>>>>>> c2f2309471fca081fb4604356afa481f1a3a43e4
-    }
-
-    private void selectItem(int index) {
-        // Deselect the previously selected item
-        navItems[selectedItem].setSelected(false);
-
-        // Select the new item
-        navItems[index].setSelected(true);
-        selectedItem = index;
-
-        if (index == 0) {
-            // Home (current activity)
-            // Do nothing as we're already in MainActivity
-        } else if (index == 1) {
-            // Search
-            Intent searchIntent = new Intent(this, Marketplace.class);
-            startActivity(searchIntent);
-        } else if (index == 2) {
-            // Favorite
-            Intent favoriteIntent = new Intent(this, ShortVidio.class);
-            startActivity(favoriteIntent);
-        } else if (index == 3) {
-            // Settings
-            Intent settingsIntent = new Intent(this, UserSettingActivity.class);
-            startActivity(settingsIntent);
-        }
-        // Here you would typically change the content based on the selected item
-        // For example, replace fragments or update the UI
+        btnmarket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showProgressBar(boolean show) {

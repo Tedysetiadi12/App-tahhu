@@ -56,8 +56,6 @@ public class CartManager {
         }
         return totalPrice;
     }
-
-    // Method to clear the cart
     public void clearCart() {
         cartProducts.clear();
     }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CartProduct implements Serializable {
     private Product product;
     private int quantity;
-
+    private String productImageUrl;
     public CartProduct(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
@@ -36,5 +36,14 @@ public class CartProduct implements Serializable {
 
     public String getProductPrice() {
         return product.getPrice();
+    }
+
+    // Tambahkan getter dan setter untuk productImageUrl
+    public String getProductImageUrl() {
+        return productImageUrl;
+    }
+
+    public void setProductImageUrl(String productImageUrl) {
+        this.productImageUrl = productImageUrl;
     }
 }

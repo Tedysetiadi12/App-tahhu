@@ -15,14 +15,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import android.widget.RadioButton;
+import java.util.Locale;
 
+import android.widget.RadioButton;
 
 public class PaymentActivityMarketplace extends AppCompatActivity {
     private TextView totalPriceView, shippingCostView, finalPriceView;
     private static final int REQUEST_ADD_ADDRESS = 1;
     private TextView addressView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +70,32 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
                 String selectedPaymentMethod = selectedRadioButton.getText().toString();
                 Toast.makeText(PaymentActivityMarketplace.this, "Kamu memilih: " + selectedPaymentMethod, Toast.LENGTH_SHORT).show();
 
+                // Format tanggal dan waktu saat ini
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm:ss", Locale.getDefault());
+                String currentDateTime = dateFormat.format(new Date());
+
+                // Buat TRX dengan format baru yang berisi hari, tanggal, dan waktu
+                String transactionCode = currentDateTime.replace(":", "-").replace(" ", "_");
+
+                // Buat dan simpan transaksi dengan daftar produk
+                TransactionManager transactionManager = TransactionManager.getInstance(this);
+                Transaction transaction = new Transaction(
+                        transactionCode, // Menggunakan format TRX yang diperbarui
+                        cartProductList, // Tambahkan daftar produk ke transaksi
+                        totalPrice,
+                        selectedPaymentMethod
+                );
+                transactionManager.saveTransaction(transaction);
+                CartManager cartManager = CartManager.getInstance();
+                cartManager.clearCart();
+
                 // Panggil dialog dengan data produk dan harga akhir
                 showSuccessDialog(cartProductList, totalPrice, finalPrice, shippingCost);
             } else {
                 Toast.makeText(PaymentActivityMarketplace.this, "Pilih metode pembayaran", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         iconArrow.setOnClickListener(new View.OnClickListener() {
             private boolean isExpanded = false;
@@ -101,6 +125,7 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
                 isExpanded = !isExpanded;
             }
         });
+
         Button btnAddAddress = findViewById(R.id.btnAddAddress);
         addressView = findViewById(R.id.addressView); // TextView untuk menampilkan alamat
 
@@ -110,6 +135,7 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
             startActivityForResult(alamat, REQUEST_ADD_ADDRESS);
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
