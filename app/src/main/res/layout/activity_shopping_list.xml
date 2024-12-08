@@ -40,6 +40,15 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#fff" />
+
+        <!-- Search Button -->
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search_menu"
+            android:layout_marginStart="@dimen/margin_standard"
+            app:tint="#fff" />
     </LinearLayout>
 
     <!-- TabLayout and ViewPager2 Container -->
@@ -57,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:tabMode="fixed"
+            android:background="@color/white"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/accentColor"
             app:tabSelectedTextColor="@color/accentColor"
@@ -70,6 +80,7 @@
             android:id="@+id/viewPager"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/tabLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

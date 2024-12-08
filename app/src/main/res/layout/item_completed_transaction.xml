@@ -1,59 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@color/white"
+    android:elevation="4dp"
+    android:layout_margin="8dp">
 
-    <!-- Image di sebelah kiri -->
-    <ImageView
-        android:id="@+id/productImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/home"
-        android:layout_alignParentLeft="true"/>
-
-    <!-- Transaction ID di kanan atas -->
-    <TextView
-        android:id="@+id/transactionIdView"
-        android:layout_width="wrap_content"
+    <!-- Container untuk elemen -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transaction ID"
-        android:textStyle="bold"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_alignTop="@id/productImageView"
-        android:layout_marginLeft="8dp" />
+        android:padding="8dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <!-- Product Name di kanan tengah -->
-    <TextView
-        android:id="@+id/productNameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Name"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_below="@id/transactionIdView"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp" />
+        <!-- Transaction ID di atas -->
+        <TextView
+            android:id="@+id/transactionIdView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transaction ID: #12345"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:paddingBottom="4dp"
+            android:textSize="16sp" />
 
-    <!-- Payment Method di kanan bawah -->
-    <TextView
-        android:id="@+id/paymentMethodView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Payment Method"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_below="@id/productNameView"
-        android:layout_marginLeft="8dp" />
+        <!-- Product Name di tengah -->
+        <TextView
+            android:id="@+id/productNameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Product Name: Awesome Product"
+            android:paddingBottom="4dp"
+            android:textSize="14sp" />
 
-    <!-- Total Price di pojok kanan bawah -->
-    <TextView
-        android:id="@+id/totalPriceView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Price"
-        android:textStyle="bold"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_below="@id/paymentMethodView"/>
+        <!-- Payment Method di bawahnya -->
+        <TextView
+            android:id="@+id/paymentMethodView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Payment Method: Credit Card"
+            android:paddingBottom="4dp"
+            android:textSize="14sp" />
 
-</RelativeLayout>
+        <!-- Total Price di bagian bawah -->
+        <TextView
+            android:id="@+id/totalPriceView"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="Total Price: $100.00"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
