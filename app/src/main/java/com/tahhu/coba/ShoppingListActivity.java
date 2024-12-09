@@ -1,77 +1,173 @@
 package com.tahhu.coba;
 
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
+
 
 public class ShoppingListActivity extends AppCompatActivity {
+    private EditText etItemName, etQuantity, etPrice, etNotes;
+    private Button btnSelectCategory, btnAddToList;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private TextView tvTotalAmount;
+    private String selectedCategory = "";
+    private double totalCompletedAmount = 0; // Initial amount
+
+    private ActiveListFragment activeListFragment;
+    private CompletedListFragment completedListFragment;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
 
+        initializeViews();
+        setupViewPager();
+        setupListeners();
+
+        activeListFragment = new ActiveListFragment();
+        completedListFragment = new CompletedListFragment();
+    }
+
+    private void initializeViews() {
+        etItemName = findViewById(R.id.etItemName);
+        etQuantity = findViewById(R.id.etQuantity);
+        etPrice = findViewById(R.id.etPrice);
+        etNotes = findViewById(R.id.etNotes);
+        btnSelectCategory = findViewById(R.id.btnSelectCategory);
+        btnAddToList = findViewById(R.id.btnAddToList);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+        tvTotalAmount = findViewById(R.id.tvTotalAmount);
 
-        ImageView searchButton = findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        updateTotalAmount();
+    }
+
+    private void setupViewPager() {
+        ShoppingListPagerAdapter adapter = new ShoppingListPagerAdapter(this);
+        viewPager.setAdapter(adapter);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Belum Selesai"));
+        tabLayout.addTab(tabLayout.newTab().setText("Selesai"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View v) {
-                showSearchDialog();
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
-        // Set up ViewPager with fragments
-        ShoppingListPagerAdapter pagerAdapter = new ShoppingListPagerAdapter(this);
-        viewPager.setAdapter(pagerAdapter);
-
-        // TabLayoutMediator to link TabLayout and ViewPager2
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            if (position == 0) {
-                tab.setText("Active");
-            } else {
-                tab.setText("Completed");
-            }
-        }).attach();
-    }
-    private void showSearchDialog() {
-        // Inflate custom dialog layout
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_search, null);
-        EditText searchEditText = dialogView.findViewById(R.id.search_edit_text);
-
-        // Build AlertDialog
-        new AlertDialog.Builder(this)
-                .setTitle("Search")
-                .setView(dialogView)
-                .setPositiveButton("Search", (dialog, which) -> {
-                    String query = searchEditText.getText().toString();
-                    if (!query.isEmpty()) {
-                        performSearch(query);
-                    } else {
-                        Toast.makeText(this, "Search query cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancel", null)
-                .show();
     }
 
-    private void performSearch(String query) {
-        // Handle search logic here
-        Toast.makeText(this, "Searching for: " + query, Toast.LENGTH_SHORT).show();
-        // Example: Filter products based on the query
+    private void setupListeners() {
+        btnSelectCategory.setOnClickListener(v -> showCategoryDialog());
+        btnAddToList.setOnClickListener(v -> addItemToList());
+    }
+
+    private void showCategoryDialog() {
+        String[] categories = {"Daging", "Ikan", "Bahan Makanan", "Sayuran", "Buah", "Lainnya"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pilih Kategori");
+
+        builder.setSingleChoiceItems(categories, -1, (dialog, which) -> {
+            selectedCategory = categories[which];
+            btnSelectCategory.setText(selectedCategory);
+            dialog.dismiss();
+        });
+
+        builder.show();
+    }
+
+    private void addItemToList() {
+        String name = etItemName.getText().toString();
+        String quantityStr = etQuantity.getText().toString();
+        String priceStr = etPrice.getText().toString();
+        String notes = etNotes.getText().toString();
+
+        if (name.isEmpty() || quantityStr.isEmpty() || priceStr.isEmpty() || selectedCategory.isEmpty()) {
+            Toast.makeText(this, "Mohon lengkapi semua field", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int quantity = Integer.parseInt(quantityStr);
+        double price = Double.parseDouble(priceStr);
+
+        ShoppingItem item = new ShoppingItem(name, quantity, price, selectedCategory, notes);
+        activeListFragment.addItem(item);
+
+        // Clear inputs
+        clearInputs();
+    }
+
+    private void clearInputs() {
+        etItemName.setText("");
+        etQuantity.setText("");
+        etPrice.setText("");
+        etNotes.setText("");
+        btnSelectCategory.setText("Pilih Kategori");
+        selectedCategory = "";
+    }
+
+    private void updateTotalAmount() {
+        String formattedAmount = String.format(Locale.getDefault(), "Rp %.2f", totalCompletedAmount);
+        tvTotalAmount.setText(formattedAmount);
+    }
+
+    // Method to mark item as complete
+    public void markItemAsComplete(ShoppingItem item) {
+        completedListFragment.addItem(item);
+        totalCompletedAmount += (item.getPrice() * item.getQuantity());
+        updateTotalAmount();
+    }
+
+    public void deleteItem(ShoppingItem item, boolean isCompleted) {
+        if (isCompleted) {
+            totalCompletedAmount -= (item.getPrice() * item.getQuantity());
+            updateTotalAmount();
+        }
+    }
+
+    // Update ShoppingListPagerAdapter
+    class ShoppingListPagerAdapter extends FragmentStateAdapter {
+        public ShoppingListPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return position == 0 ? activeListFragment : completedListFragment;
+        }
+
+        @Override
+        public int getItemCount() {
+            return 2;
+        }
     }
 }
