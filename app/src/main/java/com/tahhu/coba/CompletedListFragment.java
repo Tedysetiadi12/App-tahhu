@@ -1,5 +1,6 @@
 package com.tahhu.coba;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,8 @@ public class CompletedListFragment extends Fragment implements ShoppingItemAdapt
     private RecyclerView rvCompletedItems;
     private TextView tvEmptyCompleted;
     private ShoppingItemAdapter adapter;
-    private ArrayList<ShoppingItem> completedItems;
+    private ArrayList<ShoppingItem> completedItems = new ArrayList<>();
+    private ArrayList<ShoppingItem> pendingItems = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,11 +28,21 @@ public class CompletedListFragment extends Fragment implements ShoppingItemAdapt
         rvCompletedItems.setLayoutManager(new LinearLayoutManager(getContext()));
         rvCompletedItems.setAdapter(adapter);
 
+        if (rvCompletedItems == null) {
+            Log.e("Debug", "RecyclerView is null in onCreateView");
+        }
+
         updateEmptyView();
         return view;
     }
 
     public void addItem(ShoppingItem item) {
+        if (adapter == null || rvCompletedItems == null) {
+            Log.e("Debug", "Fragment not ready, item added to pending list");
+            pendingItems.add(item);
+            return;
+        }
+
         completedItems.add(item);
         adapter.notifyItemInserted(completedItems.size() - 1);
         updateEmptyView();
@@ -52,6 +64,11 @@ public class CompletedListFragment extends Fragment implements ShoppingItemAdapt
     }
 
     private void updateEmptyView() {
+        if (rvCompletedItems == null || tvEmptyCompleted == null) {
+            Log.e("Debug", "RecyclerView or TextView is not initialized");
+            return;
+        }
+
         if (completedItems.isEmpty()) {
             rvCompletedItems.setVisibility(View.GONE);
             tvEmptyCompleted.setVisibility(View.VISIBLE);
@@ -60,4 +77,21 @@ public class CompletedListFragment extends Fragment implements ShoppingItemAdapt
             tvEmptyCompleted.setVisibility(View.GONE);
         }
     }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Proses item yang tertunda
+        if (!pendingItems.isEmpty()) {
+            for (ShoppingItem item : pendingItems) {
+                completedItems.add(item);
+            }
+            adapter.notifyDataSetChanged();
+            pendingItems.clear();
+        }
+
+        updateEmptyView();
+    }
+
+
 }

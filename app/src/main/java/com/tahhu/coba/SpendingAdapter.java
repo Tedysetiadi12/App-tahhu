@@ -17,7 +17,7 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.Spendi
 
     public void setData(ArrayList<SpendingItem> items) {
         this.spendingItems = items;
-        notifyDataSetChanged(); // Memberitahukan adapter bahwa data telah berubah
+        notifyDataSetChanged();
     }
 
     @NonNull
