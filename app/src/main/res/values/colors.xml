@@ -12,7 +12,6 @@
     <color name="my_birumuda">#008DFF</color><!-- Adjust this code as needed -->
     <color name="orenge">#471D00</color> <!-- Adjust this code as needed -->
     <color name="starColor">#FFD700</color> <!-- Gold color for star icons -->
-    <color name="primaryColor">#EBFBE2</color> <!-- Example primary color -->
     <color name="gray">#C5C5C5</color>
     <color name="lightGray">#F5F5F5</color> <!-- Background of map container -->
     <color name="mapPlaceholderColor">#BDBDBD</color> <!-- Gray tone to indicate map placeholder -->
@@ -39,5 +38,11 @@
     <color name="yellow">#FFD700</color>
     <color name="gray_300">#D1D5DB</color>
     <color name="nav_item_color">#FF0000</color>
+
+
+    <color name="primaryColor">#3F51B5</color>
+    <color name="primaryLightColor">#C5CAE9</color>
+    <color name="primaryTextColor">#212121</color>
+    <color name="secondaryTextColor">#757575</color>
     CC2527FF//
 </resources>
