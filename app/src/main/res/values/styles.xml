@@ -27,4 +27,21 @@
         <item name="android:textSize">16sp</item> <!-- Customize text size -->
     </style>
 
+    <style name="CalendarDateTextStyle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CalendarWeekDayTextStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="CalendarHeaderTextStyle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">#FF6200EE</item> <!-- Ganti dengan warna yang diinginkan -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

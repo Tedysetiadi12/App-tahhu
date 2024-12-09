@@ -1,10 +1,14 @@
 package com.tahhu.coba;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.style.ForegroundColorSpan;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +17,11 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
@@ -39,12 +47,29 @@ public class CalenderActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         spendingAdapter = new SpendingAdapter();
         recyclerView.setAdapter(spendingAdapter);
+        materialCalendarView.addDecorator(new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                // Cek apakah hari tersebut adalah hari Minggu
+                return day.getCalendar().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                // Mengubah warna hari Minggu menjadi merah
+                view.addSpan(new ForegroundColorSpan(Color.RED)); // Menggunakan ForegroundColorSpan untuk mewarnai teks
+            }
+        });
+        // Tambahkan decorator untuk tanggal hari ini
+        // Setup background for today
+        Drawable todayBackground = ContextCompat.getDrawable(this, R.drawable.today_background);
+        materialCalendarView.addDecorator(new TodayDecorator(todayBackground));
+
 
         // Setup Calendar View with Month Selector
-        materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
+        materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
-            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-                // Tindak lanjut ketika bulan berubah
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 showDailySpending(date);
                 showSpendingGraph(date);
             }
@@ -53,6 +78,7 @@ public class CalenderActivity extends AppCompatActivity {
         // Example data loading (dummy data or from DB)
         loadSpendingData();
     }
+
 
     private void showDailySpending(CalendarDay date) {
         // You would query your database for daily spending
@@ -76,7 +102,7 @@ public class CalenderActivity extends AppCompatActivity {
         barChart.setData(barData);
 
         // Mengatur warna batang grafik
-        dataSet.setColor(Color.BLUE);  // Mengubah warna batang menjadi biru
+        dataSet.setColor(Color.YELLOW);  // Mengubah warna batang menjadi biru
 
         // Menyembunyikan grid jika tidak diinginkan
         barChart.getAxisLeft().setDrawGridLines(false);
@@ -108,9 +134,9 @@ public class CalenderActivity extends AppCompatActivity {
     private void loadSpendingData() {
         // Example of loading spending data into RecyclerView (this should come from a database)
         ArrayList<SpendingItem> items = new ArrayList<>();
-        items.add(new SpendingItem("Coffee", 10));
-        items.add(new SpendingItem("Lunch", 20));
-        items.add(new SpendingItem("Dinner", 30));
+        items.add(new SpendingItem("Baju ", 10000));
+        items.add(new SpendingItem("Lunch", 20000));
+        items.add(new SpendingItem("Dinner", 36000));
 
         spendingAdapter.setData(items);
     }
