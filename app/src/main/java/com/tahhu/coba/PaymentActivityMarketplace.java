@@ -71,20 +71,21 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
                 Toast.makeText(PaymentActivityMarketplace.this, "Kamu memilih: " + selectedPaymentMethod, Toast.LENGTH_SHORT).show();
 
                 // Format tanggal dan waktu saat ini
-                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm:ss", Locale.getDefault());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault());
                 String currentDateTime = dateFormat.format(new Date());
 
                 // Buat TRX dengan format baru yang berisi hari, tanggal, dan waktu
-                String transactionCode = currentDateTime.replace(":", "-").replace(" ", "_");
+                String transactionCode = currentDateTime;
 
                 // Buat dan simpan transaksi dengan daftar produk
                 TransactionManager transactionManager = TransactionManager.getInstance(this);
                 Transaction transaction = new Transaction(
-                        transactionCode, // Menggunakan format TRX yang diperbarui
-                        cartProductList, // Tambahkan daftar produk ke transaksi
+                        transactionCode,
+                        cartProductList,
                         totalPrice,
                         selectedPaymentMethod
                 );
+
                 transactionManager.saveTransaction(transaction);
                 CartManager cartManager = CartManager.getInstance();
                 cartManager.clearCart();

@@ -101,6 +101,6 @@ public class TransactionManager {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return false; // Versi sama, tidak perlu di-reset
+        return true; // Versi sama, tidak perlu di-reset
     }
 }

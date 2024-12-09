@@ -41,23 +41,15 @@ public class CompletedTransactionAdapter extends RecyclerView.Adapter<CompletedT
                     if (product != null) {
                         productDetails.append("Produk: ").append(product.getProductName())
                                 .append(", Qty: ").append(product.getQuantity())
-                                .append("\nHarga: ").append(product.getProductPrice())
-                                .append("\n");
-
-                        // Load gambar produk menggunakan Glide
-                        Glide.with(holder.itemView.getContext())
-                                .load(product.getProductImageUrl()) // Asumsikan ada metode untuk mendapatkan URL gambar
-                                .placeholder(R.drawable.home) // Gambar placeholder
-                                .into(holder.productImageView);
+                                .append("\nHarga: ").append(product.getProductPrice()).append("\n");
                     }
                 }
                 holder.productNameView.setText(productDetails.toString());
             } else {
                 holder.productNameView.setText("No products available");
             }
-
-            holder.totalPriceView.setText("Total: Rp " + String.format("%,.2f", transaction.getTotalPrice()));
             holder.paymentMethodView.setText("Payment: " + transaction.getPaymentMethod());
+            holder.totalPriceView.setText("Total: Rp " + String.format("%,.2f", transaction.getTotalPrice()));
         }
     }
 
@@ -69,12 +61,9 @@ public class CompletedTransactionAdapter extends RecyclerView.Adapter<CompletedT
 
     static class TransactionViewHolder extends RecyclerView.ViewHolder {
         TextView transactionIdView, productNameView, totalPriceView, paymentMethodView;
-        ImageView productImageView;
-
 
         public TransactionViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImageView = itemView.findViewById(R.id.productImageView);
             transactionIdView = itemView.findViewById(R.id.transactionIdView);
             productNameView = itemView.findViewById(R.id.productNameView);
             totalPriceView = itemView.findViewById(R.id.totalPriceView);
