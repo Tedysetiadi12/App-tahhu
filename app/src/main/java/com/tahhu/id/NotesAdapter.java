@@ -1,6 +1,7 @@
 package com.tahhu.id;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,13 +33,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     public void onBindViewHolder(NoteViewHolder holder, int position) {
         Note note = notesList.get(position);
         holder.tvTitle.setText(note.getTitle());
-        holder.tvContent.setText(note.getContent());
+        // Use Html.fromHtml to display formatted content
+        holder.tvContent.setText(Html.fromHtml(note.getContent()));
 
         // Set up delete button
         holder.deleteButton.setOnClickListener(v -> {
             notesList.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, notesList.size());
+        });
+        holder.editButton.setOnClickListener(v -> {
+            // Calling the method in the activity to handle edit functionality
+            ((CatatanActivity) context).onEditNoteClicked(position);
         });
     }
 
@@ -49,13 +55,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvContent;
-        ImageButton deleteButton;
+        ImageButton deleteButton, editButton;
 
         public NoteViewHolder(View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
             deleteButton = itemView.findViewById(R.id.btnDelete);
+            editButton = itemView.findViewById(R.id.btnEdit);
         }
     }
 }

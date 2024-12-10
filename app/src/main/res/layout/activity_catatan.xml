@@ -7,25 +7,61 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.tahhu.id.CatatanActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/accentColor"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Back Button"
+            android:src="@drawable/left"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Catatan Harian "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-        <!-- Search Bar -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/background_with_border"
-            android:queryHint="Cari catatan..." />
+            android:queryHint="Cari catatan..."
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:iconifiedByDefault="false"/>
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="547dp"
             android:layout_weight="1" />
 
         <!-- Empty View -->
@@ -43,8 +79,10 @@
             android:id="@+id/formLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border_rating"
+            android:elevation="4dp"
             android:orientation="vertical"
-            android:background="#f5f5f5"
+            android:visibility="gone"
             android:padding="16dp">
 
             <!-- Input Judul -->
@@ -52,19 +90,22 @@
                 android:id="@+id/etTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukkan judul"
-                android:background="#ffffff"
-                android:padding="8dp"
-                android:textColorHint="@color/secondaryTextColor"
-                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border_rating"
                 android:fontFamily="@font/googlesans_medium"
+                android:hint="Masukkan judul"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/secondaryTextColor"
                 android:textSize="16sp" />
 
             <jp.wasabeef.richeditor.RichEditor
                 android:id="@+id/richEditor"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#ffffff" />
+                android:background="@drawable/border_rating"
+                android:padding="16dp"
+                android:hint="Isi catatanmu..." />
 
             <!-- Toolbar -->
             <HorizontalScrollView
@@ -74,41 +115,50 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@+id/boldButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@color/white"
+                        android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_bold" />
+
                     <ImageButton
                         android:id="@+id/italicButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_italic" />
+
                     <ImageButton
                         android:id="@+id/underlineButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_underline" />
+
                     <ImageButton
                         android:id="@+id/numberListButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_number_list" />
+
                     <ImageButton
                         android:id="@+id/bulletListButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_bullet_list" />
                 </LinearLayout>
@@ -119,9 +169,18 @@
                 android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Simpan Catatan"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/accentColor"
                 android:fontFamily="@font/googlesans_medium"
-                android:layout_marginTop="8dp" />
+                android:text="Simpan Catatan" />
+
+            <Button
+                android:id="@+id/battalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/nav_item_color"
+                android:fontFamily="@font/googlesans_medium"
+                android:text="Batal" />
         </LinearLayout>
 
         <!-- Add Note Button -->
@@ -131,8 +190,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            app:srcCompat="@drawable/plus"
-            android:backgroundTint="@color/accentColor"/>
+            android:backgroundTint="@color/accentColor"
+            app:srcCompat="@drawable/plus" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

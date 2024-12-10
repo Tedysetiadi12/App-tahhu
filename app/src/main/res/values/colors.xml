@@ -44,5 +44,12 @@
     <color name="primaryLightColor">#C5CAE9</color>
     <color name="primaryTextColor">#212121</color>
     <color name="secondaryTextColor">#757575</color>
+
+
+    <!-- Active button color -->
+    <color name="active_button_color">#FF0000</color> <!-- Red for active state -->
+
+    <!-- Inactive button color -->
+    <color name="inactive_button_color">#000000</color> <!-- Black for inactive state -->
     CC2527FF//
 </resources>
