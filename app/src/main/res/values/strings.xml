@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Tahhu</string>
     <string name="search_icon">Search icon</string>
+    <string name="telegram_developer">@useone007</string>
     <string name="kategori_prompt">Pilih Kategori Penukaran</string>
     <!-- Array untuk Spinner kategori penukaran -->
     <string-array name="ready_stock">

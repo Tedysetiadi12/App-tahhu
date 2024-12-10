@@ -124,7 +124,9 @@ public class ShoppingListActivity extends AppCompatActivity {
         int quantity = Integer.parseInt(quantityStr);
         double price = Double.parseDouble(priceStr);
 
-        ShoppingItem item = new ShoppingItem(name, quantity, price, selectedCategory, notes);
+        String currentDate = new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new java.util.Date());
+
+        ShoppingItem item = new ShoppingItem(name, quantity, price, selectedCategory, notes, currentDate);
         activeListFragment.addItem(item);
 
         clearInputs();
