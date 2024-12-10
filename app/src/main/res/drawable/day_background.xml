@@ -1,0 +1,5 @@
+<!-- day_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/my_birumuda" /> <!-- Ganti dengan warna yang diinginkan -->
+    <corners android:radius="12dp"/> <!-- Menambahkan radius -->
+</shape>

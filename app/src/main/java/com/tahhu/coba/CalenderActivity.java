@@ -90,13 +90,6 @@ public class CalenderActivity extends AppCompatActivity {
         Button btnSelectCategory = findViewById(R.id.btnSelectCategory);
 // Setel default ke "Hari Ini"
         btnSelectCategory.setText("Hari Ini");
-        Drawable icon = ContextCompat.getDrawable(this, R.drawable.ic_arrowdown);
-
-// Menyesuaikan ukuran ikon
-        if (icon != null) {
-            icon.setBounds(0, 0, 48, 48); // Atur ukuran ikon sesuai kebutuhan
-            btnSelectCategory.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, icon, null);
-        }
         btnSelectCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,6 +172,22 @@ public class CalenderActivity extends AppCompatActivity {
                 view.addSpan(new ForegroundColorSpan(Color.RED));
             }
         });
+// Example: Add a decorator for specific days
+//        materialCalendarView.addDecorator(new DayViewDecorator() {
+//            @Override
+//            public boolean shouldDecorate(CalendarDay day) {
+//                // Add your condition here
+//                return true;
+//            }
+//
+//            @Override
+//            public void decorate(DayViewFacade view) {
+//                // Customize day view here
+//                view.setBackgroundDrawable(ContextCompat.getDrawable(CalenderActivity.this, R.drawable.custom_day_background));
+//            }
+//        });
+
+
 
         // Highlight today with a background
         Drawable todayBackground = ContextCompat.getDrawable(this, R.drawable.today_background);

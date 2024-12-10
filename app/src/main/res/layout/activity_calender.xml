@@ -158,7 +158,8 @@
                 app:mcv_selectionColor="@color/my_birumuda"
                 app:mcv_dateTextAppearance="@style/CalendarDateTextStyle"
                 app:mcv_weekDayTextAppearance="@style/CalendarWeekDayTextStyle"
-                app:mcv_headerTextAppearance="@style/CalendarHeaderTextStyle" />
+                app:mcv_headerTextAppearance="@style/CalendarHeaderTextStyle"
+             />
 
             <!-- Garis Horizontal dan Judul -->
             <LinearLayout
