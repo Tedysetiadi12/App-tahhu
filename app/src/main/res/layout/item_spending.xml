@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="5dp"
     android:layout_margin="8dp"
-    android:padding="16dp"
+    android:padding="20dp"
     android:backgroundTint="@android:color/white"
     tools:context=".SpendingItem">
 
@@ -14,30 +14,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="15dp"
         android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/nameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:text="Spending Item"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/amountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amount"
+            android:text="tanggal"
             android:textColor="@color/accentColor"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:paddingStart="8dp" />
+            android:paddingEnd="8dp"
+            android:fontFamily="@font/googlesans_medium"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:text="hari libur"
+                android:fontFamily="@font/googlesans_medium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/namehari"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/secondaryTextColor"
+                android:text="Hari"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/googlesans_medium"
+                />
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

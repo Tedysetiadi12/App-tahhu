@@ -1,20 +1,26 @@
 package com.tahhu.coba;
 
+
 public class SpendingItem {
+    private String name; // Nama libur
+    private String dayOfWeek; // Hari dalam seminggu
+    private String date; // Tanggal libur
 
-    private String name;
-    private int amount;
-
-    public SpendingItem(String name, int amount) {
+    public SpendingItem(String name, String dayOfWeek, String date) {
         this.name = name;
-        this.amount = amount;
+        this.dayOfWeek = dayOfWeek;
+        this.date = date;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

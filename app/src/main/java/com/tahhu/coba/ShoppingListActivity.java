@@ -1,5 +1,6 @@
 package com.tahhu.coba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,21 +14,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
-import com.google.android.material.tabs.TabLayout;
-import java.util.Locale;
 
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.Date;
+import java.util.Locale;
 
 public class ShoppingListActivity extends AppCompatActivity {
     private EditText etItemName, etQuantity, etPrice, etNotes;
-    private Button btnSelectCategory, btnAddToList;
+    private Button btnSelectCategory, btnAddToList, btnViewCalendar;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private TextView tvTotalAmount;
     private String selectedCategory = "";
-    private double totalCompletedAmount = 0; // Initial amount
 
     private ActiveListFragment activeListFragment;
     private CompletedListFragment completedListFragment;
+
+    private double totalCompletedAmount = 0; // Total pengeluaran selesai
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         etNotes = findViewById(R.id.etNotes);
         btnSelectCategory = findViewById(R.id.btnSelectCategory);
         btnAddToList = findViewById(R.id.btnAddToList);
+//        btnViewCalendar = findViewById(R.id.btnViewCalendar);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         tvTotalAmount = findViewById(R.id.tvTotalAmount);
@@ -87,6 +92,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     private void setupListeners() {
         btnSelectCategory.setOnClickListener(v -> showCategoryDialog());
         btnAddToList.setOnClickListener(v -> addItemToList());
+//        btnViewCalendar.setOnClickListener(v -> openCalendarActivity());
     }
 
     private void showCategoryDialog() {
@@ -121,7 +127,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         ShoppingItem item = new ShoppingItem(name, quantity, price, selectedCategory, notes);
         activeListFragment.addItem(item);
 
-        // Clear inputs
         clearInputs();
     }
 
@@ -139,13 +144,13 @@ public class ShoppingListActivity extends AppCompatActivity {
         tvTotalAmount.setText(formattedAmount);
     }
 
-    // Method to mark item as complete
     public void markItemAsComplete(ShoppingItem item) {
+        item.setCompletionDate(new Date());
         completedListFragment.addItem(item);
         totalCompletedAmount += (item.getPrice() * item.getQuantity());
         updateTotalAmount();
+        CalenderActivity.addSpending(item);
     }
-
     public void deleteItem(ShoppingItem item, boolean isCompleted) {
         if (isCompleted) {
             totalCompletedAmount -= (item.getPrice() * item.getQuantity());
@@ -153,7 +158,11 @@ public class ShoppingListActivity extends AppCompatActivity {
         }
     }
 
-    // Update ShoppingListPagerAdapter
+    private void openCalendarActivity() {
+        Intent intent = new Intent(this, CalenderActivity.class);
+        startActivity(intent);
+    }
+
     class ShoppingListPagerAdapter extends FragmentStateAdapter {
         public ShoppingListPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);

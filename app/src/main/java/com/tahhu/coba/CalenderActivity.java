@@ -1,143 +1,270 @@
 package com.tahhu.coba;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
-import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 public class CalenderActivity extends AppCompatActivity {
 
+    private static List<ShoppingItem> monthlySpending = new ArrayList<>();
+    private LineChart lineChart;
     private MaterialCalendarView materialCalendarView;
-    private BarChart barChart;
     private RecyclerView recyclerView;
     private SpendingAdapter spendingAdapter;
+    private TextView tvTotalSpending;
+
+    public static void addSpending(ShoppingItem item) {
+        monthlySpending.add(item);
+    }
+
+    // Daftar libur nasional
+    private static final Set<String> nationalHolidays = new HashSet<>(Arrays.asList(
+            "2024-01-01", "2024-04-14", "2024-05-01", "2024-08-17", "2024-12-25"
+    ));
+
+
+    // Deskripsi libur
+    private static final Map<String, String> holidayDescriptions = new HashMap<>();
+
+    static {
+        holidayDescriptions.put("2024-01-01", "Tahun Baru Masehi");
+        holidayDescriptions.put("2024-04-14", "Hari Raya Paskah");
+        holidayDescriptions.put("2024-05-01", "Hari Buruh Internasional");
+        holidayDescriptions.put("2024-08-17", "Hari Kemerdekaan Indonesia");
+        holidayDescriptions.put("2024-12-25", "Hari Raya Natal");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
 
+        lineChart = findViewById(R.id.lineChart);
         materialCalendarView = findViewById(R.id.materialCalendarView);
-        barChart = findViewById(R.id.barChart);
         recyclerView = findViewById(R.id.recyclerView);
+        tvTotalSpending = findViewById(R.id.tvTotalSpending);
 
-        // Setup RecyclerView for daily spending
+        setupRecyclerView();
+        setupCalendar();
+        showMonthlySpendingGraph();
+
+        Button btnSelectCategory = findViewById(R.id.btnSelectCategory);
+// Setel default ke "Hari Ini"
+        btnSelectCategory.setText("Hari Ini");
+        Drawable icon = ContextCompat.getDrawable(this, R.drawable.ic_arrowdown);
+
+// Menyesuaikan ukuran ikon
+        if (icon != null) {
+            icon.setBounds(0, 0, 48, 48); // Atur ukuran ikon sesuai kebutuhan
+            btnSelectCategory.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, icon, null);
+        }
+        btnSelectCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Daftar pilihan kategori
+                final String[] categories = {"Hari Ini", "7 Hari", "30 Hari"};
+
+                // Membuat dialog untuk memilih kategori
+                AlertDialog.Builder builder = new AlertDialog.Builder(CalenderActivity.this);
+                builder.setTitle("Pilih Pengeluaran")
+                        .setItems(categories, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Ketika kategori dipilih
+                                String selectedCategory = categories[which];
+                                btnSelectCategory.setText(selectedCategory);  // Update text pada button
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+        });
+
+
+    }
+
+    private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         spendingAdapter = new SpendingAdapter();
         recyclerView.setAdapter(spendingAdapter);
+
+        ArrayList<SpendingItem> items = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+
+        for (String holiday : nationalHolidays) {
+            String[] parts = holiday.split("-");
+            int year = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]) - 1; // Bulan dimulai dari 0
+            int day = Integer.parseInt(parts[2]);
+
+            calendar.set(year, month, day);
+
+            // Hari dalam seminggu
+            String dayOfWeek = new SimpleDateFormat("EEEE", Locale.getDefault()).format(calendar.getTime());
+
+            // Deskripsi libur
+            String description = holidayDescriptions.getOrDefault(holiday, "Libur Nasional");
+
+            // Tambahkan item
+            items.add(new SpendingItem(description, dayOfWeek, String.valueOf(day)));
+        }
+
+        spendingAdapter.setData(items);
+    }
+    private void setupCalendar() {
+        // Highlight national holidays
         materialCalendarView.addDecorator(new DayViewDecorator() {
             @Override
             public boolean shouldDecorate(CalendarDay day) {
-                // Cek apakah hari tersebut adalah hari Minggu
+                // Format the date as "yyyy-MM-dd"
+                String date = String.format("%04d-%02d-%02d", day.getYear(), day.getMonth() + 1, day.getDay());
+                return nationalHolidays.contains(date); // Check if the date is a national holiday
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                // Set a different background color for national holidays (e.g., red)
+                view.setBackgroundDrawable(ContextCompat.getDrawable(CalenderActivity.this, R.drawable.holiday_background));
+                view.addSpan(new ForegroundColorSpan(Color.RED)); // Change text color to white
+            }
+        });
+        // Highlight Sundays in red
+        materialCalendarView.addDecorator(new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
                 return day.getCalendar().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
             }
 
             @Override
             public void decorate(DayViewFacade view) {
-                // Mengubah warna hari Minggu menjadi merah
-                view.addSpan(new ForegroundColorSpan(Color.RED)); // Menggunakan ForegroundColorSpan untuk mewarnai teks
+                view.addSpan(new ForegroundColorSpan(Color.RED));
             }
         });
-        // Tambahkan decorator untuk tanggal hari ini
-        // Setup background for today
+
+        // Highlight today with a background
         Drawable todayBackground = ContextCompat.getDrawable(this, R.drawable.today_background);
         materialCalendarView.addDecorator(new TodayDecorator(todayBackground));
 
-
-        // Setup Calendar View with Month Selector
+        // Add date selection behavior
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                showDailySpending(date);
-                showSpendingGraph(date);
+                Toast.makeText(CalenderActivity.this, "Selected date: " + date.getDate(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showMonthlySpendingGraph() {
+        Map<Integer, Double> dailySpending = new HashMap<>();
+        Calendar calendar = Calendar.getInstance();
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentYear = calendar.get(Calendar.YEAR);
+        double totalSpending = 0;
+
+        for (ShoppingItem item : monthlySpending) {
+            calendar.setTime(item.getCompletionDate());
+            int itemMonth = calendar.get(Calendar.MONTH);
+            int itemYear = calendar.get(Calendar.YEAR);
+            int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+            if (itemMonth == currentMonth && itemYear == currentYear) {
+                double spending = item.getPrice() * item.getQuantity();
+                dailySpending.put(dayOfMonth, dailySpending.getOrDefault(dayOfMonth, 0.0) + spending);
+                totalSpending += spending; // Add spending to total
+            }
+        }
+        tvTotalSpending.setText("Total Pengeluaran: Rp " + totalSpending);
+
+        ArrayList<Entry> entries = new ArrayList<>();
+        for (int day = 1; day <= calendar.getActualMaximum(Calendar.DAY_OF_MONTH); day++) {
+            double spending = dailySpending.getOrDefault(day, 0.0);
+            entries.add(new Entry(day, (float) spending));
+        }
+
+        LineDataSet dataSet = new LineDataSet(entries, "Pengeluaran Harian");
+        dataSet.setColor(getResources().getColor(android.R.color.holo_blue_dark));
+        dataSet.setValueTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        dataSet.setLineWidth(2f); // Menambah ketebalan garis untuk kenyamanan
+        dataSet.setCircleRadius(4f); // Menambah ukuran lingkaran pada titik data
+        dataSet.setCircleColor(getResources().getColor(android.R.color.holo_blue_dark));
+
+        LineData lineData = new LineData(dataSet);
+        lineChart.setData(lineData);
+
+        Description description = new Description();
+        description.setText("Grafik Pengeluaran Bulanan");
+        lineChart.setDescription(description);
+
+        // Menambahkan Tanggal pada Sumbu X
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); // Menampilkan di bawah
+        xAxis.setGranularity(1f); // Menyaring sumbu x untuk tanggal
+        xAxis.setLabelCount(calendar.getActualMaximum(Calendar.DAY_OF_MONTH) / 3); // Show 1 label for every 3rd day
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                int day = (int) value;
+                // Show every 3rd day of the month
+                if (day % 3 == 0) {
+                    return String.format("%02d", day); // Format as two-digit day
+                }
+                return ""; // No label for other days
             }
         });
 
-        // Example data loading (dummy data or from DB)
-        loadSpendingData();
-    }
+        // Menyesuaikan Sumbu Y
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setDrawGridLines(false); // Menyembunyikan garis grid
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false); // Menyembunyikan sumbu kanan
 
+        // Menambah tampilan grid garis untuk kenyamanan
+        lineChart.getAxisLeft().setDrawGridLines(true);
+        lineChart.getXAxis().setDrawGridLines(false); // Menyembunyikan garis grid pada sumbu X
 
-    private void showDailySpending(CalendarDay date) {
-        // You would query your database for daily spending
-        // Here we are just showing a message as an example
-        Toast.makeText(this, "Displaying spending for: " + date.getDate(), Toast.LENGTH_SHORT).show();
-    }
-
-    private void showSpendingGraph(CalendarDay date) {
-        // Membuat data dummy acak untuk grafik
-        ArrayList<BarEntry> entries = new ArrayList<>();
-
-        // Membuat data acak (misalnya untuk 7 hari)
-        for (int i = 0; i < 7; i++) {
-            entries.add(new BarEntry(i + 1f, (float) (Math.random() * 500)));  // Acak nilai pengeluaran
-        }
-
-        BarDataSet dataSet = new BarDataSet(entries, "Pengeluaran Mingguan");
-        BarData barData = new BarData(dataSet);
-
-        // Menampilkan data ke dalam chart
-        barChart.setData(barData);
-
-        // Mengatur warna batang grafik
-        dataSet.setColor(Color.YELLOW);  // Mengubah warna batang menjadi biru
-
-        // Menyembunyikan grid jika tidak diinginkan
-        barChart.getAxisLeft().setDrawGridLines(false);
-        barChart.getAxisRight().setDrawGridLines(false);
-
-        // Mengaktifkan deskripsi grafik
-        barChart.getDescription().setEnabled(true);
-        barChart.getDescription().setText("Grafik Pengeluaran");
-
-        // Menyembunyikan legend jika tidak diperlukan
-        barChart.getLegend().setEnabled(false);
+        // Menyembunyikan Legend
+        lineChart.getLegend().setEnabled(false);
 
         // Memperbarui chart
-        barChart.invalidate(); // Memperbarui chart
-    }
-
-    // Function to generate random data (you could replace this with actual user input)
-    private ArrayList<Float> generateRandomData() {
-        ArrayList<Float> randomData = new ArrayList<>();
-
-        // Generate random data for demonstration (e.g., 7 days of spending)
-        for (int i = 0; i < 7; i++) {
-            randomData.add((float) (Math.random() * 1000));  // Random value between 0 and 1000
-        }
-
-        return randomData;
-    }
-
-    private void loadSpendingData() {
-        // Example of loading spending data into RecyclerView (this should come from a database)
-        ArrayList<SpendingItem> items = new ArrayList<>();
-        items.add(new SpendingItem("Baju ", 10000));
-        items.add(new SpendingItem("Lunch", 20000));
-        items.add(new SpendingItem("Dinner", 36000));
-
-        spendingAdapter.setData(items);
+        lineChart.invalidate();
     }
 }

@@ -1,40 +1,53 @@
 package com.tahhu.coba;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
-class ShoppingItem {
+public class ShoppingItem {
     private String name;
     private int quantity;
     private double price;
     private String category;
     private String notes;
+    private Date completionDate;
+
     public ShoppingItem(String name, int quantity, double price, String category, String notes) {
-            this.name = name;
-            this.quantity = quantity;
-            this.price = price;
-            this.category = category;
-            this.notes = notes;
-        }
-
-        // Getters and setters
-
-        public double getPrice() {
-            return price;
-        }
-        public int getQuantity() {
-            return quantity;
-        }
-        public String getName() {
-            return name;
-        }
-        public String getCategory() {
-            return category;
-        }
-        public String getNotes() {
-            return notes;
-        }
-        public void setNotes(String notes) {
-            this.notes = notes;
-        }
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.category = category;
+        this.notes = notes;
+        this.completionDate = null; // Default null
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public Date getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(Date completionDate) {
+        this.completionDate = completionDate;
+    }
+}
