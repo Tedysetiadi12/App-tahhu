@@ -34,6 +34,7 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ShoppingItem item = items.get(position);
+        holder.tvItemDate.setText(item.getDate());
         holder.tvItemName.setText(item.getName());
         holder.tvItemDetails.setText(String.format("Jumlah: %d\nHarga: Rp %.2f\nKategori: %s",
                 item.getQuantity(), item.getPrice(), item.getCategory()));
@@ -55,11 +56,12 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvItemName, tvItemDetails, tvItemNotes;
+        TextView tvItemDate, tvItemName, tvItemDetails, tvItemNotes;
         Button btnComplete, btnDelete;
 
         ViewHolder(View itemView) {
             super(itemView);
+            tvItemDate = itemView.findViewById(R.id.tvItemDate);
             tvItemName = itemView.findViewById(R.id.tvItemName);
             tvItemDetails = itemView.findViewById(R.id.tvItemDetails);
             tvItemNotes = itemView.findViewById(R.id.tvItemNotes);

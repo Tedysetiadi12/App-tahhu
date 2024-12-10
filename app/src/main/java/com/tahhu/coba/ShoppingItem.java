@@ -1,23 +1,30 @@
 package com.tahhu.coba;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class ShoppingItem {
     private String name;
     private int quantity;
     private double price;
     private String category;
     private String notes;
-    public ShoppingItem(String name, int quantity, double price, String category, String notes) {
+    private String date;
+    public ShoppingItem(String name, int quantity, double price, String category, String notes, String date) {
             this.name = name;
             this.quantity = quantity;
             this.price = price;
             this.category = category;
             this.notes = notes;
-        }
+            this.date = date;
+    }
 
         // Getters and setters
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
 
         public double getPrice() {
             return price;
