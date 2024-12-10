@@ -5,7 +5,7 @@
     android:background="@color/black"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ShortVidio">
+    tools:context="com.tahhu.id.ShortVidio">
     <LinearLayout
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"

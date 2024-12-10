@@ -8,7 +8,7 @@
     android:layout_margin="8dp"
     android:padding="20dp"
     android:backgroundTint="@android:color/white"
-    tools:context=".SpendingItem">
+    tools:context="com.tahhu.id.SpendingItem">
 
     <LinearLayout
         android:layout_width="match_parent"

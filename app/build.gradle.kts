@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.tahhu.coba"
+    namespace = "com.tahhu.id"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.tahhu.coba"
+        applicationId = "com.tahhu.id"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -64,6 +64,10 @@ dependencies {
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")         // Grafik visual
     implementation ("androidx.recyclerview:recyclerview:1.3.1")
 //    implementation(files("libs/ZCustomCalendar-1.0.4.jar"))
+    implementation ("androidx.lifecycle:lifecycle-viewmodel:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata:2.6.1")
+//    implementation ("io.github.ztk1994:richeditor:2.0.1")
+    implementation ("jp.wasabeef:richeditor-android:2.0.0")
 
 }
 

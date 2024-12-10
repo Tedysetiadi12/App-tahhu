@@ -10,10 +10,15 @@
       "client_info": {
         "mobilesdk_app_id": "1:237287394176:android:9d635bb92c7b37e785cf65",
         "android_client_info": {
-          "package_name": "com.tahhu.coba"
+          "package_name": "com.tahhu.id"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "237287394176-hmnhbtcn3okev1f4pimkddo6kluk7gbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC2lipzrGZzJG7Yldj-YhiERIZ3yGfZytk"
@@ -21,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237287394176-hmnhbtcn3okev1f4pimkddo6kluk7gbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -32,7 +42,12 @@
           "package_name": "com.tahhu.id"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "237287394176-hmnhbtcn3okev1f4pimkddo6kluk7gbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC2lipzrGZzJG7Yldj-YhiERIZ3yGfZytk"
@@ -40,7 +55,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237287394176-hmnhbtcn3okev1f4pimkddo6kluk7gbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

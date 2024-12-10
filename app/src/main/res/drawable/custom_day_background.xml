@@ -1,8 +1,15 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
         <shape>
-            <solid android:color="@color/accentColor" /> <!-- Set a color for the background -->
-            <corners android:radius="8dp" /> <!-- Set rounded corners -->
+            <solid android:color="#04D1722E" />
+
+            <!-- Border -->
+            <stroke
+                android:width="2dp"
+                android:color="#DC6B1C" />
+
+            <!-- Corner radius (opsional) -->
+            <corners android:radius="8dp" /><!-- Set rounded corners -->
         </shape>
     </item>
 </layer-list>

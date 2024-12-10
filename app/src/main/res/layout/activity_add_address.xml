@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/white"
-    tools:context=".AddAddressActivity">
+    tools:context="com.tahhu.id.AddAddressActivity">
 
     <!-- Map Fragment -->
     <com.google.android.gms.maps.MapView

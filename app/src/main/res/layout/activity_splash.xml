@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    tools:context=".SplashActivity">
+    tools:context="com.tahhu.id.SplashActivity">
 
     <!-- App Logo -->
     <ImageView
