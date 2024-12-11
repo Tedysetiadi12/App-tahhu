@@ -1,8 +1,12 @@
 package com.tahhu.id;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +26,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import jp.wasabeef.richeditor.RichEditor;
 
 public class CatatanActivity extends AppCompatActivity {
@@ -40,6 +46,10 @@ public class CatatanActivity extends AppCompatActivity {
     private boolean isBoldActive = false, isItalicActive = false, isUnderlineActive = false, isNumberListActive = false, isBulletListActive = false;
 
     private int editingPosition = -1;
+
+    private ImageButton fileButton, photoButton;
+    private static final int PICK_FILE_REQUEST = 1;
+    private static final int PICK_IMAGE_REQUEST = 2;
 
     private List<Note> notesList = new ArrayList<>();
     private NotesAdapter adapter;
@@ -66,6 +76,15 @@ public class CatatanActivity extends AppCompatActivity {
         underlineButton = findViewById(R.id.underlineButton);
         numberListButton = findViewById(R.id.numberListButton);
         bulletListButton = findViewById(R.id.bulletListButton);
+        fileButton = findViewById(R.id.fileButton);
+        photoButton = findViewById(R.id.photoButton);
+
+// Tambahkan listener untuk file
+        fileButton.setOnClickListener(v -> openFilePicker());
+
+// Tambahkan listener untuk foto
+        photoButton.setOnClickListener(v -> openImagePicker());
+
 
         // Set up RecyclerView
         adapter = new NotesAdapter(notesList, this);
@@ -99,13 +118,15 @@ public class CatatanActivity extends AppCompatActivity {
                 return;
             }
 
-            // Check if we are editing an existing note
+            // Hapus elemen gambar dari HTML menggunakan regex
+            String contentWithoutImages = content.replaceAll("<img[^>]*>", "");
+
+            // Periksa apakah sedang mengedit atau menambah catatan baru
             if (editingPosition != -1) {
-                // Update the existing note
                 notesList.get(editingPosition).setTitle(title);
-                notesList.get(editingPosition).setContent(content);
+                notesList.add(new Note(title, content));
+                    // Simpan tanpa gambar
             } else {
-                // Add a new note
                 notesList.add(new Note(title, content));
             }
 
@@ -129,6 +150,70 @@ public class CatatanActivity extends AppCompatActivity {
 
         updateViewVisibility();
     }
+    private void openFilePicker() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*"); // Mengizinkan semua tipe file
+        startActivityForResult(intent, PICK_FILE_REQUEST);
+    }
+
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*"); // Hanya gambar
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selectedUri = data.getData();
+
+            if (requestCode == PICK_FILE_REQUEST) {
+                // Mendapatkan nama file
+                String fileName = getFileName(selectedUri);
+
+                // Menambahkan tautan file dengan nama file
+                String currentHtml = richEditor.getHtml();
+                String newHtml = currentHtml + "<a href='" + selectedUri.toString() + "'>" + fileName + "</a>";
+                richEditor.setHtml(newHtml);
+                Toast.makeText(this, "File berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+
+            } else if (requestCode == PICK_IMAGE_REQUEST) {
+                // Menambahkan gambar ke editor
+                String currentHtml = richEditor.getHtml();
+                String newHtml = currentHtml + "<img src='" + selectedUri.toString() + "' style='max-width: 100%; height: auto;' />";
+                richEditor.setHtml(newHtml);
+                Toast.makeText(this, "Gambar berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Pemilihan dibatalkan", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Helper untuk mendapatkan nama file
+    private String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    if (nameIndex != -1) {
+                        result = cursor.getString(nameIndex);
+                    }
+                }
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.getLastPathSegment();
+        }
+        return result;
+    }
+
 
     // Toggle Bold state and apply to the editor
     private void toggleBold() {
@@ -179,8 +264,11 @@ public class CatatanActivity extends AppCompatActivity {
         editingPosition = position;
         Note note = notesList.get(position);
         etTitle.setText(note.getTitle());
-        richEditor.setHtml(note.getContent());
+        // Simpan konten asli di editor
+        String originalContent = note.getContent();
 
+        // Tampilkan gambar kembali (tidak perlu modifikasi di sini, HTML asli dipertahankan)
+        richEditor.setHtml(originalContent);
         formLayout.setVisibility(View.VISIBLE);
         fabAddNote.setVisibility(View.GONE);
     }

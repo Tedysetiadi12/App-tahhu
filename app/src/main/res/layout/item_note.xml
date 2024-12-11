@@ -56,5 +56,12 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:layout_marginEnd="8dp"/>
 
+        <ImageButton
+            android:id="@+id/btnViewImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/arrowdown"
+            android:contentDescription="Lihat Gambar" />
+
       </LinearLayout>
 </LinearLayout>

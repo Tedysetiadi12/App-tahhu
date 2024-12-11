@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -46,6 +47,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             // Calling the method in the activity to handle edit functionality
             ((CatatanActivity) context).onEditNoteClicked(position);
         });
+
+        holder.ViewButton.setOnClickListener(v -> {
+            String contentWithImages = notesList.get(position).getContent();
+
+            // Tampilkan elemen gambar kembali di dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Lihat Gambar");
+            builder.setMessage(Html.fromHtml(contentWithImages)); // Tampilkan dengan gambar
+            builder.setPositiveButton("Tutup", null);
+            builder.show();
+        });
+
     }
 
     @Override
@@ -60,7 +73,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvContent;
-        ImageButton deleteButton, editButton;
+        ImageButton deleteButton, editButton, ViewButton;
 
         public NoteViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +81,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             tvContent = itemView.findViewById(R.id.tvContent);
             deleteButton = itemView.findViewById(R.id.btnDelete);
             editButton = itemView.findViewById(R.id.btnEdit);
+            ViewButton = itemView.findViewById(R.id.btnViewImage);
+
         }
     }
 }

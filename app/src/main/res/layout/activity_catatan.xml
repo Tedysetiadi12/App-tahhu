@@ -161,6 +161,24 @@
                         android:background="@drawable/border_rating"
                         android:elevation="4dp"
                         android:src="@drawable/ic_bullet_list" />
+                    <ImageButton
+                        android:id="@+id/fileButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
+                        android:elevation="4dp"
+                        android:src="@drawable/ic_file" />
+
+                    <ImageButton
+                        android:id="@+id/photoButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/border_rating"
+                        android:elevation="4dp"
+                        android:src="@drawable/ic_photo" />
+
                 </LinearLayout>
             </HorizontalScrollView>
 
