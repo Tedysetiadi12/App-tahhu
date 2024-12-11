@@ -3,6 +3,7 @@ package com.tahhu.id;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,7 +88,7 @@ public class CatatanActivity extends AppCompatActivity {
             formLayout.setVisibility(View.GONE);
             fabAddNote.setVisibility(View.VISIBLE);
         });
-
+        adapter.setNotes(notesList);
         // Save note and hide form
         saveButton.setOnClickListener(v -> {
             String title = etTitle.getText().toString().trim();
@@ -106,14 +107,11 @@ public class CatatanActivity extends AppCompatActivity {
             } else {
                 // Add a new note
                 notesList.add(new Note(title, content));
-                saveNotes();  // Simpan catatan baru ke SharedPreferences
-                adapter.notifyDataSetChanged();
             }
-            saveNotes();
-            notesList.add(new Note(title, content));
-            // Notify the adapter that the data has changed
-            adapter.notifyDataSetChanged();
-            updateViewVisibility();
+
+            saveNotes(); // Save updated notes to SharedPreferences
+            adapter.notifyDataSetChanged(); // Notify the adapter that data has changed
+            updateViewVisibility(); // Update visibility of views
 
             // Clear the form and hide it
             etTitle.setText("");
@@ -208,6 +206,7 @@ public class CatatanActivity extends AppCompatActivity {
         String jsonNotes = gson.toJson(notesList);
         editor.putString("notesList", jsonNotes);
         editor.apply();
+        Log.d("NotesApp", "Notes saved: " + jsonNotes);
     }
 
     // Load notes list from SharedPreferences
@@ -220,7 +219,7 @@ public class CatatanActivity extends AppCompatActivity {
             Gson gson = new Gson();
             Type type = new TypeToken<List<Note>>() {}.getType();
             notesList = gson.fromJson(jsonNotes, type);
-            adapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged(); // Notify adapter after loading notes
         }
     }
 }

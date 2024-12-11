@@ -52,6 +52,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     public int getItemCount() {
         return notesList.size();
     }
+    public void setNotes(List<Note> notes) {
+        this.notesList = notes;
+        notifyDataSetChanged();
+    }
+
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvContent;
