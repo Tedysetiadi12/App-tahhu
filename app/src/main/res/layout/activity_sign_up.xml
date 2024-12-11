@@ -1,0 +1,159 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo_tahu"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/googlesans_bold"
+        android:gravity="center"
+        android:text="Lets Get started!"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:textSize="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:fontFamily="@font/googlesans_regular"
+        android:gravity="center"
+        android:text="Lets dive into the world of finance"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="0dp"
+        android:textSize="16dp"
+        android:text="Email"/>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="Username"/>
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="Nomor HP (optional)"/>
+
+    <!-- Nomor HP (opsional) -->
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor HP (optional)"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:inputType="phone"
+        android:padding="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="Address (optional)"/>
+
+    <!-- Alamat (opsional) -->
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:hint="Address (optional)"
+        android:inputType="text"
+        android:padding="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+        android:text="Password"/>
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        app:cornerRadius="10dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#81C784" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#7986CB" />
+</LinearLayout>

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,21 +15,36 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
     public Button btninternet,btn_test;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
                 btn_tv, btn_food, btn_security, btn_homeButton;
     private ProgressBar progressBar2;
     private BannerAdapter bannerAdapter;
+    private TextView welcomeTextView;
+    private FirebaseAuth mAuth;
+
+    private DatabaseReference mDatabase;
+    private MaterialButton signOutButton;
+
     ViewPager2 viewPager3, viewPager4;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -56,11 +72,53 @@ public class MainActivity extends AppCompatActivity {
         btnmarket = findViewById(R.id.Market);
 
         TextView btn_all = findViewById(R.id.all);
-
-
         ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         progressBar2 = findViewById(R.id.progressBar2);
+
+        // Inisialisasi FirebaseAuth dan DatabaseReference
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        welcomeTextView = findViewById(R.id.welcomeTextView);
+        signOutButton = findViewById(R.id.signOutButton);
+
+        // Cek apakah user sudah login
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Ambil UID pengguna yang login
+            String userId = currentUser.getUid();
+
+            // Ambil data pengguna dari Realtime Database
+            mDatabase.child("users").child(userId).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if (dataSnapshot.exists()) {
+                        // Ambil data username dari snapshot
+                        String username = dataSnapshot.child("username").getValue(String.class);
+
+                        // Tampilkan username di TextView
+                        welcomeTextView.setText("Welcome, " + username);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            // Jika pengguna belum login, arahkan ke halaman login
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
+
+        // Implementasikan fungsi Sign Out
+        signOutButton.setOnClickListener(v -> {
+            mAuth.signOut();  // Keluar dari akun Firebase
+
+            // Setelah sign out, arahkan ke halaman login
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();  // Hentikan MainActivity agar tidak bisa kembali ke halaman utama
+        });
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
@@ -75,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         });
+
         viewPager2.setAdapter(adapterslid);
 
         viewPager3 = findViewById(R.id.viewPager3);

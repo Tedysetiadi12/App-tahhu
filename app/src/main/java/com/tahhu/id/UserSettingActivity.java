@@ -15,11 +15,22 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class UserSettingActivity extends AppCompatActivity {
 
     private ImageView backButton, titleButton;
     private LinearLayout changePasswordLayout, editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout,catatalauout, privacyPolicyLayout;
     private Switch notificationSwitch;
+
+    private FirebaseAuth mAuth;
+    private TextView nameTextView, emailTextView;
+
+    private DatabaseReference mDatabase;
     private ActivityResultLauncher<Intent> editProfileLauncher;
 
     @Override
@@ -37,6 +48,43 @@ public class UserSettingActivity extends AppCompatActivity {
         catatalauout = findViewById(R.id.catatanLayout);
         privacyPolicyLayout = findViewById(R.id.privacyPolicyLayout);
         notificationSwitch = findViewById(R.id.notificationSwitch);  // Gunakan Switch yang benar
+
+        // Inisialisasi FirebaseAuth dan DatabaseReference
+        nameTextView = findViewById(R.id.nameTextView);
+        emailTextView = findViewById(R.id.email);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        // Cek apakah user sudah login
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Ambil UID pengguna yang login
+            String userId = currentUser.getUid();
+
+            // Ambil data pengguna dari Realtime Database
+            mDatabase.child("users").child(userId).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if (dataSnapshot.exists()) {
+                        // Ambil data username dari snapshot
+                        String username = dataSnapshot.child("username").getValue(String.class);
+                        String email = dataSnapshot.child("email").getValue(String.class);
+
+                        // Tampilkan username di TextView
+                        nameTextView.setText(username);
+                        emailTextView.setText(email);
+                    } else {
+                        Toast.makeText(UserSettingActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(UserSettingActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            // Jika pengguna belum login, arahkan ke halaman login
+            startActivity(new Intent(UserSettingActivity.this, LoginActivity.class));
+            finish();
+        }
 
         // Set action for back button
         backButton.setOnClickListener(v -> finish());  // Close the current activity

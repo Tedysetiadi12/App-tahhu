@@ -134,19 +134,47 @@
         <activity
             android:name="com.tahhu.id.PanduanUcoActivity"
             android:exported="false" />
-        <activity android:name="com.tahhu.id.TukarMinyakActivity" />
-        <activity android:name="com.tahhu.id.LokasiPenukaranActivity" />
-        <activity android:name="com.tahhu.id.OrderPenjemputanActivity" />
-        <activity android:name="com.tahhu.id.PaymentActivityMarketplace" />
-        <activity android:name="com.tahhu.id.DialogOrderFinishedMarketplace" />
-        <activity android:name="com.tahhu.id.DialogOrderFinishedUco" />
-        <activity android:name="com.tahhu.id.DialogOrderFinishedKirimBarang" />
-        <activity android:name="com.tahhu.id.DialogRatingRideSharing" />
-        <activity android:name="com.tahhu.id.DialogOrderFinishedFood" />
-        <activity android:name="com.tahhu.id.ShoppingListActivity" />
+
+        <activity android:name="com.tahhu.id.TukarMinyakActivity"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.LokasiPenukaranActivity"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.OrderPenjemputanActivity"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.PaymentActivityMarketplace"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.DialogOrderFinishedMarketplace"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.DialogOrderFinishedUco"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.DialogOrderFinishedKirimBarang"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.DialogRatingRideSharing"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.DialogOrderFinishedFood"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.ShoppingListActivity"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.LoginActivity"
+            android:exported="false" />
+
+        <activity android:name="com.tahhu.id.SignUpActivity"
+            android:exported="false" />
+
         <activity
             android:name="com.tahhu.id.Marketplace"
             android:exported="false" />
+
         <activity android:name="com.tahhu.id.DetailProductActivity" />
 
         <service
