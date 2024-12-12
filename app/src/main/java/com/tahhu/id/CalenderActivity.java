@@ -25,6 +25,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -93,6 +99,31 @@ public class CalenderActivity extends AppCompatActivity {
         int currentYear = currentCalendar.get(Calendar.YEAR);
         showMonthlySpendingGraph(currentYear, currentMonth);
 
+        // Firebase initialization
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String userId = mAuth.getCurrentUser().getUid();
+        DatabaseReference spendingRef = FirebaseDatabase.getInstance().getReference("users")
+                .child(userId).child("shopping_list").child("spending");
+
+
+        // Set listener to update tvTotalSpending
+        spendingRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Double totalSpending = snapshot.getValue(Double.class);
+                if (totalSpending != null) {
+                    String formattedSpending = String.format(Locale.getDefault(), "Rp. %.2f", totalSpending);
+                    tvTotalSpending.setText(formattedSpending);
+                } else {
+                    tvTotalSpending.setText("Rp. 0.00");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(CalenderActivity.this, "Gagal memuat data spending", Toast.LENGTH_SHORT).show();
+            }
+        });
         // Tambahkan listener untuk deteksi perubahan bulan
         materialCalendarView.setOnMonthChangedListener((widget, date) -> {
             int selectedMonth = date.getMonth(); // Bulan yang dipilih (0-indexed)

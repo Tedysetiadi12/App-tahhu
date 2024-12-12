@@ -2,6 +2,7 @@ package com.tahhu.id;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,7 +17,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -27,23 +35,52 @@ public class ShoppingListActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TextView tvTotalAmount;
     private String selectedCategory = "";
-
     private ActiveListFragment activeListFragment;
     private CompletedListFragment completedListFragment;
+    public DatabaseReference shoppingListRef;
+    private String userId;
 
-    private double totalCompletedAmount = 0; // Total pengeluaran selesai
+    public double totalCompletedAmount = 0; // Total pengeluaran selesai
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
 
+        // Firebase initialization
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+        shoppingListRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("shopping_list");
+
         initializeViews();
         setupViewPager();
         setupListeners();
 
-        activeListFragment = new ActiveListFragment();
-        completedListFragment = new CompletedListFragment();
+        // ActiveItems dan CompletedItems akan berada di dalam "shopping_list"
+        activeListFragment = new ActiveListFragment(shoppingListRef.child("activeItems"));
+        completedListFragment = new CompletedListFragment(shoppingListRef.child("completedItems"));
+
+        completedListFragment.getCompletedItemsRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("CompletedListFragment", "onDataChange dipanggil. Jumlah item: " + snapshot.getChildrenCount());
+                totalCompletedAmount = 0;
+
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    ShoppingItem item = data.getValue(ShoppingItem.class);
+                    if (item != null) {
+                        totalCompletedAmount += (item.getPrice() * item.getQuantity());
+                    }
+                }
+                updateTotalAmount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Log error jika terjadi masalah
+            }
+        });
+
     }
 
     private void initializeViews() {
@@ -58,7 +95,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         tvTotalAmount = findViewById(R.id.tvTotalAmount);
 
-        updateTotalAmount();
     }
 
     private void setupViewPager() {
@@ -123,13 +159,23 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         int quantity = Integer.parseInt(quantityStr);
         double price = Double.parseDouble(priceStr);
+        String currentDate = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date());
 
-        String currentDate = new java.text.SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new java.util.Date());
+        // Create the shopping item
+        ShoppingItem item;
+        item = new ShoppingItem(name, quantity, price, selectedCategory, notes, currentDate);
 
-        ShoppingItem item = new ShoppingItem(name, quantity, price, selectedCategory, notes, currentDate);
-        activeListFragment.addItem(item);
-
-        clearInputs();
+        // Push item to Firebase
+        DatabaseReference newItemRef = shoppingListRef.child("activeItems").push();
+        item.setId(newItemRef.getKey());
+        newItemRef.setValue(item).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                activeListFragment.addItem(item);
+                clearInputs();
+            } else {
+                Toast.makeText(this, "Gagal menambahkan item", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void clearInputs() {
@@ -141,23 +187,39 @@ public class ShoppingListActivity extends AppCompatActivity {
         selectedCategory = "";
     }
 
+    public void markItemAsComplete(ShoppingItem item) {
+        // Update total amount
+        totalCompletedAmount += (item.getPrice() * item.getQuantity());
+        updateTotalAmount();
+        completedListFragment.addItem(item);
+        CalenderActivity.addSpending(item);
+    }
+
+    public void updateTotalAmountAfterAddition(double amountToAdd) {
+        totalCompletedAmount += amountToAdd;
+        updateTotalAmount();
+    }
+
+    public void updateTotalAmountAfterDeletion(double amountToSubtract) {
+        totalCompletedAmount -= amountToSubtract;
+        updateTotalAmount();
+    }
+
+    private void saveTotalCompletedAmountToFirebase() {
+        shoppingListRef.child("spending").setValue(totalCompletedAmount)
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(this, "Gagal memperbarui data spending di Firebase", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private void updateTotalAmount() {
         String formattedAmount = String.format(Locale.getDefault(), "Rp %.2f", totalCompletedAmount);
         tvTotalAmount.setText(formattedAmount);
-    }
 
-    public void markItemAsComplete(ShoppingItem item) {
-        item.setCompletionDate(new Date());
-        completedListFragment.addItem(item);
-        totalCompletedAmount += (item.getPrice() * item.getQuantity());
-        updateTotalAmount();
-        CalenderActivity.addSpending(item);
-    }
-    public void deleteItem(ShoppingItem item, boolean isCompleted) {
-        if (isCompleted) {
-            totalCompletedAmount -= (item.getPrice() * item.getQuantity());
-            updateTotalAmount();
-        }
+        // Simpan nilai ke Firebase
+        saveTotalCompletedAmountToFirebase();
     }
 
     private void openCalendarActivity() {
