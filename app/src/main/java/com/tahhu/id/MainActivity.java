@@ -1,5 +1,6 @@
 package com.tahhu.id;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,12 +8,16 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +33,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         welcomeTextView = findViewById(R.id.welcomeTextView);
-        signOutButton = findViewById(R.id.signOutButton);
+        ImageView profileImageView = findViewById(R.id.profileImageView);
 
         // Cek apakah user sudah login
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -112,13 +120,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Implementasikan fungsi Sign Out
-        signOutButton.setOnClickListener(v -> {
-            mAuth.signOut();  // Keluar dari akun Firebase
 
-            // Setelah sign out, arahkan ke halaman login
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();  // Hentikan MainActivity agar tidak bisa kembali ke halaman utama
-        });
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
@@ -344,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        profileImageView.setOnClickListener(v -> showProfilePopup(v));
     }
 
     private void showProgressBar(boolean show) {
@@ -366,5 +369,56 @@ public class MainActivity extends AppCompatActivity {
                 viewPager3.postDelayed(this, delayMillis);
             }
         }, delayMillis);
+    }
+    private void showProfilePopup(View anchor) {
+        // Menampilkan popup menu
+        PopupMenu popupMenu = new PopupMenu(this, anchor);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_profile, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(item -> onOptionsItemSelected(item));
+
+        // Dapatkan mPopup dari PopupMenu untuk mengakses PopupMenuHelper
+        try {
+            Field mPopupField = popupMenu.getClass().getDeclaredField("mPopup");
+            mPopupField.setAccessible(true);
+            Object mPopup = mPopupField.get(popupMenu);
+
+            // Ubah background menjadi putih
+            Class<?> classPopupMenu = Class.forName(mPopup.getClass().getName());
+            Method setBackgroundDrawable = classPopupMenu.getDeclaredMethod("setBackgroundDrawable", Drawable.class);
+            setBackgroundDrawable.setAccessible(true);
+
+            // Terapkan background dari drawable
+            Drawable whiteBackground = getResources().getDrawable(R.drawable.popup_background, null);
+            setBackgroundDrawable.invoke(mPopup, whiteBackground);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        popupMenu.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if present
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_profile) {
+            Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, UserSettingActivity.class));
+            return true;
+        } else if (itemId == R.id.action_logout) {
+            Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();  // Sign out from Firebase
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,12 +1,18 @@
 package com.tahhu.id;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,13 +38,19 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
-        signUpButton = findViewById(R.id.signUpButton);
 
         loginButton.setOnClickListener(v -> loginUser());
 
-        signUpButton.setOnClickListener(v -> startActivity(
-                new Intent(LoginActivity.this, SignUpActivity.class)
-        ));
+        TextView signUpTextView = findViewById(R.id.signUpTextView);
+        SpannableString spannable = new SpannableString("Don't have an account? Sign Up");
+        spannable.setSpan(new ForegroundColorSpan(Color.RED), 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Warna "Sign Up"
+        spannable.setSpan(new UnderlineSpan(), 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Garis bawah "Sign Up"
+        signUpTextView.setText(spannable);
+
+        signUpTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void loginUser() {

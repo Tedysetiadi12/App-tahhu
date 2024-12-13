@@ -42,6 +42,10 @@
         <item name="android:textColor">#FF6200EE</item> <!-- Ganti dengan warna yang diinginkan -->
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/popup_background</item>
+        <item name="android:elevation">4dp</item> <!-- Bayangan -->
+    </style>
 
 
 </resources>

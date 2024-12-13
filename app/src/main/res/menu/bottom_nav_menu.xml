@@ -16,4 +16,5 @@
         app:tint="#000"
         android:icon="@drawable/profile"
         android:title="Logout" />
+
 </menu>

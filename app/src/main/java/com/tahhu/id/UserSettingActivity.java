@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class UserSettingActivity extends AppCompatActivity {
 
     private ImageView backButton, titleButton;
-    private LinearLayout changePasswordLayout, editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout,catatalauout, privacyPolicyLayout;
+    private LinearLayout changePasswordLayout,logoutlayout ,editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout,catatalauout, privacyPolicyLayout;
     private Switch notificationSwitch;
 
     private FirebaseAuth mAuth;
@@ -47,6 +47,7 @@ public class UserSettingActivity extends AppCompatActivity {
         aboutUsLayout = findViewById(R.id.aboutUsLayout);
         catatalauout = findViewById(R.id.catatanLayout);
         privacyPolicyLayout = findViewById(R.id.privacyPolicyLayout);
+        logoutlayout = findViewById(R.id.logoutLayout);
         notificationSwitch = findViewById(R.id.notificationSwitch);  // Gunakan Switch yang benar
 
         // Inisialisasi FirebaseAuth dan DatabaseReference
@@ -186,6 +187,12 @@ public class UserSettingActivity extends AppCompatActivity {
         privacyPolicyLayout.setOnClickListener(v -> {
             // Handle privacy policy action
             Intent intent = new Intent(UserSettingActivity.this, UserPrivacyPolicyActivity.class);
+            startActivity(intent);
+        });
+        logoutlayout.setOnClickListener(v -> {
+            // Handle privacy policy action
+            mAuth.signOut();
+            Intent intent = new Intent(UserSettingActivity.this, LoginActivity.class);
             startActivity(intent);
         });
 

@@ -6,5 +6,5 @@
     <corners android:radius="8dp"/>
 
     <!-- Border around the background with a color -->
-    <stroke android:color="#FF4500" android:width="2dp"/> <!-- OrangeRed border -->
+    <stroke android:color="@color/accentColor" android:width="2dp"/> <!-- OrangeRed border -->
 </shape>
