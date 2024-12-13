@@ -171,11 +171,15 @@
         <activity android:name="com.tahhu.id.SignUpActivity"
             android:exported="false" />
 
+        <activity android:name=".CalendarSpendingActivity"
+            android:exported="false" />
+
         <activity
             android:name="com.tahhu.id.Marketplace"
             android:exported="false" />
 
-        <activity android:name="com.tahhu.id.DetailProductActivity" />
+        <activity android:name="com.tahhu.id.DetailProductActivity"
+            android:exported="false" />
 
         <service
             android:name="com.tahhu.id.BackgroundSoundService"
@@ -191,12 +195,12 @@
         <activity
             android:name="com.tahhu.id.SplashActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
-
 </manifest>

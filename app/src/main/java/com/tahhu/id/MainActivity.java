@@ -2,20 +2,27 @@ package com.tahhu.id;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
@@ -36,14 +43,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     public Button btninternet,btn_test;
     FloatingActionButton btnmarket ;
-    public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_user, menu_ride,
+    public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_kalkulator, menu_ride,
                 btn_tv, btn_food, btn_security, btn_homeButton;
     private ProgressBar progressBar2;
     private BannerAdapter bannerAdapter;
@@ -76,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         btn_homeButton = findViewById(R.id.homeButton);
         menu_ride = findViewById(R.id.shortvidio);
         menu_market = findViewById(R.id.menumarket);
-        menu_user = findViewById(R.id.menufinace);
         btnmarket = findViewById(R.id.Market);
+        menu_kalkulator = findViewById(R.id.Kalkulator);
 
         TextView btn_all = findViewById(R.id.all);
         ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
@@ -119,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        // Implementasikan fungsi Sign Out
-
 
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
@@ -161,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         });
-// Set adapter pada ViewPager2
+        // Set adapter pada ViewPager2
         viewPager4.setAdapter(bannerAdapter1);
 
         // Mulai auto scroll
@@ -314,14 +321,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        menu_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, UserSettingActivity.class);
-                startActivity(intent);
-            }
-        });
         menu_ride.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -334,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, CalenderActivity.class);
+                Intent intent = new Intent(MainActivity.this, CalendarSpendingActivity.class);
                 startActivity(intent);
             }
         });
@@ -346,6 +345,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageView menu_kalkulator = findViewById(R.id.Kalkulator);
+        menu_kalkulator.setOnClickListener(v -> {
+            // Memanggil dialog
+            DiscountCalculatorDialog dialog = new DiscountCalculatorDialog();
+            dialog.show(getSupportFragmentManager(), "DiscountCalculatorDialog");
+        });
+
+
         profileImageView.setOnClickListener(v -> showProfilePopup(v));
     }
 
@@ -420,5 +428,99 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static class DiscountCalculatorDialog extends DialogFragment {
+        private EditText etPrice, etDiscount;
+        private TextView tvInitialPrice, tvDiscount, tvFinalPrice;
+        private Button btnReset;
+        private TextWatcher textWatcher;
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.dialog_diskon_kalkulator, container, false);
+
+            // Initialize views
+            etPrice = view.findViewById(R.id.etPrice);
+            etDiscount = view.findViewById(R.id.etDiscount);
+            tvInitialPrice = view.findViewById(R.id.tvInitialPrice);
+            tvDiscount = view.findViewById(R.id.tvDiscount);
+            tvFinalPrice = view.findViewById(R.id.tvFinalPrice);
+            btnReset = view.findViewById(R.id.btnReset);
+
+            // Set up text change listener
+            textWatcher = new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    calculateDiscount();
+                }
+            };
+
+            // Add text change listeners
+            etPrice.addTextChangedListener(textWatcher);
+            etDiscount.addTextChangedListener(textWatcher);
+
+            // Set up reset button
+            btnReset.setOnClickListener(v -> resetCalculator());
+
+            ImageView closeButton = view.findViewById(R.id.ic_close);
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+
+            return view;
+        }
+
+        private void calculateDiscount() {
+            try {
+                double price = Double.parseDouble(etPrice.getText().toString().isEmpty() ? "0" : etPrice.getText().toString());
+                double discount = Double.parseDouble(etDiscount.getText().toString().isEmpty() ? "0" : etDiscount.getText().toString());
+
+                double discountAmount = (price * discount) / 100;
+                double finalPrice = price - discountAmount;
+
+                // Format currency
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+
+                // Update TextViews
+                tvInitialPrice.setText(formatter.format(price).replace("IDR", "Rp"));
+                tvDiscount.setText("-" + formatter.format(discountAmount).replace("IDR", "Rp"));
+                tvFinalPrice.setText(formatter.format(finalPrice).replace("IDR", "Rp"));
+            } catch (NumberFormatException e) {
+                // Handle invalid input
+                tvInitialPrice.setText("Rp 0");
+                tvDiscount.setText("-Rp 0");
+                tvFinalPrice.setText("Rp 0");
+            }
+        }
+
+        private void resetCalculator() {
+            etPrice.setText("");
+            etDiscount.setText("");
+            tvInitialPrice.setText("Rp 0");
+            tvDiscount.setText("-Rp 0");
+            tvFinalPrice.setText("Rp 0");
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+            Dialog dialog = getDialog();
+            if (dialog != null) {
+                dialog.getWindow().setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+            }
+        }
     }
 }

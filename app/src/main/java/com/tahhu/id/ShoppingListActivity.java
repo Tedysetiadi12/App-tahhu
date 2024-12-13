@@ -187,14 +187,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         selectedCategory = "";
     }
 
-    public void markItemAsComplete(ShoppingItem item) {
-        // Update total amount
-        totalCompletedAmount += (item.getPrice() * item.getQuantity());
-        updateTotalAmount();
-        completedListFragment.addItem(item);
-        CalenderActivity.addSpending(item);
-    }
-
     public void updateTotalAmountAfterAddition(double amountToAdd) {
         totalCompletedAmount += amountToAdd;
         updateTotalAmount();
@@ -220,11 +212,6 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         // Simpan nilai ke Firebase
         saveTotalCompletedAmountToFirebase();
-    }
-
-    private void openCalendarActivity() {
-        Intent intent = new Intent(this, CalenderActivity.class);
-        startActivity(intent);
     }
 
     class ShoppingListPagerAdapter extends FragmentStateAdapter {

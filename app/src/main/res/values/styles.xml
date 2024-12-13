@@ -47,5 +47,8 @@
         <item name="android:elevation">4dp</item> <!-- Bayangan -->
     </style>
 
+    <style name="CustomCalendarView" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
 
 </resources>
