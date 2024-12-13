@@ -9,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -51,17 +54,51 @@ public class SignUpActivity extends AppCompatActivity {
         String address = addressEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        // Validate input
+        // Validasi input: Pastikan tidak ada field yang kosong
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-            Toast.makeText(SignUpActivity.this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUpActivity.this, "Harap isi semua kolom yang wajib", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Validasi format email
+        if (!isValidEmail(email)) {
+            emailEditText.setError("Harap masukkan alamat email yang valid");
+            emailEditText.requestFocus();
+            return;
+        }
+
+        // Validasi password minimal 6 karakter
+        if (password.length() < 6) {
+            passwordEditText.setError("Password harus terdiri dari minimal 6 karakter");
+            passwordEditText.requestFocus();
+            return;
+        }
+
+        // Cek apakah email sudah terdaftar
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().getSignInMethods().isEmpty()) {
+                            // Jika email sudah terdaftar
+                            emailEditText.setError("Email ini sudah terdaftar");
+                            emailEditText.requestFocus();
+                        } else {
+                            // Cek apakah username sudah terdaftar
+                            createUser(email, password, username, phone, address);
+                        }
+                    } else {
+                        Toast.makeText(SignUpActivity.this, "Gagal memeriksa email", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+    private void createUser(String email, String password, String username, String phone, String address) {
         // Create new user with Firebase Authentication
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Save additional user data to Firebase Realtime Database
+                        // Pendaftaran berhasil
                         FirebaseUser user = mAuth.getCurrentUser();
                         User newUser = new User(username, email, phone, address);
 
@@ -69,18 +106,30 @@ public class SignUpActivity extends AppCompatActivity {
                             mDatabase.child("users").child(user.getUid()).setValue(newUser)
                                     .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
-                                            // Navigate to login or main activity
-                                            Toast.makeText(SignUpActivity.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                                            // Sukses menyimpan data pengguna
+                                            Toast.makeText(SignUpActivity.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                             finish();
                                         } else {
-                                            Toast.makeText(SignUpActivity.this, "Failed to save user data", Toast.LENGTH_SHORT).show();
+                                            // Gagal menyimpan data pengguna
+                                            Toast.makeText(SignUpActivity.this, "Gagal menyimpan data pengguna", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
                     } else {
-                        Toast.makeText(SignUpActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                        // Autentikasi gagal
+                        String errorMessage = task.getException() != null ? task.getException().getMessage() : "Terjadi kesalahan";
+                        Toast.makeText(SignUpActivity.this, "Autentikasi gagal: " + errorMessage, Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
+
+    // Fungsi untuk validasi format email menggunakan regex
+    private boolean isValidEmail(String email) {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
+        return email.matches(emailPattern);
+    }
+
+
 }
