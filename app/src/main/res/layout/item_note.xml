@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp"
+    android:orientation="vertical"
+    android:padding="10dp"
     android:layout_marginTop="10dp"
-    android:background="@drawable/category_background"
     android:layout_marginBottom="8dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginStart="15dp"
         android:orientation="vertical">
     <TextView
         android:id="@+id/tvTitle"
@@ -33,19 +32,31 @@
         android:layout_marginTop="4dp" />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:orientation="horizontal">
         <!-- Edit Button (Icon) -->
         <ImageButton
             android:id="@+id/btnEdit"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/pencil1"
+            android:tint="@color/accentColor"
             android:contentDescription="Edit"
+            android:layout_gravity="start"
             android:background="?android:attr/selectableItemBackgroundBorderless"/>
 
+        <TextView
+            android:id="@+id/tvUpdatedAt"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/googlesans_medium"
+            android:textColor="@color/primaryTextColor"
+            android:text="12 DES 2024"
+            android:textSize="16dp" />
         <!-- Delete Button (Icon) -->
         <ImageButton
             android:id="@+id/btnDelete"
@@ -53,6 +64,7 @@
             android:layout_height="48dp"
             android:src="@drawable/ic_delete"
             android:contentDescription="Delete"
+            android:tint="@color/accentColor"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:layout_marginEnd="8dp"/>
 
@@ -61,6 +73,9 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/arrowdown"
+            android:tint="@color/accentColor"
+            android:layout_gravity="end"
+            android:background="@color/white"
             android:contentDescription="Lihat Gambar" />
 
       </LinearLayout>

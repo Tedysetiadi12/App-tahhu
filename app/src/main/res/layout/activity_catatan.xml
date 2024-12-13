@@ -51,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:visibility="gone"
             android:background="@drawable/background_with_border"
             android:queryHint="Cari catatan..."
             android:textColor="@android:color/black"
@@ -209,7 +210,8 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:backgroundTint="@color/accentColor"
-            app:srcCompat="@drawable/plus" />
+            app:srcCompat="@drawable/plus"
+            android:tint="@color/white"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

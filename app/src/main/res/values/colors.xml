@@ -45,6 +45,12 @@
     <color name="primaryTextColor">#212121</color>
     <color name="secondaryTextColor">#757575</color>
 
+    <color name="note_color_1">#FFEBEE</color>
+    <color name="note_color_2">#E8F5E9</color>
+    <color name="note_color_3">#E3F2FD</color>
+    <color name="note_color_4">#FFF8E1</color>
+    <color name="note_color_5">#F3E5F5</color>
+
 
     <!-- Active button color -->
     <color name="active_button_color">#FF0000</color> <!-- Red for active state -->
