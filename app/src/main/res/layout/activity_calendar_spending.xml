@@ -37,30 +37,50 @@
             android:fontFamily="@font/googlesans_medium" />
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Monthly Spending"
-        android:padding="@dimen/margin_standard"
-        android:drawableStart="@drawable/ic_kalkulator"
-        android:drawablePadding="3dp"
-        android:textColor="@color/black"
-        android:layout_marginStart="51dp"
-        android:fontFamily="@font/googlesans_bold"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:padding="10dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvMonthlyTotal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:text="Rp. 0"
-        android:fontFamily="@font/googlesans_medium"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="6dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ikon_spending"
+                android:layout_marginEnd="3dp"
+                android:contentDescription="Edit Profile Icon" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monthly Spending"
+                android:fontFamily="@font/googlesans_bold"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMonthlyTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Rp. 0"
+            android:fontFamily="@font/googlesans_medium"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -72,7 +92,7 @@
         android:layout_marginEnd="@dimen/margin_standard"
         app:cardCornerRadius="8dp">
 
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
             android:theme="@style/CustomCalendarView"
             android:layout_width="match_parent"
@@ -80,26 +100,37 @@
             android:textColor="@color/black"/>
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daily Spending"
-        android:drawableStart="@drawable/ic_kalkulator"
-        android:drawablePadding="3dp"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:fontFamily="@font/googlesans_bold"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="8dp" />
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="6dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ikon_spending"
+            android:layout_marginEnd="3dp"
+            android:contentDescription="Edit Profile Icon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daily Spending"
+            android:fontFamily="@font/googlesans_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDailySpending"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:textColor="@color/black"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_weight="1" />
 </LinearLayout>

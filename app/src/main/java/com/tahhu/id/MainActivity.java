@@ -333,10 +333,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, CalendarSpendingActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+
         btnmarket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -355,6 +356,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         profileImageView.setOnClickListener(v -> showProfilePopup(v));
+
+        ImageView calenderSpending = findViewById(R.id.calenderSpending);
+        calenderSpending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(MainActivity.this, CalendarSpendingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showProgressBar(boolean show) {

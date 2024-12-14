@@ -51,4 +51,8 @@
         <item name="android:textColorPrimary">@color/black</item>
     </style>
 
+    <style name="HolidayDateStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#C8E6C9</item>
+    </style>
+
 </resources>

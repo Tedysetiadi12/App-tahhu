@@ -44,6 +44,15 @@
                         android:textSize="16dp"
                         app:layout_constraintStart_toStartOf="parent" />
 
+                    <ImageView
+                        android:id="@+id/calenderSpending"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        app:tint="#FFFFFF"
+                        android:layout_marginEnd="14dp"
+                        app:srcCompat="@drawable/ic_other" />
+
                     <!-- Gambar Profil -->
                     <ImageView
                         android:id="@+id/profileImageView"
@@ -837,7 +846,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     app:tint="#FFFFFF"
-                    app:srcCompat="@drawable/ic_other" />
+                    app:srcCompat="@drawable/ic_kalkulator" />
             </LinearLayout>
         </LinearLayout>
 
