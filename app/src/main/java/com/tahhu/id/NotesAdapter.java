@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -42,7 +43,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         Note note = notesList.get(position);
         holder.tvTitle.setText(note.getTitle());
         // Use Html.fromHtml to display formatted content
-        holder.tvContent.setText(Html.fromHtml(note.getContent()));
+        holder.tvContent.setText(HtmlCompat.fromHtml(note.getContent(), HtmlCompat.FROM_HTML_MODE_LEGACY));
         String formattedDate = formatTanggal(note.getUpdatedAt());
         holder.tvUpdatedAt.setText(formattedDate);
 
@@ -98,7 +99,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             String contentWithImages = notesList.get(position).getContent();
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("Rincian");
-            builder.setMessage(Html.fromHtml(contentWithImages)); // Show images in content
+            builder.setMessage(HtmlCompat.fromHtml(contentWithImages, HtmlCompat.FROM_HTML_MODE_LEGACY)); // Show images in content
             builder.setPositiveButton("Tutup", null);
             builder.show();
         });
