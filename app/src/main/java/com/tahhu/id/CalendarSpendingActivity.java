@@ -1,5 +1,6 @@
 package com.tahhu.id;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,10 +55,12 @@ public class CalendarSpendingActivity extends AppCompatActivity {
     private RecyclerView rvDailySpending;
     private DatabaseReference spendingRef;
     private String userId;
+    private LineChart lineChart;
     private ImageView btnBack;
     private DailySpendingAdapter adapter;
     private ArrayList<ShoppingItem> dailySpendingItems = new ArrayList<>();
     private Map<CalendarDay, String> nationalHolidays = new HashMap<>();
+    private Map<String, Double> dailySpendingMap = new HashMap<>();
     private RequestQueue requestQueue;
     private Calendar currentDisplayedMonth = Calendar.getInstance();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
@@ -86,6 +98,7 @@ public class CalendarSpendingActivity extends AppCompatActivity {
         tvMonthlyTotal = findViewById(R.id.tvMonthlyTotal);
         rvDailySpending = findViewById(R.id.rvDailySpending);
         btnBack = findViewById(R.id.btn_back);
+        lineChart = findViewById(R.id.lineChart);
     }
 
     private void setupCalendar() {
@@ -184,6 +197,7 @@ public class CalendarSpendingActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 double monthlyTotal = 0;
                 dailySpendingItems.clear();
+                dailySpendingMap.clear();
 
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     ShoppingItem item = itemSnapshot.getValue(ShoppingItem.class);
@@ -193,11 +207,17 @@ public class CalendarSpendingActivity extends AppCompatActivity {
                             Calendar itemCalendar = Calendar.getInstance();
                             itemCalendar.setTime(itemDate);
 
+                            // Memastikan item hanya diambil jika bulan dan tahun cocok
                             if (itemCalendar.get(Calendar.MONTH) == month &&
                                     itemCalendar.get(Calendar.YEAR) == year) {
                                 monthlyTotal += (item.getPrice() * item.getQuantity());
                                 dailySpendingItems.add(item);
+
+                                String formattedDate = dateFormat.format(itemDate);
+                                double dailyTotal = dailySpendingMap.getOrDefault(formattedDate, 0.0);
+                                dailySpendingMap.put(formattedDate, dailyTotal + (item.getPrice() * item.getQuantity()));
                             }
+
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -212,6 +232,8 @@ public class CalendarSpendingActivity extends AppCompatActivity {
 
                 // Update monthly total in Firebase
                 updateMonthlyTotalInFirebase(year, month, monthlyTotal);
+
+                updateLineChart();
             }
 
             @Override
@@ -221,6 +243,67 @@ public class CalendarSpendingActivity extends AppCompatActivity {
             }
         });
     }
+    private void updateLineChart() {
+        ArrayList<Entry> entries = new ArrayList<>();
+        ArrayList<String> labels = new ArrayList<>();
+        int dayCounter = 1;
+
+        // Menambahkan data untuk setiap hari di bulan ini, bahkan jika tidak ada pengeluaran
+        for (int day = 1; day <= currentDisplayedMonth.getActualMaximum(Calendar.DAY_OF_MONTH); day++) {
+            String dateKey = String.format(Locale.getDefault(), "%02d %s %d", day, currentDisplayedMonth.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()), currentDisplayedMonth.get(Calendar.YEAR));
+            double spending = dailySpendingMap.getOrDefault(dateKey, 0.0);
+            entries.add(new Entry(dayCounter, (float) spending));
+            labels.add(String.format(Locale.getDefault(), "%02d", day)); // Menyimpan hanya tanggal
+            dayCounter++;
+        }
+        LineDataSet dataSet = new LineDataSet(entries, "Daily Spending");
+        dataSet.setColor(Color.BLUE); // Warna garis
+        dataSet.setCircleColor(Color.RED); // Warna marker
+        dataSet.setLineWidth(2f); // Ketebalan garis
+        dataSet.setCircleRadius(5f); // Ukuran marker
+        dataSet.setValueTextSize(10f); // Ukuran teks nilai
+        dataSet.setValueTextColor(Color.BLACK); // Warna teks nilai
+        dataSet.setDrawValues(true); // Menampilkan nilai di marker
+        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // Membuat garis melengkung
+
+        LineData lineData = new LineData(dataSet);
+        lineChart.setData(lineData);
+
+        // Pengaturan XAxis
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); // Sumbu X di bawah
+        xAxis.setGranularity(2f); // Menampilkan setiap kelipatan 2
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                int index = (int) value - 1;
+                if (index >= 0 && index < labels.size() && index % 2 == 0) {
+                    return labels.get(index); // Tampilkan tanggal kelipatan 2
+                }
+                return ""; // Kosong untuk yang lain
+            }
+        });
+
+        xAxis.setLabelCount(labels.size() / 2, true); // Menampilkan label secara proporsional
+        xAxis.setDrawGridLines(false);
+
+        // Pengaturan lainnya
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setAxisMinimum(0f);
+        lineChart.getAxisRight().setEnabled(false); // Nonaktifkan sumbu Y kanan
+        lineChart.getAxisLeft().setTextColor(Color.BLACK); // Warna teks sumbu Y
+        lineChart.getDescription().setEnabled(false); // Nonaktifkan deskripsi
+        lineChart.setTouchEnabled(true);
+        lineChart.setPinchZoom(true);
+
+        // Animasi: Memberikan efek transisi saat data berubah
+        lineChart.animateX(1000, Easing.EaseInOutCubic); // Animasi horizontal (X axis) dalam 1000ms dengan efek cubic ease in-out
+        lineChart.animateY(1000, Easing.EaseInOutCubic); // Animasi vertikal (Y axis) dalam 1000ms dengan efek cubic ease in-out
+
+
+        lineChart.invalidate(); // Refresh grafik
+    }
+
 
     private void loadDailySpending(String selectedDate) {
         spendingRef.child("completedItems")

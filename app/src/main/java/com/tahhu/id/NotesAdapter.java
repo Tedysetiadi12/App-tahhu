@@ -57,6 +57,23 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         int backgroundIndex = position % backgrounds.length;
         holder.itemView.setBackgroundResource(backgrounds[backgroundIndex]);
 
+        // Set up pin button
+        holder.pinButton.setImageResource(note.isPinned() ? R.drawable.pinned : R.drawable.ic_pin);
+        holder.pinButton.setOnClickListener(v -> {
+            note.setPinned(!note.isPinned());
+            if (note.isPinned()) {
+                // Move the pinned item to the top
+                notesList.remove(position);
+                notesList.add(0, note);
+            } else {
+                // Restore the item to its original position
+                notesList.remove(position);
+                notesList.add(position, note);
+            }
+            notifyDataSetChanged(); // Update the RecyclerView after changing the pinned status
+            updateNoteInDatabase(note); // Update the status in Firebase
+        });
+
 
         // Set up delete button
         holder.deleteButton.setOnClickListener(v -> {
@@ -76,13 +93,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             ((CatatanActivity) context).onEditNoteClicked(position);
         });
 
+        // Set up view button (for displaying content)
         holder.ViewButton.setOnClickListener(v -> {
             String contentWithImages = notesList.get(position).getContent();
-
-            // Tampilkan elemen gambar kembali di dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Lihat Gambar");
-            builder.setMessage(Html.fromHtml(contentWithImages)); // Tampilkan dengan gambar
+            builder.setTitle("Rincian");
+            builder.setMessage(Html.fromHtml(contentWithImages)); // Show images in content
             builder.setPositiveButton("Tutup", null);
             builder.show();
         });
@@ -101,7 +117,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvContent, tvUpdatedAt;
-        ImageButton deleteButton, editButton, ViewButton;
+        ImageButton deleteButton, editButton, ViewButton,pinButton;
 
         public NoteViewHolder(View itemView) {
             super(itemView);
@@ -111,6 +127,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             deleteButton = itemView.findViewById(R.id.btnDelete);
             editButton = itemView.findViewById(R.id.btnEdit);
             ViewButton = itemView.findViewById(R.id.btnViewImage);
+            pinButton = itemView.findViewById(R.id.btnPin);
 
         }
     }
@@ -143,6 +160,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }).addOnFailureListener(e -> {
             // Tampilkan pesan jika gagal
             Toast.makeText(context, "Gagal menghapus catatan: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+    }
+    private void updateNoteInDatabase(Note note) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("notes").child(note.getId());
+        databaseReference.setValue(note).addOnFailureListener(e -> {
+            Toast.makeText(context, "Gagal memperbarui status pin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 

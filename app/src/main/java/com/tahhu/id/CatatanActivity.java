@@ -84,7 +84,24 @@ public class CatatanActivity extends AppCompatActivity {
         bulletListButton = findViewById(R.id.bulletListButton);
         fileButton = findViewById(R.id.fileButton);
         photoButton = findViewById(R.id.photoButton);
+        richEditor.setHtml("<p style='color: #aaa;'>Isi catatanmu...</p>");
+// Set placeholder text inside RichEditor
+        richEditor.setHtml("<p style='color: #aaa;'>Isi catatanmu...</p>");
 
+        // Add listener to detect if user starts typing
+        richEditor.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                // If editor is focused, check if the placeholder is present, and if so, remove it
+                if (richEditor.getHtml().equals("<p style='color: #aaa;'>Isi catatanmu...</p>")) {
+                    richEditor.setHtml(""); // Clear placeholder
+                }
+            } else {
+                // If the editor loses focus and is empty, set the placeholder back
+                if (richEditor.getHtml().isEmpty()) {
+                    richEditor.setHtml("<p style='color: #aaa;'>Isi catatanmu...</p>");
+                }
+            }
+        });
         // Initialize Firebase reference
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("notes");
@@ -318,7 +335,7 @@ public class CatatanActivity extends AppCompatActivity {
 
     private void clearForm() {
         etTitle.setText("");
-        richEditor.setHtml("");
+        richEditor.setHtml("<p style='color: #aaa;'>Isi catatanmu...</p>");
         formLayout.setVisibility(View.GONE);
         fabAddNote.setVisibility(View.VISIBLE);
     }
