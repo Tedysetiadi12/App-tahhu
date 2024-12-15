@@ -22,82 +22,85 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.tahhu.id.CatatanActivity"
+            android:name=".PiutangActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.CalenderActivity"
+            android:name=".CatatanActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.AddAddressActivity"
+            android:name=".CalenderActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.FullScreenActivity"
+            android:name=".AddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_full_screen"
             android:theme="@style/Theme.tahhu.Fullscreen" />
         <activity
-            android:name="com.tahhu.id.CartProductActivity"
+            android:name=".CartProductActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.ShortVidio"
+            android:name=".ShortVidio"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.cctv"
+            android:name=".cctv"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.rideSharing"
+            android:name=".rideSharing"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.CarSelectionActivity"
+            android:name=".CarSelectionActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.BikeSelectionActivity"
+            android:name=".BikeSelectionActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.FoodActivity"
+            android:name=".FoodActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.CheckoutActivityFood"
+            android:name=".CheckoutActivityFood"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PaymentActivityFood"
+            android:name=".PaymentActivityFood"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PaymentActivityRideSharing"
+            android:name=".PaymentActivityRideSharing"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PaymentActivitySecurity"
+            android:name=".PaymentActivitySecurity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.SecurityActivity"
+            android:name=".SecurityActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.DurationActivity"
+            android:name=".DurationActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UserSettingActivity"
+            android:name=".UserSettingActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.EditProfileActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.EditSecurityPasswordActivity"
+            android:name=".EditSecurityPasswordActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UserSecurityPasswordActivity"
+            android:name=".UserSecurityPasswordActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.SecurityQuestionsActivity"
+            android:name=".SecurityQuestionsActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UserAddPaymentMethodActivity"
+            android:name=".UserAddPaymentMethodActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UserAboutUsActivity"
+            android:name=".UserAboutUsActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UserPrivacyPolicyActivity"
+            android:name=".UserPrivacyPolicyActivity"
             android:exported="false" />
 
         <meta-data
@@ -105,102 +108,101 @@
             android:value="AIzaSyBLDcW-OLHkjLjJjBvT_YYdtKiYAQ9uXG4" />
 
         <service
-            android:name="com.tahhu.id.BackgroundSoundService"
+            android:name=".BackgroundSoundService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name="com.tahhu.id.SelectionTransport"
+            android:name=".SelectionTransport"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.Survey"
+            android:name=".Survey"
             android:exported="false" />
-        <activity android:name="com.tahhu.id.TVStreamingActivity" />
+        <activity android:name=".TVStreamingActivity" />
         <activity
-            android:name="com.tahhu.id.finance"
-            android:exported="false" />
-        <activity
-            android:name="com.tahhu.id.KirimBarangActivity"
+            android:name=".finance"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PaymentKirimBarangActivity"
+            android:name=".KirimBarangActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.UcoActivity"
+            android:name=".PaymentKirimBarangActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PaymentUcoActivity"
+            android:name=".UcoActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.PanduanUcoActivity"
+            android:name=".PaymentUcoActivity"
             android:exported="false" />
-
-        <activity android:name="com.tahhu.id.TukarMinyakActivity"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.LokasiPenukaranActivity"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.OrderPenjemputanActivity"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.PaymentActivityMarketplace"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DialogOrderFinishedMarketplace"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DialogOrderFinishedUco"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DialogOrderFinishedKirimBarang"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DialogRatingRideSharing"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DialogOrderFinishedFood"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.ShoppingListActivity"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.LoginActivity"
-            android:exported="false" />
-
-        <activity android:name="com.tahhu.id.SignUpActivity"
-            android:exported="false" />
-
-        <activity android:name=".CalendarSpendingActivity"
-            android:exported="false" />
-
         <activity
-            android:name="com.tahhu.id.Marketplace"
+            android:name=".PanduanUcoActivity"
             android:exported="false" />
-
-        <activity android:name="com.tahhu.id.DetailProductActivity"
+        <activity
+            android:name=".TukarMinyakActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LokasiPenukaranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPenjemputanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivityMarketplace"
+            android:exported="false" />
+        <activity
+            android:name=".DialogOrderFinishedMarketplace"
+            android:exported="false" />
+        <activity
+            android:name=".DialogOrderFinishedUco"
+            android:exported="false" />
+        <activity
+            android:name=".DialogOrderFinishedKirimBarang"
+            android:exported="false" />
+        <activity
+            android:name=".DialogRatingRideSharing"
+            android:exported="false" />
+        <activity
+            android:name=".DialogOrderFinishedFood"
+            android:exported="false" />
+        <activity
+            android:name=".ShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarSpendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Marketplace"
+            android:exported="false" />
+        <activity
+            android:name=".DetailProductActivity"
             android:exported="false" />
 
         <service
-            android:name="com.tahhu.id.BackgroundSoundService"
+            android:name=".BackgroundSoundService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name="com.tahhu.id.RadioStreamin"
+            android:name=".RadioStreamin"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.tahhu.id.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
+
 </manifest>

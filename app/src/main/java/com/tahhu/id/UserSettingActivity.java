@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class UserSettingActivity extends AppCompatActivity {
 
     private ImageView backButton, titleButton;
-    private LinearLayout changePasswordLayout,logoutlayout ,editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout,catatalauout, privacyPolicyLayout;
+    private LinearLayout changePasswordLayout,logoutlayout ,PiutangLayout,editProfileLayout, addPaymentMethodLayout, pushNotificationLayout, aboutUsLayout,catatalauout, privacyPolicyLayout;
     private Switch notificationSwitch;
 
     private FirebaseAuth mAuth;
@@ -46,6 +46,7 @@ public class UserSettingActivity extends AppCompatActivity {
         pushNotificationLayout = findViewById(R.id.pushNotificationLayout);
         aboutUsLayout = findViewById(R.id.aboutUsLayout);
         catatalauout = findViewById(R.id.catatanLayout);
+        PiutangLayout = findViewById(R.id.PiutangLayout);
         privacyPolicyLayout = findViewById(R.id.privacyPolicyLayout);
         logoutlayout = findViewById(R.id.logoutLayout);
         notificationSwitch = findViewById(R.id.notificationSwitch);  // Gunakan Switch yang benar
@@ -180,6 +181,12 @@ public class UserSettingActivity extends AppCompatActivity {
         catatalauout.setOnClickListener(v -> {
             // Handle about us action
             Intent intent = new Intent(UserSettingActivity.this, CatatanActivity.class);
+            startActivity(intent);
+        });
+
+        PiutangLayout.setOnClickListener(v -> {
+            // Handle about us action
+            Intent intent = new Intent(UserSettingActivity.this, PiutangActivity.class);
             startActivity(intent);
         });
 
