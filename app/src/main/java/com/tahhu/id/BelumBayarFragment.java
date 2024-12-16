@@ -1,13 +1,14 @@
 package com.tahhu.id;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -46,26 +47,25 @@ public class BelumBayarFragment extends Fragment {
         // Reference to the Firebase Realtime Database
         DatabaseReference notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("piutang");
 
-        // Fetch data from Firebase and filter by "Lunas" status
+        // Fetch data from Firebase and filter by "Belum Lunas" status
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                piutangList.clear();  // Clear previous data
+                piutangList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Piutang piutang = snapshot.getValue(Piutang.class);
 
-                    // Check if the status is "Lunas" before adding to the list
-                    if (piutang != null && "Belum bayar".equals(piutang.getStatus())) {
+                    if (piutang != null && "Belum Lunas".equalsIgnoreCase(piutang.getStatus())) {
                         piutangList.add(piutang);
                     }
                 }
 
-                // Update the RecyclerView with the filtered list
+                // Set adapter for RecyclerView
                 if (adapter == null) {
                     adapter = new PiutangAdapter(piutangList);
                     recyclerView.setAdapter(adapter);
                 } else {
-                    adapter.updateList(piutangList);
+                    adapter.notifyDataSetChanged();
                 }
             }
 

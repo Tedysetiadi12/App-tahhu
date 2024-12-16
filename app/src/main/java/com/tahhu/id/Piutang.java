@@ -1,7 +1,11 @@
 package com.tahhu.id;
+import java.io.Serializable;
 
 
 public class Piutang {
+    private static final long serialVersionUID = 1L;
+
+    private String id;           // Tambahkan atribut id untuk identifikasi unik
     private String type;
     private String jumlah;
     private String tanggal;
@@ -11,11 +15,12 @@ public class Piutang {
     private String catatan;
     private String status;
 
-    // Default constructor for Firebase
+    // Default constructor untuk Firebase
     public Piutang() {}
 
-    // Constructor to initialize the values
-    public Piutang(String type, String jumlah, String tanggal, String jatuhTempo, String nama, String deskripsi, String catatan, String status) {
+    // Constructor untuk menginisialisasi semua nilai
+    public Piutang(String id, String type, String jumlah, String tanggal, String jatuhTempo, String nama, String deskripsi, String catatan, String status) {
+        this.id = id;
         this.type = type;
         this.jumlah = jumlah;
         this.tanggal = tanggal;
@@ -26,7 +31,15 @@ public class Piutang {
         this.status = status;
     }
 
-    // Getters and Setters
+    // Getter dan Setter untuk semua atribut
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getType() {
         return type;
     }

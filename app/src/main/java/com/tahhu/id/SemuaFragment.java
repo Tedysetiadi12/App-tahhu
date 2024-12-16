@@ -4,6 +4,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ public class SemuaFragment extends Fragment {
     private RecyclerView recyclerView;
     private PiutangAdapter adapter;
     private List<Piutang> piutangList;
+
 
     public SemuaFragment() {
         // Required empty public constructor
@@ -53,17 +56,19 @@ public class SemuaFragment extends Fragment {
                 piutangList.clear();  // Clear previous data
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Piutang piutang = snapshot.getValue(Piutang.class);
-
-                        piutangList.add(piutang);
+                    // Use getContext() to get the context of the fragment
+                    Toast.makeText(getContext(), "Data berhasil muncul!", Toast.LENGTH_SHORT).show();
+//                    Log.d("Piutang", "Data: " + piutang.getNama());
+                    piutangList.add(piutang);
                 }
-
-                // Update the RecyclerView with the filtered list
+                // Notify adapter of data change
                 if (adapter == null) {
                     adapter = new PiutangAdapter(piutangList);
                     recyclerView.setAdapter(adapter);
                 } else {
-                    adapter.updateList(piutangList);
+                    adapter.notifyDataSetChanged(); // Notify that data has changed
                 }
+
             }
 
             @Override

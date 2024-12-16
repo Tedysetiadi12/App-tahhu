@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,14 +18,29 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class PiutangActivity extends AppCompatActivity {
 
     private Button btnTambah;
+    private long convertToMillis(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            return sdf.parse(date).getTime();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +74,81 @@ public class PiutangActivity extends AppCompatActivity {
                     break;
             }
         }).attach();
+
+        calculatePiutang();
     }
+
+    private void calculatePiutang() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("piutang");
+
+        notesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int totalPiutang = 0;
+                int totalJatuhTempo = 0;
+                int totalBelumBayar = 0;
+                int totalLunas = 0;
+                int totalPiutangLunas = 0; // Tambahkan variabel ini untuk menghitung total piutang lunas
+
+                long todayMillis = System.currentTimeMillis();
+
+                for (DataSnapshot piutangSnapshot : snapshot.getChildren()) {
+                    Piutang piutang = piutangSnapshot.getValue(Piutang.class);
+
+                    if (piutang != null) {
+                        // Konversi jumlah menjadi integer
+                        int jumlah = Integer.parseInt(piutang.getJumlah());
+
+                        // Tambahkan ke total piutang
+                        totalPiutang += jumlah;
+
+                        // Periksa status
+                        if (piutang.getStatus().equalsIgnoreCase("Belum Lunas")) {
+                            totalBelumBayar += jumlah;
+
+                            // Periksa apakah jatuh tempo
+                            long jatuhTempoMillis = convertToMillis(piutang.getJatuhTempo());
+                            if (jatuhTempoMillis < todayMillis) {
+                                totalJatuhTempo += jumlah;
+                            }
+                        } else if (piutang.getStatus().equalsIgnoreCase("Lunas")) {
+                            // Tambahkan ke total lunas
+                            totalLunas += jumlah;
+
+                            // Hitung total piutang lunas
+                            totalPiutangLunas += jumlah;  // Akumulasikan jumlah piutang yang lunas
+                        }
+                    }
+                }
+
+                // Perbarui UI
+                updateUI(totalPiutang, totalJatuhTempo, totalBelumBayar, totalLunas, totalPiutangLunas); // Panggil dengan total piutang lunas
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PiutangActivity.this, "Gagal membaca data!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void updateUI(int totalPiutang, int totalJatuhTempo, int totalBelumBayar, int totalLunas, int totalpiutanglunas) {
+        TextView totalPiutangText = findViewById(R.id.totalpiutang);
+        TextView nominalJatuhTempoText = findViewById(R.id.nominalJatuhTempo);
+        TextView nominalBelumBayarText = findViewById(R.id.nominalBelumLunas);
+        TextView nominalLunasText = findViewById(R.id.nominalLunas);
+        TextView nominalTotalPiutangLunas = findViewById(R.id.nominalTotalPiutangLunas);
+
+
+        totalPiutangText.setText("Rp. "+ String.valueOf(totalPiutang));
+        nominalJatuhTempoText.setText("Rp. "+String.valueOf(totalJatuhTempo));
+        nominalBelumBayarText.setText("Rp. "+String.valueOf(totalBelumBayar));
+        nominalLunasText.setText("Rp. "+String.valueOf(totalLunas));
+        nominalTotalPiutangLunas.setText("Rp. "+String.valueOf(totalpiutanglunas));
+    }
+
 
     private void showAddDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -109,8 +199,6 @@ public class PiutangActivity extends AppCompatActivity {
                 Toast.makeText(this, "Harap isi semua data!", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-
             // Get user ID from Firebase Authentication
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -121,7 +209,7 @@ public class PiutangActivity extends AppCompatActivity {
             String piutangId = notesReference.push().getKey();
 
             // Create a Piutang object
-            Piutang piutang = new Piutang(type, jumlah, tanggal, jatuhTempo, nama, deskripsi, catatan, status);
+            Piutang piutang = new Piutang(piutangId,type, jumlah, tanggal, jatuhTempo, nama, deskripsi, catatan, status);
 
             // Save data to Firebase
             if (piutangId != null) {

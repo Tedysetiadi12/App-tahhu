@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_marginTop="10dp"
+    android:elevation="4dp"
+    android:background="@drawable/background_with_border">
+
+    <!-- Nama dan Status -->
+    <LinearLayout
+        android:id="@+id/textContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBayar"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            android:textColor="@color/black"
+            android:fontFamily="@font/googlesans_medium"
+            android:textStyle="bold"
+            android:layout_marginBottom="7dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:fontFamily="@font/googlesans_medium"
+            android:textSize="14sp"
+            android:textColor="@color/gray" />
+    </LinearLayout>
+
+    <!-- Tombol Bayar -->
+    <Button
+        android:id="@+id/btnBayar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bayar"
+        android:backgroundTint="@color/accentColor"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iconContainer"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Container untuk icon Edit dan Hapus -->
+    <LinearLayout
+        android:id="@+id/iconContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBayar">
+
+        <!-- Icon Edit -->
+        <ImageView
+            android:id="@+id/btnEdit"
+            android:layout_width="34dp"
+            android:layout_height="40dp"
+            android:contentDescription="Edit"
+            android:padding="8dp"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/black" />
+
+        <!-- Icon Hapus -->
+        <ImageView
+            android:id="@+id/btnHapus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Hapus"
+            android:tint="@color/active_button_color" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

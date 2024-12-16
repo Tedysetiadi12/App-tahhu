@@ -66,7 +66,7 @@ public class LunasFragment extends Fragment {
                     adapter = new PiutangAdapter(piutangList);
                     recyclerView.setAdapter(adapter);
                 } else {
-                    adapter.updateList(piutangList);
+                    adapter.notifyDataSetChanged();
                 }
             }
 
