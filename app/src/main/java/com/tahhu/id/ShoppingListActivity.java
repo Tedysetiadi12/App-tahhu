@@ -2,9 +2,17 @@ package com.tahhu.id;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +24,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,22 +34,59 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class ShoppingListActivity extends AppCompatActivity {
     private EditText etItemName, etQuantity, etPrice, etNotes;
-    private Button btnSelectCategory, btnAddToList, btnViewCalendar;
+    private Button btnSelectCategory, btnAddToList, btnViewCalendar, btnBoilEgg, btnSteamRice, btnSteamVeg, btnBoilNoodle, btnSetCustom;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
-    private TextView tvTotalAmount;
+    private TextView tvTotalAmount, timerText;
     private String selectedCategory = "";
     private ActiveListFragment activeListFragment;
     private CompletedListFragment completedListFragment;
     public DatabaseReference shoppingListRef;
     private String userId;
-
+    private FloatingActionButton btnStart, btnReset;
+    private Spinner notificationSpinner;
+    private CountDownTimer countDownTimer;
+    private boolean isTimerRunning = false;
+    private long timeLeftInMillis = 0;
+    private NumberPicker hoursPicker, minutesPicker, secondsPicker;
     public double totalCompletedAmount = 0; // Total pengeluaran selesai
+    private TabLayout tabLayout2;
+    private EditText etInput, etResult;
+    private Spinner spinnerFrom, spinnerTo;
+    private Button btnLihatReferensi;
+
+    // Conversion factors for volume (in mL)
+    private final Map<String, Double> volumeFactors = new HashMap<String, Double>() {{
+        put("Cangkir (Tepung, Beras)", 250.0);
+        put("Sdm (Sendok Makan)", 15.0);
+        put("sdt (Sendok Teh) (Bumbu, Rempah)", 5.0);
+        put("ml (Militer)", 1.0);
+        put("L (Liter)", 1000.00);
+        put("gelas (Air, Susu)", 215.0);
+
+        put("kg (Kilogram)", 1000.0);
+        put("gr (Gram)", 1.0);
+        put("ons (Daging, Sayur)", 28.3495);
+        put("pound (lb) (Resep Barat)", 453.592);
+    }};
+
+    // Conversion factors for weight (in gram)
+    private final Map<String, Double> weightFactors = new HashMap<String, Double>() {{
+        put("gr (Gram)", 1.0);
+        put("kg (Kilogram)", 1000.0);
+        put("ons (Daging, Sayur)", 28.3495);
+        put("pound (lb) (Resep Barat)", 453.592);
+    }};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +101,12 @@ public class ShoppingListActivity extends AppCompatActivity {
         initializeViews();
         setupViewPager();
         setupListeners();
+        setupSpinner();
+        setupClickListeners();
+        setupNumberPickers();
+        setupTabLayout2();
+        setupSpinners2();
+        setupListeners2();
 
         // ActiveItems dan CompletedItems akan berada di dalam "shopping_list"
         activeListFragment = new ActiveListFragment(shoppingListRef.child("activeItems"));
@@ -80,7 +132,6 @@ public class ShoppingListActivity extends AppCompatActivity {
                 // Log error jika terjadi masalah
             }
         });
-
     }
 
     private void initializeViews() {
@@ -94,7 +145,136 @@ public class ShoppingListActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         tvTotalAmount = findViewById(R.id.tvTotalAmount);
+        btnBoilEgg = findViewById(R.id.btnBoilEgg);
+        btnSteamRice = findViewById(R.id.btnSteamRice);
+        btnSteamVeg = findViewById(R.id.btnSteamVeg);
+        btnBoilNoodle = findViewById(R.id.btnBoilNoodle);
+        btnStart = findViewById(R.id.btnStart);
+        btnReset = findViewById(R.id.btnReset);
+        notificationSpinner = findViewById(R.id.notificationSpinner);
+        hoursPicker = findViewById(R.id.hoursPicker);
+        minutesPicker = findViewById(R.id.minutesPicker);
+        secondsPicker = findViewById(R.id.secondsPicker);
 
+        //konversi ukuran
+        tabLayout2 = findViewById(R.id.tabLayout2);
+        etInput = findViewById(R.id.etInput);
+        etResult = findViewById(R.id.etResult);
+        spinnerFrom = findViewById(R.id.spinnerFrom);
+        spinnerTo = findViewById(R.id.spinnerTo);
+        btnLihatReferensi = findViewById(R.id.btnLihatReferensi);
+    }
+
+    private void setupTabLayout2() {
+        tabLayout2.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                // Clear inputs
+                etInput.setText("");
+                etResult.setText("");
+
+                // Update spinners based on selected tab
+                if (tab.getPosition() == 0) { // Volume
+                    setupSpinnersWithValues(new ArrayList<>(volumeFactors.keySet()));
+                } else { // Weight
+                    setupSpinnersWithValues(new ArrayList<>(weightFactors.keySet()));
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+    }
+    private void setupSpinners2() {
+        // Initially setup with volume values
+        setupSpinnersWithValues(new ArrayList<>(volumeFactors.keySet()));
+    }
+
+    private void setupSpinnersWithValues(List<String> values) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, values
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerFrom.setAdapter(adapter);
+        spinnerTo.setAdapter(adapter);
+    }
+    private void setupListeners2() {
+        // Input text change listener
+        etInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                convert();
+            }
+        });
+
+        // Spinner selection change listeners
+        spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                convert();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinnerTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                convert();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        btnLihatReferensi.setOnClickListener(v -> {
+            // open string referensi with dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Referensi");
+            builder.setMessage(R.string.referensi);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                dialog.dismiss();
+                });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+    }
+
+    private void convert() {
+        String input = etInput.getText().toString();
+        if (input.isEmpty()) {
+            etResult.setText("");
+            return;
+        }
+
+        try {
+            double value = Double.parseDouble(input);
+            String fromUnit = spinnerFrom.getSelectedItem().toString();
+            String toUnit = spinnerTo.getSelectedItem().toString();
+
+            Map<String, Double> factors = tabLayout.getSelectedTabPosition() == 0 ?
+                    volumeFactors : weightFactors;
+
+            // Convert to base unit first, then to target unit
+            double baseValue = value * factors.get(fromUnit);
+            double result = baseValue / factors.get(toUnit);
+
+            // Format result to 4 decimal places for more precision
+            etResult.setText(String.format(Locale.US, "%.3f", result));
+        } catch (NumberFormatException e) {
+            etResult.setText("Error");
+        }
     }
 
     private void setupViewPager() {
@@ -131,6 +311,129 @@ public class ShoppingListActivity extends AppCompatActivity {
 //        btnViewCalendar.setOnClickListener(v -> openCalendarActivity());
     }
 
+    private void setupSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.notification_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        notificationSpinner.setAdapter(adapter);
+    }
+
+    private void setupClickListeners() {
+        btnBoilEgg.setOnClickListener(v -> setTimer(15 * 60 * 1000)); // 15 minutes
+        btnSteamRice.setOnClickListener(v -> setTimer(35 * 60 * 1000)); // 35 minutes
+        btnSteamVeg.setOnClickListener(v -> setTimer(10 * 60 * 1000)); // 10 minutes
+        btnBoilNoodle.setOnClickListener(v -> setTimer(3 * 60 * 1000)); // 3 minutes
+
+        btnStart.setOnClickListener(v -> {
+            if (isTimerRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        });
+
+        btnReset.setOnClickListener(v -> resetTimer());
+    }
+    private void setTimer(long milliseconds) {
+        timeLeftInMillis = milliseconds;
+        updatePickersFromTime(milliseconds);
+    }
+
+    private void updatePickersFromTime(long milliseconds) {
+        int hours = (int) (milliseconds / 1000) / 3600;
+        int minutes = (int) ((milliseconds / 1000) % 3600) / 60;
+        int seconds = (int) (milliseconds / 1000) % 60;
+
+        hoursPicker.setValue(hours);
+        minutesPicker.setValue(minutes);
+        secondsPicker.setValue(seconds);
+    }
+    private void updateTimeFromPickers() {
+        long hours = hoursPicker.getValue();
+        long minutes = minutesPicker.getValue();
+        long seconds = secondsPicker.getValue();
+        timeLeftInMillis = (hours * 3600 + minutes * 60 + seconds) * 1000;
+    }
+    private void setupNumberPickers() {
+        // Setup hours picker (0-23)
+        hoursPicker.setMinValue(0);
+        hoursPicker.setMaxValue(23);
+        hoursPicker.setFormatter(value -> String.format(Locale.getDefault(), "%02d", value));
+
+        // Setup minutes picker (0-59)
+        minutesPicker.setMinValue(0);
+        minutesPicker.setMaxValue(59);
+        minutesPicker.setFormatter(value -> String.format(Locale.getDefault(), "%02d", value));
+
+        // Setup seconds picker (0-59)
+        secondsPicker.setMinValue(0);
+        secondsPicker.setMaxValue(59);
+        secondsPicker.setFormatter(value -> String.format(Locale.getDefault(), "%02d", value));
+
+        // Add change listeners to update timeLeftInMillis
+        NumberPicker.OnValueChangeListener listener = (picker, oldVal, newVal) -> {
+            if (!isTimerRunning) {
+                updateTimeFromPickers();
+            }
+        };
+
+        hoursPicker.setOnValueChangedListener(listener);
+        minutesPicker.setOnValueChangedListener(listener);
+        secondsPicker.setOnValueChangedListener(listener);
+    }
+    private void startTimer() {
+        if (timeLeftInMillis > 0) {
+            countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timeLeftInMillis = millisUntilFinished;
+                    updatePickersFromTime(millisUntilFinished);
+                }
+
+                @Override
+                public void onFinish() {
+                    isTimerRunning = false;
+                    btnStart.setImageResource(R.drawable.ic_play);
+                    showNotification();
+                }
+            }.start();
+
+            isTimerRunning = true;
+            btnStart.setImageResource(R.drawable.ic_pause);
+        }
+    }
+
+    private void pauseTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+        isTimerRunning = false;
+        btnStart.setImageResource(R.drawable.ic_play);
+    }
+
+    private void resetTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+        timeLeftInMillis = 0;
+        updatePickersFromTime(0);
+        isTimerRunning = false;
+        btnStart.setImageResource(R.drawable.ic_play);
+    }
+
+
+    private void showNotification() {
+        // Implement notification logic here based on spinner selection
+        Toast.makeText(this, "Timer Selesai!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
     private void showCategoryDialog() {
         String[] categories = {"Daging", "Ikan", "Bahan Makanan", "Sayuran", "Buah", "Lainnya"};
 

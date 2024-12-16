@@ -1,9 +1,15 @@
 package com.tahhu.id;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
@@ -21,7 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     // UI elements
     private EditText emailEditText, usernameEditText, phoneEditText, addressEditText, passwordEditText;
-    private MaterialButton signUpButton, loginButton;
+    private MaterialButton signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +45,19 @@ public class SignUpActivity extends AppCompatActivity {
         addressEditText = findViewById(R.id.addressEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         signUpButton = findViewById(R.id.signUpButton);
-        loginButton = findViewById(R.id.loginButton);
 
         signUpButton.setOnClickListener(v -> signUpUser());
-        loginButton.setOnClickListener(v -> startActivity
-                (new Intent(SignUpActivity.this, LoginActivity.class)
-                ));
+
+        TextView signInTextView = findViewById(R.id.signInTextView);
+        SpannableString spannable = new SpannableString("Don't have an account? Sign In");
+        spannable.setSpan(new ForegroundColorSpan(Color.RED), 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Warna "Sign Up"
+        spannable.setSpan(new UnderlineSpan(), 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Garis bawah "Sign Up"
+        signInTextView.setText(spannable);
+
+        signInTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void signUpUser() {

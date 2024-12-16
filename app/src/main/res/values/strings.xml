@@ -12,6 +12,12 @@
         <item>Minyak Bimoli</item>
     </string-array>
 
+    <string-array name="notification_options">
+        <item>Keduanya</item>
+        <item>Suara</item>
+        <item>Getaran</item>
+    </string-array>
+
     <string name="lokasi_prompt">Pilih Lokasi Terdekat</string>
     <string-array name="lokasi_terdekat">
         <item>Jl. Malioboro</item>
@@ -40,6 +46,31 @@
     - How you can access, update, or delete your information\n\n
     By using our app, you agree to the collection and use of information as outlined in this policy.\n
     If you have any questions, contact us at support@tahhu.com. Thank you for trusting TAHHU.
+</string>
+    <string name="referensi">
+    <b>Bahan Dasar</b>\n
+    1 Cangkir Beras = 200 gr\n
+    1 Cangkir Tepung Terigu = 120 gr\n
+    1 Cangkir Gula Pasir = 200 gr\n
+    1 Cangkir Gula Halus = 160 gr\n
+    1 Cangkir Susu Cair = 250 ml\n\n
+
+    <b>Protein</b>\n
+    1 Butir Telur (Ukuran sedang) = 60 gr\n
+    1 Butir Kuning Telur = 18 gr\n
+    1 Butir Putih Telur = 35 gr\n
+    1 Sdm Susu Bubuk = 10 gr\n\n
+
+    <b>Minyak dan Lemak</b>\n
+    1 Sdm Minyak Goreng = 15 ml\n
+    1 Sdm Mentega = 14 gr\n
+    1 Sdt Minyak Wijen = 5 ml\n\n
+
+    <b>Bumbu dan Rempah</b>\n
+    1 Sdt Garam = 6 gr\n
+    1 Siung Bawang Putih = 5 gr\n
+    1 Ruas Jahe (3cm) = 15 gr\n
+    1 Sdt Merica Bubuk = 3 gr
 </string>
 
 

@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/googlesans_bold"
                 android:gravity="center"
-                android:text="Let's Get Started!"
+                android:text="LOGIN"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +52,7 @@
             <TextView
                 android:id="@+id/subtitleTextView"
                 android:layout_width="0dp"
+                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/googlesans_regular"
                 android:gravity="center"
