@@ -85,11 +85,11 @@ public class PiutangActivity extends AppCompatActivity {
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int totalPiutang = 0;
-                int totalJatuhTempo = 0;
-                int totalBelumBayar = 0;
-                int totalLunas = 0;
-                int totalPiutangLunas = 0; // Tambahkan variabel ini untuk menghitung total piutang lunas
+                double totalPiutang = 0;
+                double totalJatuhTempo = 0;
+                double totalBelumBayar = 0;
+                double totalLunas = 0;
+                double totalPiutangLunas = 0; // Tambahkan variabel ini untuk menghitung total piutang lunas
 
                 long todayMillis = System.currentTimeMillis();
 
@@ -97,8 +97,8 @@ public class PiutangActivity extends AppCompatActivity {
                     Piutang piutang = piutangSnapshot.getValue(Piutang.class);
 
                     if (piutang != null) {
-                        // Konversi jumlah menjadi integer
-                        int jumlah = Integer.parseInt(piutang.getJumlah());
+                        // Konversi jumlah menjadi double
+                        double jumlah = Double.parseDouble(piutang.getJumlah());
 
                         // Tambahkan ke total piutang
                         totalPiutang += jumlah;
@@ -123,7 +123,7 @@ public class PiutangActivity extends AppCompatActivity {
                 }
 
                 // Perbarui UI
-                updateUI(totalPiutang, totalJatuhTempo, totalBelumBayar, totalLunas, totalPiutangLunas); // Panggil dengan total piutang lunas
+                updateUI((int) totalPiutang, (int) totalJatuhTempo, (int) totalBelumBayar, (int) totalLunas, (int) totalPiutangLunas); // Panggil dengan total piutang lunas
             }
 
             @Override
@@ -132,6 +132,7 @@ public class PiutangActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
     private void updateUI(int totalPiutang, int totalJatuhTempo, int totalBelumBayar, int totalLunas, int totalpiutanglunas) {
@@ -157,27 +158,23 @@ public class PiutangActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
         // Referensi ke elemen dalam dialog
-        Spinner typeSpinner = dialogView.findViewById(R.id.spinnerType);
+        // Replace Spinner with Button
+        Button btnSelectType = dialogView.findViewById(R.id.btnSelectType);
+        Button btnSelectStatus = dialogView.findViewById(R.id.btnSelectStatus);
         EditText edtJumlah = dialogView.findViewById(R.id.edtJumlah);
         TextView txtTanggal = dialogView.findViewById(R.id.txtTanggal);
         TextView txtTanggalJatuhTempo = dialogView.findViewById(R.id.txtTanggalJatuhTempo);
         EditText edtNama = dialogView.findViewById(R.id.edtNama);
         EditText edtDeskripsi = dialogView.findViewById(R.id.edtDeskripsi);
         EditText edtCatatan = dialogView.findViewById(R.id.edtCatatan);
-        Spinner statusSpinner = dialogView.findViewById(R.id.spinnerStatus);
         Button btnSimpan = dialogView.findViewById(R.id.btnSimpan);
         Button btnBatal = dialogView.findViewById(R.id.btnBatal);
 
-        // Setup pilihan untuk spinner
-        String[] types = {"Piutang", "Utang"};
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, types);
-        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        typeSpinner.setAdapter(typeAdapter);
+        // Handle button click for selecting type
+        btnSelectType.setOnClickListener(v -> showTypeSelectionDialog(btnSelectType));
 
-        String[] statuses = {"Belum Lunas", "Lunas"};
-        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statuses);
-        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        statusSpinner.setAdapter(statusAdapter);
+        // Handle button click for selecting status
+        btnSelectStatus.setOnClickListener(v -> showStatusSelectionDialog(btnSelectStatus));
 
         // Set tanggal picker
         txtTanggal.setOnClickListener(v -> showDatePicker(txtTanggal));
@@ -186,14 +183,14 @@ public class PiutangActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
 
         btnSimpan.setOnClickListener(v -> {
-            String type = typeSpinner.getSelectedItem().toString();
+            String type = btnSelectType.getText().toString();
             String jumlah = edtJumlah.getText().toString().trim();
             String tanggal = txtTanggal.getText().toString();
             String jatuhTempo = txtTanggalJatuhTempo.getText().toString();
             String nama = edtNama.getText().toString().trim();
             String deskripsi = edtDeskripsi.getText().toString().trim();
             String catatan = edtCatatan.getText().toString().trim();
-            String status = statusSpinner.getSelectedItem().toString();
+            String status = btnSelectStatus.getText().toString();
 
             if (jumlah.isEmpty() || tanggal.isEmpty() || jatuhTempo.isEmpty() || nama.isEmpty() || deskripsi.isEmpty() || catatan.isEmpty()) {
                 Toast.makeText(this, "Harap isi semua data!", Toast.LENGTH_SHORT).show();
@@ -230,7 +227,23 @@ public class PiutangActivity extends AppCompatActivity {
 
         alertDialog.show();
     }
+    private void showTypeSelectionDialog(Button button) {
+        // Show a dialog to select type (Piutang / Utang)
+        String[] types = {"Piutang", "Utang"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pilih Tipe");
+        builder.setItems(types, (dialog, which) -> button.setText(types[which]));
+        builder.show();
+    }
 
+    private void showStatusSelectionDialog(Button button) {
+        // Show a dialog to select status (Belum Lunas / Lunas)
+        String[] statuses = {"Belum Lunas", "Lunas"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pilih Status");
+        builder.setItems(statuses, (dialog, which) -> button.setText(statuses[which]));
+        builder.show();
+    }
     private void showDatePicker(TextView textView) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

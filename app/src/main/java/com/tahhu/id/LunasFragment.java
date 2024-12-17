@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,55 +26,55 @@ public class LunasFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PiutangAdapter adapter;
-    private List<Piutang> piutangList;
 
     public LunasFragment() {
         // Required empty public constructor
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lunas, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewLunas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Initialize list
-        piutangList = new ArrayList<>();
+        // Initialize adapter
+        adapter = new PiutangAdapter();
+        recyclerView.setAdapter(adapter);
 
-        // Get the user ID from Firebase Authentication
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // Get user ID from Firebase Authentication
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "Pengguna belum login", Toast.LENGTH_SHORT).show();
+            return view;
+        }
+        String userId = auth.getCurrentUser().getUid();
 
-        // Reference to the Firebase Realtime Database
-        DatabaseReference notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("piutang");
+        // Reference to Firebase Realtime Database
+        DatabaseReference notesReference = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(userId)
+                .child("piutang");
 
         // Fetch data from Firebase and filter by "Lunas" status
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                piutangList.clear();  // Clear previous data
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Piutang> piutangList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Piutang piutang = snapshot.getValue(Piutang.class);
-
-                    // Check if the status is "Lunas" before adding to the list
                     if (piutang != null && "Lunas".equals(piutang.getStatus())) {
                         piutangList.add(piutang);
                     }
                 }
-
-                // Update RecyclerView adapter with the filtered list
-                if (adapter == null) {
-                    adapter = new PiutangAdapter(piutangList);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    adapter.notifyDataSetChanged();
-                }
+                // Submit filtered list to the adapter
+                adapter.submitList(piutangList);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Gagal mengambil data!", Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Gagal mengambil data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

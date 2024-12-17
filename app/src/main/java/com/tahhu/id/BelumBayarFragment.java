@@ -24,49 +24,45 @@ public class BelumBayarFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PiutangAdapter adapter;
-    private List<Piutang> piutangList;
 
     public BelumBayarFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_belum_bayar, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewBelumBayar);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Initialize the list
-        piutangList = new ArrayList<>();
+        // Inisialisasi adapter
+        adapter = new PiutangAdapter();
+        recyclerView.setAdapter(adapter);
 
-        // Get the user ID from Firebase Authentication
+        // Dapatkan user ID dari Firebase Authentication
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // Reference to the Firebase Realtime Database
-        DatabaseReference notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("piutang");
+        // Referensi ke Firebase Realtime Database
+        DatabaseReference notesReference = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(userId)
+                .child("piutang");
 
-        // Fetch data from Firebase and filter by "Belum Lunas" status
+        // Ambil data dari Firebase
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                piutangList.clear();
+                List<Piutang> updatedList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Piutang piutang = snapshot.getValue(Piutang.class);
-
                     if (piutang != null && "Belum Lunas".equalsIgnoreCase(piutang.getStatus())) {
-                        piutangList.add(piutang);
+                        updatedList.add(piutang);
                     }
                 }
 
-                // Set adapter for RecyclerView
-                if (adapter == null) {
-                    adapter = new PiutangAdapter(piutangList);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    adapter.notifyDataSetChanged();
-                }
+                // Perbarui adapter
+                adapter.submitList(updatedList);
             }
 
             @Override

@@ -1,6 +1,8 @@
 package com.tahhu.id;
 
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,55 +27,59 @@ public class SemuaFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PiutangAdapter adapter;
-    private List<Piutang> piutangList;
-
 
     public SemuaFragment() {
         // Required empty public constructor
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_semua, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewSemua);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Initialize the list
-        piutangList = new ArrayList<>();
+        // Initialize adapter and set it to RecyclerView
+        adapter = new PiutangAdapter();
+        recyclerView.setAdapter(adapter);
 
-        // Get the user ID from Firebase Authentication
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // Check if user is authenticated
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "Pengguna belum login", Toast.LENGTH_SHORT).show();
+            return view;
+        }
+        String userId = auth.getCurrentUser().getUid();
 
-        // Reference to the Firebase Realtime Database
-        DatabaseReference notesReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("piutang");
+        // Reference to Firebase Realtime Database
+        DatabaseReference notesReference = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(userId)
+                .child("piutang");
 
-        // Fetch data from Firebase and filter by "Lunas" status
+        // Fetch data from Firebase
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                piutangList.clear();  // Clear previous data
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Piutang> piutangList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Piutang piutang = snapshot.getValue(Piutang.class);
-                    // Use getContext() to get the context of the fragment
-                    Toast.makeText(getContext(), "Data berhasil muncul!", Toast.LENGTH_SHORT).show();
-//                    Log.d("Piutang", "Data: " + piutang.getNama());
-                    piutangList.add(piutang);
-                }
-                // Notify adapter of data change
-                if (adapter == null) {
-                    adapter = new PiutangAdapter(piutangList);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    adapter.notifyDataSetChanged(); // Notify that data has changed
+                    if (piutang != null) {
+                        piutangList.add(piutang);
+                        Log.d("SemuaFragment", "Data: " + piutang.getNama());
+                    }
                 }
 
+                // Submit data to adapter
+                adapter.submitList(piutangList);
+                Toast.makeText(getContext(), "Data berhasil dimuat", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Gagal mengambil data!", Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Gagal mengambil data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("SemuaFragment", "Database error: ", databaseError.toException());
             }
         });
 
