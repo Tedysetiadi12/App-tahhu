@@ -54,18 +54,18 @@
                 android:padding="6dp"
                 android:layout_gravity="center">
 
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:src="@drawable/ikon_spending"
-                    android:layout_marginEnd="3dp"
-                    android:contentDescription="Edit Profile Icon" />
+<!--                <ImageView-->
+<!--                    android:layout_width="22dp"-->
+<!--                    android:layout_height="22dp"-->
+<!--                    android:src="@drawable/ikon_spending"-->
+<!--                    android:layout_marginEnd="3dp"-->
+<!--                    android:contentDescription="Edit Profile Icon" />-->
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Monthly Spending"
+                    android:text="Total Pengeluaran Bulanan"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="0dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -116,6 +116,12 @@
                     android:textColor="@color/black" />
             </com.google.android.material.card.MaterialCardView>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/lightGray"
+                android:layout_marginBottom="10dp" />
+
             <!-- Line Chart for Monthly Spending -->
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart"
@@ -123,26 +129,28 @@
                 android:layout_height="250dp"
                 android:layout_margin="10dp" />
 
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:padding="0dp"
+                android:background="@color/lightGray"
+                android:layout_marginBottom="10dp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:padding="6dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:src="@drawable/ikon_spending"
-                    android:layout_marginEnd="3dp"
-                    android:contentDescription="Edit Profile Icon" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Daily Spending"
+                    android:text="Daftar Pengeluaran Harian"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
