@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.tahhu.id.ShortVidio">
+
+    <!-- Toolbar -->
     <LinearLayout
         android:id="@+id/back_beranda"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/btn_back_short"
@@ -23,7 +21,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/left"
-            app:tint="#FFFFFF" />
+            android:tint="@color/white" />
 
         <TextView
             android:layout_width="0dp"
@@ -31,10 +29,10 @@
             android:layout_weight="1"
             android:fontFamily="@font/googlesans_bold"
             android:gravity="center"
-            android:textSize="20sp"
             android:text="Short Video"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/btn_titiktiga"
@@ -42,15 +40,18 @@
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/kebab"
-            app:tint="#FFFFFF"/>
-
+            android:tint="@color/white" />
     </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            />
+
+    <!-- RecyclerView for Videos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back_beranda"
+        android:layout_above="@id/bottom_container"
+        android:padding="10dp" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -58,4 +59,125 @@
         android:layout_centerInParent="true"
         android:visibility="visible" />
 
+    <!-- CoordinatorLayout for BottomAppBar and FAB -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
+
+        <!-- BottomAppBar -->
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:fabCradleVerticalOffset="0dp"
+            android:backgroundTint="@color/buttonColor">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/homeButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/home"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menumarket"
+                        android:layout_width="25dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/favorite"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        app:srcCompat="@drawable/home" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/shortvidio"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:tint="#FFFFFF"
+                        app:srcCompat="@drawable/clapper" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/Kalkulator"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_kalkulator" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <!-- FloatingActionButton -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Market"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_cartt"
+            app:tint="#FFFFFF"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/buttonColor"
+            app:layout_anchor="@id/bottomAppBar"
+            android:elevation="3dp"
+            app:maxImageSize="30dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

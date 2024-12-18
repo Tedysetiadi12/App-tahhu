@@ -57,5 +57,7 @@
     <color name="buttonIconBackground">#F0F0F0</color>
     <!-- Inactive button color -->
     <color name="inactive_button_color">#000000</color> <!-- Black for inactive state -->
+
+    <color name="inactive_icon">#CCCCCC</color>
     CC2527FF//
 </resources>

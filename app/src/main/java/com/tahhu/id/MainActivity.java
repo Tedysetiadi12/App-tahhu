@@ -317,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
+                updateMenuIcons("market");
                 Intent intent = new Intent(MainActivity.this, Marketplace.class);
                 startActivity(intent);
             }
@@ -325,6 +326,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
+                updateMenuIcons("videos");
                 Intent intent = new Intent(MainActivity.this, ShortVidio.class);
                 startActivity(intent);
             }
@@ -333,14 +335,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
+                updateMenuIcons("home");
             }
         });
 
         btnmarket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updateMenuIcons("shoppinglist");
                 // Handle click event, for example, open another activity
                 Intent intent = new Intent(MainActivity.this, ShoppingListActivity.class);
                 startActivity(intent);
@@ -349,11 +351,12 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView menu_kalkulator = findViewById(R.id.Kalkulator);
         menu_kalkulator.setOnClickListener(v -> {
+            updateMenuIcons("calculator");
             // Memanggil dialog
             DiscountCalculatorDialog dialog = new DiscountCalculatorDialog();
             dialog.show(getSupportFragmentManager(), "DiscountCalculatorDialog");
         });
-
+        updateMenuIcons("home");
 
         profileImageView.setOnClickListener(v -> showProfilePopup(v));
 
@@ -367,7 +370,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void updateMenuIcons(String activePage) {
+        int activeColor = getResources().getColor(R.color.white);
+        int inactiveColor = getResources().getColor(R.color.inactive_icon);
 
+        btn_homeButton.setColorFilter(activePage.equals("home") ? activeColor : inactiveColor);
+        menu_market.setColorFilter(activePage.equals("market") ? activeColor : inactiveColor);
+        menu_ride.setColorFilter(activePage.equals("videos") ? activeColor : inactiveColor);
+        menu_kalkulator.setColorFilter(activePage.equals("calculator") ? activeColor : inactiveColor);
+    }
     private void showProgressBar(boolean show) {
         if (show) {
             progressBar2.setVisibility(View.VISIBLE);
