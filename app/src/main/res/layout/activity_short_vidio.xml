@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context="com.tahhu.id.ShortVidio">
-
     <!-- Toolbar -->
     <LinearLayout
         android:id="@+id/back_beranda"
@@ -178,6 +177,6 @@
             app:layout_anchor="@id/bottomAppBar"
             android:elevation="3dp"
             app:maxImageSize="30dp" />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </RelativeLayout>
