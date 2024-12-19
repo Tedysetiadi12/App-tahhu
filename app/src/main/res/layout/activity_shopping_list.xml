@@ -544,6 +544,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
+                android:layout_marginBottom="60dp"
                 android:text="Silahkan catat daftar belanja anda disini biar tidak ada yang terlupa, Happy Shopping"
                 android:textColor="#666666" />
         </LinearLayout>

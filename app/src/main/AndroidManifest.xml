@@ -143,12 +143,12 @@
         <activity
             android:name=".LokasiPenukaranActivity"
             android:exported="false" />
-        <activity
-            android:name=".OrderPenjemputanActivity"
-            android:exported="false" />
+       <activity android:name=".KasirActivity"/>
         <activity
             android:name=".PaymentActivityMarketplace"
             android:exported="false" />
+        <activity android:name=".StatistikKasirActivity"
+            android:exported="false"/>
         <activity
             android:name=".DialogOrderFinishedMarketplace"
             android:exported="false" />
