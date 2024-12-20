@@ -47,6 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:cardElevation="4dp">
 
         <LinearLayout
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="Total Penjualan"
                 android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_medium"
                 android:textSize="18sp"/>
 
             <TextView
@@ -78,8 +81,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="4dp">
+        app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="Produk Terlaris"
                 android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_medium"
                 android:textSize="18sp"
                 android:layout_marginBottom="8dp"/>
 
@@ -111,6 +117,7 @@
         android:text="Riwayat Transaksi"
         android:textSize="18sp"
         android:textColor="@color/black"
+        android:fontFamily="@font/googlesans_medium"
         android:layout_marginBottom="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView

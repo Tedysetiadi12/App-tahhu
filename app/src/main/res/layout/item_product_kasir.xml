@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp"
-    android:background="@color/white"
+    android:background="@drawable/rounded_edittext"
+    android:elevation="2dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -18,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="nama"
+            android:fontFamily="@font/googlesans_medium"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
@@ -27,6 +31,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="harga"
+            android:fontFamily="@font/googlesans_medium"
             android:layout_marginTop="4dp"/>
 
         <TextView
@@ -35,6 +40,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="stock"
+            android:fontFamily="@font/googlesans_medium"
             android:layout_marginTop="4dp"/>
     </LinearLayout>
 
