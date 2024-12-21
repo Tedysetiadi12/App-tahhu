@@ -21,4 +21,15 @@
     <dimen name="icon_size">40dp</dimen>
     <dimen name="icon_margin">60dp</dimen>
     <dimen name="play_button_size_large">56dp</dimen>
+    <dimen name="grid_padding">8dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="icon_corner_radius">25dp</dimen>
+    <dimen name="icon_image_size">30dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_margin_start">7dp</dimen>
+    <dimen name="text_size">14sp</dimen>
+
 </resources>

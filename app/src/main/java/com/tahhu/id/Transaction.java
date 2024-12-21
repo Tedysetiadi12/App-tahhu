@@ -102,35 +102,4 @@ public class Transaction {
         this.userId = userId;
     }
 
-    // Method helper untuk menambah item
-    public void addItem(TransactionItem item) {
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        items.add(item);
-        // Recalculate total
-        this.total = getTotal();
-    }
-
-    // Method helper untuk menghapus item
-    public void removeItem(TransactionItem item) {
-        if (items != null) {
-            items.remove(item);
-            // Recalculate total
-            this.total = getTotal();
-        }
-    }
-
-    // Method untuk mengupdate status
-    public void completeTransaction() {
-        this.status = "completed";
-    }
-
-    // Method untuk validasi transaksi
-    public boolean isValid() {
-        return id != null && !id.isEmpty() &&
-                timestamp > 0 &&
-                total >= 0 &&
-                items != null && !items.isEmpty();
-    }
 }

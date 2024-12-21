@@ -50,13 +50,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    public Button btninternet,btn_test;
+    public ImageView btninternet;
+
+    public Button btn_test;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_kalkulator, menu_ride,
                 btn_tv, btn_food, btn_security, btn_homeButton;
     private ProgressBar progressBar2;
-    private BannerAdapter bannerAdapter;
-    private TextView welcomeTextView;
+
+//    private TextView welcomeTextView;
     private FirebaseAuth mAuth;
 
     private DatabaseReference mDatabase;
@@ -96,37 +98,37 @@ public class MainActivity extends AppCompatActivity {
         // Inisialisasi FirebaseAuth dan DatabaseReference
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        welcomeTextView = findViewById(R.id.welcomeTextView);
+//        welcomeTextView = findViewById(R.id.welcomeTextView);
         ImageView profileImageView = findViewById(R.id.profileImageView);
 
         // Cek apakah user sudah login
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            // Ambil UID pengguna yang login
-            String userId = currentUser.getUid();
-
-            // Ambil data pengguna dari Realtime Database
-            mDatabase.child("users").child(userId).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DataSnapshot dataSnapshot = task.getResult();
-                    if (dataSnapshot.exists()) {
-                        // Ambil data username dari snapshot
-                        String username = dataSnapshot.child("username").getValue(String.class);
-
-                        // Tampilkan username di TextView
-                        welcomeTextView.setText("Welcome, " + username);
-                    } else {
-                        Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            // Jika pengguna belum login, arahkan ke halaman login
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-        }
+//        if (currentUser != null) {
+//            // Ambil UID pengguna yang login
+//            String userId = currentUser.getUid();
+//
+//            // Ambil data pengguna dari Realtime Database
+//            mDatabase.child("users").child(userId).get().addOnCompleteListener(task -> {
+//                if (task.isSuccessful()) {
+//                    DataSnapshot dataSnapshot = task.getResult();
+//                    if (dataSnapshot.exists()) {
+//                        // Ambil data username dari snapshot
+//                        String username = dataSnapshot.child("username").getValue(String.class);
+//
+//                        // Tampilkan username di TextView
+//                        welcomeTextView.setText("Welcome, " + username);
+//                    } else {
+//                        Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//        } else {
+//            // Jika pengguna belum login, arahkan ke halaman login
+//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            finish();
+//        }
 
 
         // Membuat data untuk slide
@@ -142,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         });
-
         viewPager2.setAdapter(adapterslid);
 
         viewPager3 = findViewById(R.id.viewPager3);
