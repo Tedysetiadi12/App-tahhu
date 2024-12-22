@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
@@ -174,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Mulai auto scroll
         autoSlideBanner();
+        TabLayout tabLayouts = findViewById(R.id.tabLayouts);
+        new TabLayoutMediator(tabLayouts, viewPager3, (tab, position) -> {
+            // Tab konfigurasi, jika ada tindakan khusus per tab
+        }).attach();
 
         // Menghubungkan ViewPager2 dengan TabLayout
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
@@ -194,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
-        productRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        productRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         // Deskripsi produk (sama untuk semua produk)
         String productDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
@@ -206,10 +211,9 @@ public class MainActivity extends AppCompatActivity {
         products.add(new Product("KIPAS ANGIN PLATINUM ", "Rp 22,000", R.drawable.product2, "4.7", "12k sold", productDescription));
         products.add(new Product("SEPATU SLIM PRIA ", "Rp 120,000", R.drawable.product4, "4.5", "12k sold", productDescription));
         products.add(new Product("SEPATU DESASS BAHAN KULIT", "Rp 420,000", R.drawable.product3, "4.8", "6k sold", productDescription));
-
-
         ProductAdapter adapter = new ProductAdapter(this, products);
         productRecyclerView.setAdapter(adapter);
+
         // Set an OnClickListener
         btninternet.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,11 +28,9 @@
             android:name=".CatatanActivity"
             android:exported="false" />
         <activity
-            android:name=".CalenderActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddAddressActivity"
             android:exported="false" />
+
         <activity
             android:name=".FullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

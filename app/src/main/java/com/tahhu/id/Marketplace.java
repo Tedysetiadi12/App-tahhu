@@ -44,7 +44,8 @@ public class Marketplace extends AppCompatActivity {
         ImageView btnback = findViewById(R.id.back_beranda);
         RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
         productRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-// Initialize views
+
+        // Initialize views
         homeButton = findViewById(R.id.homeButton);
         menuMarket = findViewById(R.id.menumarket);
         shortVideo = findViewById(R.id.shortvidio);
