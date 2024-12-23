@@ -2,15 +2,19 @@ package com.tahhu.id;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,7 +41,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     public ImageView btninternet;
 
-    public Button btn_test;
+    public Button btn_test,button_internet;
     FloatingActionButton btnmarket ;
     public ImageView btn_radio,btn_market, btn_finence, btn_ride,btn_cctv, btn_uco ,menu_market, menu_kalkulator, menu_ride,
                 btn_tv, btn_food, btn_security, btn_homeButton;
@@ -67,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     ViewPager2 viewPager3, viewPager4;
 
+    private CardView cardView;
+    private LinearLayout dropdownContent;
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btninternet = findViewById(R.id.btn_internet);
+        button_internet = findViewById(R.id.button_internet);
         btn_test = findViewById(R.id.btn_test);
         btn_finence = findViewById(R.id.financeIcon);
         btn_market = findViewById(R.id.MarketIcon);
@@ -131,13 +138,28 @@ public class MainActivity extends AppCompatActivity {
 //            finish();
 //        }
 
+        NestedScrollView scrollView = findViewById(R.id.nestedScrollView);
+        LinearLayout headerLayout = findViewById(R.id.linearLayout11);
 
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(
+                    @NonNull NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY
+            ) {
+                if (scrollY > 0) {
+                    // Saat di-scroll ke bawah, gunakan background dengan radius
+                    headerLayout.setBackgroundResource(R.drawable.header_gradient_modern_radius);
+                } else {
+                    // Saat kembali ke atas, gunakan background tanpa radius
+                    headerLayout.setBackgroundResource(R.drawable.header_gradient_modern_noradius);
+                }
+            }
+        });
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItems = new ArrayList<>();
         slideItems.add(new SlideAdapter.SlideItem(R.drawable.banner_minyak, "Slide 1","https://tahhu.com"));
         slideItems.add(new SlideAdapter.SlideItem(R.drawable.benner2, "Slide 2","https://tahhu.com"));
         slideItems.add(new SlideAdapter.SlideItem(R.drawable.bener1, "Slide 3","https://tahhu.com"));
-        // Set adapter ke ViewPager2
 
         // Buat adapter dan pasang listener
         SlideAdapter adapterslid = new SlideAdapter(slideItems, (position, url) -> {
@@ -215,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
         productRecyclerView.setAdapter(adapter);
 
         // Set an OnClickListener
-        btninternet.setOnClickListener(new View.OnClickListener() {
+        button_internet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "http://11.15.0.1";
@@ -233,6 +255,61 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        CardView cardViewPiutang = findViewById(R.id.idCatatanPiutang);
+        CardView cardViewKasir = findViewById(R.id.idtransaksiKasir);
+        CardView cardViewDaftarbelanja = findViewById(R.id.idDaftarbelanja);
+        CardView cardViewCatataHarian = findViewById(R.id.idCatatanHarian);
+        CardView cardViewStastitikPengeluaran = findViewById(R.id.idStatistikpPengeluaran);
+        CardView cardViewDiskonkalkulator = findViewById(R.id.idDiskonKalkulator);
+
+        cardViewPiutang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,PiutangActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewKasir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,KasirActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewCatataHarian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CatatanActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewDaftarbelanja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ShoppingListActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewStastitikPengeluaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CalendarSpendingActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewDiskonkalkulator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Memanggil dialog
+                DiscountCalculatorDialog dialog = new DiscountCalculatorDialog();
+                dialog.show(getSupportFragmentManager(), "DiscountCalculatorDialog");
+            }
+        });
+
+
+
+
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -374,7 +451,68 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        // Inisialisasi CardView dan LinearLayout untuk dropdown
+        cardView = findViewById(R.id.cardView);
+        dropdownContent = findViewById(R.id.dropdownContent);
+
+        // Mengatur visibilitas dropdownContent menjadi GONE secara default
+        dropdownContent.setVisibility(View.GONE);
+        ImageView btnInternet = findViewById(R.id.btn_internet);
+        // Menambahkan OnClickListener pada CardView
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toggle visibilitas dropdown dengan animasi
+                if (dropdownContent.getVisibility() == View.VISIBLE) {
+                    hideDropdown();
+                    btnInternet.setImageResource(R.drawable.baseline_arrow_forward_ios);
+                } else {
+                    showDropdown();
+                    btnInternet.setImageResource(R.drawable.ic_arrowdown);
+                }
+            }
+        });
     }
+
+    private void showDropdown() {
+        // Menampilkan dropdown dengan animasi fade-in dan slide-down dari atas
+        dropdownContent.setVisibility(View.VISIBLE);
+
+        // Animasi fade-in
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(dropdownContent, "alpha", 0f, 1f);
+        fadeIn.setDuration(300); // Durasi animasi fade-in
+
+        // Animasi slide-down dari atas
+        ObjectAnimator slideDown = ObjectAnimator.ofFloat(dropdownContent, "translationY", -100f, 0f);
+        slideDown.setDuration(300); // Durasi animasi slide-down
+
+        // Mulai kedua animasi
+        fadeIn.start();
+        slideDown.start();
+    }
+
+    private void hideDropdown() {
+        // Menyembunyikan dropdown dengan animasi fade-out dan slide-up ke atas
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(dropdownContent, "alpha", 1f, 0f);
+        fadeOut.setDuration(300); // Durasi animasi fade-out
+
+        // Animasi slide-up ke atas
+        ObjectAnimator slideUp = ObjectAnimator.ofFloat(dropdownContent, "translationY", 0f, -100f);
+        slideUp.setDuration(300); // Durasi animasi slide-up
+
+        // Mulai kedua animasi
+        fadeOut.start();
+        slideUp.start();
+
+        // Setelah animasi selesai, set visibilitas ke GONE
+        slideUp.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                dropdownContent.setVisibility(View.GONE);
+            }
+        });
+    }
+
     private void updateMenuIcons(String activePage) {
         int activeColor = getResources().getColor(R.color.white);
         int inactiveColor = getResources().getColor(R.color.inactive_icon);

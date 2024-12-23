@@ -1,89 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.tahhu.id.MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="734dp"
+        android:background="@drawable/header_gradient_modern_noradius"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        android:clipToPadding="true"
+        android:clipChildren="true"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Top Search Bar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:hint="Cari"
+                    android:paddingHorizontal="16dp"
+                    android:textColorHint="@color/black" />
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_search" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/calenderSpending"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:src="@drawable/ic_other"
+            app:tint="#fff" />
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:src="@drawable/baseline_person"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/header_gradient_modern"
-                android:orientation="horizontal"
-                android:elevation="@dimen/margin_standard">
-
-                <!-- Top Search Bar -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:hint="Cari"
-                            android:textColorHint="@color/black"
-                            android:paddingHorizontal="16dp"/>
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:padding="12dp"
-                            android:background="@color/white"
-                            android:src="@drawable/ic_search"/>
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <ImageView
-                    android:id="@+id/calenderSpending"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="0dp"
-                    app:tint="#fff"
-                    android:layout_marginStart="0dp"
-                    android:src="@drawable/ic_other"/>
-
-                <ImageView
-                    android:id="@+id/profileImageView"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="@dimen/margin_standard"
-                    android:layout_marginEnd="@dimen/margin_standard"
-                    app:tint="@color/white"
-                    android:layout_gravity="center"
-                    android:src="@drawable/baseline_person"/>
-
-            </LinearLayout>
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:background="@drawable/header_gradient_modern"/>
+                android:layout_height="30dp"
+                android:background="@drawable/header_gradient_modern_noradius" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -95,9 +109,9 @@
                     android:id="@+id/viewPager3"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayouts"
@@ -105,12 +119,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@id/viewPager3"
+                    app:layout_constraintEnd_toEndOf="@id/viewPager3"
+                    app:layout_constraintStart_toStartOf="@id/viewPager3"
                     app:tabIndicatorColor="@android:color/white"
                     app:tabIndicatorHeight="4dp"
-                    app:tabTextColor="@android:color/transparent"
-                    app:layout_constraintBottom_toBottomOf="@id/viewPager3"
-                    app:layout_constraintStart_toStartOf="@id/viewPager3"
-                    app:layout_constraintEnd_toEndOf="@id/viewPager3"/>
+                    app:tabTextColor="@android:color/transparent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -118,20 +132,21 @@
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:useDefaultMargins="true"
                 android:alignmentMode="alignMargins"
-                android:padding="5dp">
+                android:columnCount="2"
+                android:padding="5dp"
+                android:useDefaultMargins="true">
 
                 <!-- Piutang Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idCatatanPiutang"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -144,26 +159,26 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#81C784">
+                            app:cardBackgroundColor="#81C784"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
-                                android:src="@drawable/baseline_money"
-                                android:contentDescription="piutang_icon"/>
+                                android:contentDescription="piutang_icon"
+                                android:src="@drawable/baseline_money" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:textColor="@color/black"
-                            android:layout_toEndOf="@id/icon_container_piutang"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_piutang"
                             android:text="Catatan\nPiutang"
-                            android:textSize="@dimen/text_size"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -171,19 +186,20 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#4CAF50"/>
+                            app:tint="#4CAF50" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <!-- Catatan Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idCatatanHarian"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -196,47 +212,48 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#FFB74D">
+                            app:cardBackgroundColor="#FFB74D"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
-                                android:src="@drawable/baseline_notes"
-                                android:contentDescription="catatan_icon"/>
+                                android:contentDescription="catatan_icon"
+                                android:src="@drawable/baseline_notes" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_toEndOf="@id/icon_container_catatan"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_catatan"
                             android:text="catatan\nHarian"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size"/>
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:contentDescription="arrow_forward"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#FF9800"
-                            android:contentDescription="arrow_forward"/>
+                            app:tint="#FF9800" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <!-- Kasir Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idtransaksiKasir"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -249,48 +266,49 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#E57373">
+                            app:cardBackgroundColor="#E57373"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
+                                android:contentDescription="Kasir_icon"
                                 android:src="@drawable/ic_cartt"
-                                app:tint="@color/white"
-                                android:contentDescription="Kasir_icon"/>
+                                app:tint="@color/white" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_toEndOf="@id/icon_container_kasir"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_kasir"
                             android:text="Transaksi\nKasir"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size"/>
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:contentDescription="arrow_forward"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#F44336"
-                            android:contentDescription="arrow_forward"/>
+                            app:tint="#F44336" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <!-- Keuangan Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idDaftarbelanja"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -303,46 +321,47 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#64B5F6">
+                            app:cardBackgroundColor="#64B5F6"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
-                                android:src="@drawable/baseline_account_balance_wallet"
-                                android:contentDescription="keuangan_icon"/>
+                                android:contentDescription="keuangan_icon"
+                                android:src="@drawable/baseline_account_balance_wallet" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_toEndOf="@id/icon_container_keuangan"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_keuangan"
                             android:text="Daftar\nBelanja"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size"/>
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:contentDescription="arrow_forward"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#2196F3"
-                            android:contentDescription="arrow_forward"/>
+                            app:tint="#2196F3" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idStatistikpPengeluaran"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -355,26 +374,26 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#F48FB1">
+                            app:cardBackgroundColor="#F48FB1"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_statistik"
-                                android:contentDescription="statistik_icon"/>
+                                android:contentDescription="statistik_icon"
+                                android:src="@drawable/ic_statistik" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:textColor="@color/black"
-                            android:layout_toEndOf="@id/icon_container_statistik"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_statistik"
                             android:text="Statistik\nPengeluaran"
-                            android:textSize="@dimen/text_size"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -382,18 +401,19 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#F06292"/>
+                            app:tint="#F06292" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/idDiskonKalkulator"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/card_margin"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    android:layout_margin="@dimen/card_margin">
+                    app:cardElevation="@dimen/card_elevation">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -406,27 +426,27 @@
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
                             android:layout_centerVertical="true"
-                            app:cardCornerRadius="@dimen/icon_corner_radius"
-                            app:cardBackgroundColor="#B39DDB">
+                            app:cardBackgroundColor="#B39DDB"
+                            app:cardCornerRadius="@dimen/icon_corner_radius">
 
                             <ImageView
                                 android:layout_width="@dimen/icon_image_size"
                                 android:layout_height="@dimen/icon_image_size"
                                 android:layout_gravity="center"
+                                android:contentDescription="piutang_icon"
                                 android:src="@drawable/ic_kalkulator"
-                                app:tint="@color/white"
-                                android:contentDescription="piutang_icon"/>
+                                app:tint="@color/white" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:textColor="@color/black"
-                            android:layout_toEndOf="@id/icon_container_diskon"
                             android:layout_marginStart="@dimen/text_margin_start"
+                            android:layout_toEndOf="@id/icon_container_diskon"
                             android:text="Diskon\nKalkulator"
-                            android:textSize="@dimen/text_size"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -434,7 +454,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#9575CD"/>
+                            app:tint="#9575CD" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </GridLayout>
@@ -442,14 +462,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:text="Layanan Teratas"
                 android:textColor="@color/black"
-                android:layout_marginEnd="14dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -472,16 +492,15 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/MarketIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/store"
-                            />
+                            android:src="@drawable/store" />
                     </LinearLayout>
 
                     <TextView
@@ -511,8 +530,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -549,23 +568,23 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/rideIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/motorcycle"
-                            />
+                            android:src="@drawable/motorcycle" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_medium"                        android:text="Ride"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Ride"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -588,8 +607,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -604,12 +623,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_medium"                        android:text="Uco"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Uco"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -632,8 +653,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -647,7 +668,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_medium"                        android:text="Cctv"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Cctv"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -669,8 +691,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -684,7 +706,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_medium"                        android:text="Tv"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Tv"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -706,23 +729,23 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/foodIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/cutlery"
-                            />
+                            android:src="@drawable/cutlery" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/googlesans_medium"                        android:text="Food"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Food"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -745,8 +768,8 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/rouded"
-                        android:gravity="center"
                         android:elevation="6dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -771,14 +794,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:text="Ayo Tukar Minyak Jelantah Anda Sekarang!"
                 android:textColor="@color/black"
-                android:layout_marginEnd="14dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -790,9 +813,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14dp"
-                    android:clipToOutline="true"
                     android:layout_marginEnd="14dp"
                     android:background="@drawable/rounded_background_banner"
+                    android:clipToOutline="true"
                     tools:layout_editor_absoluteX="16dp" />
 
                 <ProgressBar
@@ -800,60 +823,61 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/viewPager2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="gone"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- TabLayout untuk indikator titik -->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/viewPager2"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:tabIndicatorHeight="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewPager2"
                     app:tabIndicatorColor="@android:color/black"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMode="fixed"
                     app:tabSelectedTextColor="@color/my_birutua"
-                    app:tabTextColor="@android:color/darker_gray"
-                    app:tabMode="fixed" />
+                    app:tabTextColor="@android:color/darker_gray" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/vocher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:text="Internet"
                 android:textColor="@color/black"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="16dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:cardCornerRadius="16dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="#FFF3E0"
+                app:cardCornerRadius="16dp"
                 app:cardElevation="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="11dp">
+                    android:padding="10dp">
 
                     <!-- Vertical layout for title and subtitle text -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginEnd="@dimen/end_margin"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
@@ -865,7 +889,7 @@
                         <ImageView
                             android:layout_width="46dp"
                             android:layout_height="46dp"
-                            android:src="@drawable/logo_tahu"/>
+                            android:src="@drawable/logo_tahu" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -879,7 +903,7 @@
                                 android:fontFamily="@font/googlesans_bold"
                                 android:text="CEK FREE INTERNET"
                                 android:textColor="@color/black"
-                                android:textSize="18dp"/>
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -895,16 +919,50 @@
 
                     <ImageView
                         android:id="@+id/btn_internet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:src="@drawable/baseline_arrow_forward_ios"
-                        app:tint="#FF9800"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#FF9800" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
+            <!-- Dropdown Content (Initially Hidden) -->
+            <LinearLayout
+                android:id="@+id/dropdownContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/background_with_border"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/cardView">
+
+                <!-- Text Description -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:text="Sambungkan WiFi Tahu yang ada di sekitar kamu."
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:paddingBottom="10dp" />
+
+                <!-- "Ambil Voucher" Button -->
+                <Button
+                    android:id="@+id/button_internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ambil Voucher"
+                    android:backgroundTint="#FF9800"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -921,27 +979,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="14dp"
-                        android:clipToOutline="true"
+                        android:layout_marginEnd="14dp"
                         android:background="@drawable/rounded_background_banner"
-                        android:layout_marginEnd="14dp" />
+                        android:clipToOutline="true" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_test"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
+                        android:layout_gravity="bottom|end"
                         android:layout_marginEnd="30dp"
                         android:layout_marginBottom="@dimen/margin_standard"
-                        android:text="Test"
-                        android:textSize="13dp"
-                        android:layout_gravity="bottom|end"
-                        android:fontFamily="@font/googlesans_medium"
                         android:background="@drawable/button_oval_orange_border"
                         android:backgroundTint="@color/white"
                         android:elevation="4dp"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:text="Test"
                         android:textColor="@android:color/black"
+                        android:textSize="13dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
                 </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -949,13 +1007,13 @@
                 android:id="@+id/productTexts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/googlesans_bold"
-                android:text="Channel Radio"
-                android:textColor="@color/black"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/margin_standard"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/googlesans_bold"
+                android:text="Channel Radio"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -965,84 +1023,83 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:cardCornerRadius="16dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="14dp"
                 android:layout_marginBottom="20dp"
-                app:cardElevation="8dp"
-                android:backgroundTint="#FFF3E0">
+                android:backgroundTint="#FFF3E0"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="10dp">
+
+                    <!-- Vertical layout for title and subtitle text -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="11dp">
-
-                        <!-- Vertical layout for title and subtitle text -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="@dimen/end_margin"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/btn_internett"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                                <ImageView
-                                    android:id="@+id/streaming"
-                                    android:layout_width="66dp"
-                                    android:layout_height="66dp"
-                                    android:src="@drawable/play" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/googlesans_bold"
-                                    android:text="SWADESI STREAMING"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/title_text_size"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/subtitle_margin_top"
-                                    android:fontFamily="@font/googlesans_medium"
-                                    android:text="Dengarkan Channel Radio Swadesi Kesukaan Anda"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
+                        android:layout_marginEnd="@dimen/end_margin"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_internett"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/btn_internett"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/streaming"
+                            android:layout_width="66dp"
+                            android:layout_height="66dp"
+                            android:src="@drawable/play" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_arrow_forward_ios"
-                            app:tint="#FF8A65"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_bold"
+                                android:text="SWADESI STREAMING"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/title_text_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/subtitle_margin_top"
+                                android:fontFamily="@font/googlesans_medium"
+                                android:text="Dengarkan Channel Radio Swadesi Kesukaan Anda"
+                                android:textColor="@color/black"
+                                android:textSize="12dp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_internett"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_arrow_forward_ios"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#FF8A65" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="15dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/header_gradient_modern"
+                android:paddingTop="15dp"
                 android:paddingBottom="150dp">
 
                 <!-- Product Text -->
@@ -1050,38 +1107,38 @@
                     android:id="@+id/productText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="14dp"
                     android:fontFamily="@font/googlesans_bold"
                     android:text="PROMO PRODUK\nDISKON SAMPAI 50 %"
-                    android:layout_margin="14dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/all"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBaseline_toBaselineOf="@id/all" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- Filter Text -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="14dp"
+                    android:backgroundTint="@color/white"
                     android:fontFamily="@font/googlesans_medium"
                     android:text="Lihat Semua"
-                    android:layout_margin="14dp"
-                    app:cornerRadius="46dp"
-                    android:backgroundTint="@color/white"
                     android:textColor="@color/buttonColor"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBaseline_toBaselineOf="@id/productText" />
+                    app:cornerRadius="46dp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/productText"
+                    app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-116dp"
+                android:layout_marginTop="-136dp"
+                android:backgroundTint="@android:color/transparent"
                 android:elevation="0dp"
-                app:cardElevation="0dp"
-                android:backgroundTint="@android:color/transparent">
+                app:cardElevation="0dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/productRecyclerView"
@@ -1090,20 +1147,21 @@
                     android:layout_marginBottom="95dp"
                     android:background="@android:color/transparent"
                     android:nestedScrollingEnabled="true"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="16dp"/>
+                    android:orientation="horizontal"/>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
         <!-- BottomAppBar -->
         <com.google.android.material.bottomappbar.BottomAppBar
@@ -1111,109 +1169,118 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="bottom"
+            android:backgroundTint="@color/buttonColor"
             app:fabAlignmentMode="center"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="15dp"
-            app:fabCradleVerticalOffset="0dp"
-            android:backgroundTint="@color/buttonColor">
+            app:fabCradleVerticalOffset="0dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.2"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/homeButton"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                app:tint="#FFFFFF"
-                app:srcCompat="@drawable/home" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.2"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/menumarket"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                app:tint="#FFFFFF"
-                app:srcCompat="@drawable/favorite" />
-        </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="invisible">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:tint="@color/white"
-                    app:srcCompat="@drawable/home" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/shortvidio"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    app:tint="#FFFFFF"
-                    app:srcCompat="@drawable/clapper" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.2"
-                android:gravity="center"
-                android:orientation="vertical">
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/Kalkulator"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    <ImageView
+                        android:id="@+id/homeButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/home"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:tint="#FFFFFF"
-                    app:srcCompat="@drawable/ic_kalkulator" />
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menumarket"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/favorite"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/home"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/shortvidio"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/clapper"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/Kalkulator"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_kalkulator"
+                        app:tint="#FFFFFF" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/Market"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:src="@drawable/ic_cartt"
-            app:tint="#FFFFFF"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:backgroundTint="@color/buttonColor"
-            app:layout_anchor="@id/bottomAppBar"
             android:elevation="3dp"
+            android:src="@drawable/ic_cartt"
+            app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="30dp"
-            android:layout_centerInParent="true" />
+            app:tint="#FFFFFF" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
