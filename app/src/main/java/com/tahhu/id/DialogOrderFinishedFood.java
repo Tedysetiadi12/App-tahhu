@@ -48,7 +48,7 @@ public class DialogOrderFinishedFood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
-                Intent intent = new Intent(DialogOrderFinishedFood.this, FoodActivity.class);
+                Intent intent = new Intent(DialogOrderFinishedFood.this, DriverFoodSearch.class);
                 startActivity(intent);
             }
         });

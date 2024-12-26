@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_ios"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel Order"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Please select the reason for cancellation:"
+        android:layout_marginTop="24dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/rbWaiting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Waiting for long time"
+            android:textColor="@color/black"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Unable to contact driver"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbDestination"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="Driver denied to go to destination"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbPickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Driver denied to come to pickup"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Wrong address shown"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The price is not reasonable"
+            android:textColor="@color/black"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbOtherRestaurant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="I want to order another restaurant"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbJustCancel"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="I just want to cancel"
+            android:padding="8dp"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Others"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etOtherReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:hint="Others reason..."
+        android:textColorHint="@color/gray"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="24dp"
+        android:padding="@dimen/margin_standard"
+        android:backgroundTint="@color/buttonColor"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

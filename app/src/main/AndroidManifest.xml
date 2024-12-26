@@ -2,12 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +27,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".DriverRideSharingSearchArrived"
+            android:exported="false" />
+        <activity
+            android:name=".DriverRideSharingSearch"
+            android:exported="false" />
+        <activity
+            android:name=".DialogRatingDriverFood"
+            android:exported="false" />
+        <activity
+            android:name=".ChatDriverFood"
+            android:exported="false" />
+        <activity
+            android:name=".DriverFoodSearchArrived"
+            android:exported="false" />
+        <activity
+            android:name=".DriverFoodSearch"
+            android:exported="false" />
+        <activity
             android:name=".PiutangActivity"
             android:exported="false" />
         <activity
@@ -30,7 +53,9 @@
         <activity
             android:name=".AddAddressActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".NotificationFoodActivity"
+            android:exported="false" />
         <activity
             android:name=".FullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -42,6 +67,12 @@
             android:exported="false" />
         <activity
             android:name=".ShortVidio"
+            android:exported="false" />
+        <activity
+            android:name=".DialogRatingFood"
+            android:exported="false" />
+        <activity
+            android:name=".CancelOrderActivity"
             android:exported="false" />
         <activity
             android:name=".cctv"
@@ -109,6 +140,10 @@
             android:name=".BackgroundSoundService"
             android:enabled="true"
             android:exported="false" />
+        <service
+            android:name=".BackgroundSoundService"
+            android:enabled="true"
+            android:exported="false" />
 
         <activity
             android:name=".SelectionTransport"
@@ -141,12 +176,13 @@
         <activity
             android:name=".LokasiPenukaranActivity"
             android:exported="false" />
-       <activity android:name=".KasirActivity"/>
+        <activity android:name=".KasirActivity" />
         <activity
             android:name=".PaymentActivityMarketplace"
             android:exported="false" />
-        <activity android:name=".StatistikKasirActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".StatistikKasirActivity"
+            android:exported="false" />
         <activity
             android:name=".DialogOrderFinishedMarketplace"
             android:exported="false" />
@@ -180,12 +216,6 @@
         <activity
             android:name=".DetailProductActivity"
             android:exported="false" />
-
-        <service
-            android:name=".BackgroundSoundService"
-            android:enabled="true"
-            android:exported="false" />
-
         <activity
             android:name=".RadioStreamin"
             android:exported="false" />

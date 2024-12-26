@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_gravity="center"
+    android:background="@drawable/rounded_background_banner"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        android:src="@drawable/sad_emoji"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We're so sad about\nyour cancellation"
+        android:textAlignment="center"
+        android:fontFamily="@font/googlesans_regular"
+        android:textSize="20sp"
+        android:textColor="@color/accentColor"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/googlesans_regular"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:text="We will continue to improve our\nservice &amp; satisfy you on the next order."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:padding="@dimen/margin_standard"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/buttonColor"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

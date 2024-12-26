@@ -21,6 +21,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -85,12 +87,17 @@ public class FoodActivity extends AppCompatActivity {
         // Inisialisasi ViewPager2 untuk banner
         bannerViewPager = findViewById(R.id.bannerViewPager);
         List<Integer> bannerImages = List.of(
-                R.drawable.bannerfood,
-                R.drawable.bannerfood2
+                R.drawable.diskonfood1,
+                R.drawable.diskonfood2,
+                R.drawable.diskonfood3
         );
         bannerAdapter = new BannerAdapter(bannerImages);
         bannerViewPager.setAdapter(bannerAdapter);
         autoSlideBanner();
+        TabLayout tabLayouts = findViewById(R.id.tabLayouts);
+        new TabLayoutMediator(tabLayouts, bannerViewPager, (tab, position) -> {
+            // Tab konfigurasi, jika ada tindakan khusus per tab
+        }).attach();
 
         // Tombol kembali
         ImageView btnBack = findViewById(R.id.beranda);
@@ -101,6 +108,12 @@ public class FoodActivity extends AppCompatActivity {
         btn_cart.setOnClickListener(v -> {
             Intent intent = new Intent(FoodActivity.this, CheckoutActivityFood.class);
             intent.putParcelableArrayListExtra("cartItems", new ArrayList<>(cartItems));
+            startActivity(intent);
+        });
+
+        ImageView notificationIcon = findViewById(R.id.notificationIcon);
+        notificationIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(FoodActivity.this, NotificationFoodActivity.class);
             startActivity(intent);
         });
 

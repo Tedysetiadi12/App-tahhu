@@ -156,7 +156,7 @@ public class PaymentActivityRideSharing extends AppCompatActivity {
             String selectedPaymentMethodText = selectedPaymentMethod != null ? selectedPaymentMethod.getText().toString() : "Tidak ada metode pembayaran";
 
             // Redirect ke halaman Home
-            Intent intent = new Intent(PaymentActivityRideSharing.this, DialogRatingRideSharing.class);
+            Intent intent = new Intent(PaymentActivityRideSharing.this, DriverRideSharingSearch.class);
             // Tambahkan data yang diperlukan ke Intent
             intent.putExtra("selected_vehicle_price", vehiclePrice);
             intent.putExtra("selection_info", selectionInfoTextView.getText().toString());

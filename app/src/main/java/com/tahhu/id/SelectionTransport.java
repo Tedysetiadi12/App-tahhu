@@ -61,11 +61,11 @@ public class SelectionTransport extends AppCompatActivity {
                 Intent intent;
                 if (v.getId() == R.id.optionMobil) {
                     // Arahkan ke CarSelectionActivity
-                    intent = new Intent(SelectionTransport.this, CarSelectionActivity.class);
+                    intent = new Intent(SelectionTransport.this, PaymentActivityRideSharing.class);
                     intent.putExtra("selection_info", "Mobil");
                 } else if (v.getId() == R.id.optionMotor) {
                     // Arahkan ke BikeSelectionActivity
-                    intent = new Intent(SelectionTransport.this, BikeSelectionActivity.class);
+                    intent = new Intent(SelectionTransport.this, PaymentActivityRideSharing.class);
                     intent.putExtra("selection_info", "Motor");
                 } else if (v.getId() == R.id.optionPickup) {
                     // Arahkan ke PickupSelectionActivity

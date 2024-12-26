@@ -176,7 +176,7 @@
                 android:layout_marginEnd="@dimen/margin_standard"
                 android:layout_marginTop="20dp"
                 android:padding="12dp"
-                android:text="Pesan Lagi"
+                android:text="Lacak Driver"
                 android:textColor="@color/white"
                 android:fontFamily="@font/googlesans_medium"
                 app:cornerRadius="26dp"

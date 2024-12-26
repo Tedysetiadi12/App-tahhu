@@ -57,6 +57,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/margin_standard">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="8dp"
+                    android:text="Alamat Pengantaran"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:padding="@dimen/margin_standard"
+                    android:hint="Jl. Malioboro No.3"
+                    android:background="@drawable/rounded_edittext"/>
+
+            </LinearLayout>
+
             <!-- Data Final -->
             <TextView
                 android:id="@+id/tv_final_textview"
@@ -65,8 +93,7 @@
                 android:text="Ringkasan Pemesanan"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textSize="18sp"/>
 
             <LinearLayout
                 android:id="@+id/parent_final_data"
@@ -95,8 +122,7 @@
                     android:text="Pilih Metode Pembayaran"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:layout_weight="1"
-                    android:textStyle="bold"/>
+                    android:layout_weight="1"/>
 
                 <!-- Dropdown Icon -->
                 <ImageView
@@ -273,6 +299,7 @@
                 android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Konfirmasi Pembayaran"
                 android:fontFamily="@font/googlesans_medium"
