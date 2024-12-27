@@ -66,57 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
 
-        <!-- Shipping Options -->
-        <LinearLayout
-            android:id="@+id/shippingOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pilih Pengiriman"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/googlesans_medium"
-                android:layout_marginBottom="8dp" />
-
-            <RadioGroup
-                android:id="@+id/radioGroupShipping"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rb_standard_shipping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:textColor="@color/black"
-                    android:text="Regular - Rp 10,000"
-                    android:padding="8dp" />
-
-                <RadioButton
-                    android:id="@+id/rb_express_shipping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:textColor="@color/black"
-                    android:text="Express - Rp 20,000"
-                    android:padding="8dp" />
-
-                <RadioButton
-                    android:id="@+id/rb_nextday_shipping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:text="Next-Day - Rp 30,000"
-                    android:padding="8dp" />
-            </RadioGroup>
-        </LinearLayout>
     </LinearLayout>
     </ScrollView>
 
@@ -124,7 +74,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cartBottomLayout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +90,7 @@
         android:layout_marginTop="16dp"
         android:text="Total Kuantitas"
         android:textColor="@color/white"
-        android:fontFamily="@font/googlesans_regular"
+        android:fontFamily="@font/googlesans_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -162,22 +112,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Handling"
-        android:fontFamily="@font/googlesans_regular"
+        android:fontFamily="@font/googlesans_medium"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <!-- Biaya Ongkir Label -->
-    <TextView
-        android:id="@+id/textViewOngkir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Ongkir"
-        android:fontFamily="@font/googlesans_regular"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/totalQuantityView"
@@ -208,28 +146,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Biaya Ongkir Value -->
-    <TextView
-        android:id="@+id/ongkirPriceView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Rp 0"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewOngkir"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/lightGray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOngkir" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/lightGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView8"
@@ -238,7 +166,7 @@
         android:text="Total"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:fontFamily="@font/googlesans_bold"
+        android:fontFamily="@font/googlesans_medium"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -257,13 +185,14 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <!-- Tombol Checkout -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="lanjut pembayaran"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:background="@drawable/rounded_edittext"
         android:backgroundTint="@color/buttonColor"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"

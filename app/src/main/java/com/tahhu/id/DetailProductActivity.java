@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 
 
 
@@ -81,6 +84,22 @@ public class DetailProductActivity extends AppCompatActivity {
 //            Intent intent = new Intent(DetailProductActivity.this, CartProductActivity.class);
 //            startActivity(intent);
 //        });
+        LinearLayout linearLayoutEstimasi = findViewById(R.id.linearLayoutestimasi);
+
+        linearLayoutEstimasi.setOnClickListener(v -> {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(DetailProductActivity.this);
+            View bottomSheetView = getLayoutInflater().inflate(R.layout.layout_bottom_sheet, null);
+            bottomSheetDialog.setContentView(bottomSheetView);
+
+            // Inisialisasi komponen di BottomSheet
+            ImageView buttonClose = bottomSheetView.findViewById(R.id.buttonCloseBottomSheet);
+            // Listener untuk tombol close
+            buttonClose.setOnClickListener(view -> bottomSheetDialog.dismiss());
+
+            // Tampilkan BottomSheet
+            bottomSheetDialog.show();
+        });
+
 
     }
 

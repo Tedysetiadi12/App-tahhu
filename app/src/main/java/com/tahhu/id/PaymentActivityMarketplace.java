@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +21,10 @@ import java.util.List;
 
 import android.widget.RadioButton;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-public class PaymentActivityMarketplace extends AppCompatActivity {
+
+public class PaymentActivityMarketplace extends AppCompatActivity implements AddAddressBottomSheet.OnAddressSaveListener {
     private TextView totalPriceView, shippingCostView, finalPriceView;
     private static final int REQUEST_ADD_ADDRESS = 1;
     private TextView addressView;
@@ -105,33 +109,71 @@ public class PaymentActivityMarketplace extends AppCompatActivity {
             }
         });
 
-        Button btnAddAddress = findViewById(R.id.btnAddAddress);
+        LinearLayout btnAddAddress = findViewById(R.id.btnAddAddress);
         addressView = findViewById(R.id.addressView); // TextView untuk menampilkan alamat
 
         // Klik tombol Tambah Alamat
         btnAddAddress.setOnClickListener(v -> {
-            Intent alamat = new Intent(PaymentActivityMarketplace.this, AddAddressActivity.class);
-            startActivityForResult(alamat, REQUEST_ADD_ADDRESS);
+            AddAddressBottomSheet bottomSheet = new AddAddressBottomSheet();
+            bottomSheet.setOnAddressSaveListener(this); // Set listener ke PaymentActivityMarketplace
+            bottomSheet.show(getSupportFragmentManager(), "AddAddressBottomSheet");
         });
+
+
+        LinearLayout linearLayoutEstimasi = findViewById(R.id.linearLayoutestimasi);
+        linearLayoutEstimasi.setOnClickListener(v -> showShippingOptions());
+
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    private void showShippingOptions() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View bottomSheetView = LayoutInflater.from(this).inflate(R.layout.layout_nama_popup, null);
+        LinearLayout pilihanContainer = bottomSheetView.findViewById(R.id.pilihanContainer);
 
-        if (requestCode == REQUEST_ADD_ADDRESS && resultCode == RESULT_OK) {
-            // Ambil data dari AddAddressActivity
-            String recipientName = data.getStringExtra("recipientName");
-            String address = data.getStringExtra("address");
-            String city = data.getStringExtra("city");
-            String district = data.getStringExtra("district");
+        // Tambahkan opsi pengiriman
+        for (int i = 0; i < 3; i++) { // Contoh: buat 3 opsi
+            View pilihanView = LayoutInflater.from(this).inflate(R.layout.layout_pilihan_item, pilihanContainer, false);
 
-            // Tampilkan data di TextView dan sembunyikan tombol Tambah Alamat
-            addressView.setText(String.format("Nama: %s\nalamat: %s\nKota: %s\nKecamatan: %s", recipientName, address, city, district));
-            findViewById(R.id.btnAddAddress).setVisibility(View.GONE);
-            addressView.setVisibility(View.VISIBLE);
+            TextView jenisPengiriman = pilihanView.findViewById(R.id.jenisPengiriman);
+            TextView estimasiPengiriman = pilihanView.findViewById(R.id.estimasiPengiriman);
+            TextView hargaPengiriman = pilihanView.findViewById(R.id.hargaPengiriman);
+            ImageView checkIcon = pilihanView.findViewById(R.id.checkIcon);
+
+            // Set detail untuk setiap item
+            jenisPengiriman.setText("Pilihan " + (i + 1));
+            estimasiPengiriman.setText("Estimasi Tiba: 30 Dec - 1 Jan");
+            hargaPengiriman.setText("Rp " + (10000 * (i + 1))); // Contoh harga
+
+            // Klik untuk memilih
+            int finalI = i;
+            pilihanView.setOnClickListener(optionView -> {
+                for (int j = 0; j < pilihanContainer.getChildCount(); j++) {
+                    View child = pilihanContainer.getChildAt(j);
+                    ImageView icon = child.findViewById(R.id.checkIcon);
+                    if (child == optionView) {
+                        icon.setVisibility(View.VISIBLE); // Tampilkan centang pada opsi yang dipilih
+                    } else {
+                        icon.setVisibility(View.GONE); // Sembunyikan centang lainnya
+                    }
+                }
+                Toast.makeText(this, "Anda memilih: Pilihan " + (finalI + 1), Toast.LENGTH_SHORT).show();
+            });
+
+            pilihanContainer.addView(pilihanView); // Tambahkan opsi ke container
         }
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
     }
+    // Implementasikan listener untuk menerima data alamat
+    @Override
+    public void onAddressSaved(String recipientName, String city, String district, String address) {
+        addressView.setText(String.format("Nama: %s\nAlamat: %s\nKota: %s\nKecamatan: %s", recipientName, address, city, district));
+        findViewById(R.id.btnAddAddress).setVisibility(View.GONE);
+        addressView.setVisibility(View.VISIBLE);
+    }
+
 
     private void showSuccessDialog(List<CartProduct> cartProductList, double totalPrice, double finalPrice, int shippingCost) {
         // Buat dialog
