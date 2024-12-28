@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_300"
+    android:background="@color/buttonIconBackground"
     tools:context="com.tahhu.id.DetailProductActivity">
 
     <LinearLayout
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="1dp">
 
                 <View
                     android:id="@+id/view"
@@ -176,7 +176,7 @@
                             android:text="Bisa COD"
                             android:textAlignment="viewStart"
                             android:textColor="@color/black"
-                            android:textSize="14dp" />
+                            android:textSize="12dp" />
 
                         <TextView
                             android:id="@+id/titik"
@@ -200,7 +200,7 @@
                             android:text="Estimasi Tiba 30 Dec - 1 Jan"
                             android:textAlignment="viewStart"
                             android:textColor="@color/black"
-                            android:textSize="14dp" />
+                            android:textSize="12dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -229,8 +229,7 @@
                             android:fontFamily="@font/googlesans_medium"
                             android:text="Ulasan Product"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:textSize="16dp"/>
 
                         <TextView
                             android:id="@+id/textUlasanLihat"
@@ -267,6 +266,7 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="4.5 "
+                            android:layout_gravity="center"
                             android:textColor="@color/accent"
                             android:textSize="14sp" />
 
@@ -277,14 +277,15 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="rating"
+                            android:layout_gravity="center"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="14sp" />
 
                         <View
                             android:layout_width="2dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center"
                             android:layout_marginStart="4dp"
-                            android:layout_marginEnd="4dp"
                             android:background="@color/secondaryTextColor" />
 
 
@@ -295,6 +296,7 @@
                             android:layout_marginStart="7dp"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="7 Ulasan"
+                            android:layout_gravity="center"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -311,10 +313,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/userImageUlasan"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             app:shapeAppearanceOverlay="@style/radiusconel"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:src="@drawable/user" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -331,8 +333,7 @@
                                 android:fontFamily="@font/googlesans_medium"
                                 android:text="Mr Topal"
                                 android:textColor="@color/black"
-                                android:textSize="16dp"
-                                android:textStyle="bold" />
+                                android:textSize="16dp" />
 
 
                             <TextView
@@ -344,7 +345,7 @@
                                 android:fontFamily="@font/googlesans_medium"
                                 android:text="28 ulasan lengkap . 13 terbantu"
                                 android:textColor="@color/secondaryTextColor"
-                                android:textSize="14dp" />
+                                android:textSize="12dp" />
                         </LinearLayout>
 
 
@@ -383,6 +384,12 @@
                             android:layout_height="wrap_content"
                             app:srcCompat="@drawable/rating_star" />
 
+                        <ImageView
+                            android:id="@+id/rantingUlasanDec5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/rating_star" />
+
                         <TextView
                             android:id="@+id/productRatingUlasantxt"
                             android:layout_width="wrap_content"
@@ -390,6 +397,7 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="1 bulan lalu"
+                            android:layout_gravity="center"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="14sp" />
 
@@ -435,8 +443,7 @@
                         android:fontFamily="@font/googlesans_medium"
                         android:text="Detail Produck"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/productDescription"
@@ -486,8 +493,7 @@
                             android:fontFamily="@font/googlesans_medium"
                             android:text="Nama Penjual"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:textSize="16dp" />
 
                         <TextView
                             android:id="@+id/textlast"
@@ -498,7 +504,7 @@
                             android:fontFamily="@font/googlesans_medium"
                             android:text="Online 11 menit lalu"
                             android:textColor="@color/secondaryTextColor"
-                            android:textSize="16dp" />
+                            android:textSize="12dp" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -509,7 +515,7 @@
                             android:fontFamily="@font/googlesans_medium"
                             android:text="Kota Jogja (+1 Lokasi)"
                             android:textColor="@color/secondaryTextColor"
-                            android:textSize="16dp" />
+                            android:textSize="12dp" />
                     </LinearLayout>
 
 
@@ -546,7 +552,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/googlesans_medium"
                         android:text="Rp."
-                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20dp" />
 
@@ -604,6 +609,7 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="4.5 "
+                            android:layout_gravity="center"
                             android:textColor="@color/accent"
                             android:textSize="14sp" />
 
@@ -612,6 +618,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="(2,3K)"
                             android:textColor="@color/black"
@@ -619,9 +626,10 @@
 
                         <View
                             android:layout_width="2dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="20dp"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="4dp"
+                            android:layout_gravity="center"
                             android:background="@color/secondaryTextColor" />
 
                         <ImageView
@@ -637,6 +645,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/googlesans_medium"
                             android:text="4,6K Sold"
+                            android:layout_gravity="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
                     </LinearLayout>

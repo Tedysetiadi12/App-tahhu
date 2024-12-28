@@ -7,115 +7,124 @@
     android:padding="16dp"
     android:background="@drawable/background_bottom_sheet">
 
+    <!-- Tombol X untuk menutup Bottom Sheet -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@android:color/transparent"
+        android:contentDescription="Close Button"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
     <!-- Map Fragment -->
     <com.google.android.gms.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintDimensionRatio="H,1:1"
-        android:layout_marginTop="16dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintTop_toBottomOf="@+id/btnClose"
+        tools:layout_editor_absoluteX="16dp" />
 
-    <ScrollView
+    <!-- Form Layout tanpa ScrollView -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/map"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <!-- Recipient Name -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Recipient Name -->
-            <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/rounded_edittext"
+                android:padding="15dp"
+                android:id="@+id/etRecipientName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="15dp"
-                    android:id="@+id/etRecipientName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nama Penerima"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColorHint="@color/gray"
-                    android:textColor="@color/black"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- City -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="12dp"
-                    android:id="@+id/etCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Kota"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColorHint="@color/gray"
-                    android:textColor="@color/black"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- District -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="12dp"
-                    android:id="@+id/etDistrict"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Kecamatan"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:textColorHint="@color/gray"
-                    android:textColor="@color/black"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Address -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="12dp"
-                    android:id="@+id/etAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:fontFamily="@font/googlesans_medium"
-                    android:hint="Alamat Detail"
-                    android:textColorHint="@color/gray"
-                    android:textColor="@color/black"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:scrollbars="vertical" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Save Button -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSaveAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Simpan Alamat"
-                android:layout_marginTop="16dp"
+                android:hint="Nama Penerima"
                 android:fontFamily="@font/googlesans_medium"
-                android:backgroundTint="@color/buttonColor"
-                android:background="@drawable/rounded_background"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </ScrollView>
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- City -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Kota"
+                android:fontFamily="@font/googlesans_medium"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- District -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:id="@+id/etDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Kecamatan"
+                android:fontFamily="@font/googlesans_medium"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Address -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:fontFamily="@font/googlesans_medium"
+                android:hint="Alamat Detail"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Save Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan Alamat"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/googlesans_medium"
+            android:backgroundTint="@color/buttonColor"
+            android:background="@drawable/rounded_background"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import android.widget.RadioButton;
 
@@ -36,9 +42,9 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
 
         // Inisialisasi view dari XML
         ImageView iconArrow = findViewById(R.id.icon_arrow);
-        finalPriceView = findViewById(R.id.totalPriceView);
+        finalPriceView = findViewById(R.id.finalPriceView);
         shippingCostView = findViewById(R.id.shippingCostView);
-        totalPriceView = findViewById(R.id.finalPriceView);
+        totalPriceView = findViewById(R.id.totalPriceView);
 
         // Menerima data dari Intent
         Intent intent = getIntent();
@@ -131,19 +137,27 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
         View bottomSheetView = LayoutInflater.from(this).inflate(R.layout.layout_nama_popup, null);
         LinearLayout pilihanContainer = bottomSheetView.findViewById(R.id.pilihanContainer);
 
-        // Tambahkan opsi pengiriman
-        for (int i = 0; i < 3; i++) { // Contoh: buat 3 opsi
+        // Data pengiriman
+        String[] jenisPengiriman = {"Standar", "Ekonomi", "Cargo"};
+        String[] estimasiPengiriman = {
+                "Estimasi Tiba: " + getDateRange(3),
+                "Estimasi Tiba: " + getDateRange(4),
+                "Estimasi Tiba: " + getDateRange(4)
+        };
+        int[] hargaPengiriman = {0, 0, 19000};
+
+        for (int i = 0; i < jenisPengiriman.length; i++) {
             View pilihanView = LayoutInflater.from(this).inflate(R.layout.layout_pilihan_item, pilihanContainer, false);
 
-            TextView jenisPengiriman = pilihanView.findViewById(R.id.jenisPengiriman);
-            TextView estimasiPengiriman = pilihanView.findViewById(R.id.estimasiPengiriman);
-            TextView hargaPengiriman = pilihanView.findViewById(R.id.hargaPengiriman);
+            TextView jenisPengirimanText = pilihanView.findViewById(R.id.jenisPengiriman);
+            TextView estimasiPengirimanText = pilihanView.findViewById(R.id.estimasiPengiriman);
+            TextView hargaPengirimanText = pilihanView.findViewById(R.id.hargaPengiriman);
             ImageView checkIcon = pilihanView.findViewById(R.id.checkIcon);
 
             // Set detail untuk setiap item
-            jenisPengiriman.setText("Pilihan " + (i + 1));
-            estimasiPengiriman.setText("Estimasi Tiba: 30 Dec - 1 Jan");
-            hargaPengiriman.setText("Rp " + (10000 * (i + 1))); // Contoh harga
+            jenisPengirimanText.setText(jenisPengiriman[i]);
+            estimasiPengirimanText.setText(estimasiPengiriman[i]);
+            hargaPengirimanText.setText("Rp " + String.format("%,d", hargaPengiriman[i]));
 
             // Klik untuk memilih
             int finalI = i;
@@ -157,7 +171,26 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
                         icon.setVisibility(View.GONE); // Sembunyikan centang lainnya
                     }
                 }
-                Toast.makeText(this, "Anda memilih: Pilihan " + (finalI + 1), Toast.LENGTH_SHORT).show();
+
+                // Untuk mencoret harga estimasi yang ada sebelumnya
+                TextView texhargaestimasi = findViewById(R.id.texhargaestimasi);
+                String hargaLama = texhargaestimasi.getText().toString();
+                SpannableString spanString = new SpannableString(hargaLama);
+                spanString.setSpan(new StrikethroughSpan(), 0, hargaLama.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                texhargaestimasi.setText(spanString);
+
+                // Untuk mengganti teks harga dan estimasi
+                TextView texHargaEstimasiDiskon = findViewById(R.id.texhargaestimasidiskon);
+                texHargaEstimasiDiskon.setVisibility(finalI == 2 ? View.GONE : View.VISIBLE); // Sembunyikan jika Cargo dipilih
+
+                TextView product = findViewById(R.id.product);
+
+                texhargaestimasi.setText("Rp " + String.format("%,d", hargaPengiriman[finalI]));
+                product.setText(estimasiPengiriman[finalI]);
+                // Perbarui ongkir dan total harga
+                updateShippingCost(hargaPengiriman[finalI]);
+                Toast.makeText(this, "Anda memilih: " + jenisPengiriman[finalI], Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss(); // Tutup dialog setelah memilih
             });
 
             pilihanContainer.addView(pilihanView); // Tambahkan opsi ke container
@@ -166,6 +199,24 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
     }
+
+    private void updateShippingCost(int selectedShippingCost) {
+        shippingCostView.setText("Rp " + String.format("%,d", selectedShippingCost));
+        double totalPrice = getIntent().getDoubleExtra("totalPrice", 0);
+        double finalPrice = totalPrice + selectedShippingCost;
+        finalPriceView.setText("Rp " + String.format("%,.2f", finalPrice));
+    }
+
+    private String getDateRange(int daysFromNow) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
+        calendar.add(Calendar.DAY_OF_YEAR, daysFromNow);
+        String startDate = dateFormat.format(calendar.getTime());
+        calendar.add(Calendar.DAY_OF_YEAR, 1); // Tanggal akhir
+        String endDate = dateFormat.format(calendar.getTime());
+        return startDate + " - " + endDate;
+    }
+
     // Implementasikan listener untuk menerima data alamat
     @Override
     public void onAddressSaved(String recipientName, String city, String district, String address) {

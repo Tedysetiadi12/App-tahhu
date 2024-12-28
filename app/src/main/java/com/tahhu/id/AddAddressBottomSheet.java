@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -47,6 +49,9 @@ public class AddAddressBottomSheet extends BottomSheetDialogFragment {
         btnSaveAddress = view.findViewById(R.id.btnSaveAddress);
         mapView = view.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
+
+        ImageButton btnClose = view.findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(v -> dismiss());  // Menutup BottomSheet
 
         // Tombol untuk menyimpan alamat
         btnSaveAddress.setOnClickListener(v -> saveAddress());
