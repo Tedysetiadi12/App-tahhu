@@ -60,7 +60,7 @@
                 android:layout_marginBottom="16dp" />
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Lengkap"
@@ -72,7 +72,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
-                android:id="@+id/et_email"
+                android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -84,7 +84,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
-                android:id="@+id/et_address"
+                android:id="@+id/addressEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Alamat Lengkap"
@@ -126,7 +126,7 @@
 
             <!-- Radio Group -->
             <RadioGroup
-                android:id="@+id/radio_group_payment"
+                android:id="@+id/paymentMethodRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -226,7 +226,7 @@
 
             <!-- Detail Pembayaran -->
             <TextView
-                android:id="@+id/tv_payment_title"
+                android:id="@+id/tv_payment_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Detail Pembayaran"
@@ -239,21 +239,22 @@
 
             <!-- Tombol Bayar -->
             <TextView
-                android:id="@+id/tv_payment_details"
-                android:layout_width="wrap_content"
+                android:id="@+id/securityDetailsTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/googlesans_regular"
-                android:text="Lama Waktu: "
+                android:text="Detail"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/btn_pay_now"
+                android:id="@+id/confirmPaymentButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/buttonColor"
                 android:text="Bayar Sekarang"
+                app:cornerRadius="@dimen/margin_standard"
                 android:fontFamily="@font/googlesans_medium"
                 android:textColor="#FFFFFF"
                 android:padding="12dp" />

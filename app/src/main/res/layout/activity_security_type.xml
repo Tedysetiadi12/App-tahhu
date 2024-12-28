@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Choose Duration"
+            android:text="Pilih Durasi"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -43,17 +43,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Menu Button (Three Dots) -->
-        <ImageView
-            android:id="@+id/btn_titiktiga"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kebab"
-            app:tint="@color/white" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -71,7 +61,6 @@
         android:layout_marginBottom="24dp" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_daily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -97,6 +86,7 @@
                 android:textColor="#000" />
 
             <TextView
+                android:id="@+id/tv_daily_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 20.000"
@@ -105,24 +95,21 @@
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            app:cornerRadius="@dimen/margin_standard"
+            android:backgroundTint="@color/buttonColor"
+            android:textColor="@color/white"
+            android:text="Pesan"/>
+
     </androidx.cardview.widget.CardView>
-    <!-- Detail Section -->
-    <TextView
-        android:id="@+id/detail_daily"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:text="Detail: Pengamanan harian termasuk patroli setiap 3 jam."
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"
-        android:background="#eeeeee"
-        android:visibility="gone" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_monthly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -147,6 +134,7 @@
                 android:textColor="#000" />
 
             <TextView
+                android:id="@+id/tv_monthly_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 500.000"
@@ -155,24 +143,20 @@
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/buttonColor"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/margin_standard"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_gravity="center|right"
+            android:text="Pesan"/>
     </androidx.cardview.widget.CardView>
-    <!-- Detail Section -->
-    <TextView
-        android:id="@+id/detail_monthly"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:text="Detail: Pengamanan harian termasuk patroli setiap 3 jam."
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"
-        android:textColor="@color/black"
-        android:background="#eeeeee"
-        android:visibility="gone" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_yearly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_standard"
@@ -196,6 +180,7 @@
                 android:textColor="#000" />
 
             <TextView
+                android:id="@+id/tv_yearly_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 5.000.000"
@@ -203,33 +188,20 @@
                 android:textSize="14sp"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <!-- Detail Section -->
-    <TextView
-        android:id="@+id/detail_yearly"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:text="Detail: Pengamanan harian termasuk patroli setiap 3 jam."
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"
-        android:background="#eeeeee"
-        android:visibility="gone" />
 
-    <Button
-        android:id="@+id/btn_pesan_sekarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Pesan Sekarang"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#4CAF50"
-        android:visibility="gone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_yearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/buttonColor"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            app:cornerRadius="@dimen/margin_standard"
+            android:textColor="@color/white"
+            android:layout_gravity="center|right"
+            android:text="Pesan"/>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
