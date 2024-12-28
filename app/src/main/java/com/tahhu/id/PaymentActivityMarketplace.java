@@ -178,7 +178,7 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
                 SpannableString spanString = new SpannableString(hargaLama);
                 spanString.setSpan(new StrikethroughSpan(), 0, hargaLama.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 texhargaestimasi.setText(spanString);
-
+                texhargaestimasi.invalidate();
                 // Untuk mengganti teks harga dan estimasi
                 TextView texHargaEstimasiDiskon = findViewById(R.id.texhargaestimasidiskon);
                 texHargaEstimasiDiskon.setVisibility(finalI == 2 ? View.GONE : View.VISIBLE); // Sembunyikan jika Cargo dipilih
@@ -221,7 +221,7 @@ public class PaymentActivityMarketplace extends AppCompatActivity implements Add
     @Override
     public void onAddressSaved(String recipientName, String city, String district, String address) {
         addressView.setText(String.format("Nama: %s\nAlamat: %s\nKota: %s\nKecamatan: %s", recipientName, address, city, district));
-        findViewById(R.id.btnAddAddress).setVisibility(View.GONE);
+        findViewById(R.id.txtalamat).setVisibility(View.GONE);
         addressView.setVisibility(View.VISIBLE);
     }
 
