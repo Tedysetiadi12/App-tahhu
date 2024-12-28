@@ -26,14 +26,15 @@
         android:theme="@style/Theme.tahhu"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <activity android:name=".HistoryActivity"/>
-        <activity android:name=".SecurityServices"/>
-        <activity android:name=".PaymentSecurityServicesActivity"/>
-        <activity android:name=".SecurityListActivity"/>
-        <activity android:name=".SecurityTypeActivity"/>
-        <activity android:name=".TrackingActivity"/>
-
+        <activity
+            android:name=".OrderHistoryActivity"
+            android:exported="false" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".SecurityServices" />
+        <activity android:name=".PaymentSecurityServicesActivity" />
+        <activity android:name=".SecurityListActivity" />
+        <activity android:name=".SecurityTypeActivity" />
+        <activity android:name=".TrackingActivity" />
         <activity
             android:name=".DriverRideSharingSearchArrived"
             android:exported="false" />

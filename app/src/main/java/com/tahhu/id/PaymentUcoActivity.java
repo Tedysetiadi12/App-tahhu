@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class PaymentUcoActivity extends AppCompatActivity {
     private TextView tvDetailRingkasan, tvtotal1, tvtotal2, tvFee;
     private Button btnKonfirmasi;
+    private String pilihanPenukaran;
+    private int fee;
+    private int jumlahMinyak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +41,17 @@ public class PaymentUcoActivity extends AppCompatActivity {
         RadioGroup radioGroupPaymentOptions = findViewById(R.id.radioGroupPaymentOptions);
 
         // Ambil data dari Intent
-        int jumlahMinyak = getIntent().getIntExtra("jumlahMinyak", 0);
+        jumlahMinyak = getIntent().getIntExtra("jumlahMinyak", 0);
         String alamatPenjemputan = getIntent().getStringExtra("alamatPenjemputan");
         String lokasi = getIntent().getStringExtra("lokasi");
-        String pilihanPenukaran = getIntent().getStringExtra("pilihanPenukaran");
+        pilihanPenukaran = getIntent().getStringExtra("pilihanPenukaran");
 
         // Variabel biaya fee
         int fee = 0;
         String ringkasan;
 
         // Logika hasil tukar dan biaya fee
-        if (pilihanPenukaran.equals("Tukar dengan Minyak Baru")) {
+        if (pilihanPenukaran != null && pilihanPenukaran.equals("Tukar dengan Minyak Baru")) {
             fee = 10000;
             int jumlahMinyakBaru = (jumlahMinyak / 2);
             ringkasan = "Anda akan menerima " + jumlahMinyakBaru + " liter minyak baru setelah dikenakan biaya fee sebesar Rp" + fee + ".";
@@ -67,7 +69,6 @@ public class PaymentUcoActivity extends AppCompatActivity {
             // Sembunyikan RadioGroup Payment jika Tukar Minyak
             terimaUang.setVisibility(View.GONE);
             pilihanpayment.setVisibility(View.VISIBLE);
-//            radioGroupPaymentOptions.setVisibility(View.GONE);
 
             btnKonfirmasi.setOnClickListener(v -> {
                 int selectedRadioButtonId = radioGroupPaymentOptions.getCheckedRadioButtonId();
@@ -100,7 +101,6 @@ public class PaymentUcoActivity extends AppCompatActivity {
             // Tampilkan RadioGroup Payment jika Tukar Uang
             pilihanpayment.setVisibility(View.GONE);
             terimaUang.setVisibility(View.VISIBLE);
-//            radioGroupPaymentOptions.setVisibility(View.VISIBLE);
 
             btnKonfirmasi.setOnClickListener(v -> {
                 int selectedRadioButtonId = radioGroupPaymentOptions.getCheckedRadioButtonId();
@@ -123,20 +123,32 @@ public class PaymentUcoActivity extends AppCompatActivity {
         tvDetailRingkasan.setText(detailRingkasan);
 
     }
+
     private void showSuccessDialog() {
         // Buat dialog
         Dialog successDialog = new Dialog(this);
         successDialog.setContentView(R.layout.dialog_payment_success);
         successDialog.setCancelable(false); // Dialog tidak bisa ditutup dengan back button
-        // Misalnya, memulai aktivitas baru atau menampilkan pesan sukses
         // Tampilkan dialog
         successDialog.show();
 
         // Jalankan delay untuk redirect setelah beberapa detik
         new Handler().postDelayed(() -> {
             successDialog.dismiss(); // Tutup dialog
-            // Redirect ke halaman Home
-            Intent intent = new Intent(PaymentUcoActivity.this, DialogOrderFinishedUco.class);
+
+            // Data yang akan dikirim ke OrderHistoryActivity
+            Intent intent = new Intent(PaymentUcoActivity.this, OrderHistoryActivity.class);
+            intent.putExtra("jumlahMinyak", getIntent().getIntExtra("jumlahMinyak", 0));
+            intent.putExtra("alamatPenjemputan", getIntent().getStringExtra("alamatPenjemputan"));
+            intent.putExtra("lokasi", getIntent().getStringExtra("lokasi"));
+            intent.putExtra("pilihanPenukaran", getIntent().getStringExtra("pilihanPenukaran"));
+            intent.putExtra("fee", fee); // Tambahkan biaya fee
+            if (pilihanPenukaran != null && pilihanPenukaran.equals("Tukar dengan Minyak Baru")) {
+                intent.putExtra("hasilTukar", jumlahMinyak / 2 + " liter minyak baru");
+            } else {
+                intent.putExtra("hasilTukar", "Rp" + (((jumlahMinyak / 2) * 15000) - fee) + " uang");
+            }
+
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Menutup aktivitas saat ini

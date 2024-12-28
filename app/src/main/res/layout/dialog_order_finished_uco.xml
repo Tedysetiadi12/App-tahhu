@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_standard"
                 android:layout_marginEnd="@dimen/margin_standard"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="12dp"
                 android:text="Pesan Lagi"
                 android:textColor="@color/white"
@@ -182,24 +182,40 @@
                 app:cornerRadius="26dp"
                 android:textSize="16sp"
                 android:backgroundTint="@color/buttonColor"
-                app:layout_constraintTop_toBottomOf="@id/detailsCard"
-                app:layout_constraintBottom_toTopOf="@id/checkBookingButton" />
+                app:layout_constraintTop_toBottomOf="@id/detailsCard" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/historybutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:layout_marginEnd="@dimen/margin_standard"
+                android:backgroundTint="@color/buttonColor"
+                android:fontFamily="@font/googlesans_medium"
+                android:padding="12dp"
+                android:text="Lihat Riwayat pesanan Lagi"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="26dp"
+                app:layout_constraintTop_toBottomOf="@+id/orderAgainButton" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/checkBookingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FF9800"
+                android:fontFamily="@font/googlesans_medium"
                 android:padding="12dp"
-                android:textSize="16sp"
                 android:layout_marginStart="@dimen/margin_standard"
                 android:layout_marginEnd="@dimen/margin_standard"
-                app:cornerRadius="26dp"
-                android:fontFamily="@font/googlesans_medium"
                 android:text="kembali ke Beranda"
-                android:backgroundTint="#FF9800"
                 android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="26dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="16dp" />
+                app:layout_constraintTop_toBottomOf="@+id/historybutton"
+                tools:layout_editor_absoluteX="17dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

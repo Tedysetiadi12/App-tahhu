@@ -45,15 +45,15 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="UCO"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textColor="#FFFFFF"
                     android:fontFamily="@font/googlesans_medium" />
 
                 <ImageView
-                    android:id="@+id/btn_titiktiga"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/kebab"
+                    android:id="@+id/btn_panduan"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_about_us"
                     app:tint="#FFFFFF" />
             </LinearLayout>
 
@@ -70,69 +70,167 @@
                     android:id="@+id/viewPager3"
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
+                    android:background="@drawable/rounded_background_banner"
+                    android:clipToOutline="true"
                     android:layout_marginBottom="5dp" />
             </LinearLayout>
 
-            <!-- Tukar Minyak Jelantah Section -->
             <LinearLayout
-                android:id="@+id/card_tukar_minyak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_whitecorner"
-                android:gravity="center_vertical">
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_whitecorner">
 
-                <LinearLayout
+                <!-- Tukar Minyak dengan Uang Card -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginBottom="16dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:backgroundTint="@color/note_color_2">
 
-                    <ImageView
-                        android:id="@+id/img_oil"
-                        android:layout_width="2000dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/cookoil" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:fontFamily="@font/googlesans_regular"
-                        android:gravity="center_horizontal"
-                        android:text="Untuk rasio penukaran minyak jelantah dengan minyak kemasan adalah 2:1. Anda dapat menukarkannya dengan uang atau\nminyak kemasan lainnya."
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:padding="6dp"
+                      >
+                        <!-- Gambar -->
+                        <ImageView
+                            android:id="@+id/img_oil_cash"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/cookoil"
+                            android:contentDescription="Tukar Minyak" />
+
+                        <!-- Keterangan -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_bold"
+                                android:text="Tukar Minyak dengan Uang"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_regular"
+                                android:text="Untuk rasio penukaran minyak jelantah adalah 2:1. Anda dapat menukarkannya dengan uang tunai."
+                                android:textColor="@color/card_background"
+                                android:textSize="12sp" />
+                            <!-- Tombol -->
+                            <Button
+                                android:id="@+id/btn_tukar_uang"
+                                android:layout_width="100dp"
+                                android:textSize="10dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/primary"
+                                android:text="Tukarkan"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tukar Minyak dengan Minyak Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/orange_light">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="6dp">
+
+                        <!-- Gambar -->
+                        <ImageView
+                            android:id="@+id/img_oil_oil"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/cookoil"
+                            android:layout_gravity="center"
+                            android:contentDescription="Tukar Minyak" />
+
+                        <!-- Keterangan -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_bold"
+                                android:text="Tukar Minyak dengan Minyak"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/googlesans_regular"
+                                android:text="Untuk rasio penukaran minyak jelantah adalah 2:1. Anda dapat menukarkannya dengan minyak kemasan lainnya."
+                                android:textColor="@color/gray"
+                                android:textSize="12sp" />
+                            <!-- Tombol -->
+                            <Button
+                                android:id="@+id/btn_tukar_minyak"
+                                android:layout_width="100dp"
+                                android:textSize="10dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/primary"
+                                android:text="Tukarkan"
+                                android:textColor="@color/white"  />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- Buttons -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_tukar_minyak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Ayo Tukar Segera"
-                android:backgroundTint="@color/buttonColor"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/googlesans_medium" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_panduan"
+            <!-- Main Content Section -->
+            <LinearLayout
+                android:id="@+id/main_content1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:text="Panduan"
-                android:backgroundTint="#FF9800"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/googlesans_medium" />
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@color/white">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager4"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:background="@drawable/rounded_background_banner"
+                    android:clipToOutline="true"
+                    android:visibility="gone"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

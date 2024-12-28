@@ -19,6 +19,7 @@ public class DialogOrderFinishedUco extends AppCompatActivity {
 
         Button btnback = findViewById(R.id.checkBookingButton);
         Button btnOrderAgain = findViewById(R.id.orderAgainButton);
+        Button historybtn = findViewById(R.id.historybutton);
         TextView resiTextView = findViewById(R.id.nomor_resi_textview);
 
         // Generate a random resi number
@@ -45,6 +46,14 @@ public class DialogOrderFinishedUco extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle click event, for example, open another activity
                 Intent intent = new Intent(DialogOrderFinishedUco.this, UcoActivity.class);
+                startActivity(intent);
+            }
+        });
+        historybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(DialogOrderFinishedUco.this, OrderHistoryActivity.class);
                 startActivity(intent);
             }
         });

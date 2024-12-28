@@ -47,23 +47,38 @@ public class UcoActivity extends AppCompatActivity {
 
         // Tombol Tukar Minyak Jelantah
         Button btnTukarMinyak = findViewById(R.id.btn_tukar_minyak);
-        btnTukarMinyak.setOnClickListener(new View.OnClickListener() {
+        Button btnTukarUang = findViewById(R.id.btn_tukar_uang);
+        btnTukarUang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UcoActivity.this, TukarMinyakActivity.class);
+                intent.putExtra("pilihanPenukaran", "Tukar dengan Uang");
                 startActivity(intent);
             }
         });
 
-        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
+        btnTukarMinyak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UcoActivity.this, TukarMinyakActivity.class);
+                intent.putExtra("pilihanPenukaran", "Tukar dengan Minyak");
+                startActivity(intent);
+            }
+        });
+
+
+        ImageView kebabIcon = findViewById(R.id.btn_panduan);
         kebabIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopupMenu(v);
+                Intent intent = new Intent(UcoActivity.this, PanduanUcoActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
 
         ViewPager2 viewPager3 = findViewById(R.id.viewPager3);
+        ViewPager2 viewPager4 = findViewById(R.id.viewPager4);
         // Membuat data untuk slide
         List<SlideAdapter.SlideItem> slideItemss = new ArrayList<>();
         slideItemss.add(new SlideAdapter.SlideItem(R.drawable.banner_minyak, "Slide 1","https://tahhu.com"));
@@ -74,16 +89,8 @@ public class UcoActivity extends AppCompatActivity {
             startActivity(intent);
         });
         viewPager3.setAdapter(adapterslids);
+        viewPager4.setAdapter(adapterslids);
 
-        Button btn_panduan = findViewById(R.id.btn_panduan);
-        btn_panduan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UcoActivity.this, PanduanUcoActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-            }
-        });
 
         homeButton = findViewById(R.id.homeButton);
         menuMarket = findViewById(R.id.menumarket);
@@ -99,27 +106,6 @@ public class UcoActivity extends AppCompatActivity {
         market.setOnClickListener(v -> navigateTo("cart"));
     }
 
-    // Metode untuk menampilkan PopupMenu
-    private void showPopupMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.inflate(R.menu.bottom_nav_menu);
-
-        popupMenu.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.nav_home) {
-                Toast.makeText(UcoActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (item.getItemId() == R.id.nav_transactions) {
-                Toast.makeText(UcoActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (item.getItemId() == R.id.nav_profile) {
-                Toast.makeText(UcoActivity.this, "Logout Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else {
-                return false;
-            }
-        });
-        popupMenu.show();
-    }
 
     private void navigateTo(String destination) {
         Intent intent;

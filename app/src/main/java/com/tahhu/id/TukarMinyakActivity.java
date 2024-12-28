@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -19,7 +20,8 @@ public class TukarMinyakActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private MaterialAutoCompleteTextView spinnerLokasi;
     private Button btnTukar;
-
+    // Variabel untuk pilihan penukaran
+    private String pilihanPenukaran;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +42,26 @@ public class TukarMinyakActivity extends AppCompatActivity {
                 lokasiTerdekat
         );
         spinnerLokasi.setAdapter(adapter);
+        // Tangkap data dari Intent
+        Intent incomingIntent = getIntent();
+        pilihanPenukaran = incomingIntent.getStringExtra("pilihanPenukaran");
 
+        // Inisialisasi layout
+        LinearLayout layoutTukarUang = findViewById(R.id.layout_tukar_uang);
+        LinearLayout layoutTukarMinyak = findViewById(R.id.layout_tukar_minyak);
+        if (pilihanPenukaran != null) {
+            if (pilihanPenukaran.equals("Tukar dengan Uang")) {
+                layoutTukarUang.setVisibility(View.VISIBLE);
+            } else if (pilihanPenukaran.equals("Tukar dengan Minyak")) {
+                layoutTukarMinyak.setVisibility(View.VISIBLE);
+            }
+        }
         // Tombol Tukar
         btnTukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String jumlahMinyakStr = edtJumlahMinyak.getText().toString();
                 String alamatPenjemputan = edtAlamatPenjemputan.getText().toString();
-                int selectedOptionId = radioGroup.getCheckedRadioButtonId();
-                RadioButton selectedOption = findViewById(selectedOptionId);
 
                 if (jumlahMinyakStr.isEmpty() || alamatPenjemputan.isEmpty()) {
                     Toast.makeText(TukarMinyakActivity.this, "Harap isi semua data!", Toast.LENGTH_SHORT).show();
@@ -62,7 +75,6 @@ public class TukarMinyakActivity extends AppCompatActivity {
                 }
 
                 String lokasi = spinnerLokasi.getText().toString();
-                String pilihanPenukaran = selectedOption.getText().toString();
 
                 // Kirim data ke halaman payment
                 Intent intent = new Intent(TukarMinyakActivity.this, PaymentUcoActivity.class);
