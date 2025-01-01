@@ -14,6 +14,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -26,10 +27,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CardView cardView;
     private LinearLayout dropdownContent;
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,34 +115,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView profileImageView = findViewById(R.id.profileImageView);
 
         // Cek apakah user sudah login
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser != null) {
-//            // Ambil UID pengguna yang login
-//            String userId = currentUser.getUid();
-//
-//            // Ambil data pengguna dari Realtime Database
-//            mDatabase.child("users").child(userId).get().addOnCompleteListener(task -> {
-//                if (task.isSuccessful()) {
-//                    DataSnapshot dataSnapshot = task.getResult();
-//                    if (dataSnapshot.exists()) {
-//                        // Ambil data username dari snapshot
-//                        String username = dataSnapshot.child("username").getValue(String.class);
-//
-//                        // Tampilkan username di TextView
-//                        welcomeTextView.setText("Welcome, " + username);
-//                    } else {
-//                        Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(MainActivity.this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        } else {
-//            // Jika pengguna belum login, arahkan ke halaman login
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//            finish();
-//        }
-
         NestedScrollView scrollView = findViewById(R.id.nestedScrollView);
         LinearLayout headerLayout = findViewById(R.id.linearLayout11);
 
@@ -307,9 +284,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -472,6 +446,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        String[] featureTitles = {"Komunikasi",
+                "Keamanan",
+                "Sosial",
+                "Administrasi",
+                "Kebersihan",
+                "Hiburan",
+                "Teknologi"};
+
+        Integer[] featureIcons = {R.drawable.ic_komunikasi,
+                R.drawable.ic_keamanan,
+                R.drawable.ic_sosial,
+                R.drawable.ic_administrasi,
+                R.drawable.ic_kebersihan,
+                R.drawable.ic_hiburan,
+                R.drawable.ic_teknologi};
+
+        ForumAdapter adapterr = new ForumAdapter(featureTitles, featureIcons, position -> {
+            navigateToFeature(position);
+        });
+        recyclerView.setAdapter(adapterr);
     }
 
     private void showDropdown() {
@@ -688,4 +685,90 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void navigateToFeature(int position) {
+        Intent intent;
+        switch (position) {
+            case 0: // Komunikasi
+                intent = new Intent(this, KomunikasiActivity.class);
+                break;
+            case 1: // Keamanan
+                intent = new Intent(this, KeamananActivity.class);
+                break;
+            case 2: // Sosial dan Komunitas
+                intent = new Intent(this, SosialKomunitasActivity.class);
+                break;
+            case 3: // Administrasi
+                intent = new Intent(this, AdministrasiActivity.class);
+                break;
+            case 4: // Kebersihan dan Lingkungan
+                intent = new Intent(this, KebersihanLingkunganActivity.class);
+                break;
+            case 5: // Hiburan dan Edukasi
+                intent = new Intent(this, HiburanEdukasiActivity.class);
+                break;
+            case 6: // Teknologi
+                intent = new Intent(this, TeknologiActivity.class);
+                break;
+            default:
+                return;
+        }
+        startActivity(intent);
+    }
+
+    public static class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
+
+        private String[] titles;
+        private Integer[] icons;
+        private OnItemClickListener onItemClickListener;
+
+        // Interface untuk klik listener
+        public interface OnItemClickListener {
+            void onItemClick(int position);
+        }
+
+        // Konstruktor
+        public ForumAdapter(String[] titles, Integer[] icons, OnItemClickListener onItemClickListener) {
+            this.titles = titles;
+            this.icons = icons;
+            this.onItemClickListener = onItemClickListener;
+        }
+
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            ImageView imageView;
+            TextView textView;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+                imageView = itemView.findViewById(R.id.imageView);
+                textView = itemView.findViewById(R.id.textView);
+            }
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.imageView.setImageResource(icons[position]);
+            holder.textView.setText(titles[position]);
+
+            // Set klik listener dengan posisi yang benar
+            holder.itemView.setOnClickListener(v -> {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position);
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return titles.length;
+        }
+    }
+
 }

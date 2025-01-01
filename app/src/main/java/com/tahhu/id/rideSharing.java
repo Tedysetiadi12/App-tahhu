@@ -1,11 +1,14 @@
 package com.tahhu.id;
+
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,12 +19,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +41,23 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 
 import android.widget.PopupMenu;
@@ -44,19 +72,20 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
     private MapView mapView;
     private GoogleMap gMap;
     private FusedLocationProviderClient fusedLocationClient;
+    private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private TextView destinationTextView, addressTextView;
     private ImageView back;
-
     private ImageView homeButton, menuMarket, shortVideo, calculator;
     private FloatingActionButton market;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride_sharing);
-        addressTextView = findViewById(R.id.pickupLocation);
         destinationTextView = findViewById(R.id.destination);
+        addressTextView = findViewById(R.id.locationText);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -106,35 +135,61 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
             getCurrentLocation();
         }
 
-        ImageView kebabIcon = findViewById(R.id.btn_titiktiga);
-        kebabIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupMenu(v);
-            }
-        });
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        requestLocation();
     }
 
-    // Metode untuk menampilkan PopupMenu
-    private void showPopupMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.inflate(R.menu.bottom_nav_menu);
+    private void requestLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
 
-        popupMenu.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.nav_home) {
-                Toast.makeText(rideSharing.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (item.getItemId() == R.id.nav_transactions) {
-                Toast.makeText(rideSharing.this, "Help Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (item.getItemId() == R.id.nav_profile) {
-                Toast.makeText(rideSharing.this, "Logout Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            } else {
-                return false;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            getLocation();
+        }
+    }
+
+    private void getLocation() {
+        LocationRequest locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(5000) // Setiap 5 detik
+                .setFastestInterval(2000); // Interval tercepat 2 detik
+
+        LocationCallback locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+                Location location = locationResult.getLastLocation();
+                if (location != null) {
+                    // Gunakan Geocoder untuk mendapatkan nama lokasi
+                    Geocoder geocoder = new Geocoder(rideSharing.this, Locale.getDefault());
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        if (addresses != null && !addresses.isEmpty()) {
+                            Address address = addresses.get(0);
+                            String locationName = address.getAddressLine(0); // Alamat lengkap
+                            addressTextView.setText(locationName);
+
+                        } else {
+                            addressTextView.setText("Unable to fetch address");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        addressTextView.setText("Error: " + e.getMessage());
+                    }
+                } else {
+                    Toast.makeText(rideSharing.this, "Unable to get location", Toast.LENGTH_SHORT).show();
+                }
             }
-        });
-        popupMenu.show();
+        };
+
+        // Pastikan izin sudah diberikan
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        }
     }
 
     private void getCurrentLocation() {

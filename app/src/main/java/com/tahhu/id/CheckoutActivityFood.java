@@ -34,8 +34,10 @@ public class CheckoutActivityFood extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         cartItems = getIntent().getParcelableArrayListExtra("cartItems");
-        calculateTotal();
         Intent intent2 = getIntent();
+        String location = intent2.getStringExtra("location");
+
+        calculateTotal();
         List<FoodItem> cartItems = intent2.getParcelableArrayListExtra("cartItems");
 
         if (cartItems == null || cartItems.isEmpty()) {
@@ -56,6 +58,7 @@ public class CheckoutActivityFood extends AppCompatActivity {
             Intent intent = new Intent(CheckoutActivityFood.this, PaymentActivityFood.class);
             intent.putParcelableArrayListExtra("finalItems", new ArrayList<>(cartItems));
             intent.putExtra("finalTotal", totalPrice);
+            intent.putExtra("location", location);
             startActivity(intent);
         });
         back.setOnClickListener(new View.OnClickListener() {

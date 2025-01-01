@@ -27,6 +27,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TeknologiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HiburanEdukasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KebersihanLingkunganActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdministrasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SosialKomunitasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KeamananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KomunikasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderHistoryActivity"
             android:exported="false" />
         <activity android:name=".HistoryActivity" />

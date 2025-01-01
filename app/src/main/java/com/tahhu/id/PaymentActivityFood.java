@@ -88,6 +88,17 @@ public class PaymentActivityFood extends AppCompatActivity {
             onBackPressed();
         });
 
+        // Ambil data lokasi
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("location");
+
+        // Tampilkan lokasi di TextView atau gunakan sesuai kebutuhan
+        TextView locationTextView = findViewById(R.id.locationTextView);
+        if (location != null) {
+            locationTextView.setText(location);
+        } else {
+            locationTextView.setText("Location not available");
+        }
     }
 
     private void showSuccessDialog() {

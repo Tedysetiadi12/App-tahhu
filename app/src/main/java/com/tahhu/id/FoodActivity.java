@@ -2,7 +2,12 @@ package com.tahhu.id;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,18 +17,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import android.Manifest;
+
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +56,10 @@ public class FoodActivity extends AppCompatActivity {
     private BannerAdapter bannerAdapter;
     private ImageView homeButton, menuMarket, shortVideo, calculator;
     private FloatingActionButton market;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private TextView locationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +100,8 @@ public class FoodActivity extends AppCompatActivity {
         btnCheckout.setOnClickListener(v -> {
             Intent intent = new Intent(FoodActivity.this, CheckoutActivityFood.class);
             intent.putParcelableArrayListExtra("cartItems", new ArrayList<>(cartItems));
+            String location = locationText.getText().toString();
+            intent.putExtra("location", location);
             startActivity(intent);
         });
 
@@ -108,6 +129,8 @@ public class FoodActivity extends AppCompatActivity {
         btn_cart.setOnClickListener(v -> {
             Intent intent = new Intent(FoodActivity.this, CheckoutActivityFood.class);
             intent.putParcelableArrayListExtra("cartItems", new ArrayList<>(cartItems));
+            String location = locationText.getText().toString();
+            intent.putExtra("location", location);
             startActivity(intent);
         });
 
@@ -117,6 +140,91 @@ public class FoodActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        locationText = findViewById(R.id.locationText);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        requestLocation();
+    }
+
+    private void requestLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            getLocation();
+        }
+    }
+
+    private void getLocation() {
+        LocationRequest locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(5000) // Setiap 5 detik
+                .setFastestInterval(2000); // Interval tercepat 2 detik
+
+        LocationCallback locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+                Location location = locationResult.getLastLocation();
+                if (location != null) {
+                    // Gunakan Geocoder untuk mendapatkan nama lokasi
+                    Geocoder geocoder = new Geocoder(FoodActivity.this, Locale.getDefault());
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        if (addresses != null && !addresses.isEmpty()) {
+                            Address address = addresses.get(0);
+                            String locationName = address.getAddressLine(0); // Alamat lengkap
+                            locationText.setText(locationName);
+
+                        } else {
+                            locationText.setText("Unable to fetch address");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        locationText.setText("Error: " + e.getMessage());
+                    }
+                } else {
+                    Toast.makeText(FoodActivity.this, "Unable to get location", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        // Pastikan izin sudah diberikan
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLocation();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    // Create a LocationData class to represent location data
+    public static class LocationData {
+        public double latitude;
+        public double longitude;
+
+        public LocationData() {
+            // Default constructor required for calls to DataSnapshot.getValue(LocationData.class)
+        }
+
+        public LocationData(double latitude, double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
     }
 
     private void initFoodData() {

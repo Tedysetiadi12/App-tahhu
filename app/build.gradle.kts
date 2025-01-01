@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.android.libraries.places:places:2.6.0")
     implementation ("androidx.core:core:1.7.0")
     implementation ("com.prolificinteractive:material-calendarview:1.4.3")
     implementation ("com.google.firebase:firebase-database:20.2.2")

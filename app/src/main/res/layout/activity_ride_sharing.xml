@@ -97,32 +97,32 @@
                 android:fontFamily="@font/googlesans_medium"
                 android:gravity="center"/>
 
-            <EditText
-                android:id="@+id/pickupLocation"
+            <TextView
+                android:id="@+id/locationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukkan alamat rumah"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/location"
                 android:drawablePadding="8dp"
-                android:padding="10dp"
                 android:fontFamily="@font/googlesans_regular"
+                android:hint="Masukkan alamat rumah"
+                android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/gray"
-                android:background="@drawable/rounded_edittext"
-                android:layout_marginBottom="8dp"/>
+                android:textColorHint="@color/gray" />
 
             <EditText
                 android:id="@+id/destination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Tujuan Anda "
-                android:fontFamily="@font/googlesans_regular"
+                android:background="@drawable/rounded_edittext"
                 android:drawableStart="@drawable/placeholder"
                 android:drawablePadding="8dp"
+                android:fontFamily="@font/googlesans_regular"
+                android:hint="Masukan Tujuan Anda "
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/gray"
-                android:background="@drawable/rounded_edittext"/>
+                android:textColorHint="@color/gray" />
         </LinearLayout>
 
     </LinearLayout>
