@@ -10,8 +10,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -26,6 +28,48 @@
         android:theme="@style/Theme.tahhu"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".RiwayatKeluhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayananKeluhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PendaftaranKegiatanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PembayaranIuranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayananVolunteerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketplaceWargasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgendaWargaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StreamingCctvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KontrolTamuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayananKeamananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnnouncementDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KontakPentingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PengumumanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForumDiskusiActivity"
+            android:exported="false" />
         <activity
             android:name=".TeknologiActivity"
             android:exported="false" />

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Input for Title -->
+    <EditText
+        android:id="@+id/titleInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Judul Post"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Input for Content -->
+    <EditText
+        android:id="@+id/contentInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Konten Post"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:scrollbars="vertical" />
+</LinearLayout>

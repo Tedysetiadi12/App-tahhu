@@ -1,7 +1,9 @@
 package com.tahhu.id;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -146,14 +148,32 @@ public class PaymentSecurityServicesActivity extends AppCompatActivity {
 
         databaseReference.child(bookingId).setValue(booking)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(PaymentSecurityServicesActivity.this, "Booking saved successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PaymentSecurityServicesActivity.this, SecurityServices.class);
-                    startActivity(intent);
-                    finish();
+                    showSuccessDialog();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(PaymentSecurityServicesActivity.this, "Failed to save booking: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void showSuccessDialog() {
+
+        // Buat dialog
+        Dialog successDialog = new Dialog(this);
+        successDialog.setContentView(R.layout.dialog_payment_success);
+        successDialog.setCancelable(false); // Dialog tidak bisa ditutup dengan back button
+
+        // Tampilkan dialog
+        successDialog.show();
+
+        // Jalankan delay untuk redirect setelah beberapa detik
+        new Handler().postDelayed(() -> {
+            successDialog.dismiss(); // Tutup dialog
+            // Redirect ke halaman Home
+            Intent intent = new Intent(PaymentSecurityServicesActivity.this, SecurityServices.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish(); // Menutup aktivitas saat ini
+        }, 1000); // Delay selama 2 detik
     }
 }
 

@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.zxing:core:3.4.1")
     implementation ("com.google.android.libraries.places:places:2.6.0")
     implementation ("androidx.core:core:1.7.0")
     implementation ("com.prolificinteractive:material-calendarview:1.4.3")
@@ -54,6 +55,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth:22.1.1")
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.google.firebase:firebase-storage:21.0.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")

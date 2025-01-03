@@ -161,17 +161,16 @@ public class CatatanActivity extends AppCompatActivity {
         notesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                notesList.clear(); // Bersihkan daftar lama
+                notesList.clear();
 
                 for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
-                    Note note = noteSnapshot.getValue(Note.class); // Konversi ke objek Note
+                    Note note = noteSnapshot.getValue(Note.class);
                     if (note != null) {
                         notesList.add(note);
                     }
                 }
-
-                adapter.notifyDataSetChanged(); // Perbarui adapter
-                updateViewVisibility(); // Perbarui tampilan jika data kosong
+                adapter.notifyDataSetChanged();
+                updateViewVisibility();
             }
 
             @Override
