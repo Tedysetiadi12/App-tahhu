@@ -12,26 +12,25 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class HiburanEdukasiActivity extends AppCompatActivity {
-    private CardView cardfasilitas, cardlibrary, cardtv;
+public class fiturKebersihanLingkunganActivity extends AppCompatActivity {
+    private CardView cardJadwalsampah, cardLaporansampah;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_hiburan_edukasi);
+        setContentView(R.layout.activity_fitur_kebersihan_lingkungan);
         initializeViews();
         setClickListeners();
     }
+
 
     private void initializeViews() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        cardfasilitas = findViewById(R.id.cardPeminajalanFasilitas);
-        cardlibrary = findViewById(R.id.cardlibralyDigital);
-        cardtv = findViewById(R.id.cardTV);
-
+        cardJadwalsampah = findViewById(R.id.cardJdwalsampah);
+        cardLaporansampah = findViewById(R.id.cardlaporanSampah);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,33 +38,27 @@ public class HiburanEdukasiActivity extends AppCompatActivity {
             }
         });
     }
+
+
     private void setClickListeners() {
-        cardfasilitas.setOnClickListener(new View.OnClickListener() {
+        cardJadwalsampah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Launch Forum Diskusi Activity
-                Intent intent = new Intent(HiburanEdukasiActivity.this, peminjamanFasilitasActivity.class);
+                Intent intent = new Intent(fiturKebersihanLingkunganActivity.this, jadwalPengambilanSampahActivity.class);
                 startActivity(intent);
             }
         });
 
-        cardlibrary.setOnClickListener(new View.OnClickListener() {
+        cardLaporansampah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Launch Pengumuman Activity
-                Intent intent = new Intent(HiburanEdukasiActivity.this, PendaftaranKegiatanActivity.class);
+                Intent intent = new Intent(fiturKebersihanLingkunganActivity.this, pelaporanSampahLiarActivity.class);
                 startActivity(intent);
             }
         });
 
-        cardtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Launch Kontak Penting Activity
-                Intent intent = new Intent(HiburanEdukasiActivity.this, TVStreamingActivity.class);
-                startActivity(intent);
-            }
-        });
     }
     // Optional: Add transition animation when opening new activities
     @Override

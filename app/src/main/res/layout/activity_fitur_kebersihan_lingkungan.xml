@@ -16,12 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/accentColor"
-            app:title="Hiburan Dan Edukasi"
+            app:title="Kebersihan Dan Lingkungan"
             app:titleTextColor="@android:color/white"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardPeminajalanFasilitas"
+        android:id="@+id/cardJdwalsampah"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#E0F7FA"
@@ -43,7 +43,7 @@
                 android:layout_gravity="center"
                 app:tint="#3F51B5"
                 android:contentDescription="Forum icon"
-                android:src="@drawable/ic_fasilitas" />
+                android:src="@drawable/ic_trash" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peminjaman Fasilitas Umum"
+                    android:text="Jadwal Pengambilan Sampah"
                     android:textColor="@color/black"
                     android:fontFamily="@font/googlesans_bold"
                     android:textSize="18sp"
@@ -66,7 +66,7 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_regular"
-                    android:text="Sistem reservasi untuk menggunakan fasilitas seperti aula, taman, atau lapangan olahraga."/>
+                    android:text="Terdapat Jadwal pengambilan sampah di wilayah jogja dan sekitarnya "/>
             </LinearLayout>
             <ImageView
                 android:layout_marginStart="10dp"
@@ -79,7 +79,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardlibralyDigital"
+        android:id="@+id/cardlaporanSampah"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -100,7 +100,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:contentDescription="Announcement icon"
-                android:src="@drawable/ic_book"
+                android:src="@drawable/ic_complain"
                 app:tint="#FFC107" />
 
             <LinearLayout
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_bold"
-                    android:text="Library Digital"
+                    android:text="Pelaporan Sampah Liar"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -123,65 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/googlesans_regular"
-                    android:text="Koleksi buku digital untuk warga yang gemar membaca"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_marginStart="10dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:contentDescription="Arrow icon"
-                android:src="@drawable/arrowright"
-                app:tint="@color/black" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="8dp"
-        android:layout_margin="12dp"
-        android:backgroundTint="@color/note_color_1"
-        app:cardElevation="4dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:contentDescription="Announcement icon"
-                android:src="@drawable/ic_video"
-                app:tint="#FD4C3E" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:text="TV Streaming Komunitas"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:text="Platform untuk siaran informasi atau hiburan komunitas"
+                    android:text="Warga bisa melaporkan lokasi sampah liar untuk segera ditangani"
                     android:textColor="@color/black" />
             </LinearLayout>
 

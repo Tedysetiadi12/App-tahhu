@@ -4,5 +4,5 @@
         android:endColor="#FF9800"
         android:startColor="#FFC107"
         android:type="linear"/>
-    <corners android:bottomLeftRadius="200dp" android:bottomRightRadius="200dp" />
+    <corners android:bottomLeftRadius="170dp" android:bottomRightRadius="170dp" />
 </shape>

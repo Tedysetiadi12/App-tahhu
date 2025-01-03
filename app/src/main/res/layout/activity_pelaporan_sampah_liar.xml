@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_marginTop="45dp"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:background="@drawable/bg_gradient_oval"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout19"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout19"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/gradient_header"
+                app:title="Laporan Sampah liar"
+                app:titleTextColor="@android:color/white">
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout19">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutfForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:orientation="vertical">
+
+            <!-- Title Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesans_bold"
+                android:text="Laporan Sampah Liar"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"/>
+
+            <!-- Input for Location of Garbage -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi Sampah Kotor"
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputLokasiSampah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan Lokasi Sampah Kotor"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"/>
+
+            <!-- Input for Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputDeskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan Deskripsi Sampah"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"/>
+
+            <!-- Button to Add Image (Camera or Gallery) -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tambahkan Gambar"
+                android:background="@drawable/category_background"
+                android:backgroundTint="@color/my_birutua"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Lihat Jadwal Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLihatJadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kirim Laporan"
+                android:background="@drawable/category_background"
+                android:backgroundTint="@color/primaryDarkColor"
+                android:textColor="@android:color/white"
+                android:padding="12dp"/>
+
+            <!-- Section to show CardView after submission -->
+
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewLaporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Lokasi -->
+                <TextView
+                    android:id="@+id/laporanLokasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi Sampah"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- Deskripsi -->
+                <TextView
+                    android:id="@+id/laporanDeskripsi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Gambar -->
+                <ImageView
+                    android:id="@+id/laporanImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Laporan Image"
+                    android:src="@drawable/ic_camera"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded_edittext" />
+
+                <!-- Status -->
+                <TextView
+                    android:id="@+id/laporanStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status: Sedang Diproses"
+                    android:textColor="@color/active_button_color"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/status_background"
+                    android:layout_gravity="start" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Top Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_header"
+            app:title="Peminjaman Fasilitas"
+            app:titleTextColor="@android:color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Input Fields -->
+    <LinearLayout
+        android:id="@+id/inputScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/cardRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Nama Lengkap -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Nama Lengkap"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:hint="Masukkan Nama Lengkap"
+                android:padding="12dp" />
+
+            <!-- Nomor HP -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Nomor HP"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Masukkan Nomor HP"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14dp"
+                android:inputType="phone"
+                android:padding="12dp" />
+
+            <!-- Alamat -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Alamat"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Masukkan Alamat"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:padding="12dp" />
+
+            <!-- Keperluan -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Keperluan"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputKeperluan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Masukkan Keperluan"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:padding="12dp" />
+
+            <!-- Pilihan Fasilitas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Fasilitas"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPilihFasilitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/category_background"
+                android:text="Pilih Fasilitas"
+                android:layout_marginTop="8dp" />
+
+
+            <!-- Tambah Peminjaman Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTambahPeminjaman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/category_background"
+                android:backgroundTint="@color/primaryDarkColor"
+                android:padding="12dp"
+                android:text="Tambah Peminjaman"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <!-- RecyclerView for Added Peminjaman -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cardRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/inputScrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginTop="45dp"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:background="@drawable/bg_gradient_oval"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout19"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout19"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/gradient_header"
+                app:title="Kebersihan Dan Lingkungan"
+                app:titleTextColor="@android:color/white">
+
+                <!-- Notifikasi Icon -->
+                <ImageView
+                    android:id="@+id/iconNotification"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:padding="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_notification"
+                    android:contentDescription="Notification Icon"
+                    app:tint="@android:color/white" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout19">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:orientation="vertical">
+
+            <!-- Title Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesans_bold"
+                android:text="Alamat Jadwal Pengambilan Sampah"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesans_regular"
+                android:text="Alamat yang Dimasukan Berlaku Hanya Wilayah Yogyakarta"
+                android:textColor="@color/secondary"
+                android:textSize="10sp"
+                android:layout_marginBottom="12dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <!-- Kabupaten Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kabupaten"
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputKabupaten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:textSize="14dp"
+                android:hint="Masukkan Kabupaten"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:textColor="@color/black"/>
+
+            <!-- Kecamatan Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kecamatan"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputKecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:hint="Masukkan Kecamatan"
+                android:textSize="14dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:textColor="@color/black"/>
+
+            <!-- Kelurahan Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelurahan"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputKelurahan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:hint="Masukkan Kelurahan"
+                android:textSize="14dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:textColor="@color/black"/>
+
+            <!-- Dusun Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dusun"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/inputDusun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/gray"
+                android:inputType="textMultiLine"
+                android:hint="Masukkan Dusun"
+                android:textSize="14dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:textColor="@color/black"/>
+
+            <!-- Lihat Jadwal Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLihatJadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Lihat Jadwal"
+                android:background="@drawable/category_background"
+                android:backgroundTint="@color/primaryDarkColor"
+                android:textColor="@android:color/white"
+                android:padding="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

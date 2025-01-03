@@ -695,7 +695,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, AdministrasiActivity.class);
                 break;
             case 4: // Kebersihan dan Lingkungan
-                intent = new Intent(this, KebersihanLingkunganActivity.class);
+                intent = new Intent(this, fiturKebersihanLingkunganActivity.class);
                 break;
             case 5: // Hiburan dan Edukasi
                 intent = new Intent(this, HiburanEdukasiActivity.class);
