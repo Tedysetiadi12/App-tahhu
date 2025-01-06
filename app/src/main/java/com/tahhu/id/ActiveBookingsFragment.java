@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,15 +63,29 @@ public class ActiveBookingsFragment extends Fragment implements BookingAdapter.B
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
+                Toast.makeText(getContext(), "Error: " + databaseError.getMessage(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
-    public void onCompleteBooking(Booking booking) {
+    public void onCompleteBooking(Booking booking, float rating, String comment) {
+        // Update booking data
         booking.setActive(false);
-        databaseReference.child(booking.getId()).setValue(booking);
+        booking.setRating(rating);
+        booking.setComment(comment);
+
+        // Simpan ke Firebase
+        databaseReference.child(booking.getId()).setValue(booking)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), "Booking selesai dan rating tersimpan",
+                            Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Gagal menyimpan data: " + e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                });
     }
 
     @Override
@@ -81,4 +95,3 @@ public class ActiveBookingsFragment extends Fragment implements BookingAdapter.B
         startActivity(intent);
     }
 }
-

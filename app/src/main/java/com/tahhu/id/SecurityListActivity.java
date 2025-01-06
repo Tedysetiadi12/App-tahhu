@@ -38,9 +38,6 @@ public class SecurityListActivity extends AppCompatActivity {
         securityAdapter = new SecurityAdapter(this, securityProfiles, securityType, period, price);
         recyclerView.setAdapter(securityAdapter);
 
-
     }
-
-
 }
 

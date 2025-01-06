@@ -9,6 +9,8 @@ public class Booking {
     private String paymentMethod;
     private String address;
     private boolean isActive;
+    private float rating;
+    private String comment;
 
     public Booking() {
         // Default constructor required for Firebase
@@ -49,5 +51,20 @@ public class Booking {
 
     public boolean isActive() { return isActive; }
     public void setActive(boolean active) { isActive = active; }
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }
 
