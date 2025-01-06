@@ -72,6 +72,10 @@
     1 Ruas Jahe (3cm) = 15 gr\n
     1 Sdt Merica Bubuk = 3 gr
 </string>
+    <string name="networks">Networks</string>
+    <string name="usage_stats">Usage Stats</string>
+    <string name="guests">Guests</string>
+    <string name="settings">Settings</string>
 
 
 </resources>

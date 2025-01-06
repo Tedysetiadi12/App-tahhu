@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/guest_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:fontFamily="@font/googlesans_regular"
+        android:background="@drawable/rounded_edittext"
+        android:textColorHint="@color/gray"
+        android:hint="Enter guest name" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_guest_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:fontFamily="@font/googlesans_medium"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="@color/accentColor"
+        android:text="Add Guest" />
+
+    <ListView
+        android:id="@+id/guest_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

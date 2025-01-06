@@ -85,13 +85,13 @@ public class cctv extends AppCompatActivity {
 
     private void setupData() {
         List<CCTVData> jogjaList = new ArrayList<>();
-        jogjaList.add(new CCTVData("Simpang rejowinangun", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_Simpang_Rejowinangun_View_Timur.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("Simpang Gayam", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_gayam.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("Nol KM", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_kmnol.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("Jalan Gajah", "Yogyakarta", "https://cctvjss.jogjakota.go.id/tps-liar/S3_Jalan_Gajah.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("Pasar Beringharjo", "Yogyakarta", "https://cctvjss.jogjakota.go.id/malioboro/Malioboro_30_Pasar_Beringharjo.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("Teteg", "Yogyakarta", "https://cctvjss.jogjakota.go.id/margo-utomo/Wisma-Ratih.stream/playlist.m3u8"));
-        jogjaList.add(new CCTVData("DPRD", "Yogyakarta", "https://cctvjss.jogjakota.go.id/malioboro/Malioboro_4_Depan_DPRD.stream/playlist.m3u8"));
+        jogjaList.add(new CCTVData("Inna Malioboro", "Yogyakarta", "https://cctvjss.jogjakota.go.id/malioboro/Malioboro_21_Utara_Inna_Malioboro.stream/playlist.m3u8"));
+        jogjaList.add(new CCTVData("Malioboro Mall Utara", "Yogyakarta", "https://cctvjss.jogjakota.go.id/malioboro/Malioboro_6_Mall_Utara.stream/chunklist_w1175307566.m3u8"));
+        jogjaList.add(new CCTVData("Simpang Bausasran", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_S4_Bausasran.stream/chunklist_w1576417780.m3u8"));
+        jogjaList.add(new CCTVData("Simpang Ibu Ruswo", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_Ibu_Ruswo.stream/chunklist_w1313062680.m3u8"));
+        jogjaList.add(new CCTVData("Simpang Tungkak", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_tungkak.stream/chunklist_w706986196.m3u8"));
+        jogjaList.add(new CCTVData(" Simpang Cendana", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_cendana.stream/chunklist_w2138925995.m3u8"));
+        jogjaList.add(new CCTVData("DPRD", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_cendana.stream/chunklist_w2138925995.m3u8"));
 
         List<CCTVData> jakartaList = new ArrayList<>();
         jakartaList.add(new CCTVData("GBK", "Jakarta", "https://cctv.balitower.co.id/Gelora-017-700470_2/index.m3u8"));
@@ -101,8 +101,8 @@ public class cctv extends AppCompatActivity {
         jakartaList.add(new CCTVData("Jati Pulo", "Jakarta", "https://cctv.balitower.co.id/Manggarai-Pintu-Air_1/index.m3u8"));
 
         List<CCTVData> klatenList = new ArrayList<>();
-        klatenList.add(new CCTVData("Simpang 3 ngingas", "klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpang3ngingas_arahsolo.m3u8"));
-        klatenList.add(new CCTVData("Simpang 4 Bareng", "Klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpang4bareng_ptz.m3u8"));
+        klatenList.add(new CCTVData("Klaten arah Yogyakarta", "klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpang3ngingas_arahyogyakarta.m3u8"));
+        klatenList.add(new CCTVData("Simpang Al-Aqsa", "Klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpangalaqsa_ptz.m3u8"));
         klatenList.add(new CCTVData("Simpang 5 Matahari", "Klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpang5matahari_ptz.m3u8"));
         klatenList.add(new CCTVData("Simpang 4 Pemda", "Klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpang5matahari_ptz.m3u8"));
         klatenList.add(new CCTVData("Simpang Al-Aqsa", "Klaten", "https://stream.klaten.go.id:8080/cctv/hls/simpangalaqsa_ptz.m3u8"));
@@ -116,12 +116,17 @@ public class cctv extends AppCompatActivity {
 
         List<CCTVData> madiunList = new ArrayList<>();
         madiunList.add(new CCTVData("Madiun Pusat", "Madiun", "http://103.149.120.205/cctv/"));
+        
+        List<CCTVData> malangList = new ArrayList<>();
+        malangList.add(new CCTVData("Jl. Danau Toba", "Malang", "http://stream.cctv.malangkota.go.id/WebRTCApp/streams/143725395052441804689699.m3u8?token=null"));
+        malangList.add(new CCTVData("Cemorokandang", "Malang", "http://stream.cctv.malangkota.go.id/WebRTCApp/streams/143725395052441804689699.m3u8?token=null"));
 
         dataMap.put("Yogyakarta", jogjaList);
         dataMap.put("Jakarta", jakartaList);
         dataMap.put("Klaten", klatenList);
         dataMap.put("Semarang", semarangList);
         dataMap.put("Madiun", madiunList);
+        dataMap.put("Malang", malangList);
     }
 
     private void setupDropdown() {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/ssid_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:fontFamily="@font/googlesans_regular"
+        android:textColorHint="@color/gray"
+        android:hint="Enter SSID" />
+
+    <EditText
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/googlesans_regular"
+        android:textColorHint="@color/gray"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightGray"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:backgroundTint="@color/accentColor"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/googlesans_medium"
+        android:text="Save Settings" />
+
+</LinearLayout>

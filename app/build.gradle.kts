@@ -89,6 +89,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata:2.6.1")
 //    implementation ("io.github.ztk1994:richeditor:2.0.1")
     implementation ("jp.wasabeef:richeditor-android:2.0.0")
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }
+
 
