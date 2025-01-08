@@ -91,7 +91,7 @@ public class cctv extends AppCompatActivity {
         jogjaList.add(new CCTVData("Simpang Ibu Ruswo", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_Ibu_Ruswo.stream/chunklist_w1313062680.m3u8"));
         jogjaList.add(new CCTVData("Simpang Tungkak", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_tungkak.stream/chunklist_w706986196.m3u8"));
         jogjaList.add(new CCTVData(" Simpang Cendana", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_cendana.stream/chunklist_w2138925995.m3u8"));
-        jogjaList.add(new CCTVData("DPRD", "Yogyakarta", "https://cctvjss.jogjakota.go.id/atcs/ATCS_cendana.stream/chunklist_w2138925995.m3u8"));
+        jogjaList.add(new CCTVData("DPRD", "Yogyakarta", "https://cctv.balitower.co.id/Cikoko-006-705651_3/tracks-v1/mono.m3u8"));
 
         List<CCTVData> jakartaList = new ArrayList<>();
         jakartaList.add(new CCTVData("GBK", "Jakarta", "https://cctv.balitower.co.id/Gelora-017-700470_2/index.m3u8"));
