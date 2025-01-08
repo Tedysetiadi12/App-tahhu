@@ -19,11 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -41,31 +36,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-
-
-import android.widget.PopupMenu;
-
-import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.List;
-import java.util.Locale;
 
 public class rideSharing extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -75,7 +49,7 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private TextView destinationTextView, addressTextView;
-    private ImageView back;
+    private ImageView back, history;
     private ImageView homeButton, menuMarket, shortVideo, calculator;
     private FloatingActionButton market;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -95,6 +69,7 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         shortVideo = findViewById(R.id.shortvidio);
         calculator = findViewById(R.id.Kalkulator);
         market = findViewById(R.id.Market);
+        history = findViewById(R.id.btn_history);
 
         // Set click listeners
         homeButton.setOnClickListener(v -> navigateTo("home"));
@@ -103,6 +78,15 @@ public class rideSharing extends AppCompatActivity implements OnMapReadyCallback
         calculator.setOnClickListener(v -> navigateTo("calculator"));
         market.setOnClickListener(v -> navigateTo("cart"));
         Button Btn_boking = findViewById(R.id.requestRideButton);
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event, for example, open another activity
+                Intent intent = new Intent(rideSharing.this, NotificationFoodActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Btn_boking.setOnClickListener(new View.OnClickListener() {
             @Override

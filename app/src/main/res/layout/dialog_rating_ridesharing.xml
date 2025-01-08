@@ -80,6 +80,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16dp"
                     android:numStars="5"
+                    android:progressBackgroundTint="@color/gray_300"
                     android:progressTint="@color/yellow"
                     android:rating="0"
                     android:secondaryProgressTint="@color/gray_300"
